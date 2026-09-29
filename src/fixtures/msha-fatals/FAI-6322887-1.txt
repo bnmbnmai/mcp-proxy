@@ -1,0 +1,456 @@
+                                                  FAI-6322887-1
+
+             UNITED STATES
+         DEPARTMENT OF LABOR
+MINE SAFETY AND HEALTH ADMINISTRATION
+
+        REPORT OF INVESTIGATION
+
+                  Underground
+                    (Coal)
+
+       Fall of Roof or Back Fatality Report
+                  April 2, 2026
+
+               Panther Eagle Mine
+            Marfork Coal Company
+   Whitesville, Raleigh County, West Virginia
+                ID No. 46-09212
+
+             Accident Investigators
+
+                Steven Redden
+        Mine Safety and Health Specialist
+
+               Herman Morgan
+  Supervisory Mine Safety and Health Specialist
+
+
+
+
+              Originating Office
+     Mine Safety and Health Administration
+               Beckley District
+              1293 Airport Road
+              Beaver, WV 25813
+       Craig Plumley, District Manager
+                                   TABLE OF CONTENTS
+
+
+OVERVIEW                                                   1
+
+GENERAL INFORMATION                                        1
+
+DESCRIPTION OF THE ACCIDENT                                2
+
+INVESTIGATION OF THE ACCIDENT                              3
+
+DISCUSSION                                                 4
+
+    Location of the Accident                               4
+
+    Roof Control Plan                                      4
+
+    Examinations and Inadequate Supervision                5
+
+    Training and Experience                                5
+
+ROOT CAUSE ANALYSIS                                        6
+
+ENFORCEMENT ACTIONS                                        8
+
+APPENDIX A – Map of No. 3 Pillar Recovery Section         10
+
+APPENDIX B – Persons Participating in the Investigation   11
+
+APPENDIX C- Roof Control Plan (excerpt from page 31A)     12
+
+APPENDIX D – Sketch of Accident Scene                     13
+                                           OVERVIEW
+
+On April 2, 2026, at 5:05 p.m., Aaron Warrix, a 53-year-old shuttle car operator with over 23 years
+of mining experience, died after being struck by falling roof rock when he was installing roadside-
+radius (turn) posts on a pillar section.
+
+The accident occurred because the mine operator did not: 1) ensure that no person worked or
+traveled under unsupported roof, 2) follow the approved roof control plan, and 3) conduct an
+adequate on-shift examination.
+
+                                  GENERAL INFORMATION
+
+Marfork Coal Company owns and operates the Panther Eagle Mine, an underground coal mine in
+Whitesville, Raleigh County, West Virginia. The mine employs 182 miners and operates two 10-
+hour production shifts and one eight-hour maintenance shift, five days per week. Panther Eagle
+Mine operates six mechanized mining units (MMU) to extract the coal using the room and pillar
+method. Coal is mined with continuous mining machines, loaded into shuttle cars, and dumped
+onto belt conveyors. The coal is then transported to a preparation plant by an overland conveyor
+belt.
+
+
+
+                                                1
+The principal management officials at the Panther Eagle mine at the time of the accident were:
+
+       Mark Rinchich                                                        Superintendent
+       Chauncy Freeman                                              General Mine Foreman
+       Michael Vaught                                                      Safety Director
+
+The Mine Safety and Health Administration (MSHA) completed the last regular safety and health
+inspection at this mine on March 3, 2026. The current regular safety and health inspection began
+April 1, 2026; however, no MSHA personnel were present at the time of the accident. The 2025
+non-fatal days lost incident rate for Panther Eagle was 2.44 compared to the national average of
+3.12 for mines of this type.
+
+                              DESCRIPTION OF THE ACCIDENT
+
+On April 2, 2026, Warrix arrived at the mine to start evening shift. At approximately 2:15 p.m.,
+Warrix and coworkers Jacob Stables, shuttle car operator/emergency medical technician; Tracy
+Lester, shuttle car operator; Ronald Blevins, continuous mining machine (CMM) operator; Colton
+Adkins, roof bolter/emergency medical technician; Christopher Green, roof bolter; Ethan Jarrell,
+scoop operator; Hunter Taylor, roof bolter; Christopher Snuffer, electrician; and Matthew Boulet,
+evening shift section foreman attended a safety meeting which included reviewing portions of the
+mine’s approved roof control and ventilation plans.
+
+According to the mine’s electronic tracking system, at 2:35 p.m., the crew traveled underground
+through the Horse Creek Portals to the No. 3 pillar recovery section (No. 3 section). The miners
+arrived at No. 3 section at approximately 3:20 p.m. The equipment operators conducted pre-
+operational examinations of their equipment and checked the roadways before beginning
+production. After completion of the pre-operational and dust parameter checks, Blevins operated
+the right CMM. He began mining the No. 2 barrier on the right side of the No. 12 entry between
+crosscuts 15 and 16 with Stables and Warrix operating shuttle cars (Appendix A).
+
+At approximately 5:00 p.m., Blevins completed mining the barrier No. 2 lift. Blevins backed the
+CMM into the intersection and began replacing cutting bits and cleaning water sprays on the
+CMM. Warrix and Stables installed turn posts in preparation for mining the next lift.
+
+At approximately 5:05 p.m., Warrix and Stables had just completed installing the turn posts when
+rock fell from the mine roof inby the turn posts, striking Warrix from behind. At that time, Green
+and Jarrell were at the CMM with Blevins as Adkins was walking past. Green heard Stables say,
+“Don’t move” and turned around to see Warrix under the rock. Green and Stables removed the
+rock from on top of Warrix. Stables then pulled Warrix away from the timbers and rocks towards
+the middle of the No. 12 entry. Stables asked Jarrell to retrieve the first aid box located near the
+self-contained self-rescuer (SCSR) cache and notify the surface personnel. Stables began
+assessing Warrix’s injuries and observed a small cut on the back of Warrix’s head. Warrix was
+alert and responsive and complained of neck and hip pain. Adkins went to get the four-wheeled
+rubber-tired personnel carrier (MAC-8). Jarrell called the surface on the mine phone and informed
+Wesley Toney, dispatcher, of the accident. Jarrell then brought a small first aid box to the
+accident scene and went back to the mine phone to keep surface personnel updated. Toney called
+911 at 5:08 p.m. and requested an ambulance. Adkins put the larger first
+                                                  2
+aid box on the MAC-8 and drove to the accident scene. Adkins prepared the oxygen tank and then
+went to the end of the track with Rusty Older, fireboss, to prepare the Brookville rail-mounted
+personnel carrier (Brookville) to transport Warrix to the surface.
+
+Warrix stated he could not straighten his legs due to pain. Green stabilized Warrix’s neck with a
+cervical collar while Stables splinted his legs in the bent position. Green and Stables placed
+Warrix on a backboard, onto the MAC-8, and transported him to the end of the track. Green,
+Stables, and Adkins placed Warrix on the Brookville and transported him to the surface.
+
+Jan-Care Ambulance Service responded to the 911 call and arrived at the mine at 5:45 p.m.
+Ronald Shepke, Jan-Care emergency medical technician (EMT), contacted Medical Command,
+Charleston, WV, and requested Air Evac to be put on standby.
+
+At 6:15 p.m., Warrix arrived on the surface and was transferred to the Jan-Care EMTs. Miners
+assisted EMTs with loading Warrix into the ambulance. EMTs began their assessment and
+notified Medical Command advising the Air Evac to launch. Stables accompanied EMTs in the
+ambulance to the landing zone near Whitesville, WV. While en route, Warrix became
+unresponsive and Shepke immediately began cardiopulmonary resuscitation (CPR) with Stables
+assisting. Upon arrival at the landing zone, Stables exited the ambulance as Air Evac nurses
+assumed primary care and took over CPR. Due to his condition, the flight crew made the decision
+to continue ambulance transport to the hospital. At 8:06 p.m., Warrix arrived at Charleston Area
+Medical Center, Charleston, WV. Hospital staff immediately transferred Warrix to the emergency
+room. At 8:19 p.m., Kayla Marie Piehler, MD pronounced Warrix dead.
+
+                             INVESTIGATION OF THE ACCIDENT
+
+On April 2, 2026, at 6:20 p.m., Michael Vaught, safety director, called the Department of Labor
+National Contact Center (DOLNCC) to report a life-threatening injury. The DOLNCC notified
+Derrick Kiblinger, supervisory mine safety and health specialist. Kiblinger notified Michael
+Moten, assistant district manager and Steven Redden, mine safety and health specialist, and
+directed Redden to go to the mine. Moten notified Craig Plumley, acting regional administrator,
+and Mark Muncy, acting district manager. Moten then notified Jeffrey Presley, supervisory mine
+safety and health inspector. Presley notified Phillip Dillon, mine safety and health inspector, and
+directed him to go to the mine.
+
+At 8:35 p.m., Moten and Redden arrived at the mine with Presley and Dillon arriving
+approximately five minutes later. Moten assigned Redden as the lead investigator. Investigators
+met with Mark Rinchich, superintendent; Chauncy Freeman, general mine foreman; and
+Christopher Curry, safety technician, and discussed the accident.
+
+At 8:43 p.m., Dillon issued an order under the provisions of Section 103(k) of the Mine Act to
+ensure the safety of the miners and the preservation of evidence. Redden, Moten, investigators
+from the West Virginia Office of Miners Health Safety and Training, and mine management
+traveled underground to the accident scene. Presley and Dillon reviewed examination and training
+records and obtained written statements from miners. The MSHA accident investigation team
+
+
+
+                                                  3
+conducted an examination of the accident scene, interviewed miners and mine management, and
+reviewed conditions and work procedures relevant to the accident. See Appendix B for a list of
+persons who participated in the investigation.
+
+                                           DISCUSSION
+
+Location of the Accident
+The accident occurred on the No. 3 working section in the No. 12 entry between the No. 15 and
+No. 16 crosscuts (Appendix A).
+
+Roof Control Plan
+MSHA approved the Panther Eagle Mine’s roof control plan (RCP) on December 9, 2025
+(Appendix C). On page 22, item 14, the RCP states, “Pillar extraction shall be done in the
+sequence as illustrated on the attached drawings. The sequence is indicated by numbers which
+correspond to individual pillar lifts.” Also, on page 22, item 15, the RCP states, “Immediately
+after each lift, roof supports will be installed as indicated on the attached drawings. Under no
+circumstances shall anyone travel inby installed breaker posts.”
+
+According to the RCP sequence, Cody Catlett, day shift CMM operator, mined the No. 1 lift from
+the left of No. 12 entry during the previous shift. The No. 1 lift measured 30 feet in depth from the
+last complete row of roof support and was 29 feet in width. The depth of the No. 1 lift should not
+have exceeded half the 35-foot pillar block or 17.5 feet, and the width should not have exceeded
+12 feet. The depth of the No. 1 lift was exceeded by 12.5 feet, and the width was exceeded by 17
+feet (Appendix C).
+
+As previously stated, during the evening shift Blevins mined the barrier No. 2 lift from the right
+side of No. 12 entry. The No. 2 lift measured 44 feet from the last row of roof supports and
+measured 36 feet across the width of the lift. The depth of the No. 2 lift should not have exceeded
+32 feet, and the width should not have exceeded 12 feet. Investigators determined the No. 2 lift
+exceeded the RCP by a depth of 12 feet and width of 24 feet.
+
+During mining of the No. 2 lift, the CMM struck two roof bolts, removing the bearing plate
+completely from one and damaging the other. The dimensions of the lifts did not comply with the
+requirements in the RCP. During the day and evening shifts, the noncompliant sequence of mining
+prevented the proper installation of posts between lifts to supplement the roof support.
+Additionally, the damaged roof support and the absence of posts increased the span of
+unsupported roof. This allowed the roof strata to sag and become unstable. The compromised
+mine roof support exposed loose, unsupported draw rock.
+
+While installing posts in preparation for the next lift, Warrix was positioned under unsupported
+roof, inby a turn post in violation of the RCP. Rock measuring approximately five feet long, three
+feet wide, three inches thick fell and struck Warrix. Investigators determined that not complying
+with the mining sequence of the RCP and improper post installation procedure contributed to the
+accident (Appendix D).
+
+
+
+                                                  4
+Examinations and Inadequate Supervision
+Benjamin Hapney, day shift section foreman, conducted a pre-shift examination of the No.3
+section for the oncoming evening shift on the day of the accident from 12:30 p.m. to 1:30 p.m.
+Hapney recorded no hazardous conditions during this examination. Investigators were not able to
+determine the exact time the noncompliant mining sequence was conducted during the day shift.
+
+Boulet conducted his on-shift examination of the No.3 section from 3:25 p.m. to 3:55 p.m. Boulet
+did not identify, correct, or make any records of the obvious and extensive hazards and violations
+created during the day shift by the noncompliant mining sequence and the improper installation of
+posts. Investigators determined the on-shift examination was inadequate because these hazardous
+conditions were not identified or corrected.
+
+Investigators determined that Blevins mined the barrier No. 2 lift immediately after the on-shift
+examination conducted by Boulet. Boulet did not prevent the same type of noncompliant mining
+on the evening shift. Because of the noncompliant mining on day shift, the mine operator should
+have made adjustments to the mining sequence to achieve compliance with the RCP.
+
+During retreat mining, roof falls are very common. A diligent, continual observation of the mining
+sequence and roof support (both permanent and supplemental) is essential during the mining cycle
+and examinations.
+
+Hapney and Boulet should have observed the obvious excessive widths and depths of both lifts,
+and the absence of posts. Also, Boulet should have noticed the damaged roof bolts. Additionally,
+the extensive amount of time each CMM would have been in these cuts should have alerted
+Hapney and Boulet that the mining sequence in the RCP was not being complied
+with. Investigators determined the section foremen knew or should have known of these
+hazardous conditions and should have taken corrective actions by stopping production, installing
+supplemental support, and repositioning the continuous mining machine. The inadequate on-shift
+examination and the failures to identify violations of the RCP, identify hazards, and take
+corrective actions, contributed to the accident.
+
+Training and Experience
+Warrix had over 23 years of mining experience. Warrix worked at the Panther Eagle Mine for
+almost six years as a shuttle car operator. Warrix received experienced miner training for the
+Panther Eagle Mine on May 4, 2020, and annual refresher training on February 17, 2026.
+Additionally, Warrix received training for the Full Pillar Extraction Plan on March 6, 2026.
+Investigators determined Warrix received all training in accordance with MSHA Part 48 training
+regulations and training was not a contributing factor to the accident.
+
+
+
+
+                                                 5
+                                   ROOT CAUSE ANALYSIS
+
+The accident investigation team conducted an analysis to identify the underlying causes of the
+accident. The team identified the following root causes, and the mine operator implemented the
+corresponding corrective actions to prevent a recurrence:
+
+1. Root Cause: The mine operator did not ensure that no person worked or traveled under
+   unsupported roof.
+
+   Corrective Action: The mine operator retrained all miners and supervisors on the requirement
+   that no person work or travel under unsupported roof and implemented procedures to ensure
+   supports are installed from supported areas. Additionally, the operator revised the RCP to
+   include a different method for the installation of radius (turn) posts to minimize exposure.
+
+2. Root Cause: The mine operator did not follow the approved roof control plan.
+
+   Corrective Action: The mine operator trained miners and supervisors on the approved RCP,
+   including lift dimensions, support requirements, and extraction sequence. Management also
+   revised the RCP to require the mine foreman, or an equivalent mine official, to travel to the
+   retreat section weekly, observe a complete mining cycle, and record the observation in the pre-
+   shift/on-shift examination book.
+
+3. Root Cause: The operator did not conduct an adequate on-shift examination.
+
+   Corrective Action: The mine operator retrained certified persons on conducting adequate
+   examinations, identifying hazardous conditions, and correcting and recording these hazardous
+   conditions before work begins or continues in the affected areas.
+
+
+
+
+                                                6
+                                          CONCLUSION
+
+
+On April 2, 2026, at 5:05 p.m., Aaron Warrix, a 53-year-old shuttle car operator with over 23 years
+of mining experience, suffered fatal injuries after being struck by falling roof rock when he was
+installing roadside-radius (turn) posts on a pillar section.
+
+The accident occurred because the mine operator did not: 1) ensure that no person works or
+travels under unsupported roof, 2) follow the approved roof control plan, and 3) conduct an
+adequate on-shift examination.
+
+Approved By:
+
+
+
+____________________________                            _______________________
+Craig Plumley                                                    Date
+District Manager
+
+
+
+
+                                                7
+                                   ENFORCEMENT ACTIONS
+
+1. A 103(k) order was issued to Marfork Coal Company
+
+   A fatal accident occurred at this operation on April 2, 2026, at 5:05 p.m. This order is being
+   issued under the authority of the Federal Mine Safety and Health Act of 1977, under Section
+   103(k) to insure the safety of all persons at the mine, and requires the operator to obtain the
+   approval of an authorized representative of MSHA of any plan to recover any person in the
+   mine or to recover the mine or affected area. This order prohibits any activity in the affected
+   area. The mine operator is reminded of the obligation to preserve evidence that would aid in
+   the investigation of the cause or causes of the accident in accordance with 30 CFR 50.12.
+
+2. A 104(a) citation was issued to Marfork Coal Company for a violation of 75.202(b)
+
+   On April 2, 2026, a fatal accident occurred at this mine when a shuttle car operator was struck
+   by falling roof rock while installing roadside-radius (turn) posts. The mine operator did not
+   ensure miners did not work and/or travel under unsupported roof on the No. 3 working section.
+
+3. A 104(d)(1) citation was issued to Marfork Coal Company for a violation of 75.220(a)(1)
+
+   On April 2, 2026, a fatal accident occurred at this mine when a shuttle car operator was struck
+   by falling roof rock while installing roadside-radius (turn) posts. The mine operator did not
+   comply with the Approved Roof Control Plan on the No .3 section.
+
+   MSHA approved the Panther Eagle Mine’s roof control plan (RCP) on December 9, 2025. On
+   page 22, item 14, the RCP states, “Pillar extraction shall be done in the sequence as illustrated
+   on the attached drawings. The sequence is indicated by numbers which correspond to
+   individual pillar lifts.” Also, on page 22, item 15, the RCP states, “Immediately after each lift,
+   roof supports will be installed as indicated on the attached drawings. Under no circumstances
+   shall anyone travel inby installed breaker posts.”
+
+   The No. 1 lift mined from the left side of the No. 12 entry during the day shift exceeded the
+   RCP by a depth of 12.5 feet, and the width by 17 feet.
+
+   During the evening shift, just prior to the accident, the No. 2 lift mined from the right side of
+   No. 12 entry exceeded the RCP by a depth of 12 feet and width of 24 feet.
+
+   This noncompliant sequence of mining allowed by the mine operator also prevented the proper
+   installation of timbers (posts) between lifts to supplement the roof support. This increased the
+   span of unsupported roof, allowing the roof strata to sag and become unstable.
+
+   This is an unwarrantable failure to comply with a mandatory standard.
+
+
+
+
+                                                  8
+4. A 104(d)(1) order was issued to Marfork Coal Company for a violation of 75.362(a)(3)(i).
+
+   On April 2, 2026, a fatal accident occurred at this mine when a shuttle car operator was struck
+   by falling roof rock while installing roadside-radius (turn) posts. The mine operator did not
+   conduct an adequate on-shift examination of the No. 3 working section. The examiner did not
+   identify and correct hazardous conditions, including violations of 75.220(a)(1) that existed in the
+   No.12 entry as cited in citation 9554305. This is an unwarrantable failure to comply with a
+   mandatory standard.
+
+
+
+
+                                                  9
+APPENDIX A – Map of No. 3 Pillar Recovery Section
+
+
+
+
+                       10
+                      APPENDIX B – Persons Participating in the Investigation
+
+                                     Marfork Coal Company
+
+Scott Toler                                                                   General Manager
+Michael Vaught                                                                  Safety Director
+Mark Rinchich                                                                   Superintendent
+Chauncy Freeman                                                         General Mine Foreman
+Christopher Curry                                                            Safety Technician
+Matthew Boulet                                                   Evening Shift Section Foreman
+Benjamin Hapney                                                     Day Shift Section Foreman
+Ronald Blevins                                            Continuous Mining Machine Operator
+Cody Catlett                                              Continuous Mining Machine Operator
+Jacob Stables                               Shuttle Car Operator/Emergency Medical Technician
+Tracy Lester                                                              Shuttle Car Operator
+Christopher Green                                                                   Roof Bolter
+Colton Adkins                                                                       Roof Bolter
+Christopher Snuffer                                                                  Electrician
+Elijah Hensley                                                                       Electrician
+Ethan Jarrell                                                                   Scoop Operator
+
+                  West Virginia Office of Miners Health Safety and Training
+
+Jeremy Ball                                                                     Deputy Director
+Christopher Dawson                                                            Inspector-at-Large
+Charles Moles                                                       Assistant Inspector-at-Large
+William Stewart                                                                District Inspector
+
+                              Mine Safety and Health Administration
+
+Michael Moten                                                       Assistant District Manager
+Herman Morgan                                     Supervisory Mine Safety and Health Specialist
+Jeffrey Presley                                   Supervisory Mine Safety and Health Inspector
+Steven Redden                                                 Mine Safety and Health Specialist
+Phillip Dillon                                                Mine Safety and Health Inspector
+
+
+
+
+                                                11
+12
+     When a pillar block is mined by using twin lifts, the lift shall be 12 feet wide and the depth shall be limited to half of the pillar
+     width, or 32 feet. measured from the last row, whichever is less.
+                                                                                                                                             APPENDIX C- Roof Control Plan (excerpt from page 31A)
+
+
+
+
+     (At the time of the accident, the pillar block measured 35 feet, wide making half the distance 17.5 feet deep for cut number 1).
+APPENDIX D – Sketch of Accident Scene
+
+
+
+
+                 13
+

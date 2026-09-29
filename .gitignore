@@ -68,6 +68,7 @@ build/nmb-determinations.*
 build/cbca-decisions.*
 build/mspb-decisions.*
 build/ferc-issuances.*
+build/msha-fatals.*
 build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
@@ -126,6 +127,7 @@ data/eis-reports/
 data/fsis-humane/
 data/epa-cafo/
 data/fmshrc-orders/
+data/msha-fatals/
 data/bsee-reports/
 data/oshrc-orders/
 data/epa-alj/

@@ -105,6 +105,8 @@
  * GET /epa-cafo/manifest.json — free count + institution/docket/date (no letter body)
  * GET /fmshrc-orders — FMSHRC ALJ + Commission Decision/Order PDF text ($0.02 id / $0.05 page)
  * GET /fmshrc-orders/manifest.json — free count + operator/docket/date (no decision body)
+ * GET /msha-fatals — MSHA Fatality Investigation Final Report PDF text ($0.02 id / $0.05 page)
+ * GET /msha-fatals/manifest.json — free count + asOf + mine/operator/state/sector/dates (no report body, no PDF link)
  * GET /bsee-reports — BSEE District Accident Investigation Report PDF text ($0.02 id / $0.05 page)
  * GET /bsee-reports/manifest.json — free count + title/date/lease/area-block/accident-type (no report body)
  * GET /oshrc-orders — OSHRC ALJ Decision/Order + Commission Final Order PDF/HTML text ($0.02 id / $0.05 page)
@@ -502,6 +504,14 @@ import {
   loadFmshrcManifest,
 } from "./fmshrc-orders.js";
 import {
+  MSHA_FATALS_AMOUNT_ATOMIC,
+  MSHA_FATALS_MANIFEST_PATH,
+  MSHA_FATALS_PATH,
+  filterMshaManifestBySector,
+  loadMshaFatals,
+  loadMshaManifest,
+} from "./msha-fatals.js";
+import {
   BSEE_REPORTS_AMOUNT_ATOMIC,
   BSEE_REPORTS_MANIFEST_PATH,
   BSEE_REPORTS_PATH,
@@ -685,6 +695,7 @@ import {
   paidEisReportsBody,
   paidEpaCafoBody,
   paidFmshrcOrdersBody,
+  paidMshaFatalsBody,
   paidBseeReportsBody,
   paidOshrcOrdersBody,
   paidEpaAljBody,
@@ -1207,7 +1218,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "ftc-orders" | "nlrb-decisions" | "flra-decisions" | "ecab-decisions" | "fcc-eb-orders" | "nmb-determinations" | "eeoc-appellate" | "ttab-decisions" | "ibla-decisions" | "ccb-determinations" | "uscg-alj-decisions" | "cbca-decisions" | "mspb-decisions" | "ferc-issuances" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "msha-fatals" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "ftc-orders" | "nlrb-decisions" | "flra-decisions" | "ecab-decisions" | "fcc-eb-orders" | "nmb-determinations" | "eeoc-appellate" | "ttab-decisions" | "ibla-decisions" | "ccb-determinations" | "uscg-alj-decisions" | "cbca-decisions" | "mspb-decisions" | "ferc-issuances" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -1260,6 +1271,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "fsis-humane",
   "epa-cafo",
   "fmshrc-orders",
+  "msha-fatals",
   "bsee-reports",
   "oshrc-orders",
   "epa-alj",
@@ -1558,6 +1570,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "fmshrc-orders") {
     const raw = env("FMSHRC_ORDERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : FMSHRC_ORDERS_AMOUNT_ATOMIC;
+  }
+  if (sku === "msha-fatals") {
+    const raw = env("MSHA_FATALS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : MSHA_FATALS_AMOUNT_ATOMIC;
   }
   if (sku === "bsee-reports") {
     const raw = env("BSEE_REPORTS_USDC_ATOMIC");
@@ -2064,6 +2080,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /fmshrc-orders when you need official FMSHRC ALJ or Commission Decision/Order TEXT extracted from fmshrc.gov decision PDFs. License 17 USC 105. Does not invent decision text. Index is operator / docket / date only — full TEXT is in the PDF. " +
       PAID_WINDOW_COPY,
     resourcePath: FMSHRC_ORDERS_PATH,
+  },
+  "msha-fatals": {
+    description:
+      "Call GET /msha-fatals when you need official MSHA Fatality Investigation Final Report TEXT extracted from msha.gov Final Report PDFs. License 17 USC 105. Does not invent report text. Index is report id / mine / operator / state / sector / accident date / report date / classification only — root causes, citations, and full TEXT are in the PDF. Preliminary reports and fatality alerts are not this SKU. Not /fmshrc-orders. " +
+      PAID_WINDOW_COPY,
+    resourcePath: MSHA_FATALS_PATH,
   },
   "bsee-reports": {
     description:
@@ -3615,6 +3637,44 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         sourceUrl:
           "https://www.fmshrc.gov/sites/default/files/decisions/alj/Big%20Spring%20Sands%20LLC%20CENT%202025-0091-Decision%20and%20Order.pdf",
         body: "DECISION AND ORDER. CIVIL PENALTY PROCEEDING. Docket No. CENT 2025-0091. Official FMSHRC ALJ findings extracted from the decision PDF.",
+      },
+    ],
+  },
+  "msha-fatals": {
+    ok: true,
+    product: "msha-fatality-final-bodies",
+    status: "ok",
+    fetchedAt: "2026-09-29T00:00:00.000Z",
+    asOf: "2026-08-11",
+    source: "https://www.msha.gov/data-and-reports/fatality-reports/search",
+    recordCount: 1,
+    records: [
+      {
+        id: "FAI-F00BE1D-1",
+        date: "2026-08-11",
+        firm: "Patton Mining LLC",
+        url: "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+        type: "msha-fatals",
+      },
+    ],
+    cards: [
+      {
+        id: "FAI-F00BE1D-1",
+        mine: "Deer Run Mine",
+        operator: "Patton Mining LLC",
+        state: "Illinois",
+        sector: "coal",
+        accidentDate: "2026-03-05",
+        reportDate: "2026-08-11",
+        date: "2026-08-11",
+        classification: "Machinery",
+        victimRole: "continuous mining machine operator",
+        rootCauses: ["The mine operator did not ensure miners stayed out of the red zone of the continuous mining machine."],
+        enforcement: [{ action: "104(d)(2) order", standard: "30 CFR 75.220(a)(1)", citation: "", summary: "Roof control plan." }],
+        citations: ["104(d)(2) order", "30 CFR 75.220(a)(1)"],
+        title: "Deer Run Mine — Machinery",
+        sourceUrl: "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+        body: "REPORT OF INVESTIGATION. Machinery Accident Fatality Report. Official MSHA final-report text extracted from the Final Report PDF.",
       },
     ],
   },
@@ -5650,6 +5710,7 @@ export function llmsTxt(): string {
     `- GET /fsis-humane — $0.05 — USDA FSIS humane-handling enforcement letter text (official fsis.usda.gov NOS / NOIE / deferral / abeyance / reinstatement PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-cafo — $0.05 — EPA Part 22 CAFO / ESA administrative penalty letter text (official yosemite.epa.gov and regional epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /fmshrc-orders — $0.05 — FMSHRC ALJ + Commission Decision/Order text (official fmshrc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /msha-fatals — $0.05 — MSHA Fatality Investigation Final Report text (official msha.gov Final Report PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /bsee-reports — $0.05 — BSEE District Accident Investigation Report text (official bsee.gov district-investigation PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /oshrc-orders — $0.05 — OSHRC ALJ Decision/Order + Commission Final Order text (official oshrc.gov PDF/HTML caches). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-alj — $0.05 — EPA OALJ Initial Decision and Order + ALJ Order text (official yosemite.epa.gov/oarm/alj PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -5740,6 +5801,7 @@ export function llmsTxt(): string {
     "- GET /fsis-humane/manifest.json — FSIS humane-handling letter count + establishment/letter type/date (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /epa-cafo/manifest.json — EPA CAFO / ESA letter count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /fmshrc-orders/manifest.json — FMSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
+    "- GET /msha-fatals/manifest.json — MSHA fatality final-report count + asOf + mine/operator/state/sector/dates (full catalog + page cursor; ?q= is free search; ?sector=coal|metal/nonmetal is exact; not the report body, not a PDF link)",
     "- GET /bsee-reports/manifest.json — BSEE district investigation count + title/date/lease/area-block/accident-type (full catalog + page cursor; ?q= is free search; not the report body)",
     "- GET /oshrc-orders/manifest.json — OSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /epa-alj/manifest.json — EPA OALJ Decision/Order count + case/docket/date/label (full catalog + page cursor; ?q= is free search; not the decision body)",
@@ -5828,7 +5890,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, TTAB_DECISIONS_PATH, IBLA_DECISIONS_PATH, CCB_DETERMINATIONS_PATH, USCG_ALJ_DECISIONS_PATH, CBCA_DECISIONS_PATH, MSPB_DECISIONS_PATH, FERC_ISSUANCES_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, MSHA_FATALS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, TTAB_DECISIONS_PATH, IBLA_DECISIONS_PATH, CCB_DETERMINATIONS_PATH, USCG_ALJ_DECISIONS_PATH, CBCA_DECISIONS_PATH, MSPB_DECISIONS_PATH, FERC_ISSUANCES_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -6127,6 +6189,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const fsisHumaneAtomic = amountAtomicFor("fsis-humane");
   const epaCafoAtomic = amountAtomicFor("epa-cafo");
   const fmshrcOrdersAtomic = amountAtomicFor("fmshrc-orders");
+  const mshaFatalsAtomic = amountAtomicFor("msha-fatals");
   const bseeReportsAtomic = amountAtomicFor("bsee-reports");
   const oshrcOrdersAtomic = amountAtomicFor("oshrc-orders");
   const epaAljAtomic = amountAtomicFor("epa-alj");
@@ -6202,6 +6265,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const fsisHumanePrice = (Number(fsisHumaneAtomic) / 1e6).toFixed(2);
   const epaCafoPrice = (Number(epaCafoAtomic) / 1e6).toFixed(2);
   const fmshrcOrdersPrice = (Number(fmshrcOrdersAtomic) / 1e6).toFixed(2);
+  const mshaFatalsPrice = (Number(mshaFatalsAtomic) / 1e6).toFixed(2);
   const bseeReportsPrice = (Number(bseeReportsAtomic) / 1e6).toFixed(2);
   const oshrcOrdersPrice = (Number(oshrcOrdersAtomic) / 1e6).toFixed(2);
   const epaAljPrice = (Number(epaAljAtomic) / 1e6).toFixed(2);
@@ -6281,6 +6345,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/fsis-humane ($0.05)",
     "/epa-cafo ($0.05)",
     "/fmshrc-orders ($0.05)",
+    "/msha-fatals ($0.05)",
     "/bsee-reports ($0.05)",
     "/oshrc-orders ($0.05)",
     "/epa-alj ($0.05)",
@@ -7499,6 +7564,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [MSHA_FATALS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMshaFatals",
+          summary: "MSHA Fatality Investigation Final Report text",
+          description: SKU_COPY["msha-fatals"].description,
+          priceUsdc: mshaFatalsPrice,
+          amountAtomic: mshaFatalsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["msha-fatals"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       [BSEE_REPORTS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getBseeReports",
@@ -8399,6 +8488,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FMSHRC Decision/Order free manifest",
           "Count, operator, docket, date, and paidUrl. Not the decision body.",
+        ),
+      },
+      [MSHA_FATALS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "MSHA fatality final-report free manifest",
+          "Count and asOf, plus mine, operator, state, sector, accident date, report date, classification, and paidUrl. Not the report body. Not a PDF link.",
         ),
       },
       [BSEE_REPORTS_MANIFEST_PATH]: {
@@ -9332,6 +9427,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           manifest: FMSHRC_ORDERS_MANIFEST_PATH,
         },
         {
+          path: MSHA_FATALS_PATH,
+          product: "msha-fatality-final-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("msha-fatals"),
+          manifest: MSHA_FATALS_MANIFEST_PATH,
+        },
+        {
           path: BSEE_REPORTS_PATH,
           product: "bsee-district-investigation-bodies",
           priceUsdc: "0.05",
@@ -10110,6 +10212,22 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === MSHA_FATALS_MANIFEST_PATH) {
+    sendExtractedManifest(
+      req,
+      res,
+      port,
+      url,
+      filterMshaManifestBySector(await loadMshaManifest(), url.searchParams.get("sector")),
+    );
+    return;
+  }
+
+  if (path === MSHA_FATALS_PATH) {
+    await servePaid(req, res, port, "msha-fatals", async (opts) => paidMshaFatalsBody(await loadMshaFatals(), opts));
+    return;
+  }
+
   if (path === BSEE_REPORTS_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadBseeManifest());
     return;
@@ -10413,7 +10531,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FTC_ORDERS_PATH, FTC_ORDERS_MANIFEST_PATH, NLRB_DECISIONS_PATH, NLRB_DECISIONS_MANIFEST_PATH, FLRA_DECISIONS_PATH, FLRA_DECISIONS_MANIFEST_PATH, ECAB_DECISIONS_PATH, ECAB_DECISIONS_MANIFEST_PATH, FCC_EB_ORDERS_PATH, FCC_EB_ORDERS_MANIFEST_PATH, NMB_DETERMINATIONS_PATH, NMB_DETERMINATIONS_MANIFEST_PATH, EEOC_APPELLATE_PATH, EEOC_APPELLATE_MANIFEST_PATH, TTAB_DECISIONS_PATH, TTAB_DECISIONS_MANIFEST_PATH, IBLA_DECISIONS_PATH, IBLA_DECISIONS_MANIFEST_PATH, CCB_DETERMINATIONS_PATH, CCB_DETERMINATIONS_MANIFEST_PATH, USCG_ALJ_DECISIONS_PATH, USCG_ALJ_DECISIONS_MANIFEST_PATH, CBCA_DECISIONS_PATH, CBCA_DECISIONS_MANIFEST_PATH, MSPB_DECISIONS_PATH, MSPB_DECISIONS_MANIFEST_PATH, FERC_ISSUANCES_PATH, FERC_ISSUANCES_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, ERC8004_PATH, AGENT_REGISTRATION_PATH, AGENT_REGISTRATION_WELL_KNOWN_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, MSHA_FATALS_PATH, MSHA_FATALS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FTC_ORDERS_PATH, FTC_ORDERS_MANIFEST_PATH, NLRB_DECISIONS_PATH, NLRB_DECISIONS_MANIFEST_PATH, FLRA_DECISIONS_PATH, FLRA_DECISIONS_MANIFEST_PATH, ECAB_DECISIONS_PATH, ECAB_DECISIONS_MANIFEST_PATH, FCC_EB_ORDERS_PATH, FCC_EB_ORDERS_MANIFEST_PATH, NMB_DETERMINATIONS_PATH, NMB_DETERMINATIONS_MANIFEST_PATH, EEOC_APPELLATE_PATH, EEOC_APPELLATE_MANIFEST_PATH, TTAB_DECISIONS_PATH, TTAB_DECISIONS_MANIFEST_PATH, IBLA_DECISIONS_PATH, IBLA_DECISIONS_MANIFEST_PATH, CCB_DETERMINATIONS_PATH, CCB_DETERMINATIONS_MANIFEST_PATH, USCG_ALJ_DECISIONS_PATH, USCG_ALJ_DECISIONS_MANIFEST_PATH, CBCA_DECISIONS_PATH, CBCA_DECISIONS_MANIFEST_PATH, MSPB_DECISIONS_PATH, MSPB_DECISIONS_MANIFEST_PATH, FERC_ISSUANCES_PATH, FERC_ISSUANCES_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, ERC8004_PATH, AGENT_REGISTRATION_PATH, AGENT_REGISTRATION_WELL_KNOWN_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -10491,6 +10609,7 @@ if (isMain()) {
     console.error(`${FSIS_HUMANE_PATH} $${Number(amountAtomicFor("fsis-humane")) / 1e6} USDC`);
     console.error(`${EPA_CAFO_PATH} $${Number(amountAtomicFor("epa-cafo")) / 1e6} USDC`);
     console.error(`${FMSHRC_ORDERS_PATH} $${Number(amountAtomicFor("fmshrc-orders")) / 1e6} USDC`);
+    console.error(`${MSHA_FATALS_PATH} $${Number(amountAtomicFor("msha-fatals")) / 1e6} USDC`);
     console.error(`${BSEE_REPORTS_PATH} $${Number(amountAtomicFor("bsee-reports")) / 1e6} USDC`);
     console.error(`${OSHRC_ORDERS_PATH} $${Number(amountAtomicFor("oshrc-orders")) / 1e6} USDC`);
     console.error(`${EPA_ALJ_PATH} $${Number(amountAtomicFor("epa-alj")) / 1e6} USDC`);
