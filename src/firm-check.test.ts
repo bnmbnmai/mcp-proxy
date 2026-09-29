@@ -469,6 +469,53 @@ async function main(): Promise<void> {
   assert.equal(r7687.matches[0]?.paidUrl, "/nmb-determinations?id=53-nmb-no-34");
   assert.ok(!JSON.stringify(r7687).includes("SECRET NMB DETERMINATION BODY"));
 
+  const certification = firmCheckFromIndexes("Certification", indexes);
+  assert.equal(certification.matchCount, 1);
+  assert.equal(certification.matches[0]?.door, "nmb-determinations");
+  assert.equal(certification.matches[0]?.id, "53-nmb-no-34");
+  assert.ok(!("body" in (certification.matches[0] ?? {})));
+  assert.ok(!("text" in (certification.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(certification).includes("SECRET NMB"));
+
+  const kindOnly = firmCheckFromIndexes("Findings Upon Investigation", {
+    ...indexes,
+    nmbDeterminations: {
+      ...indexes.nmbDeterminations,
+      cards: [
+        {
+          ...indexes.nmbDeterminations.cards[0],
+          documentId: "R-7687.pdf",
+          kind: "Findings Upon Investigation",
+        },
+      ],
+    },
+  });
+  assert.equal(kindOnly.matchCount, 1);
+  assert.equal(kindOnly.matches[0]?.id, "53-nmb-no-34");
+  assert.ok(!JSON.stringify(kindOnly).includes("SECRET"));
+
+  const citationOnly = firmCheckFromIndexes("53 NMB No. 34", {
+    ...indexes,
+    nmbDeterminations: {
+      ...indexes.nmbDeterminations,
+      cards: [
+        {
+          ...indexes.nmbDeterminations.cards[0],
+          title: "representation row",
+        },
+      ],
+    },
+  });
+  assert.equal(citationOnly.matchCount, 1);
+  assert.equal(citationOnly.matches[0]?.id, "53-nmb-no-34");
+  assert.ok(!JSON.stringify(citationOnly).includes("SECRET"));
+
+  const nlrbCase = firmCheckFromIndexes("05-CA-367812", indexes);
+  assert.equal(nlrbCase.matchCount, 1);
+  assert.equal(nlrbCase.matches[0]?.door, "nlrb-decisions");
+  assert.equal(nlrbCase.matches[0]?.id, "375-nlrb-no-40");
+  assert.ok(!JSON.stringify(nlrbCase).includes("SECRET NLRB"));
+
   const nlrb = firmCheckFromIndexes("Nexstar", indexes);
   assert.equal(nlrb.matches[0]?.door, "nlrb-decisions");
   assert.equal(nlrb.matches[0]?.paidUrl, "/nlrb-decisions?id=375-nlrb-no-40");
