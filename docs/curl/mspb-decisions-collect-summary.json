@@ -1,0 +1,98 @@
+{
+  "product": "mspb-decision-bodies",
+  "status": "ok",
+  "fetchedAt": "2026-09-29T18:19:40.064Z",
+  "asOf": "2026-09-28",
+  "cardCount": 7,
+  "listedCount": 16528,
+  "fetchedPdfs": 7,
+  "skippedNoText": 0,
+  "addedThisRun": 7,
+  "note": "Id/date/sourceUrl only. Decision body stays out of git. listedCount is unique official-index rows kept (dashed docket and a safe PDF filename), not the raw JSON length and not a PDF harvest. Raw nonprecedential index on this run was 10691 (10673 kept). Raw precedential index was 16816; older undashed docket numbers are not in this index (5858 kept). cardCount is the small first bag. Isler is pinned and newer than the manifest's newest ISSUED_DATE (2026-09-17).",
+  "cards": [
+    {
+      "id": "mspb-np-dc-3443-25-2251-i-1-2026-09-28",
+      "docket": "DC-3443-25-2251-I-1",
+      "kind": "nonprecedential",
+      "orderKind": "Final Order",
+      "date": "2026-09-28",
+      "citation": "",
+      "institution": "Tanetta N. Isler, Consumer Product Safety Commission",
+      "title": "DC-3443-25-2251-I-1 nonprecedential Final Order",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/Isler_Tanetta_N_DC-3443-25-2251-I-1_4142556.pdf",
+      "bodyChars": 16597
+    },
+    {
+      "id": "mspb-np-sf-0831-25-0005-i-1-2026-09-17",
+      "docket": "SF-0831-25-0005-I-1",
+      "kind": "nonprecedential",
+      "orderKind": "Final Order",
+      "date": "2026-09-17",
+      "citation": "",
+      "institution": "Crisostomo Guerrero, Office of Personnel Management",
+      "title": "SF-0831-25-0005-I-1 nonprecedential Final Order",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/Guerrero_Crisostomo_F_SF-0831-25-0005-I-1__Final_Order.pdf",
+      "bodyChars": 21185
+    },
+    {
+      "id": "mspb-np-sf-0831-24-0657-i-1-2026-09-17",
+      "docket": "SF-0831-24-0657-I-1",
+      "kind": "nonprecedential",
+      "orderKind": "Final Order",
+      "date": "2026-09-17",
+      "citation": "",
+      "institution": "Jose Reboja, Office of Personnel Management",
+      "title": "SF-0831-24-0657-I-1 nonprecedential Final Order",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/Reboja_JoseSF-0831-24-0657-I-1__Final_Order.pdf",
+      "bodyChars": 17922
+    },
+    {
+      "id": "mspb-np-ph-3443-25-1805-i-1-2026-09-17",
+      "docket": "PH-3443-25-1805-I-1",
+      "kind": "nonprecedential",
+      "orderKind": "Final Order",
+      "date": "2026-09-17",
+      "citation": "",
+      "institution": "Juliann Phelps, General Services Administration",
+      "title": "PH-3443-25-1805-I-1 nonprecedential Final Order",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/Phelps_Juliann_PH-3443-25-1805-I-1_Final_Order.pdf",
+      "bodyChars": 11539
+    },
+    {
+      "id": "mspb-np-ph-0752-25-0101-i-1-2026-09-17",
+      "docket": "PH-0752-25-0101-I-1",
+      "kind": "nonprecedential",
+      "orderKind": "Final Order",
+      "date": "2026-09-17",
+      "citation": "",
+      "institution": "Iris De Hoyos, Department of Justice",
+      "title": "PH-0752-25-0101-I-1 nonprecedential Final Order",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/De_Hoyos_IrisPH-0752-25-0101-I-1__Remand_Order.pdf",
+      "bodyChars": 36085
+    },
+    {
+      "id": "mspb-np-ph-0752-24-0241-i-1-2026-09-17",
+      "docket": "PH-0752-24-0241-I-1",
+      "kind": "nonprecedential",
+      "orderKind": "Final Order",
+      "date": "2026-09-17",
+      "citation": "",
+      "institution": "Lucianna Wais, Department of the Army",
+      "title": "PH-0752-24-0241-I-1 nonprecedential Final Order",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/Wais__LuciannaPH-0752-24-0241-I-1__Final_Order.pdf",
+      "bodyChars": 13472
+    },
+    {
+      "id": "mspb-p-da-0752-25-0110-i-1-2026-09-01",
+      "docket": "DA-0752-25-0110-I-1",
+      "kind": "precedential",
+      "orderKind": "Opinion and Order",
+      "date": "2026-09-01",
+      "citation": "2026 MSPB 8",
+      "institution": "Arielle Rivera, Department of Justice",
+      "title": "DA-0752-25-0110-I-1 precedential Opinion and Order 2026 MSPB 8",
+      "sourceUrl": "https://mspbpublic.azurewebsites.net/decisions/precedential/Rivera_ArielleDA-0752-25-0110-I-1_Opinion_and_Order.pdf",
+      "bodyChars": 32450
+    }
+  ]
+}
