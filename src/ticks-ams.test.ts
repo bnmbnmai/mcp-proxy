@@ -446,6 +446,43 @@ const loinChops = lambAds.find((row) => row.id === "dairy.ams_3229.loin.loin_cho
 assert.ok(loinChops, "national antibiotic-free loin chops");
 assert.equal(loinChops.price, 10.87);
 
+const lambUrl = "https://www.ams.usda.gov/mnreports/ams_3229.pdf";
+const lambWeek = parseAmsReportText(fx("retail-lamb-3229-20260925.txt"), report("3229"), lambUrl);
+assert.equal(parseReportDate(fx("retail-lamb-3229-20260925.txt")), "2026-09-25");
+assert.equal(lambWeek.length, 12, `expected Fri Sep 25 national lamb grocery ads, got ${lambWeek.length}`);
+assert.ok(lambWeek.every((row) => row.group === "dairy" && row.unit === "$/lb" && row.asOf === "2026-09-25"));
+assert.ok(lambWeek.every((row) => row.source.includes("AMS_3229") && row.sourceUrl === lambUrl));
+assert.ok(!lambWeek.some((row) => /northeast|southeast|midwest|southwest|alaska/i.test(row.id)));
+const lambWeekPrices: Record<string, number> = {
+  "dairy.ams_3229.breast.breast_regular.conventional.fresh": 6.99,
+  "dairy.ams_3229.leg.butterflied_leg_boneless_regular.antibiotic_free.fresh": 8.99,
+  "dairy.ams_3229.leg.leg_steaks_regular.antibiotic_free.fresh": 8.99,
+  "dairy.ams_3229.loin.loin_chops_regular.abf_grass_fed.fresh": 5,
+  "dairy.ams_3229.loin.loin_chops_regular.conventional.fresh": 17.99,
+  "dairy.ams_3229.loin.loin_chops_regular.halal.fresh": 19.99,
+  "dairy.ams_3229.loin.loin_chops_value.conventional.frozen": 7.99,
+  "dairy.ams_3229.rib.rib_chops_regular.halal.fresh": 29.99,
+  "dairy.ams_3229.rib.rib_rack_regular.abf_grass_fed.fresh": 17.99,
+  "dairy.ams_3229.shoulder.shoulder_blade_chops_regular.abf_grass_fed.fresh": 10.04,
+  "dairy.ams_3229.shoulder.shoulder_blade_chops_regular.antibiotic_free.fresh": 8.99,
+  "dairy.ams_3229.other_misc.stew_meat_mutton.conventional.fresh": 7.99,
+};
+assert.deepEqual(
+  Object.fromEntries(lambWeek.map((row) => [row.id, row.price])),
+  lambWeekPrices,
+);
+assert.ok(!lambWeek.some((row) => row.id.endsWith("loin.loin_chops_regular.antibiotic_free.fresh")), "previous-week antibiotic-free loin chops reprint is not a tick");
+assert.ok(!lambWeek.some((row) => row.price === 10.87), "previous-week 10.87 loin-chop reprint is not a tick");
+assert.ok(!lambWeek.some((row) => row.id.includes("ground_lamb")), "previous-week ground lamb reprint is not a tick");
+const legSteaks = lambWeek.find((row) => row.id === "dairy.ams_3229.leg.leg_steaks_regular.antibiotic_free.fresh");
+assert.match(legSteaks?.classGrade ?? "", /2,624/);
+const lambNoHeader = parseAmsReportText(
+  fx("retail-lamb-3229-20260925.txt").replace(/Section\s+.*Wtd Avg/g, "Section"),
+  report("3229"),
+  lambUrl,
+);
+assert.equal(lambNoHeader.length, 0, "fail-closed when the lamb grocery column header is missing");
+
 const vealAds = parseAmsReportText(
   fx("retail-veal-3796.txt"),
   report("3796"),
@@ -455,6 +492,32 @@ assert.equal(vealAds.length, 2, `expected lightly-tested veal grocery ads, got $
 const vealBreast = vealAds.find((row) => row.id === "dairy.ams_3796.breast.breast_regular.conventional.fresh");
 assert.ok(vealBreast, "national conventional veal breast");
 assert.equal(vealBreast.price, 9.99);
+
+const vealUrl = "https://www.ams.usda.gov/mnreports/ams_3796.pdf";
+const vealWeek = parseAmsReportText(fx("retail-veal-3796-20260925.txt"), report("3796"), vealUrl);
+assert.equal(parseReportDate(fx("retail-veal-3796-20260925.txt")), "2026-09-25");
+assert.equal(vealWeek.length, 2, `expected Fri Sep 25 national veal grocery ads, got ${vealWeek.length}`);
+assert.ok(vealWeek.every((row) => row.group === "dairy" && row.unit === "$/lb" && row.asOf === "2026-09-25"));
+assert.ok(vealWeek.every((row) => row.source.includes("AMS_3796") && row.sourceUrl === vealUrl));
+assert.equal(
+  vealWeek.find((row) => row.id === "dairy.ams_3796.shoulder.shoulder_blade_chops_regular.conventional.fresh")?.price,
+  10.99,
+);
+assert.equal(vealWeek.find((row) => row.id === "dairy.ams_3796.ground.ground_veal_1_2_lbs.conventional.fresh")?.price, 11.76);
+assert.match(
+  vealWeek.find((row) => row.id === "dairy.ams_3796.ground.ground_veal_1_2_lbs.conventional.fresh")?.classGrade ?? "",
+  /222/,
+);
+assert.ok(!vealWeek.some((row) => row.id.includes("breast")), "previous-week veal breast reprint is not a tick");
+assert.ok(!vealWeek.some((row) => row.price === 9.99 || row.price === 11.99), "previous-week and year-ago veal reprints are not ticks");
+const vealPwOnly = parseAmsReportText(
+  fx("retail-veal-3796-20260925.txt")
+    .replace(/Fresh\s+17\s+10\.99/, "Fresh")
+    .replace(/Fresh\s+222\s+11\.76/, "Fresh"),
+  report("3796"),
+  vealUrl,
+);
+assert.equal(vealPwOnly.length, 0, "fail-closed when veal current-week columns are blank");
 
 const produceAds = parseAmsReportText(
   fx("retail-specialty-crops-3324.txt"),
@@ -2070,7 +2133,9 @@ console.log(
     groceryPork2868: porkAds.length,
     groceryBeef3228: beefAds.length,
     groceryLamb3229: lambAds.length,
+    groceryLamb3229Week: lambWeek.length,
     groceryVeal3796: vealAds.length,
+    groceryVeal3796Week: vealWeek.length,
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
     agEnergy2805: agEnergy.length,

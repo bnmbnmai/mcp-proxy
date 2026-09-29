@@ -30,8 +30,12 @@
  * dairy.ams_* grocery-ad rows. AMS_3324 / fvwretail specialty-crops grocery
  * ads land on the existing produce group. Current-week advertised wtd avg
  * only — previous-week / year-ago reprints and regional detail pages are not
- * ticks. Official bodies are ugly mnreports PDFs (marsapi 403; LMR datamart
- * "Invalid slug id").
+ * ticks. Chicken, egg, turkey, pork, and beef staples stay fail-closed on a
+ * required current-week id. Lamb (AMS_3229) and veal (AMS_3796) advertised
+ * mixes rotate: a headline that is previous-week-only is not a broken extract,
+ * so every national current-week $/lb row stays. An empty current-week table
+ * still returns no ticks. Official bodies are ugly mnreports PDFs (marsapi
+ * 403; LMR datamart "Invalid slug id").
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
  * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
@@ -2119,8 +2123,8 @@ const RETAIL_LP_REQUIRED: Record<string, readonly string[]> = {
   "2867": ["ground.ground_turkey_93_1_2_lbs.conventional.fresh"],
   "2868": ["ham.ham_steak.conventional.fresh"],
   "3228": ["chuck.chuck_roast_boneless_regular.conventional.fresh"],
-  "3229": ["loin.loin_chops_regular.antibiotic_free.fresh"],
-  "3796": ["breast.breast_regular.conventional.fresh"],
+  // 3229 lamb and 3796 veal mixes rotate. A missing headline is "not featured
+  // this week", not a broken table. Zero current-week rows still return [].
 };
 
 const RETAIL_PAGE_RE =
