@@ -51,8 +51,9 @@ async function main(): Promise<void> {
   assert.equal(IDENTITY_REGISTRY, "0x8004A169FB4a3325136EB29fA0ceB6D2e539a432");
   assert.equal(AGENT_REGISTRY, `eip155:8453:${IDENTITY_REGISTRY}`);
   assert.equal(ERC8004_AGENT_URI, "https://ticks.bnm.farm/.well-known/erc8004.json");
-  assert.equal("registrations" in doc, false);
-  assert.equal(JSON.stringify(doc).includes("agentId"), false);
+  assert.deepEqual(doc.registrations, [
+    { agentId: 96169, agentRegistry: AGENT_REGISTRY },
+  ]);
   assert.equal(/privateKey|seed phrase|mnemonic/i.test(registrationJson()), false);
 
   const llms = llmsTxt();
