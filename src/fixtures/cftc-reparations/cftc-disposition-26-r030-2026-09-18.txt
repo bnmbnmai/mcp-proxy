@@ -1,0 +1,94 @@
+                         COMMODITY FUTURES TRADING COMMISSION
+                                        Three Lafayette Centre
+                              1155 21st Street, NW, Washington, DC 20581
+                                            www.cftc.gov
+
+
+                                                                               RECEIVED CFTC
+
+Office of Proceedings
+
+   ___________________________                                                 Office of Proceedings
+                               *                                                Proceedings Clerk
+   Aleksandar Nikoloski,       *                                           10:53 am, Sep 18 2026
+                               *
+         Complainant,          *
+                               *
+              v.               *                     CFTC Docket No. 26-R030
+                               *                     Served electronically
+   Oanda Corporation,          *
+                               *
+         Respondent.           *
+   ___________________________ *
+
+                                     INITIAL DECISION
+                                  DISMISSING COMPLAINT
+
+   Before:               Kavita Kumar Puri, Administrative Judge
+                         Commodity Futures Trading Commission
+                         Washington, D.C.
+
+   Appearances:          Alexander Nikoloski
+                         Self-represented
+                         Plantation, FL
+                         For Complainant
+
+                         Drew Koning, Esq.
+                         Neal Gibeault, Esq.
+                         Koning Zollar LLP
+                         Encinates, CA
+                         Counsel for Respondent
+
+             On March 17, 2026, Complainant Aleksandar Nikoloski filed a complaint to
+
+   commence a summary proceeding against Respondent OANDA Corporation,
+
+   alleging that it had fraudulently restricted him from adding new positions to his
+account and closed his positions without approval. Compl. Form [Tab 001]. 1 This
+
+misconduct, according to Nikoloski, was evidenced by the fact that his account was
+
+recovering in value at the time of its closure, and the fact that OANDA called him
+
+on March 11, 2026, immediately before closing his account. Nikoloski asserts the
+
+closure resulted in approximately $23,400 in damages. Id. OANDA filed its Answer
+
+on April 27, 2026, responding that its customer agreement authorizes it to
+
+terminate customer relationships and close open positions in its sole discretion upon
+
+three days’ notice, and that in any event OANDA closed Nikoloski’s account
+
+pursuant to its vulnerable client procedures. Answer [Tab 009]. It also states that
+
+Nikoloski’s trading decisions were the cause of his losses, not termination of the
+
+customer relationship.
+
+      Because I find that Nikoloski’s Complaint fails to state a claim that is
+
+cognizable in reparations for the reasons set forth below, I am dismissing his claims
+
+with prejudice. 17 C.F.R. § 12.205(c)(1)(i)-(ii) (authorizing Administrative Judge to
+
+dismiss claims or the entire proceeding).
+
+I.    Summary of Proceedings and Factual Findings
+
+      1.     Complainant Alexandar Nikoloski is a resident of Plantation, Florida.
+
+He opened his account at OANDA in February 2025 with $2,350 to trade foreign
+
+
+
+
+1 Documents filed in this case appear on a docket sheet and are assigned tab numbers. The
+Tab Numbers cited in brackets refer to documents as they appear on that docket sheet. The
+docket sheet can be found in the Notice of Record of Proceedings, which accompanies this
+Initial Decision.
+
+
+
+                                            2
+

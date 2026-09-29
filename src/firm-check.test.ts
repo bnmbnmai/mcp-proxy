@@ -274,6 +274,24 @@ async function main(): Promise<void> {
         },
       ],
     },
+    cftcReparations: {
+      fetchedAt: "2026-09-29T18:31:26.000Z",
+      asOf: "2026-09-29",
+      cards: [
+        {
+          id: "cftc-disposition-26-r021-2026-09-29",
+          institution: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+          docket: "26-R021",
+          caseNo: "26-R021",
+          kind: "disposition",
+          orderKind: "Reparations disposition",
+          date: "2026-09-29",
+          title: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+          sourceUrl: "https://www.cftc.gov/sites/default/files/2026/09/secret.pdf",
+          body: "SECRET CFTC REPARATIONS purported account statement",
+        },
+      ],
+    },
     fercIssuances: {
       fetchedAt: "2026-09-28T16:34:39.000Z",
       asOf: "2026-09-28",
@@ -398,6 +416,7 @@ async function main(): Promise<void> {
     "cbca-decisions",
     "mspb-decisions",
     "ferc-issuances",
+    "cftc-reparations",
     "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
@@ -418,6 +437,7 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("CBCA decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("MSPB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("FERC eLibrary issuances"));
+  assert.ok(FIRM_CHECK_NOTE.includes("CFTC reparations dispositions and Commission opinions"));
   assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
@@ -628,6 +648,19 @@ async function main(): Promise<void> {
   assert.ok(!JSON.stringify(mspb.matches).includes("SECRET MSPB"));
   assert.ok(!JSON.stringify(mspb.matches).includes("involuntary due to coercion"));
   assert.ok(!JSON.stringify(mspb.matches).includes("mspbpublic.azurewebsites.net"));
+
+  const cftcRep = firmCheckFromIndexes("Interactive Brokers", indexes);
+  assert.equal(cftcRep.matches[0]?.door, "cftc-reparations");
+  assert.equal(cftcRep.matches[0]?.id, "cftc-disposition-26-r021-2026-09-29");
+  assert.equal(cftcRep.matches[0]?.paidUrl, "/cftc-reparations?id=cftc-disposition-26-r021-2026-09-29");
+  assert.equal(cftcRep.matches[0]?.pagePaidUrl, "/cftc-reparations");
+  assert.equal(cftcRep.matches[0]?.priceUsdc, "0.02");
+  assert.equal(cftcRep.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (cftcRep.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (cftcRep.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(cftcRep.matches).includes("SECRET CFTC REPARATIONS"));
+  assert.ok(!JSON.stringify(cftcRep.matches).includes("purported account statement"));
+  assert.ok(!JSON.stringify(cftcRep.matches).includes(".pdf"));
 
   const ferc = firmCheckFromIndexes("Saguaro", indexes);
   assert.equal(ferc.matches[0]?.door, "ferc-issuances");

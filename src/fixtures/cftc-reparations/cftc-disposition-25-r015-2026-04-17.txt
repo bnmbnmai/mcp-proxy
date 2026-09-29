@@ -1,0 +1,100 @@
+                           U.S. COMMODITY FUTURES TRADING COMMISSION
+                                               Three Lafayette Centre
+                                    1155 21st Street, NW, Washington, DC 20581
+                                                   www.cftc.gov
+
+
+                                                                         RECEIVED CFTC
+Office of Proceedings
+
+
+
+ ___________________________                                            Office of Proceedings
+                               *                                          Proceedings Clerk
+ AMA Real Estate and Financial *
+                                                                       3:32 pm, Apr 17, 2026
+ Services, LLC,                *
+                               *
+        Complainant,           *
+                               *
+              v.               *                CFTC Docket No. 25-R015
+                               *                Served electronically
+ NinjaTrader Clearing, LLC,    *
+                               *
+        Respondent.            *
+ ___________________________ *
+
+                                  INITIAL DECISION
+
+         This dispute by Complainant AMA Real Estate & Financial Services, LLC
+
+ (AMA) centers on whether Respondent NinjaTrader Clearing, LLC (NinjaTrader)
+
+ failed to execute AMA’s trade instructions, allegedly causing it roughly $616 in out-
+
+ of-pocket losses and $2,000 in lost profits. Although this Office has endeavored to
+
+ move this proceeding along efficiently and sensibly, AMA tried to thwart that
+
+ endeavor at several junctions.
+
+         On March 2, 2026, I warned Andy Movsesian, who is AMA’s sole owner and
+
+ acting as its representative, that the litigation tactics he deployed amounted to bad
+
+ faith, and that failure to comply with the directives in that Order would likely
+
+ result in the imposition of sanctions. Notwithstanding this warning, on March 23,
+
+ 2026, Movsesian filed a motion for sanctions against NinjaTrader for failure to
+
+ comply with an imaginary 5:00 pm ET deadline by 27 minutes and NinjaTrader’s
+production of .pdf files (as required by this Office) instead of native files (as
+
+Movsesian preferred). AMA’s motion for sanctions is DENIED.
+
+        Despite AMA’s attempts to derail these proceedings with filings like its
+
+motion for sanctions, the record is sufficiently robust to render an Initial Decision.
+
+Because AMA has failed to prove by a preponderance of the evidence that
+
+NinjaTrader violated any provision of the Commodity Exchange Act (CEA) or
+
+regulations promulgated pursuant to the CEA, AMA’s complaint is also
+
+DISMISSED on the merits.
+
+   I.        Summary of Proceedings
+
+        1.     Movsesian filed his Complaint against NinjaTrader on June 14, 2025,
+
+alleging that NinjaTrader failed to execute the following trade placed on May 6,
+
+2025: a buy limit order for 2 JUN25 Nasdaq Futures (NQ) using an Advanced
+
+Trade Management (ATM) strategy, with a 15-tick stop loss and a 50-tick take
+
+profit (the Trade). Compl. [Tab 001]. 1
+
+        2.     On September 4, 2025, NinjaTrader filed its Answer, and this case was
+
+forwarded to my docket shortly thereafter. Answer [Tab 012].
+
+        3.     On September 16, 2025, I issued several case opening orders, including
+
+a Discovery Order designed to obtain clarity on whether Movsesian or AMA was the
+
+proper complainant and the damages at issue. Initial Discovery Order [Tab 020].
+
+
+
+
+1 The Tab Numbers cited in brackets refer to the tab numbers listed on the docket sheet
+
+that correspond to documents filed in this case. These documents can be found in the
+Notice of Record of Proceedings, which accompanies this Initial Decision.
+
+
+                                             2
+

@@ -385,6 +385,15 @@ import {
   VIRIDON_URL,
 } from "./ferc-issuances.js";
 import {
+  ASMAD_ID,
+  BODY_NEEDLE_ASMAD,
+  BODY_NEEDLE_SHAH,
+  CFTC_REPARATIONS_AMOUNT_ATOMIC,
+  CFTC_REPARATIONS_MANIFEST_PATH,
+  CFTC_REPARATIONS_PATH,
+  SHAH_ID,
+} from "./cftc-reparations.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -419,6 +428,11 @@ async function withServer(
   }
   if (!Object.prototype.hasOwnProperty.call(envPatch, "SETTLE_LOG")) {
     envPatch = { ...envPatch, SETTLE_LOG: "0" };
+  }
+  // MCP search fetches discoveryOrigin(). A host X402_RESOURCE_URL would send that
+  // fetch at the live shop instead of this listener.
+  if (!Object.prototype.hasOwnProperty.call(envPatch, "X402_RESOURCE_URL")) {
+    envPatch = { ...envPatch, X402_RESOURCE_URL: undefined };
   }
   for (const [k, v] of Object.entries(envPatch)) {
     prev[k] = process.env[k];
@@ -1106,6 +1120,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/cbca-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/mspb-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ferc-issuances"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/cftc-reparations"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1357,6 +1372,7 @@ async function main(): Promise<void> {
       CBCA_DECISIONS_PATH,
       MSPB_DECISIONS_PATH,
       FERC_ISSUANCES_PATH,
+      CFTC_REPARATIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -10429,6 +10445,150 @@ async function main(): Promise<void> {
     },
   );
 
+  const cftcRepDir = mkdtempSync(join(tmpdir(), "cftc-reparations-"));
+  const cftcRepPad = Array.from({ length: 40 }, (_, i) => `Official CFTC reparations paragraph ${i + 1}.`).join(" ");
+  const cftcRepCard = (
+    id: string,
+    docket: string,
+    kind: string,
+    date: string,
+    institution: string,
+    needle: string,
+  ) => ({
+    id,
+    docket,
+    dockets: [docket],
+    caseNo: docket,
+    kind,
+    orderKind: kind === "opinion" ? "Commission opinion" : "Reparations disposition",
+    date,
+    institution,
+    title: institution,
+    sourceUrl: `https://www.cftc.gov/sites/default/files/2026/09/${id}.pdf`,
+    body: `COMMODITY FUTURES TRADING COMMISSION. CFTC Docket No. ${docket}. INITIAL DECISION. ${needle} ${cftcRepPad}`,
+  });
+  writeFileSync(
+    join(cftcRepDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "cftc-reparations-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-29T18:31:26.000Z",
+      asOf: "2026-09-29",
+      license: "17 USC 105",
+      attribution: "Commodity Futures Trading Commission. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        dispositions: "https://www.cftc.gov/LawRegulation/Dispositions/index.htm",
+        opinions: "https://www.cftc.gov/LawRegulation/OpinionsAdjudicatoryOrders/index.htm",
+      },
+      cards: [
+        cftcRepCard(ASMAD_ID, "26-R021", "disposition", "2026-09-29", "Cristofer Arguedas Asmad v. Interactive Brokers, LLC", BODY_NEEDLE_ASMAD),
+        cftcRepCard(SHAH_ID, "23-R001", "opinion", "2025-12-12", "Himanshu Shah v. GAIN Capital Group, LLC", BODY_NEEDLE_SHAH),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CFTC_REPARATIONS_DIR: cftcRepDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-cftc-reparations-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CFTC_REPARATIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /cftc-reparations must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, CFTC_REPARATIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CFTC_REPARATIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${CFTC_REPARATIONS_PATH}?id=${ASMAD_ID}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /cftc-reparations?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      const emptySince = await fetch(`${base}${CFTC_REPARATIONS_PATH}?since=2026-12-31`);
+      assert.equal(emptySince.status, 304, "empty ?since= delta is 304 unpaid");
+      const unpaidSince = await fetch(`${base}${CFTC_REPARATIONS_PATH}?since=${SHAH_ID}`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /cftc-reparations?since= with newer slips must be 402");
+      const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(since402.accepts[0]?.maxAmountRequired, CFTC_REPARATIONS_AMOUNT_ATOMIC, "since bag is $0.05");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_ASMAD));
+      assert.ok(!JSON.stringify(body402).includes("Official CFTC reparations paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CFTC_REPARATIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(CFTC_REPARATIONS_PATH)), "well-known lists /cftc-reparations");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /cftc-reparations"));
+      assert.ok(llms.includes("GET /cftc-orders"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[CFTC_REPARATIONS_PATH]);
+      assert.ok(spec.paths[CFTC_REPARATIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/cftc-reparations/index"]);
+
+      const manifest = await fetch(`${base}${CFTC_REPARATIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "cftc-reparations free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { id?: string; docket?: string; kind?: string; title?: string; date?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 2);
+      assert.equal(man.asOf, "2026-09-29");
+      assert.ok(man.cards?.some((card) => card.id === ASMAD_ID && card.docket === "26-R021" && card.kind === "disposition" && card.date === "2026-09-29"));
+      assert.ok(man.cards?.some((card) => card.id === SHAH_ID && card.kind === "opinion" && card.title?.includes("Shah")));
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes(".pdf"), "free manifest has no official PDF deep link");
+      assert.ok(!manJson.includes(BODY_NEEDLE_ASMAD));
+      assert.ok(!manJson.includes(BODY_NEEDLE_SHAH));
+      assert.ok(manJson.includes("Dispositions/index.htm"));
+      assert.ok(!manJson.includes("_format=json"));
+
+      const kindSearch = await fetch(`${base}${CFTC_REPARATIONS_MANIFEST_PATH}?kind=opinion`);
+      assert.equal(kindSearch.status, 200);
+      const kindBody = (await kindSearch.json()) as { cards?: { id?: string; kind?: string }[] };
+      assert.ok(kindBody.cards?.some((card) => card.id === SHAH_ID && card.kind === "opinion"));
+      assert.ok(!kindBody.cards?.some((card) => card.kind === "disposition"));
+
+      const qSearch = await fetch(`${base}${CFTC_REPARATIONS_MANIFEST_PATH}?q=26-R021`);
+      assert.equal(qSearch.status, 200);
+      const qBody = (await qSearch.json()) as { cards?: { id?: string }[] };
+      assert.ok(qBody.cards?.some((card) => card.id === ASMAD_ID));
+
+      const index = await fetch(`${base}/cftc-reparations/index`);
+      assert.equal(index.status, 200, "/cftc-reparations/index is the free catalog");
+
+      const paid = await fetch(`${base}${CFTC_REPARATIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; kind?: string; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "cftc-reparations-bodies");
+      assert.equal(paidBody.asOf, "2026-09-29");
+      assert.ok(paidBody.cards.some((card) => card.id === ASMAD_ID && card.kind === "disposition" && card.body.includes(BODY_NEEDLE_ASMAD)));
+      assert.ok(paidBody.cards.some((card) => card.id === SHAH_ID && card.kind === "opinion" && card.body.includes(BODY_NEEDLE_SHAH)));
+      assert.equal(paidBody.records?.[0]?.type, "cftc-reparations");
+
+      const paidOne = await fetch(`${base}${CFTC_REPARATIONS_PATH}?id=${ASMAD_ID}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneRep = (await paidOne.json()) as { cards: { id: string; body: string }[] };
+      assert.equal(oneRep.cards.length, 1);
+      assert.equal(oneRep.cards[0]?.id, ASMAD_ID);
+      assert.ok(oneRep.cards[0]?.body.includes(BODY_NEEDLE_ASMAD));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -11254,7 +11414,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions", "ferc-issuances"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions", "ferc-issuances", "cftc-reparations"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -11316,6 +11476,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("cbca-decisions"), true);
   assert.equal(isPublicBazaarSku("mspb-decisions"), true);
   assert.equal(isPublicBazaarSku("ferc-issuances"), true);
+  assert.equal(isPublicBazaarSku("cftc-reparations"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

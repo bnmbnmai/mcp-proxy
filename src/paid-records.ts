@@ -87,6 +87,7 @@ export const EXTRACTED_BODY_SKUS = [
   "cbca-decisions",
   "mspb-decisions",
   "ferc-issuances",
+  "cftc-reparations",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -195,6 +196,7 @@ export const USCG_ALJ_DECISIONS_TYPE = "uscg-alj-decisions";
 export const CBCA_DECISIONS_TYPE = "cbca-decisions";
 export const MSPB_DECISIONS_TYPE = "mspb-decisions";
 export const FERC_ISSUANCES_TYPE = "ferc-issuances";
+export const CFTC_REPARATIONS_TYPE = "cftc-reparations";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -277,6 +279,7 @@ export const CBCA_DECISIONS_SOURCE = "https://www.cbca.gov/decisions/cda-cases.h
 export const MSPB_DECISIONS_SOURCE =
   "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/NonPrecedentialDecisions_Manifest-updmar2025.json";
 export const FERC_ISSUANCES_SOURCE = "https://elibrary.ferc.gov/eLibrarywebapi/api/Search/AdvancedSearch";
+export const CFTC_REPARATIONS_SOURCE = "https://www.cftc.gov/LawRegulation/Dispositions/index.htm";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -1202,6 +1205,13 @@ export function paidFercIssuancesBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, FERC_ISSUANCES_TYPE, FERC_ISSUANCES_SOURCE, opts);
+}
+
+export function paidCftcReparationsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, CFTC_REPARATIONS_TYPE, CFTC_REPARATIONS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

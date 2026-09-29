@@ -68,6 +68,7 @@ build/nmb-determinations.*
 build/cbca-decisions.*
 build/mspb-decisions.*
 build/ferc-issuances.*
+build/cftc-reparations.*
 build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
@@ -147,6 +148,7 @@ data/ccb-determinations/
 data/uscg-alj-decisions/
 data/cbca-decisions/
 data/mspb-decisions/
+data/cftc-reparations/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
