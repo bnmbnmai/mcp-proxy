@@ -1,0 +1,212 @@
+DENIED: September 23, 2026
+
+                                        CBCA 8825
+
+                           THE GILCHRIST LAW FIRM, P.A.,
+
+                                                                 Appellant,
+
+                                              v.
+
+                          DEPARTMENT OF AGRICULTURE,
+
+                                                                 Respondent.
+
+      Jacquin P. Gilchrist of The Gilchrist Law Firm, P.A., Charlotte, NC; and Michelle M.
+Weiner of The Gilchrist Law Firm, P.A., Coral Gables, FL, counsel for Appellant.
+
+     Adam Humphries, Office of the General Counsel, Department of Agriculture,
+Washington, DC, counsel for Respondent.
+
+BEARDSLEY, Board Judge.
+
+        Appellant, the Gilchrist Law Firm, P.A. (GLF), claims increased administrative and
+restart costs incurred as a result of the United States Department of Agriculture’s (USDA)
+order to stop work due to a lapse in USDA’s appropriations. We deny the appeal.
+
+       GLF elected for this appeal to be decided under the small claims procedure identified
+in Rule 52(a) of the Board’s Rules. 48 CFR 6101.52(a) (published in eCFR). The Board’s
+decision will be issued by a single judge and “is final and conclusive and may not be set aside
+except in cases of fraud.” 41 U.S.C. § 7106(b)(4) (2024). It has “no value as precedent for
+future cases.” Id. § 7106(b)(5).
+
+CBCA 8825                                                                                    2
+
+                                         Background
+
+       On August 26, 2025, USDA awarded GLF a firm-fixed-price contract for the
+performance of title and legal services. Appeal File, Exhibits 2, 3, 7-21.1 The contract
+incorporated Federal Acquisition Regulation (FAR) 52.242-15–Stop-Work Order (48 CFR
+52.242-15 (AUG 1989) (2024)). Exhibit 10 at 11. Due to a lapse in USDA appropriations,
+the contracting officer directed GLF immediately to stop work on October 1, 2025, until
+further notice. Exhibit E at 0031. The contracting officer stated:
+
+       [N]o work is to be performed under the contract after midnight, September 30,
+       2025. You are instructed to refrain from issuing further orders for materials
+       or services related to the portion of the subject contract, to direct any
+       subcontractors to comply with the contents of this letter, and to otherwise
+       minimize costs.
+
+       The direction in this letter is in effect until you are notified by the Contracting
+       Officer that work under the contract shall resume. That is not expected to
+       happen until appropriations again become available for this agency. We will
+       notify your firm otherwise if emergency services will be required during the
+       lapse in appropriations.
+
+Id. On November 13, 2025, the contracting officer directed GLF to resume all work under
+the contract. Id. at 0030. GLF claims costs for “administrative and restart activities” that
+“were necessitated solely by the Government’s stop-work directive and would not have been
+incurred during ordinary contract performance.” Complaint ¶ 11.
+
+       GLF claims $1381.65 in “unavoidable administrative and attorney time necessary to
+manage the project responsibly despite the stop-work order.” Exhibit B at 0006. This work
+included “limited administrative tasks necessary to comply with the Government’s directive
+and maintain the contract file” such as “documenting the stop-work order, managing invoice
+processing affected by the shutdown, monitoring Agency guidance regarding the shutdown,
+and coordinating internally to ensure contract compliance.” Complaint ¶ 9. GLF submitted
+an invoice itemizing the claimed administrative costs in which it provided a description of
+the work, the date on which the work was performed, the person who billed for the work, the
+billing rate for the work, and the number of hours of work recorded in quarter-hour
+increments. Exhibit B at 0008-09.
+
+       1
+              All exhibits are found in the appeal file. Respondent numbered its exhibits,
+and appellant used letters to identify its exhibits.
+
+CBCA 8825                                                                                    3
+
+        GLF further claims that, after the stop-work order was lifted, it “incurred additional
+costs to restart performance” in the amount of $880.63. Complaint ¶ 9, 13. GLF, however,
+did not submit an itemized invoice for the $880.63 in costs claimed for restart work and,
+instead, submitted a price proposal with a general statement of the work performed.
+Exhibit D at 0016. In its price proposal, GLF describes the restart work as:
+“(a) Re-reviewing search package and any prior notes; (b) Re-orienting our team to the facts,
+parties, and issues in the chain of title; (c) Re-coordinating with the Agency and the title
+examiner on requirements and exceptions; and (d) Adjusting internal schedules to fit the
+restarted matter back into our workflow.” Id.
+
+       The contracting officer denied GLF’s claim in full because “no work on the contract
+was to be performed until the government re-opened.” Exhibit 1 at 1. On June 4, 2026, the
+Board held a hearing in this appeal at which GLF called one GLF witness and two
+government witnesses to testify.
+
+                                         Discussion
+
+       I.     The Stop-Work Order
+
+       Under the stop-work order, GLF was required to take all reasonable steps to
+“minimize the incurrence of costs allocable to the work covered by the order during the
+period of work stoppage.” FAR 52.242-15(a). GLF, however, could recover costs if the
+stop-work order resulted in an increase in GLF’s costs “properly allocable to” the
+performance of the contract. Id. “A cost is allocable to a given contract if there is a logical
+connection between the incurrence of the cost and the performance of the contract.” URS
+Energy & Construction, Inc. v. Department of Energy, CBCA 2260, 12-2 BCA ¶ 35,094, at
+172,353 (citing Boeing North American, Inc. v. Roche, 298 F.3d 1274, 1281 (Fed. Cir. 2002)
+(requiring a contractor to show a nexus between the contractor’s cost and its government
+work in order to allocate the cost to a government contract)).
+
+       II.    Administrative Costs
+
+       GLF has failed to demonstrate that the administrative costs claimed resulted from the
+work stoppage and are allocable to the performance of the contract. GLF describes the
+claimed costs in its invoice as “prepar[ing] compliance notes for contract file documenting
+stop-work communication and cost-mitigation steps”; “draft[ing] internal guidance to staff
+regarding suspension of work”; “logg[ing] outstanding [contract line item number] work;
+updat[ing] internal matter records”; “email[ing] correspondence with Director of
+
+CBCA 8825                                                                                   4
+Government Procurement2 regarding timing of appropriations”; “[r]eview[ing] government
+shutdown update from Procurement”; and “internal tracking of shutdown period.” Exhibit B
+at 0008. Mr. Granados, GLF’s project manager, associate attorney, and witness, described
+this administrative work as “suspension management” or “[a]dministrative work”–not done
+“to mov[e] the contract forward.” Hearing Transcript at 26, 33; see also id. at 35. Because
+the contract did not require GLF to perform these internal coordination tasks, and these tasks
+were not necessary to progress the contract, GLF cannot recover the costs claimed for these
+internal administrative tasks.
+
+        GLF cannot recover costs claimed for administrative work done in anticipation of the
+end of the stop-work period. GLF claims increased costs for work performed on October 13,
+2025, for “internal administrative tracking of halted services” and “maintain[ing] spreadsheet
+reflecting pending work and associated deadlines.” Exhibit B at 0008. When asked about
+these invoiced costs, Mr. Granados testified that the law firm staff “just reviewed [the
+tracking spreadsheet] to make sure that we knew what work was required once the contract
+reopened, what deadlines existed.” Hearing Transcript at 22. This administrative work,
+however, was not work that needed to be done on day thirteen of the forty-three-day stopwork period and was not allocable to the performance of the contract. Similarly, work
+performed on October 31, 2025, to “[r]eview[] updated shutdown directives; assess[] impact
+on current title commitments; [and] prepare[] follow-up communication,” Exhibit B at 0009,
+was done because GLF “knew that the shutdown was ending soon.” Hearing Transcript
+at 36; see also id. at 32. This work, however, was not work necessary to be completed before
+work on the contract resumed thirteen days later and cannot be recovered.
+
+       GLF claims additional costs for the preparation of an “invoice submission packet;
+confirmed accuracy of supporting documentation; coordinated with attorney for approval”;
+“coordinat[ing] with accounting regarding open invoices; verif[ying] entries align[ed] with
+resubmission requirements”; “updat[ing] status of all pending invoices”; and emailing with
+“Director of Government Procurement regarding . . . invoice processing.” Exhibit B at 0008.
+Mr. Granados testified that he was required to “sync with Accounting to review these open
+invoices and ensure that the records were accurate.” Hearing Transcript at 24. He testified
+further that costs for the invoice processing and the invoice accounting work were claimed
+because “[n]o one was really there to be able to assist us with the issues that normally they
+would be but for the government shutdown.” Id. at 25. The work related to the invoice
+processing was not additional work that GLF was required to do as a result of the stop-work
+
+       2
+              The “Director of Government Procurement” refers not to a government
+employee but to a GLF employee by the name of “Retired Colonel Spencer Smith.” Hearing
+Transcript at 30.
+
+CBCA 8825                                                                                     5
+order. GLF had to process that invoice and sync with accounting whether there was a
+stop-work order or not. Costs associated with invoice processing cannot be recovered.
+
+       III.   Restart Costs
+
+        GLF has failed to “prove both the fact of damage and the amount of damage [for
+restart-related costs claimed] to a reasonable certainty.” Crystal Clear Maintenance v.
+General Services Administration, CBCA 7547, 25-1 BCA ¶ 38,776, at 188,491. “[C]laimant
+bears the burden of proving the fact of loss with certainty, as well as the burden of proving
+the amount of loss with sufficient certainty so that the determination of the amount of
+damages will be more than mere speculation.” Id. (quoting Willems Industries, Inc. v. United
+States, 295 F.2d 822, 831 (Ct. Cl. 1961)). Unlike the transaction-specific entries submitted
+to support the administrative costs claimed, GLF did not itemize the restart-related costs,
+document the amount of time spent, or describe who performed these restart-related tasks or
+the rate charged for each task.
+
+       Mr. Granados described the restart costs as costs incurred to pick the file back up after
+the stop-work period ended:
+
+       [W]hen we were allowed to work on the file again, we got to look back at it,
+       we got to look at it again, we got to look at the chain of title, we got to ensure
+       nothing else has been recorded in the meantime. Everybody has to ensure that
+       the file is on their schedule, make sure that we’re starting to clear the
+       requirements again, relook at, you know, a requirement is something that needs
+       to be cleared for a commitment to be insured, and so it could be anything from
+       review mortgages, to review deeds, to we need a payoff from the bank, so
+       things like that need to happen. If we didn’t have the shutdown, we wouldn’t
+       have needed to do all that. We would have just continued on with the file and
+       not had to have looked [at] things twice again and get the contract back on our
+       schedule.
+
+Hearing Transcript at 86. However, Mr. Granados testified that GLF, as of October 31,
+2025, “had already done everything we needed to do to prepare for the upcoming closing.
+At that point, we were about ten business days out. There was not much more else to do
+except start working on the file.” Id. at 31. This testimony raises questions as to the
+legitimacy of the restart work GLF claims it had to do after the stop-work period ended.
+
+      Moreover, even though GLF had worked on the preliminary title commitment before
+the work was stopped, Hearing Transcript at 97-98, Mr. Granados testified that he still
+needed to fix some issues with the title commitment before submitting it in final form to the
+
+CBCA 8825                                                                               6
+USDA and that he later submitted two commitment updates as required by the contract. Id.
+at 98-100. In other words, GLF had to look at the commitment again, fix some issues, and
+submit updates, even if there had not been a stop-work period, in order to comply with the
+terms of the contract. GLF is not entitled to the costs claimed for restart-related work.
+
+                                        Decision
+
+      The appeal is DENIED.
+
+                                                   Erica S. Beardsley
+                                                ERICA S. BEARDSLEY
+                                                Board Judge

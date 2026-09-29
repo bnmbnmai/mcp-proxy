@@ -1,0 +1,211 @@
+September 21, 2026
+
+                                    CBCA 8974-FEMA
+
+                          In the Matter of CARE PLUS BERGEN
+
+       Wendy Huff Ellard of Baker, Donelson, Bearman, Caldwell & Berkowitz, PC,
+Jackson, MS; and Chris Bomhoff of Baker, Donelson, Bearman, Caldwell & Berkowitz, PC,
+Fort Lauderdale, FL, counsel for Applicant.
+
+      Jasmyn Allen and Rebecca J. Otey, Office of Chief Counsel, Federal
+Emergency Management Agency, Department of Homeland Security, Washington, DC,
+counsel for Federal Emergency Management Agency.
+
+Before the Arbitration Panel consisting of Board Judges SULLIVAN, VOLK, and
+NEWSOM.
+
+SULLIVAN, Board Judge, writing for the Panel.
+
+         Care Plus Bergen (CPB) received public assistance (PA) funds for, among other costs,
+the premium pay it paid to its employees during the COVID-19 pandemic. At project
+closeout, the Federal Emergency Management Agency (FEMA) sought to recoup the funds
+for premium pay because FEMA determined that CPB’s premium pay policy did not exist
+before the incident date of the COVID-19 disaster. CPB seeks to arbitrate two questions:
+(1) is the determination of whether a policy “pre-exists” the disaster measured by the incident
+date or the disaster declaration date; and (2) is FEMA precluded by section 705(c) of the
+Robert T. Stafford Disaster Relief and Emergency Assistance Act (Stafford Act), 42 U.S.C.
+§§ 5121–5207 (2024), from seeking the return of the funds? Because the policy must exist
+before the incident date and section 705 does not preclude FEMA from seeking return of the
+funds from a private, nonprofit organization, CPB must repay the public assistance amounts
+it received.
+
+CBCA 8974-FEMA                                                                             2
+
+                                        Background
+
+       CPB is a private, nonprofit organization that operates a healthcare facility in Bergen
+County, New Jersey. Request for Arbitration (RFA) at 4. The President declared the
+COVID-19 pandemic a disaster in New Jersey on March 29, 2020. RFA Exhibit 4 at 3. The
+declaration identified the incident date for the pandemic as January 20, 2020. RFA Exhibit 7
+at 1.
+
+       On March 15, 2020, CPB issued a premium pay policy for its employees. RFA
+Exhibit 5. The policy provided for additional pay for CPB employees based upon their job
+position without further approvals. Id. CPB incurred $2,204,656.52 in premium pay costs
+between March 15 and June 6, 2020. RFA Exhibit 4 at 3.
+
+       In January 2021, FEMA obligated PA funds for CPB for force account labor costs
+incurred in responding to the pandemic. RFA Exhibit 7 at 1. These funds included
+reimbursement for CPB’s premium pay costs. Id. at 2-3; RFA Exhibit 4 at 1. In August
+2025, FEMA reversed its determination regarding CPB’s premium pay costs and notified
+CPB that the amount attributable to its premium pay costs would be deobligated from the
+project. RFA Exhibit 1. Following CPB’s first appeal, FEMA upheld the determination,
+finding that CPB’s premium pay costs were not eligible costs because CPB paid the premium
+pay pursuant to a policy that did not exist prior to the COVID-19 disaster, which it defined
+“to mean a policy that was in effect prior to the [January 20, 2020] start of the incident
+period.” RFA Exhibit 4 at 4.
+
+                                        Discussion
+
+Premium Pay Policies Must Exist Prior to the Incident Date of the Disaster
+
+       The Public Assistance Program and Policy Guide (PAPPG) (Apr. 2018) states that
+FEMA will reimburse applicants for premium pay costs “based on the Applicant’s predisaster written labor policy,” id. at 23, provided that the policy meets three requirements.
+
+       Labor policies
+
+       FEMA determines the eligibility of overtime, premium pay, and compensatory
+       time costs based on the Applicant’s pre-disaster written labor policy, provided
+       the policy:
+
+       •      Does not include a contingency clause that payment is subject to
+              Federal funding;
+
+CBCA 8974-FEMA                                                                                 3
+
+       •      Is applied uniformly regardless of a Presidential declaration; and
+       •      Has set non-discretionary criteria for when the Applicant activates
+              various pay types.
+
+       If these requirements are not met, FEMA limits PA funding to the Applicant’s
+       non-discretionary, uniformly applied pay rates.
+
+Id. In order for FEMA to provide public assistance, the President must issue a disaster
+declaration. Id. at 1-2. The declaration identifies an incident period, which the PAPPG
+defines as the “span of time during which the federally declared incident occurs.” Id. at 2.
+
+       The term “pre-disaster,” although repeatedly used, is not defined in the PAPPG. Most
+commonly, “pre-disaster” is used in discussing the condition of a facility before the disaster
+for which an applicant seeks funds happened. See, e.g., PAPPG at 84. Pursuant to statute
+and regulation, FEMA will only provide funds to restore a building to its pre-disaster design
+and function. 42 U.S.C. § 5172(e)(1)(A); 44 CFR 206.201(j) (2021). When considering the
+term in this context, “pre-disaster” must be defined as prior to the incident date, the date
+when the disaster started and damaged or destroyed the facility. To be consistent in the use
+of the term throughout the PAPPG, we also construe “pre-disaster” to mean prior to the
+incident date when considering an applicant’s labor policies.
+
+        FEMA urges the panel to rely upon Ballad Health, CBCA 7948-FEMA, 24-1 BCA
+¶ 38,596, in which that panel was also asked to determine whether a premium pay policy
+existed prior to the COVID-19 disaster. The panel in Ballad Health determined that the
+policy was not a “pre-disaster written labor policy” because it was not issued until after the
+declaration date. Id. at 187,634. Because the policy at issue in Ballad Health was issued
+after both the incident and declaration dates, the decision does not assist the panel in deciding
+which date should control.
+
+        CPB urges the panel to find that “pre-disaster” for premium pay costs is tied to the
+disaster declaration date. As support, CPB cites to two FEMA first appeal decisions in which
+FEMA denied requests for premium pay reimbursement because the policies were enacted
+after the declaration date of the disaster. RFA at 7-8. These decisions are inapplicable for
+the same reason as the panel’s decision in Ballad Health—the policies were issued after both
+the incident and declaration dates. See RFA Exhibits 10, 13.
+
+        CPB also urges the panel to find that FEMA’s clarification in its most recent version
+of the PAPPG, which was issued in 2025, tying “pre-disaster” to the incident date represents
+a change in policy. RFA at 11. CPB asserts that “[i]n changing its policy, FEMA implicitly
+acknowledges that the incident start date being the benchmark by which a labor policy is
+
+CBCA 8974-FEMA                                                                                4
+
+evaluated was not its policy prior to” the effective date of the most recent PAPPG. Id. We
+do not agree. Rather, the language in the two versions is substantially the same. Compare
+PAPPG at 23 with Public Assistance Program and Policy Guide (Jan. 2025) at 80. The
+addition of the language defining “pre-disaster” as before the incident date is a clarification,
+rather than a policy change. As noted above, FEMA is required by statute and regulation to
+determine the “pre-disaster” condition of the facility. “Pre-disaster” has always been a focus
+for FEMA’s evaluation of requests for public assistance. FEMA simply clarified what the
+term meant for premium pay policies.
+
+        Finally, CPB asserts that, if the panel does not find that its premium pay policy
+qualifies as “pre-disaster,” it still may retain the funds because the premium pay was paid
+pursuant to a policy that was non-discretionary and applied uniform pay rates. RFA at 14-15.
+CPB relies upon the last sentence of the PAPPG labor policies provision quoted above and
+argues that the limitation of “pre-disaster” does not apply to that sentence. CPB explains that
+“pre-disaster” is one of four requirements and, if any of the requirements are not met, the last
+sentence applies. Applicant’s Response to Request for Further Briefing at 3. Again, we do
+not agree. CPB’s interpretation is not supported by the text or structure of the provision. The
+policy provision lists three bulleted “requirements,” not four. The requirement that the policy
+be “pre-disaster” applies even if these requirements are not met. CPB provides no prior
+decisions in which this provision has been applied to allow reimbursement of premium pay
+in the absence of a pre-disaster policy that pre-existed the disaster.
+
+Section 705 Does Not Preclude FEMA’s Demand for Repayment
+
+        CPB asserts that section 705 of the Stafford Act precludes FEMA from recovering
+payments made under the PA program. Section 705 provides that state and local government
+entities do not have to repay PA funds if three criteria are met:
+
+       Binding nature of grant requirements
+
+       A state or local government shall not be liable for reimbursement or any other
+       penalty for any payment made under this chapter if–
+
+       (1)    the payment was authorized by an approved agreement specifying the
+              costs;
+       (2)    the costs were reasonable; and
+       (3)    the purpose of the grant was accomplished.
+
+42 U.S.C. § 5205(c). FEMA policy states that the repayment protections in section 705 do
+not apply to “private-non-profit subrecipients.” FEMA Recovery Policy, FP 205-081-2
+
+CBCA 8974-FEMA                                                                              5
+
+(Mar. 31, 2016) at 1 & n.5 (https://www.regulations.gov/document/FEMA-2015-0020-0036
+(last visited Sept. 14, 2026));1 PAPPG at 146 (“[S]ection 705 does not apply to [private,
+nonprofit organizations].”). CPB is a private, nonprofit subrecipient and is therefore not
+protected by the limitations set forth in section 705. Hogar Manuel Mediavilla Negrón, Inc.,
+CBCA 8587-FEMA, 26-1 BCA ¶ 39,096, at 190,507.
+
+       CPB asserts that the repayment protections of section 705 apply because New Jersey,
+as the recipient, will have to repay the funds to FEMA. CPB’s interpretation does not
+withstand scrutiny. States are the recipients for FEMA PA funds. PAPPG at 5. States, as
+recipients, disburse the funds to the subrecipients, which include local governments and
+private, nonprofit entities. Id; see FEMA Recovery Policy at 1 n.2. If CPB’s interpretation
+were correct, the reference to state and local government entities in section 705 would be
+unnecessary because all states are responsible for reimbursing FEMA. However, since
+Congress included the reference, we discern that Congress intended that section 705 not
+apply to private, nonprofit entities like CPB.
+
+       Finally, CPB urges the panel to apply the principles of equitable estoppel and
+reasonable reliance to bar FEMA from deobligating the funds. As explained in prior
+decisions, a claimant must demonstrate at least “affirmative misconduct, leading to
+unfairness, on the part of a Government official” before equitable estoppel will be considered
+against the Government. Vidor Independent School District, CBCA 7260-FEMA, 22-1 BCA
+¶ 38,087, at 184,976 (quoting Hanson v. Office of Personnel Management, 833 F.2d 1568,
+1569 (Fed. Cir. 1987)). CPB has not alleged any affirmative misconduct, providing the panel
+with no basis upon which to apply the principles of equitable estoppel.
+
+                                          Decision
+
+       CPB must repay $2,204,656.52 in PA funds.
+
+       1
+               CPB asserts that we are not bound by this policy. Reply at 18. In our role as
+arbiters, we are to examine the facts and apply the law, regulations, and policies that guide
+FEMA in its determinations. Livingston Parish Government, CBCA 6513-FEMA, 19-1 BCA
+¶ 37,436, at 181,939. The FEMA Recovery Policy was subject to notice and comment,
+81 Fed. Reg. 18871 (Apr. 1, 2016), and we apply it just as we do the PAPPG.
+
+CBCA 8974-FEMA                           6
+
+                   Marian E. Sullivan
+                 MARIAN E. SULLIVAN
+                 Board Judge
+
+                   Daniel B. Volk
+                 DANIEL B. VOLK
+                 Board Judge
+
+                   Elizabeth W. Newsom
+                 ELIZABETH W. NEWSOM
+                 Board Judge

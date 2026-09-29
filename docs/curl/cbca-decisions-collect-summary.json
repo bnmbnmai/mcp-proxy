@@ -1,0 +1,91 @@
+{
+  "product": "cbca-decision-bodies",
+  "status": "ok",
+  "fetchedAt": "2026-09-29T17:31:18.528Z",
+  "asOf": "2026-09-23",
+  "cardCount": 7,
+  "listedCount": 5583,
+  "fetchedPdfs": 7,
+  "skippedNoText": 0,
+  "addedThisRun": 7,
+  "note": "Id/date/sourceUrl only. Decision body stays out of git. listedCount is HTML index rows walked (CDA, FEMA, relocation, travel). cardCount is the small first bag, not a mass harvest.",
+  "cards": [
+    {
+      "id": "cbca-8825-2026-09-23-decision",
+      "docket": "CBCA 8825",
+      "program": "cda",
+      "kind": "Decision",
+      "date": "2026-09-23",
+      "judge": "Beardsley",
+      "institution": "The Gilchrist Law Firm, P.A.",
+      "title": "CBCA 8825 Decision",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/BEARDSLEY_09-23-26_8825__THE_GILCHRIST_LAW_FIRM_PA%20(DECISION).pdf"
+    },
+    {
+      "id": "cbca-8716-2026-09-22-dismissal",
+      "docket": "CBCA 8716",
+      "program": "cda",
+      "kind": "Dismissal",
+      "date": "2026-09-22",
+      "judge": "Vergilio",
+      "institution": "The Severson Group, LLC",
+      "title": "CBCA 8716 Dismissal",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/VERGILIO_09-22-26_8716__THE_SEVERSON_GROUP_LLC%20(DISMISSAL).pdf"
+    },
+    {
+      "id": "cbca-8974-fema-2026-09-21-decision",
+      "docket": "CBCA 8974-FEMA",
+      "program": "fema",
+      "kind": "Decision",
+      "date": "2026-09-21",
+      "judge": "Sullivan",
+      "institution": "Care Plus Bergen",
+      "title": "CBCA 8974-FEMA Decision",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/SULLIVAN_09-21-26_8974-FEMA__CARE_PLUS_BERGEN%20(DECISION).pdf"
+    },
+    {
+      "id": "cbca-8897-relo-2026-09-21-decision",
+      "docket": "CBCA 8897-RELO",
+      "program": "relocation",
+      "kind": "Decision",
+      "date": "2026-09-21",
+      "judge": "Kullberg",
+      "institution": "Andrew C.",
+      "title": "CBCA 8897-RELO Decision",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/KULLBERG_09-21-26_8897-RELO__ANDREW_C%20(DECISION).pdf"
+    },
+    {
+      "id": "cbca-8875-2026-09-21-dismissal",
+      "docket": "CBCA 8875",
+      "program": "cda",
+      "kind": "Dismissal",
+      "date": "2026-09-21",
+      "judge": "Kang",
+      "institution": "ECG GSA 1, LLC",
+      "title": "CBCA 8875 Dismissal",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/KANG_09-21-26_8875__ECG_GSA_1_LLC%20(DISMISSAL).pdf"
+    },
+    {
+      "id": "cbca-7881-2026-09-21-decision",
+      "docket": "CBCA 7881",
+      "program": "cda",
+      "kind": "Decision",
+      "date": "2026-09-21",
+      "judge": "Russell",
+      "institution": "JV6 Contracting, LLC",
+      "title": "CBCA 7881 Decision",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/RUSSELL_09-21-26_7881__JV6_CONTRACTING_LLC%20(DECISION).pdf"
+    },
+    {
+      "id": "cbca-8350-fema-2026-08-12-order",
+      "docket": "CBCA 8350-FEMA",
+      "program": "fema",
+      "kind": "Order",
+      "date": "2026-08-12",
+      "judge": "Russell",
+      "institution": "Board of Trustees of Bay Medical Center",
+      "title": "CBCA 8350-FEMA Order",
+      "sourceUrl": "https://www.cbca.gov/files/decisions/2026/RUSSELL_08-12-26_8350-FEMA__BOARD_OF_TRUSTEES_OF_BAY_MEDICAL_CENTER%20(ORDER).pdf"
+    }
+  ]
+}

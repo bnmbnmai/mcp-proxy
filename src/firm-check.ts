@@ -4,7 +4,8 @@
  * expose a usable name field: Form 483, FDA warning letters, FDA untitled
  * letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders,
  * NMB representation determinations, NLRB Board decisions, FLRA Authority
- * decisions, ECAB decisions, FCC Enforcement Bureau orders, EEOC OFS appellate
+ * decisions, ECAB decisions, FCC Enforcement Bureau orders, CBCA decisions,
+ * EEOC OFS appellate
  * decisions, Ofwat, Ofgem,
  * CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog.
  * Does not scrape FDA.gov. Does not return letter, decision, or order bodies
@@ -13,6 +14,7 @@
  */
 
 import { loadCfpbOrdersManifest } from "./cfpb-orders.js";
+import { loadCbcaManifest } from "./cbca-decisions.js";
 import { loadEcabDecisionsManifest } from "./ecab-decisions.js";
 import { loadFccEbOrdersManifest } from "./fcc-eb-orders.js";
 import { loadFdicOrdersManifest } from "./fdic-orders.js";
@@ -52,6 +54,7 @@ export const FIRM_CHECK_DOORS = [
   "flra-decisions",
   "ecab-decisions",
   "fcc-eb-orders",
+  "cbca-decisions",
   "eeoc-appellate",
   "ofwat-enforcement",
   "ofgem-enforcement",
@@ -62,7 +65,7 @@ export const FIRM_CHECK_DOORS = [
 ] as const;
 
 export const FIRM_CHECK_NOTE =
-  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, EEOC OFS appellate decisions, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter, decision, or order bodies or the full import-alert table.";
+  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, CBCA decisions, EEOC OFS appellate decisions, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter, decision, or order bodies or the full import-alert table.";
 
 const BODY_DOOR_ORDER: Record<string, number> = Object.fromEntries(
   FIRM_CHECK_DOORS.map((door, i) => [door, i]),
@@ -80,6 +83,7 @@ export type FirmCheckIndexes = {
   flraDecisions?: Record<string, unknown> | null;
   ecabDecisions?: Record<string, unknown> | null;
   fccEbOrders?: Record<string, unknown> | null;
+  cbcaDecisions?: Record<string, unknown> | null;
   eeocAppellate?: Record<string, unknown> | null;
   ofwatEnforcement?: Record<string, unknown> | null;
   ofgemEnforcement?: Record<string, unknown> | null;
@@ -101,6 +105,7 @@ const BODY_INDEX_DOORS: Array<{ door: Exclude<(typeof FIRM_CHECK_DOORS)[number],
   { door: "flra-decisions", key: "flraDecisions" },
   { door: "ecab-decisions", key: "ecabDecisions" },
   { door: "fcc-eb-orders", key: "fccEbOrders" },
+  { door: "cbca-decisions", key: "cbcaDecisions" },
   { door: "eeoc-appellate", key: "eeocAppellate" },
   { door: "ofwat-enforcement", key: "ofwatEnforcement" },
   { door: "ofgem-enforcement", key: "ofgemEnforcement" },
@@ -342,6 +347,7 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     flraDecisions,
     ecabDecisions,
     fccEbOrders,
+    cbcaDecisions,
     eeocAppellate,
     ofwatEnforcement,
     ofgemEnforcement,
@@ -361,6 +367,7 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     loadFlraDecisionsManifest(),
     loadEcabDecisionsManifest(),
     loadFccEbOrdersManifest(),
+    loadCbcaManifest(),
     loadEeocAppellateManifest(),
     loadOfwatEnforcementManifest(),
     loadOfgemEnforcementManifest(),
@@ -383,6 +390,7 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
       flraDecisions,
       ecabDecisions,
       fccEbOrders,
+      cbcaDecisions,
       eeocAppellate,
       ofwatEnforcement,
       ofgemEnforcement,

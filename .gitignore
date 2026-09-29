@@ -65,6 +65,7 @@ build/flra-decisions.*
 build/ecab-decisions.*
 build/fcc-eb-orders.*
 build/nmb-determinations.*
+build/cbca-decisions.*
 build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
@@ -142,6 +143,7 @@ data/ttab-decisions/
 data/ibla-decisions/
 data/ccb-determinations/
 data/uscg-alj-decisions/
+data/cbca-decisions/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
