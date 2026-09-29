@@ -11,11 +11,11 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
 /**
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
- * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
- * Name them in free copy. Do not rename product.id.
+ * grain.ams_3024.*, ag energy on grain.ams_2805.*, grocery/retail feature ads
+ * on dairy.ams_* / produce.ams_3324. Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
-  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
+  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, ag energy";
 
 /** OpenAPI GET /ticks description. Same bag. No path-split. */
 export const TICKS_OPENAPI_DESCRIPTION =
