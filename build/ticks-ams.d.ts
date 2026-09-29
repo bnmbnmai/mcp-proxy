@@ -32,6 +32,11 @@
  * year-ago fluff, quality charts, and weather narrative are not ticks.
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
+ * AMS_2805 National Weekly Ag Energy Round-Up is the official LPGMN weekly
+ * (mnreports/lswagenergy.pdf — ams_2805.pdf is 404). Rows land on the existing
+ * grain table as grain.ams_2805.*. Current-week cash quotes only — last week,
+ * year ago, unq/n/a, chart axes, and Nearby Futures are not ticks. No separate
+ * /fuel path.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
@@ -267,6 +272,12 @@ export declare function parseOrganicGrainReport(text: string, report: AmsReport,
 export declare function parseProduceTerminal(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 /** Official AMS_3024 / CNWWCMR weekly — current-week cents/lb prints only. */
 export declare function parseWeeklyCottonReview(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * Official AMS_2805 / LSWAGENERGY weekly. Current-week cash column only.
+ * unq / n/a / chart axes / Nearby Futures are not ticks.
+ * Fail-closed unless Iowa ethanol and Illinois crude soybean oil both print.
+ */
+export declare function parseWeeklyAgEnergy(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function pdfToText(pdfPath: string): string;
 export declare function officialPdfCandidates(report: AmsReport): Promise<string[]>;

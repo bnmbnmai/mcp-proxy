@@ -32,6 +32,11 @@
  * year-ago fluff, quality charts, and weather narrative are not ticks.
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
+ * AMS_2805 National Weekly Ag Energy Round-Up is the official LPGMN weekly
+ * (mnreports/lswagenergy.pdf — ams_2805.pdf is 404). Rows land on the existing
+ * grain table as grain.ams_2805.*. Current-week cash quotes only — last week,
+ * year ago, unq/n/a, chart axes, and Nearby Futures are not ticks. No separate
+ * /fuel path.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
@@ -198,6 +203,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2887", group: "grain", region: "national", title: "National Daily Sunflower Canola Millet Flaxseed", esmisPublication: "national-daily-sunflower-canola-millet-and-flaxseed-report" },
   { slug: "3802", group: "grain", region: "national_organic", title: "National Organic Grain and Feedstuffs", esmisPublication: "national-organic-grain-and-feedstuffs", pdfNames: ["lsbnof"] },
   { slug: "3024", group: "grain", region: "national", title: "Weekly Cotton Market Review", esmisPublication: "weekly-cotton-market-review", pdfNames: ["cnwwcmr"] },
+  { slug: "2805", group: "grain", region: "national", title: "National Weekly Ag Energy Round-Up", esmisPublication: "national-weekly-ag-energy-roundup", pdfNames: ["lswagenergy"] },
   { slug: "2911", group: "wool", region: "national", title: "National Wool Review", esmisPublication: "national-wool-review-fri" },
   { slug: "2998", group: "dairy", region: "national", title: "Dairy Market News Weekly Report", esmisPublication: "dairy-market-news-weekly-report", pdfNames: ["dywweeklyreport"] },
   { slug: "2993", group: "dairy", region: "national", title: "National Dairy Products Sales Report", esmisPublication: "", pdfNames: ["dywdairyproductssales"] },
@@ -472,12 +478,11 @@ export function esmisPublicationUrl(report: AmsReport): string {
 
 export function mnreportsPdfUrls(slug: string, pdfNames: readonly string[] = []): string[] {
   const stems = [...new Set([`ams_${slug}`, `AMS_${slug}`, ...pdfNames, ...pdfNames.map((n) => n.toLowerCase())])];
-  const urls: string[] = [];
-  for (const stem of stems) {
-    urls.push(`https://www.ams.usda.gov/mnreports/${stem}.pdf`);
-    urls.push(`https://search.ams.usda.gov/mnreports/${stem}.pdf`);
-  }
-  return [...new Set(urls)];
+  const www = stems.map((stem) => `https://www.ams.usda.gov/mnreports/${stem}.pdf`);
+  const search = stems.map((stem) => `https://search.ams.usda.gov/mnreports/${stem}.pdf`);
+  // Alias stems (lswagenergy, cnwwcmr) stay on the live host ahead of search.ams,
+  // which stalls from this network while the numeric slug 404s.
+  return [...new Set([...www, ...search])];
 }
 
 /** Live official host first. NAL/esmis archives are fallback only (Sept 2025 copies). */
@@ -2986,6 +2991,145 @@ export function parseWeeklyCottonReview(text: string, report: AmsReport, sourceU
   return dedupeTicks(out);
 }
 
+type AgEnergySection = { key: string; commodity: string; unit: string | null };
+
+const AG_ENERGY_HEADERS: readonly { re: RegExp; key: string; commodity: string }[] = [
+  { re: /^Ethanol\b/i, key: "ethanol", commodity: "Ethanol" },
+  { re: /^Biodiesel\b/i, key: "biodiesel_b100", commodity: "Biodiesel B100" },
+  { re: /^Bio\s*Mass\b/i, key: "biomass", commodity: "Biomass" },
+  { re: /^Crude Soybean Oil\b/i, key: "soybean_oil", commodity: "Crude soybean oil" },
+  { re: /^Crude Corn Oil\b/i, key: "corn_oil", commodity: "Crude corn oil" },
+  { re: /^Inedible Packer Bleachable Tallow\b/i, key: "inedible_tallow", commodity: "Inedible packer bleachable tallow" },
+  { re: /^Edible Tallow\b/i, key: "edible_tallow", commodity: "Edible tallow" },
+  { re: /^Choice White Grease\b/i, key: "choice_white_grease", commodity: "Choice white grease" },
+  { re: /^Yellow Grease\b/i, key: "yellow_grease", commodity: "Yellow grease" },
+];
+
+/** Iowa ethanol and Illinois crude soybean oil print on every recent official sheet. */
+const AG_ENERGY_REQUIRED_IDS = ["ethanol.iowa", "soybean_oil.illinois"] as const;
+
+function parseAgEnergyAsOf(text: string): string | null {
+  const we = text.match(/\bW\/E\s+(\d{1,2})\/(\d{1,2})\/(\d{2,4})\b/);
+  if (we) {
+    const year = we[3].length === 2 ? `20${we[3]}` : we[3];
+    const y = Number(year);
+    if (y >= 1990 && y <= 2100) return `${year}-${we[1].padStart(2, "0")}-${we[2].padStart(2, "0")}`;
+  }
+  return parseReportDate(text);
+}
+
+function agEnergyUnit(header: string): string | null {
+  const m = header.match(/\((cents\/lb|\$\/gal|\$\/cwt|\$\/ton|\$\/barrel|\$\/mmBtu)\)/i);
+  return m ? m[1] : null;
+}
+
+function agEnergyHeader(line: string): AgEnergySection | "stop" | null {
+  if (/^\s/.test(line)) return null;
+  const trimmed = line.trim();
+  if (/^Nearby Futures\b/i.test(trimmed)) return "stop";
+  for (const header of AG_ENERGY_HEADERS) {
+    if (!header.re.test(trimmed)) continue;
+    return { key: header.key, commodity: header.commodity, unit: agEnergyUnit(trimmed) };
+  }
+  return null;
+}
+
+function agEnergyPlace(line: string): { place: string; rest: string } | null {
+  const m = line.match(/^\s+(.+?)\s{2,}(.*)$/);
+  if (!m) return null;
+  const place = m[1].replace(/\s+/g, " ").trim();
+  if (!/^[A-Za-z]/.test(place) || place.length > 40) return null;
+  if (/^(unq|umq|n\/a|na)$/i.test(place)) return null;
+  if (/\b(ethanol|processor|feedstuffs|hides|report|futures|cme|nymex|biomass)\b/i.test(place)) return null;
+  if (/^(cents\/lb|\$\/gal|\$\/cwt|\$\/ton)$/i.test(place)) return null;
+  return { place, rest: m[2] ?? "" };
+}
+
+function firstCurrentQuote(rest: string): { lo: number; hi: number } | "unquoted" | null {
+  const cleaned = rest.replace(/\u00a0/g, " ").replace(/[ \t]+/g, " ").trim();
+  if (!cleaned) return null;
+  const stop = cleaned.search(/\b(?!unq\b)(?!umq\b)(?!n\/a\b)(?!na\b)[A-Za-z]{2,}\b/i);
+  const head = (stop >= 0 ? cleaned.slice(0, stop) : cleaned).trim();
+  if (!head) return null;
+  const tok = head.match(/^(unq|umq|n\/a|na|\d+\.\d+(?:\s*-\s*\d+\.\d+)?)\b/i);
+  if (!tok) return /^[A-Za-z]/.test(head) ? "unquoted" : null;
+  if (!/^\d/.test(tok[1])) return "unquoted";
+  const parts = tok[1].split(/\s*-\s*/).map(Number);
+  const lo = parts[0];
+  const hi = parts[1] ?? parts[0];
+  if (!Number.isFinite(lo) || !Number.isFinite(hi)) return null;
+  return { lo: Math.min(lo, hi), hi: Math.max(lo, hi) };
+}
+
+function agEnergyInRange(unit: string, lo: number, hi: number): boolean {
+  const ok = (n: number): boolean => {
+    if (unit === "$/gal") return n >= 0.5 && n <= 10;
+    if (unit === "cents/lb") return n >= 10 && n <= 200;
+    if (unit === "$/cwt") return n >= 10 && n <= 200;
+    if (unit === "$/ton") return n >= 5 && n <= 400;
+    return false;
+  };
+  return ok(lo) && ok(hi);
+}
+
+/**
+ * Official AMS_2805 / LSWAGENERGY weekly. Current-week cash column only.
+ * unq / n/a / chart axes / Nearby Futures are not ticks.
+ * Fail-closed unless Iowa ethanol and Illinois crude soybean oil both print.
+ */
+export function parseWeeklyAgEnergy(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseAgEnergyAsOf(text);
+  if (!asOf || !/Ag Energy Round-Up/i.test(text)) return [];
+  const out: AmsTick[] = [];
+  let section: AgEnergySection | null = null;
+  let pending: string | null = null;
+
+  const pushQuote = (place: string, quote: { lo: number; hi: number }): void => {
+    if (!section?.unit || !agEnergyInRange(section.unit, quote.lo, quote.hi)) return;
+    const mid = (quote.lo + quote.hi) / 2;
+    const placeToken = token(place);
+    pushTick(out, report, sourceUrl, asOf, {
+      id: ["grain", `ams_${report.slug}`, section.key, placeToken].join("."),
+      group: "grain",
+      commodity: section.commodity,
+      label: `${section.commodity} ${place}`,
+      market: `${report.title} — ${place}`,
+      classGrade: `${section.commodity}, ${place}, current-week cash`,
+      unit: section.unit,
+      price: roundMoney(mid),
+      lo: quote.lo,
+      hi: quote.hi,
+    });
+  };
+
+  for (const raw of text.split(/\r?\n/)) {
+    const header = agEnergyHeader(raw);
+    if (header === "stop") break;
+    if (header) {
+      section = header;
+      pending = null;
+      continue;
+    }
+    if (!section) continue;
+    const loc = agEnergyPlace(raw);
+    if (loc) {
+      const quote = firstCurrentQuote(loc.rest);
+      if (quote && quote !== "unquoted") pushQuote(loc.place, quote);
+      pending = quote == null ? loc.place : null;
+      continue;
+    }
+    if (!pending) continue;
+    const quote = firstCurrentQuote(raw);
+    if (quote == null) continue;
+    if (quote !== "unquoted") pushQuote(pending, quote);
+    pending = null;
+  }
+
+  const have = new Set(out.map((row) => row.id.replace(/^grain\.ams_[^.]+\./, "")));
+  if (!AG_ENERGY_REQUIRED_IDS.every((id) => have.has(id))) return [];
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   if (report.group === "hay") return parseHayReport(text, report, sourceUrl);
   if (report.group === "cattle") return parseCattleReport(text, report, sourceUrl);
@@ -3018,6 +3162,9 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
   }
   if (report.slug === "3024" || /cotton market review/i.test(report.title) || (report.pdfNames ?? []).includes("cnwwcmr")) {
     return parseWeeklyCottonReview(text, report, sourceUrl);
+  }
+  if (report.slug === "2805" || /ag energy round-up/i.test(report.title) || (report.pdfNames ?? []).includes("lswagenergy")) {
+    return parseWeeklyAgEnergy(text, report, sourceUrl);
   }
   return parseGrainReport(text, report, sourceUrl);
 }
@@ -3580,7 +3727,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
           lastErr = "official PDF reported no trades / not established this week";
           break;
         }
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/ag-energy print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
