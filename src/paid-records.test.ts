@@ -1382,6 +1382,106 @@ async function main(): Promise<void> {
     { id: "nmb-53-34", date: "2026-09-17" },
     { id: "nmb-53-33", date: "2026-08-01" },
   ]);
+  const laborCards = [
+    {
+      id: "53-nmb-no-34",
+      institution: "California Northern Railroad Company",
+      citation: "53 NMB No. 34",
+      caseNo: "R-7687",
+      docket: "R-7687",
+      kind: "Certification",
+      title: "representation row",
+      date: "2026-09-17",
+      body: "SECRET NMB DETERMINATION BODY",
+      text: "SECRET ORDER TEXT",
+    },
+    {
+      id: "375-nlrb-no-43",
+      institution: "Via 313 Pizza",
+      citation: "375 NLRB No. 43",
+      caseNo: "16-CA-370467",
+      kind: "Board Decision",
+      title: "board row",
+      date: "2026-09-23",
+      body: "SECRET NLRB BODY",
+    },
+    {
+      id: "74-flra-555",
+      institution: "Social Security Administration",
+      citation: "74 FLRA 555",
+      caseNo: "0-AR-5931",
+      kind: "Order Dismissing Exceptions",
+      title: "authority row",
+      date: "2026-09-25",
+      narrative: "SECRET FLRA NARRATIVE",
+    },
+    {
+      id: "DA-26-1006",
+      institution: "Vazquez Broadcasting Corporation",
+      citation: "DA 26-1006",
+      docket: "EB-FIELDNER-24-00037648",
+      kind: "Notice of Violation",
+      title: "enforcement row",
+      date: "2026-09-18",
+      letter: "SECRET FCC LETTER",
+    },
+    {
+      id: "53-nmb-no-31",
+      institution: "Union Pacific Railroad",
+      citation: "53 NMB No. 31",
+      kind: "Dismissal",
+      documentId: "R-7689-Dismissal-WDI.pdf",
+      title: "dismissal row",
+      date: "2026-09-03",
+    },
+    {
+      id: "53-nmb-no-20",
+      institution: "Alaska Airlines",
+      citation: "53 NMB No. 20",
+      kind: "Findings Upon Investigation",
+      documentId: "R-7672-FUI-Dismissal.pdf",
+      title: "findings row",
+      date: "2026-07-23",
+    },
+  ];
+  const byKind = decorateExtractedBodyManifest(
+    { cards: laborCards },
+    { q: "Certification", paidPath: "/nmb-determinations" },
+  );
+  assert.equal(byKind.matchCount, 1);
+  assert.equal((byKind.cards as { id?: string }[])[0]?.id, "53-nmb-no-34");
+  const kindCard = (byKind.cards as Record<string, unknown>[])[0];
+  assert.equal(kindCard?.kind, "Certification");
+  assert.equal(kindCard?.citation, "53 NMB No. 34");
+  assert.ok(!("body" in (kindCard ?? {})));
+  assert.ok(!("text" in (kindCard ?? {})));
+  assert.ok(!JSON.stringify(byKind).includes("SECRET"));
+  const byCitation = decorateExtractedBodyManifest({ cards: laborCards }, { q: "53 NMB No. 34", paidPath: "/nmb-determinations" });
+  assert.equal((byCitation.cards as { id?: string }[])[0]?.id, "53-nmb-no-34");
+  const byCase = decorateExtractedBodyManifest({ cards: laborCards }, { q: "16-CA-370467", paidPath: "/nlrb-decisions" });
+  assert.equal((byCase.cards as { id?: string }[])[0]?.id, "375-nlrb-no-43");
+  const byBoard = decorateExtractedBodyManifest({ cards: laborCards }, { q: "Board Decision", paidPath: "/nlrb-decisions" });
+  assert.equal((byBoard.cards as { id?: string }[])[0]?.id, "375-nlrb-no-43");
+  const byFlraKind = decorateExtractedBodyManifest({ cards: laborCards }, { q: "Order Dismissing Exceptions", paidPath: "/flra-decisions" });
+  assert.equal((byFlraKind.cards as { id?: string }[])[0]?.id, "74-flra-555");
+  assert.ok(!("narrative" in ((byFlraKind.cards as Record<string, unknown>[])[0] ?? {})));
+  const byFlraCite = decorateExtractedBodyManifest({ cards: laborCards }, { q: "74 FLRA 555", paidPath: "/flra-decisions" });
+  assert.equal((byFlraCite.cards as { id?: string }[])[0]?.id, "74-flra-555");
+  const byFlraCase = decorateExtractedBodyManifest({ cards: laborCards }, { q: "0-AR-5931", paidPath: "/flra-decisions" });
+  assert.equal((byFlraCase.cards as { id?: string }[])[0]?.id, "74-flra-555");
+  const byFccKind = decorateExtractedBodyManifest({ cards: laborCards }, { q: "Notice of Violation", paidPath: "/fcc-eb-orders" });
+  assert.equal((byFccKind.cards as { id?: string }[])[0]?.id, "DA-26-1006");
+  assert.ok(!("letter" in ((byFccKind.cards as Record<string, unknown>[])[0] ?? {})));
+  const byFccCite = decorateExtractedBodyManifest({ cards: laborCards }, { q: "DA 26-1006", paidPath: "/fcc-eb-orders" });
+  assert.equal((byFccCite.cards as { id?: string }[])[0]?.id, "DA-26-1006");
+  const byDismissal = decorateExtractedBodyManifest({ cards: laborCards }, { q: "Dismissal", paidPath: "/nmb-determinations" });
+  assert.deepEqual(
+    (byDismissal.cards as { id?: string }[]).map((row) => row.id).sort(),
+    ["53-nmb-no-20", "53-nmb-no-31"],
+  );
+  const bodyQuery = decorateExtractedBodyManifest({ cards: laborCards }, { q: "SECRET NMB DETERMINATION BODY" });
+  assert.equal(bodyQuery.matchCount, 0);
+  assert.equal((bodyQuery.cards as unknown[]).length, 0);
   const leakIndex = decorateExtractedBodyManifest(
     {
       cards: [
