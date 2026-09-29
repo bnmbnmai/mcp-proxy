@@ -185,7 +185,25 @@ export UNTITLED_LETTERS_MAX_FETCH="${UNTITLED_LETTERS_MAX_FETCH:-40}"
 export GMP_LIMIT="${GMP_LIMIT:-50}"
 export GMP_MAX_FETCH="${GMP_MAX_FETCH:-400}"
 
-log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} dryRun=${DRY_RUN:-0}"
+# Superfund SEMS PDFs are ~4 min each. GROW_LIMIT 24 was ~2h on this one door.
+# Cap new downloads per pass. Morning 7:45 stays at 6; evening (noon onward,
+# including the 7:45pm pass) stays at 4. SUPERFUND_MAX_NEW_PER_PASS=24 restores
+# the old growth. 0 disables the extra cap. Fetch timeout stays 8 min
+# (SUPERFUND_RODS_FETCH_MS) so a healthy ~4 min PDF is not cut off.
+# SUPERFUND_PASS_DEADLINE_MS (default 40 min) stops starting another download
+# when the pass cannot finish one healthy PDF, then writes prior cards + whatever
+# finished. Other doors keep GROW_LIMIT.
+if [[ -z "${SUPERFUND_MAX_NEW_PER_PASS:-}" ]]; then
+  if (( 10#$hour >= 12 )); then
+    SUPERFUND_MAX_NEW_PER_PASS=4
+  else
+    SUPERFUND_MAX_NEW_PER_PASS=6
+  fi
+fi
+export SUPERFUND_MAX_NEW_PER_PASS
+export SUPERFUND_PASS_DEADLINE_MS="${SUPERFUND_PASS_DEADLINE_MS:-2400000}"
+
+log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} superfundNew=${SUPERFUND_MAX_NEW_PER_PASS} dryRun=${DRY_RUN:-0}"
 
 ticks_snapshot() {
   local p

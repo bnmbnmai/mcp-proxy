@@ -1089,6 +1089,46 @@ export function fetchCapBlocksNewDownload(fetchedPdfs: number, fetchCap: number,
   return fetchCap > 0 && fetchedPdfs >= fetchCap && !hasLocalPdf;
 }
 
+/**
+ * Extra per-pass cap on new SEMS downloads. Default 6 (~25 min at ~4 min/PDF).
+ * GROW_LIMIT 24 was ~2h. 0 disables this cap and leaves LIMIT / MAX_FETCH in charge.
+ * Set SUPERFUND_MAX_NEW_PER_PASS=24 to restore the old per-pass growth.
+ */
+export function maxNewDownloadsPerPass(raw?: string): number {
+  const value = raw ?? env("SUPERFUND_MAX_NEW_PER_PASS", "6");
+  if (value === "") return 6;
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 0) return 6;
+  return Math.floor(n);
+}
+
+/** 0 disables the door deadline. Default 40 min still fits several healthy ~4 min PDFs. */
+export function passDeadlineMs(raw?: string): number {
+  const value = raw ?? env("SUPERFUND_PASS_DEADLINE_MS", "2400000");
+  if (value === "") return 2_400_000;
+  const n = Number(value);
+  if (!Number.isFinite(n) || n < 0) return 2_400_000;
+  return Math.floor(n);
+}
+
+/**
+ * Do not start another SEMS download when the pass deadline cannot finish one
+ * healthy ~4 min PDF. In-flight fetches keep the 8 min SUPERFUND_RODS_FETCH_MS budget.
+ */
+export function passDeadlineBlocksNewDownload(
+  elapsedMs: number,
+  deadlineMs: number,
+  minRemainMs = 5 * 60 * 1000,
+): boolean {
+  if (!(deadlineMs > 0)) return false;
+  return deadlineMs - elapsedMs < minRemainMs;
+}
+
+/** Same shape as the fetch cap: on-disk PDFs still extract after the pass cap is hit. */
+export function passCapBlocksNewDownload(fetchedPdfs: number, passCap: number, hasLocalPdf: boolean): boolean {
+  return passCap > 0 && fetchedPdfs >= passCap && !hasLocalPdf;
+}
+
 function readNamedFile(dir: string, names: string[]): string | null {
   if (!dir) return null;
   for (const name of names) {
@@ -1154,6 +1194,9 @@ export async function collectSuperfundRods(opts?: {
   const { listed: allListed, listedCount } = await loadOfficialListings(dir);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
+  const passCap = maxNewDownloadsPerPass();
+  const deadlineMs = passDeadlineMs();
+  const passStarted = Date.now();
   const cacheDir = superfundRodsDir();
   mkdirSync(cacheDir, { recursive: true });
   const path = snapshotPath();
@@ -1182,7 +1225,10 @@ export async function collectSuperfundRods(opts?: {
       continue;
     }
     const pdfFile = join(cacheDir, row.pdfId.endsWith(".pdf") ? row.pdfId : `${row.docket}.pdf`);
-    if (fetchCapBlocksNewDownload(fetchedPdfs, fetchCap, existsSync(pdfFile))) break;
+    const hasLocalPdf = existsSync(pdfFile);
+    if (fetchCapBlocksNewDownload(fetchedPdfs, fetchCap, hasLocalPdf)) break;
+    if (passCapBlocksNewDownload(fetchedPdfs, passCap, hasLocalPdf)) break;
+    if (!hasLocalPdf && passDeadlineBlocksNewDownload(Date.now() - passStarted, deadlineMs)) break;
     try {
       const localText = readNamedFile(dir, [`${row.docket}.txt`, `${row.id}.txt`, `${row.pdfId}.txt`, row.pdfId.replace(/\.pdf$/i, ".txt")]);
       if (dir && !localText) {

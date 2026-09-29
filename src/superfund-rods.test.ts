@@ -20,6 +20,10 @@ import {
   catalogPath,
   collectSuperfundRods,
   fetchCapBlocksNewDownload,
+  maxNewDownloadsPerPass,
+  passCapBlocksNewDownload,
+  passDeadlineBlocksNewDownload,
+  passDeadlineMs,
   loadSuperfundRodsManifest,
   parseSnapshotPretty,
   parseSnapshotPrettyFromBuffer,
@@ -93,6 +97,18 @@ async function main(): Promise<void> {
   const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/superfund-rods.ts"), "utf-8");
   assert.match(src, /AbortSignal\.timeout\(fetchTimeoutMs\(\)\)/, "EPA SEMS PDF fetch must not hang the evening walk");
   assert.match(src, /SUPERFUND_RODS_FETCH_MS/);
+  assert.match(src, /SUPERFUND_RODS_FETCH_MS", "480000"/);
+  assert.equal(maxNewDownloadsPerPass("6"), 6);
+  assert.equal(maxNewDownloadsPerPass("0"), 0, "0 keeps LIMIT / MAX_FETCH in charge");
+  assert.equal(maxNewDownloadsPerPass("24"), 24);
+  assert.equal(passDeadlineMs("2400000"), 2_400_000);
+  assert.equal(passDeadlineMs("0"), 0);
+  assert.equal(passCapBlocksNewDownload(6, 6, false), true);
+  assert.equal(passCapBlocksNewDownload(6, 6, true), false, "on-disk PDFs still extract after the pass cap");
+  assert.equal(passCapBlocksNewDownload(0, 0, false), false);
+  assert.equal(passDeadlineBlocksNewDownload(0, 2_400_000), false, "a fresh pass still starts a 4 min PDF");
+  assert.equal(passDeadlineBlocksNewDownload(36 * 60 * 1000, 2_400_000), true, "leave 5 min so a healthy PDF is not cut off");
+  assert.equal(passDeadlineBlocksNewDownload(39 * 60 * 1000, 0), false);
 
   const officialListed = parseMasterCollectionJson(readFx("master-collection-excerpt.json"));
   assert.ok(officialListed.some((r) => r.id === "05-711427" && r.sourceUrl === FEDERATED));
