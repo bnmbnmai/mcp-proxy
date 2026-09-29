@@ -1,0 +1,175 @@
+Document Accession #: 20251125-3026           Filed Date: 11/25/2025
+
+
+
+
+                                            193 FERC ¶ 63,028
+
+                                UNITED STATES OF AMERICA
+                         FEDERAL ENERGY REGULATORY COMMISSION
+
+
+         Public Utilities Commission of the State of California     Docket Nos. EL02-60-018
+
+         Complainant,
+
+         v.
+
+         Sellers of Long-Terms Contracts to the California
+         Department of Water Resources
+
+         Respondents.
+
+         California Electricity Oversight Board                                EL02-62-017
+
+         Complainant
+
+         v.
+
+         Sellers of Long-Term Contracts to the California
+         Department of Water Resources
+
+         Respondents.
+
+
+
+                                           INITIAL DECISION
+
+
+                                       (Issued November 25, 2025)
+
+                                             APPEARANCES
+
+         Christine J. Hammond, Iryna A. Kwasny, Lucus A. Ritchie, Mark B. Rosen, and Cameron
+         Goodwin, on behalf of California Public Utilities Commission;
+
+         Rob Bonta, Danielle F. O’Bannon, Martin Goyette, Danette E. Valdez, Kevin J. McKeon,
+         Judith D. Cassel, Whitney E. Snyder, and Melissa A. Chapaska, on behalf of California
+         Attorney General;
+Document Accession #: 20251125-3026         Filed Date: 11/25/2025
+
+         Docket Nos. EL02-60-018 and EL02-62-017
+                                                                                                ii
+
+
+
+
+         Rebecca Furman, Richard L. Roberts, and Josh Bower, on behalf of Southern California
+         Edison Company;
+
+         Joshua S. Levenberg, Stan Berman, and Eric Todderud, on behalf of Pacific Gas and
+         Electric Company;
+
+         Ann Stephens, David M. Perlman, Britt Cass Steckman, Catherine P. McCarthy, Joshua
+         C. Klein, Boris B. Shkuta, Cole A. Thoms, and Sophia E. Evans, on behalf of Shell
+         Energy North America (US), L.P.;
+
+         Sean J. Willams, James A. Pepper, and Edith Gilmore, on behalf of Federal Energy
+         Regulatory Commission Trial Staff.
+
+         STEPHANIE L. NAGEL, Presiding Administrative Law Judge
+Document Accession #: 20251125-3026                          Filed Date: 11/25/2025
+
+         Docket Nos. EL02-60-018 and EL02-62-017
+                                                                                                                                      iii
+
+
+
+                                                     TABLE OF CONTENTS
+
+                                                                                                            Paragraph Numbers
+
+         I. INTRODUCTION...................................................................................................... 1.
+            A. The Participants.................................................................................................... 4.
+            B. The Western Energy Crisis ................................................................................... 7.
+            C. Spot Market Refund Liability - Mitigated Market Clearing Price (MMCP) &
+            Opinion 536 ............................................................................................................. 12.
+            D. Shell Contract Terms and Elements .................................................................... 16.
+            E. The California Parties’ FPA Section 206 Complaint ........................................... 22.
+            F. Morgan Stanley & Remand Proceedings ............................................................. 25.
+            G. Opinion No. 587 ................................................................................................. 29.
+            H. Prehearing Proceedings in the Current Matter..................................................... 31.
+            I. Hearing and Post-Hearing Proceedings ................................................................ 37.
+         II. ISSUE 1: LEGAL STANDARD APPLIED TO A MARKET-BASED RATE
+         CONTRACT WHERE THE MOBILE-SIERRA DOCTRINE DOES NOT APPLY ...... 56.
+         III. ISSUE 2: WHETHER THE CALIFORNIA PARTIES HAVE MET THEIR
+         BURDEN OF PROVING THE EXISTING SHELL CONTRACT RATE IS UNJUST
+         AND UNREASONABLE............................................................................................. 64.
+         IV. LEGAL STANDARD ........................................................................................... 64.
+           A. The FPA’s Just and Reasonable Standard ........................................................... 64.
+           B. Burden of Proof .................................................................................................. 67.
+           C. ISSUE 2A: WHETHER SHELL’S MARKET-BASED RATE AUTHORITY IS A
+           FACTOR IN DETERMINING IF THE SHELL CONTRACT RATE IS UNJUST
+           AND UNREASONABLE ........................................................................................ 69.
+           D. ISSUE 2B: WHETHER THE CALIFORNIA PARTIES PROVIDED AN
+           APPROPRIATE FRAMEWORK TO DETERMINE WHETHER THE SHELL
+           CONTRACT RATE IS UNJUST AND UNREASONABLE.................................... 90.
+              1. Benchmark 1: Other Long-Term Contracts...................................................... 92.
+                 a. Factors for Selecting Comparable Contracts in Benchmark 1 .................... 110.
+                 b. Selection of Contracts for the Benchmark ................................................. 124.
+                    i. Are Other Shell Contracts or Other CDWR Contracts Generally
+                    Comparable to the Shell Contract? ............................................................ 125.
+                       (a) Other Shell Contracts Are Not Generally Comparable .................... 125.
+                       (b) Several of the Other CDWR Contracts Are Generally Comparable to
+                       the Shell Contract.................................................................................. 131.
+                          (1) Allegheny 11-Year Contract ....................................................... 134.
+                          (2) Calpine 1 Contract...................................................................... 137.
+Document Accession #: 20251125-3026                        Filed Date: 11/25/2025
+
+         Docket Nos. EL02-60-018 and EL02-62-017
+                                                                                                                                     iv
+
+
+
+                          (3) Calpine 2 Contract...................................................................... 139.
+                          (4) Constellation Contract ................................................................ 141.
+                          (5) El Paso Contract......................................................................... 143.
+                          (6) High Desert Contract.................................................................. 145.
+                          (7) Iberdrola Contract ...................................................................... 150.
+                          (8) Sempra Contract......................................................................... 152.
+                          (9) Sunrise Contract ......................................................................... 154.
+                          (10) Williams Contract..................................................................... 156.
+                c. Prices for Benchmark 1 ............................................................................. 158.
+             2. Benchmarks 2 – 4: The Forward Curve Benchmarks..................................... 161.
+                a. Development of the Forward Price Curves ................................................ 162.
+                b. Is This Data Reliable?............................................................................... 166.
+                c. Benchmark 2: Post-Crisis Forward and Spot Market Prices ...................... 180.
+                d. Benchmark 3: Pre-Crisis Forward and Spot Market Prices ........................ 192.
+                e. Benchmark 4: Corrected May 2001 Forward Prices and Spot Market
+                Prices............................................................................................................. 203.
+                   i. Method 2 ............................................................................................... 226.
+                   ii. Method 1.............................................................................................. 237.
+             3. Benchmark 5: Long Run Marginal Cost-Based Prices ................................... 241.
+                a. Is an LRMC-Based Price an Appropriate Benchmark?.............................. 248.
+                b. Which LRMC Model Inputs Are Appropriate? ......................................... 259.
+                   i. The ATWACC ...................................................................................... 260.
+                       (a) Cost of Equity................................................................................. 261.
+                          (1) The Relevant Proxy Group Period Is 2001.................................. 277.
+                          (2) The Discounted Cash Flow Model Is Not Reliable Here. ........... 280.
+                          (3) The CAPM Produces a Reliable Result. ..................................... 295.
+                          (4) The Cost of Equity Should Be Placed at the Median of the Zone of
+                          Reasonableness ................................................................................. 304.
+                       (b) Cost of Debt ................................................................................... 315.
+                       (c) ATWACC Calculation .................................................................... 321.
+                   ii. Amortization Period ............................................................................. 323.
+                   iii. Plant Capacity ..................................................................................... 335.
+                   iv. Recommended LRMC Model Assumptions......................................... 356.
+             4. Benchmark 6: Hybrid Benchmark ................................................................. 357.
+             5. Benchmark 7: Adjusted FERC $74/MWh Benchmark................................... 369.
+                a. The Unadjusted FERC Benchmark............................................................ 378.
+                b. Proposed Adjustments to the FERC Benchmark ....................................... 380.
+                c. The FERC Benchmark Will Be Compared to the Shell Contract in Its
+                Entirety.......................................................................................................... 387.
+           E. ISSUE 2C: WHETHER THE CALIFORNIA PARTIES ARE REQUIRED TO
+Document Accession #: 20251125-3026                           Filed Date: 11/25/2025
+
+         Docket Nos. EL02-60-018 and EL02-62-017
+                                                                                                                                         v
+
+
+
+             USE COST OF SERVICE PRINCIPLES TO DEMONSTRATE THAT THE SHELL
+             CONTRACT RATE IS UNJUST AND UNREASONABLE.................................. 392.
+                1. A Cost-Based Approach Does Not Generate an Appropriate Benchmark ...... 401.
+                2. The Western Systems Power Pool Agreement is Not an Applicable Cost-Based
+                Approach ........................................................................

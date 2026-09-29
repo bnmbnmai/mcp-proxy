@@ -368,6 +368,23 @@ import {
   WAIS_URL,
 } from "./mspb-decisions.js";
 import {
+  BODY_NEEDLE_CPUC,
+  BODY_NEEDLE_EXXON,
+  BODY_NEEDLE_SAGUARO,
+  BODY_NEEDLE_VIRIDON,
+  CPUC_ID,
+  CPUC_URL,
+  EXXON_ID,
+  EXXON_URL,
+  FERC_ISSUANCES_AMOUNT_ATOMIC,
+  FERC_ISSUANCES_MANIFEST_PATH,
+  FERC_ISSUANCES_PATH,
+  SAGUARO_ID,
+  SAGUARO_URL,
+  VIRIDON_ID,
+  VIRIDON_URL,
+} from "./ferc-issuances.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1088,6 +1105,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/uscg-alj-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/cbca-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/mspb-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/ferc-issuances"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1338,6 +1356,7 @@ async function main(): Promise<void> {
       USCG_ALJ_DECISIONS_PATH,
       CBCA_DECISIONS_PATH,
       MSPB_DECISIONS_PATH,
+      FERC_ISSUANCES_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -10240,6 +10259,172 @@ async function main(): Promise<void> {
     },
   );
 
+  const fercDir = mkdtempSync(join(tmpdir(), "ferc-issuances-"));
+  const fercPad = Array.from({ length: 40 }, (_, i) => `Official FERC issuance paragraph ${i + 1}.`).join(" ");
+  const fercCard = (
+    id: string,
+    accession: string,
+    docket: string,
+    kind: string,
+    orderKind: string,
+    date: string,
+    institution: string,
+    sourceUrl: string,
+    needle: string,
+    citation = "",
+    dockets: string[] = [docket],
+  ) => ({
+    id,
+    accession,
+    docket,
+    dockets,
+    caseNo: docket,
+    kind,
+    orderKind,
+    date,
+    citation,
+    institution,
+    library: kind === "commission" ? "Gas" : "Electric",
+    title: `${docket} ${orderKind}${citation ? ` ${citation}` : ""}`,
+    fileId: "3B64817D-4E72-CDED-9666-A0EA09600000",
+    fileName: `${docket}.docx`,
+    fileType: "DOCX",
+    sourceUrl,
+    body: `UNITED STATES OF AMERICA FEDERAL ENERGY REGULATORY COMMISSION. ORDER. INITIAL DECISION. ${needle} ${fercPad}`,
+  });
+  writeFileSync(
+    join(fercDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "ferc-issuance-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-28T16:34:39.000Z",
+      asOf: "2026-09-28",
+      license: "17 USC 105",
+      attribution: "Federal Energy Regulatory Commission. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        search: "https://elibrary.ferc.gov/eLibrarywebapi/api/Search/AdvancedSearch",
+        commission: "Order/Opinion / Commission Order/Opinion",
+        alj: "ALJ Issuance / ALJ Initial Decision",
+      },
+      cards: [
+        fercCard(SAGUARO_ID, "20260928-3137", "CP23-29-002", "commission", "Commission Order/Opinion", "2026-09-28", "Saguaro Connector Pipeline, L.L.C.", SAGUARO_URL, BODY_NEEDLE_SAGUARO, "196 FERC ¶ 61,241"),
+        fercCard(EXXON_ID, "20260925-3063", "OR26-1-000", "commission", "Commission Order/Opinion", "2026-09-25", "ExxonMobil Oil Corporation v. LOCAP LLC", EXXON_URL, BODY_NEEDLE_EXXON, "196 FERC ¶ 61,236"),
+        fercCard(VIRIDON_ID, "20260505-3058", "EL24-67-001", "alj", "ALJ Initial Decision", "2026-05-05", "Viridon New York Inc.", VIRIDON_URL, BODY_NEEDLE_VIRIDON, "195 FERC ¶ 63,017"),
+        fercCard(CPUC_ID, "20251125-3026", "EL02-60-018", "alj", "ALJ Initial Decision", "2025-11-25", "Public Utilities Commission of the State of California et al.", CPUC_URL, BODY_NEEDLE_CPUC, "193 FERC ¶ 63,028", ["EL02-60-018", "EL02-62-017"]),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FERC_ISSUANCES_DIR: fercDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ferc-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FERC_ISSUANCES_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /ferc-issuances must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, FERC_ISSUANCES_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FERC_ISSUANCES_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${FERC_ISSUANCES_PATH}?id=${SAGUARO_ID}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /ferc-issuances?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      const emptySince = await fetch(`${base}${FERC_ISSUANCES_PATH}?since=2026-12-31`);
+      assert.equal(emptySince.status, 304, "empty ?since= delta is 304 unpaid");
+      const unpaidSince = await fetch(`${base}${FERC_ISSUANCES_PATH}?since=${CPUC_ID}`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /ferc-issuances?since= with newer slips must be 402");
+      const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(since402.accepts[0]?.maxAmountRequired, FERC_ISSUANCES_AMOUNT_ATOMIC, "since bag is $0.05");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_SAGUARO));
+      assert.ok(!JSON.stringify(body402).includes("Official FERC issuance paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FERC_ISSUANCES_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(FERC_ISSUANCES_PATH)), "well-known lists /ferc-issuances");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /ferc-issuances"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[FERC_ISSUANCES_PATH]);
+      assert.ok(spec.paths[FERC_ISSUANCES_MANIFEST_PATH]);
+      assert.ok(spec.paths["/ferc-issuances/index"]);
+
+      const manifest = await fetch(`${base}${FERC_ISSUANCES_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "ferc-issuances free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { id?: string; docket?: string; kind?: string; orderKind?: string; citation?: string; body?: string; sourceUrl?: string; paidUrl?: string; fileName?: string }[];
+      };
+      assert.equal(man.cardCount, 4);
+      assert.equal(man.asOf, "2026-09-28");
+      assert.ok(man.cards?.some((card) => card.id === SAGUARO_ID && card.kind === "commission"));
+      assert.ok(man.cards?.some((card) => card.id === VIRIDON_ID && card.kind === "alj" && card.citation === "195 FERC ¶ 63,017"));
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes(".pdf"), "free manifest has no official PDF deep link");
+      assert.ok(!manJson.includes("DownloadPDF"));
+      assert.ok(manJson.includes("AdvancedSearch"), "free manifest names the official search");
+      assert.ok(manJson.includes("Commission Order/Opinion"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_SAGUARO));
+      assert.ok(!manJson.includes(BODY_NEEDLE_EXXON));
+      assert.ok(!manJson.includes(BODY_NEEDLE_VIRIDON));
+      assert.ok(!manJson.includes(BODY_NEEDLE_CPUC));
+
+      const kindSearch = await fetch(`${base}${FERC_ISSUANCES_MANIFEST_PATH}?kind=alj`);
+      assert.equal(kindSearch.status, 200);
+      const kindBody = (await kindSearch.json()) as { cards?: { id?: string; kind?: string }[] };
+      assert.ok(kindBody.cards?.some((card) => card.id === VIRIDON_ID && card.kind === "alj"));
+      assert.ok(kindBody.cards?.some((card) => card.id === CPUC_ID));
+      assert.ok(!kindBody.cards?.some((card) => card.kind === "commission"));
+
+      const qSearch = await fetch(`${base}${FERC_ISSUANCES_MANIFEST_PATH}?q=EL02-62-017`);
+      assert.equal(qSearch.status, 200);
+      const qBody = (await qSearch.json()) as { cards?: { id?: string }[] };
+      assert.ok(qBody.cards?.some((card) => card.id === CPUC_ID));
+
+      const index = await fetch(`${base}/ferc-issuances/index`);
+      assert.equal(index.status, 200, "/ferc-issuances/index is the free catalog");
+
+      const paid = await fetch(`${base}${FERC_ISSUANCES_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; kind?: string; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "ferc-issuance-bodies");
+      assert.equal(paidBody.asOf, "2026-09-28");
+      const paidIds = paidBody.cards.map((card) => card.id);
+      assert.ok(paidIds.includes(SAGUARO_ID));
+      assert.ok(paidIds.includes(EXXON_ID));
+      assert.ok(paidIds.includes(VIRIDON_ID));
+      assert.ok(paidIds.includes(CPUC_ID));
+      assert.ok(paidBody.cards.some((card) => card.kind === "commission" && card.body.includes(BODY_NEEDLE_SAGUARO)));
+      assert.ok(paidBody.cards.some((card) => card.kind === "alj" && card.body.includes(BODY_NEEDLE_VIRIDON)));
+      assert.equal(paidBody.records?.[0]?.type, "ferc-issuances");
+
+      const paidOne = await fetch(`${base}${FERC_ISSUANCES_PATH}?id=${SAGUARO_ID}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneBody = (await paidOne.json()) as { cards: { id: string; body: string }[] };
+      assert.equal(oneBody.cards.length, 1);
+      assert.equal(oneBody.cards[0]?.id, SAGUARO_ID);
+      assert.ok(oneBody.cards[0]?.body.includes(BODY_NEEDLE_SAGUARO));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -11065,7 +11250,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions", "ferc-issuances"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -11126,6 +11311,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("uscg-alj-decisions"), true);
   assert.equal(isPublicBazaarSku("cbca-decisions"), true);
   assert.equal(isPublicBazaarSku("mspb-decisions"), true);
+  assert.equal(isPublicBazaarSku("ferc-issuances"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

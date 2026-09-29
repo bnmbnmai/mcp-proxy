@@ -67,6 +67,7 @@ build/fcc-eb-orders.*
 build/nmb-determinations.*
 build/cbca-decisions.*
 build/mspb-decisions.*
+build/ferc-issuances.*
 build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
