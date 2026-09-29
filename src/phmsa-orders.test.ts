@@ -18,6 +18,7 @@ import {
   isOperatorResponseName,
   isRealPhmsaOrderBody,
   officialPdfUrl,
+  phmsaSkipTsvWalk,
   parseListingRows,
   parseMdy,
   parseTsv,
@@ -102,6 +103,22 @@ async function main(): Promise<void> {
   assert.equal(snap.license, LICENSE);
   assert.equal(snap.attribution, ATTRIBUTION);
   assert.equal(snap.sources.listing, TSV_URL);
+  assert.ok(Array.isArray(snap.skippedIds), "no-text ids are remembered for the next walk");
+  assert.equal(phmsaSkipTsvWalk(snap, snap.listedCount ?? 0), true, "unchanged listedCount keeps the bag");
+  assert.equal(phmsaSkipTsvWalk(snap, (snap.listedCount ?? 0) + 1), false);
+  assert.equal(phmsaSkipTsvWalk(snap, snap.listedCount ?? 0, true), false, "FORCE_WALK rewalks");
+  assert.equal(phmsaSkipTsvWalk(null, snap.listedCount ?? 0), false);
+  const again = await collectPhmsaOrders({ tsvDir: fixtures, limit: 8, maxFetch: 0 });
+  assert.deepEqual(
+    again.cards.map((c) => c.id),
+    snap.cards.map((c) => c.id),
+    "second collect does not rebuild when listedCount is unchanged",
+  );
+
+  const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/phmsa-orders.ts"), "utf-8");
+  assert.match(src, /AbortSignal\.timeout\(fetchTimeoutMs\(\)\)/, "PHMSA text and PDF fetches must time out");
+  assert.match(src, /PHMSA_ORDERS_FETCH_MS/, "480000");
+  assert.match(src, /PHMSA_ORDERS_FORCE_WALK/);
 
   const manifest = buildPhmsaOrdersManifest(snap);
   assert.equal(manifest.free, true);

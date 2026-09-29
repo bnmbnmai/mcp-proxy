@@ -171,6 +171,9 @@ async function main(): Promise<void> {
   const script = readFileSync(join(repoRoot, "scripts/ticks-collect.sh"), "utf-8");
   assert.match(script, /GROW_UNTIL="\$\{TICKS_COLLECT_GROW_UNTIL:-20\}"/);
   assert.match(script, /GROW_LIMIT="\$\{TICKS_COLLECT_GROW_LIMIT:-24\}"/);
+  assert.match(script, /SUPERFUND_MAX_NEW_PER_PASS=6/);
+  assert.match(script, /SUPERFUND_MAX_NEW_PER_PASS=4/);
+  assert.match(script, /SUPERFUND_PASS_DEADLINE_MS="\$\{SUPERFUND_PASS_DEADLINE_MS:-2400000\}"/);
   assert.match(script, /CFPB_ORDERS/);
   assert.match(script, /FIFRA_ORDERS/);
   assert.match(script, /FDIC_ORDERS/);

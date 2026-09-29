@@ -17,7 +17,7 @@
 
 import { createHash } from "node:crypto";
 import { spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, unlinkSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { paidBodyCatalogNote } from "./paid-records.js";
@@ -99,6 +99,10 @@ export type EisReportsSnapshot = {
   fetchedPdfs?: number;
   skipped?: number;
   skippedNoText?: number;
+  /** Card ids already known to have no public EIS PDF. Next walk does not launch Chrome for them. */
+  skippedIds?: string[];
+  /** Sorted CDX search rows (eisId, CEQ, date). Unchanged listing skips Chrome and keeps the prior bag. */
+  searchFingerprint?: string;
   reused?: number;
   addedThisRun?: number;
   captcha?: { kind: "altcha-pow"; solved: boolean; tookMs: number | null; note: string };
@@ -139,13 +143,23 @@ function cookieHeader(jar: CookieJar): string {
   return [...jar.entries()].map(([k, v]) => `${k}=${v}`).join("; ");
 }
 
+function htmlFetchTimeoutMs(): number {
+  const n = Number(env("EIS_REPORTS_HTML_FETCH_MS", "120000"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 120000;
+}
+
 async function cdxRequest(url: string, jar: CookieJar, init?: RequestInit, hops = 0): Promise<Response> {
   if (hops > 8) throw new Error(`CDX redirect hop limit: ${url}`);
   const headers = new Headers(init?.headers);
   if (!headers.has("User-Agent")) headers.set("User-Agent", HTTP_UA);
   const cookie = cookieHeader(jar);
   if (cookie) headers.set("Cookie", cookie);
-  const res = await fetch(url, { ...init, headers, redirect: "manual" });
+  const res = await fetch(url, {
+    ...init,
+    headers,
+    redirect: "manual",
+    signal: init?.signal ?? AbortSignal.timeout(htmlFetchTimeoutMs()),
+  });
   storeCookies(jar, res);
   const loc = res.headers.get("location");
   if (loc && (res.status === 301 || res.status === 302 || res.status === 303 || res.status === 307 || res.status === 308)) {
@@ -652,7 +666,48 @@ export function readEisReportsSnapshot(): EisReportsSnapshot | null {
 export function writeEisReportsSnapshot(snap: EisReportsSnapshot): void {
   const path = snapshotPath();
   mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, `${JSON.stringify(snap, null, 2)}\n`);
+  const tmp = `${path}.${process.pid}.tmp`;
+  writeFileSync(tmp, `${JSON.stringify(snap, null, 2)}\n`);
+  renameSync(tmp, path);
+}
+
+/** Stable stamp of the CDX search table. Same rows => nothing new to download. */
+export function eisSearchFingerprint(
+  rows: Array<{ eisId: string; ceqNumber: string; date: string | null }>,
+): string {
+  return rows
+    .map((r) => `${r.eisId}\t${r.ceqNumber}\t${r.date ?? ""}`)
+    .sort()
+    .join("\n");
+}
+
+/** Prior bag stays. Requires a stored fingerprint from a previous collect, plus real EIS text. */
+export function eisSearchUnchanged(prior: EisReportsSnapshot | null, fingerprint: string): boolean {
+  if (!fingerprint) return false;
+  if (!prior || prior.status !== "ok" || !prior.searchFingerprint) return false;
+  if (prior.searchFingerprint !== fingerprint) return false;
+  return prior.cards.some((c) => isRealEisBody(c.body));
+}
+
+/**
+ * Search rows already in the bag (or remembered as no public PDF) do not need Chrome.
+ * A brand-new CEQ number still downloads. Empty search HTML is not "covered".
+ */
+export function eisSearchCoveredByBag(
+  prior: EisReportsSnapshot | null,
+  rows: Array<{ eisId: string; ceqNumber: string }>,
+): boolean {
+  if (!rows.length) return false;
+  if (!prior || prior.status !== "ok") return false;
+  if (!prior.cards.some((c) => isRealEisBody(c.body))) return false;
+  const known = new Set<string>();
+  for (const card of prior.cards) {
+    known.add(card.id);
+    if (card.ceqNumber) known.add(card.ceqNumber);
+    if (card.eisId) known.add(card.eisId);
+  }
+  for (const id of prior.skippedIds ?? []) known.add(id);
+  return rows.every((row) => known.has(row.ceqNumber) || known.has(row.eisId) || known.has(`${row.ceqNumber}-${row.eisId}`));
 }
 
 export function pdfPathForCard(card: Pick<EisCard, "id"> & { pdfFile?: string }): string {
@@ -967,17 +1022,27 @@ export async function downloadEisPdfWithChrome(opts: ChromeDownloadOpts): Promis
   }
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: EisListing[]; listedCount: number }> {
+async function loadOfficialListings(
+  dir: string,
+  prefetched?: { html: string; jar?: CookieJar },
+): Promise<{ listed: EisListing[]; listedCount: number; searchFingerprint: string }> {
   const fromSearch: ReturnType<typeof parseSearchRows> = [];
-  let jar: CookieJar | undefined;
+  let jar: CookieJar | undefined = prefetched?.jar;
+  let searchFingerprint = "";
+  const takeSearch = (html: string) => {
+    const rows = parseSearchRows(html);
+    fromSearch.push(...rows);
+    searchFingerprint = eisSearchFingerprint(rows);
+  };
   if (dir) {
     const searchHtml = readNamedFile(dir, ["lastWeek.html", "last30.html", "search.html", "index.html"]);
-    if (searchHtml) fromSearch.push(...parseSearchRows(searchHtml));
+    if (searchHtml) takeSearch(searchHtml);
+  } else if (prefetched?.html) {
+    takeSearch(prefetched.html);
   } else {
     try {
       jar = await warmCdxSession();
-      const catalog = await fetchOfficialSearchHtml(jar);
-      fromSearch.push(...parseSearchRows(catalog));
+      takeSearch(await fetchOfficialSearchHtml(jar));
     } catch {
       /* keep seeds */
     }
@@ -1054,7 +1119,7 @@ async function loadOfficialListings(dir: string): Promise<{ listed: EisListing[]
     }
   }
   const listed = parseListingRows(enriched);
-  return { listed, listedCount: listed.length };
+  return { listed, listedCount: listed.length, searchFingerprint };
 }
 
 export async function collectEisReports(opts?: {
@@ -1065,19 +1130,34 @@ export async function collectEisReports(opts?: {
 }): Promise<EisReportsSnapshot> {
   const dir = opts?.htmlDir ?? listingDir();
   const pauseMs = opts?.pauseMs ?? (dir ? 0 : 400);
+  const priorSnap = readEisReportsSnapshot();
+  let prefetched: { html: string; jar: CookieJar } | undefined;
+  if (!dir && env("EIS_REPORTS_FORCE_WALK") !== "1") {
+    try {
+      const jar = await warmCdxSession();
+      const html = await fetchOfficialSearchHtml(jar);
+      const rows = parseSearchRows(html);
+      const fingerprint = eisSearchFingerprint(rows);
+      if (eisSearchUnchanged(priorSnap, fingerprint) || eisSearchCoveredByBag(priorSnap, rows)) return priorSnap!;
+      prefetched = { html, jar };
+    } catch {
+      /* cheap CDX search missed; the listing load below still runs */
+    }
+  }
   if (!dir) {
     const leak = await leakTestCdxNoAuth();
     if (leak.leaked) throw new Error(leak.note);
   }
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const { listed: allListed, listedCount, searchFingerprint } = await loadOfficialListings(dir, prefetched);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = eisReportsDir();
   mkdirSync(cacheDir, { recursive: true });
   const prior = new Map<string, EisCard>();
-  for (const card of readEisReportsSnapshot()?.cards ?? []) {
+  for (const card of priorSnap?.cards ?? []) {
     if (isRealEisBody(card.body)) prior.set(card.id, card);
   }
+  const remembered = new Set((priorSnap?.skippedIds ?? []).filter((id) => typeof id === "string" && id));
   const cards: EisCard[] = [];
   const seen = new Set<string>();
   let fetchedPdfs = 0;
@@ -1094,6 +1174,10 @@ export async function collectEisReports(opts?: {
       cards.push(cached);
       seen.add(row.id);
       reused += 1;
+      continue;
+    }
+    if (remembered.has(row.id)) {
+      skipped += 1;
       continue;
     }
     if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
@@ -1129,6 +1213,7 @@ export async function collectEisReports(opts?: {
       });
       if (!isRealEisBody(parsed.body)) {
         skippedNoText += 1;
+        remembered.add(row.id);
         continue;
       }
       cards.push(parsed);
@@ -1139,6 +1224,7 @@ export async function collectEisReports(opts?: {
       if (msg.includes("BLOCKER") || msg.includes("KILL")) throw err;
       if (msg.includes("SKIP:")) {
         skipped += 1;
+        remembered.add(row.id);
         continue;
       }
       skippedNoText += 1;
@@ -1153,6 +1239,8 @@ export async function collectEisReports(opts?: {
     fetchedPdfs,
     skipped,
     skippedNoText,
+    skippedIds: [...remembered].sort(),
+    searchFingerprint: searchFingerprint || priorSnap?.searchFingerprint,
     reused,
     addedThisRun,
     captcha: {
