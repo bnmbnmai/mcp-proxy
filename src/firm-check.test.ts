@@ -274,6 +274,26 @@ async function main(): Promise<void> {
         },
       ],
     },
+    fercIssuances: {
+      fetchedAt: "2026-09-28T16:34:39.000Z",
+      asOf: "2026-09-28",
+      cards: [
+        {
+          id: "ferc-commission-20260928-3137",
+          accession: "20260928-3137",
+          institution: "Saguaro Connector Pipeline, L.L.C.",
+          docket: "CP23-29-002",
+          caseNo: "CP23-29-002",
+          kind: "commission",
+          orderKind: "Commission Order/Opinion",
+          date: "2026-09-28",
+          citation: "196 FERC ¶ 61,241",
+          title: "CP23-29-002 Commission Order/Opinion",
+          sourceUrl: "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260928-3137",
+          body: "SECRET FERC ISSUANCE BODY Hudspeth County",
+        },
+      ],
+    },
     eeocAppellate: {
       fetchedAt: "2026-09-23T23:00:00.000Z",
       asOf: "2026-08-24",
@@ -377,6 +397,7 @@ async function main(): Promise<void> {
     "fcc-eb-orders",
     "cbca-decisions",
     "mspb-decisions",
+    "ferc-issuances",
     "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
@@ -396,6 +417,7 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("FCC Enforcement Bureau orders"));
   assert.ok(FIRM_CHECK_NOTE.includes("CBCA decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("MSPB decisions"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FERC eLibrary issuances"));
   assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
@@ -559,6 +581,19 @@ async function main(): Promise<void> {
   assert.ok(!JSON.stringify(mspb.matches).includes("SECRET MSPB"));
   assert.ok(!JSON.stringify(mspb.matches).includes("involuntary due to coercion"));
   assert.ok(!JSON.stringify(mspb.matches).includes("mspbpublic.azurewebsites.net"));
+
+  const ferc = firmCheckFromIndexes("Saguaro", indexes);
+  assert.equal(ferc.matches[0]?.door, "ferc-issuances");
+  assert.equal(ferc.matches[0]?.id, "ferc-commission-20260928-3137");
+  assert.equal(ferc.matches[0]?.paidUrl, "/ferc-issuances?id=ferc-commission-20260928-3137");
+  assert.equal(ferc.matches[0]?.pagePaidUrl, "/ferc-issuances");
+  assert.equal(ferc.matches[0]?.priceUsdc, "0.02");
+  assert.equal(ferc.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (ferc.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (ferc.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(ferc.matches).includes("SECRET FERC"));
+  assert.ok(!JSON.stringify(ferc.matches).includes("Hudspeth County"));
+  assert.ok(!JSON.stringify(ferc.matches).includes("elibrary.ferc.gov"));
 
   const eeoc = firmCheckFromIndexes("Lenard", indexes);
   assert.equal(eeoc.matches[0]?.door, "eeoc-appellate");

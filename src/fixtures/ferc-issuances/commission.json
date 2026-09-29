@@ -1,0 +1,271 @@
+{
+  "searchHits": [
+    {
+      "reference": "{4E8D5969-E7D1-C3B5-8626-A0EA09600000}-{3B64817D-4E72-CDED-9666-A0EA09600000}",
+      "documentId": "4E8D5969-E7D1-C3B5-8626-A0EA09600000",
+      "description": "Order Granting Extension of Time Request re Saguaro Connector Pipeline, L.L.C. under CP23-29.",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260928-3137",
+      "issuedDate": "09/28/2026",
+      "filedDate": "09/28/2026",
+      "postedDate": "09/28/2026",
+      "classTypes": [
+        {
+          "documentClass": "Order/Opinion",
+          "documentType": "Commission Order/Opinion"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "None",
+      "libraries": [
+        "Gas"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "CP23-29-002"
+      ],
+      "transmittals": [
+        {
+          "fileId": "3B64817D-4E72-CDED-9666-A0EA09600000",
+          "fileType": "DOCX",
+          "fileFormat": "Standard",
+          "fileName": "CP23-29-002.docx",
+          "fileDesc": "Notational Order",
+          "fileSize": 56020,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AUTHOR",
+          "affiliation": "COMMISSIONERS AND IMMEDIATE STAFF (THE COMMISSION)",
+          "lastName": "*",
+          "firstInitial": "*",
+          "middleInitial": ""
+        },
+        {
+          "afType": "AUTHOR",
+          "affiliation": "SECRETARY OF THE COMMISSION - FERC",
+          "lastName": "Clay",
+          "firstInitial": "C",
+          "middleInitial": "D"
+        }
+      ]
+    },
+    {
+      "reference": "{9272975C-884A-CAB1-84B5-A0EA03E00000}-{E58C6C2E-67C1-CD9A-96B3-A0EA03E00000}",
+      "documentId": "9272975C-884A-CAB1-84B5-A0EA03E00000",
+      "description": "Letter order accepting ISO New England Inc.'s et al. 07/21/2026 filing of revisions to its Transmission, Markets and Services Tariff to cap the Capacity Balancing Ratio at 1.0 etc. under ER26-3213.",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260928-3136",
+      "issuedDate": "09/28/2026",
+      "filedDate": "09/28/2026",
+      "postedDate": "09/28/2026",
+      "classTypes": [
+        {
+          "documentClass": "Order/Opinion",
+          "documentType": "Commission Order/Opinion"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "None",
+      "libraries": [
+        "Electric"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "ER26-3213-000"
+      ],
+      "transmittals": [
+        {
+          "fileId": "E58C6C2E-67C1-CD9A-96B3-A0EA03E00000",
+          "fileType": "DOCX",
+          "fileFormat": "Standard",
+          "fileName": "ER26-3213-000.docx",
+          "fileDesc": "Notational Order",
+          "fileSize": 54623,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "RECIPIENT",
+          "affiliation": "ISO NEW ENGLAND INC",
+          "lastName": "Caiazzo",
+          "firstInitial": "K",
+          "middleInitial": ""
+        },
+        {
+          "afType": "RECIPIENT",
+          "affiliation": "ISO NEW ENGLAND INC",
+          "lastName": "Garza Jr",
+          "firstInitial": "R",
+          "middleInitial": ""
+        },
+        {
+          "afType": "RECIPIENT",
+          "affiliation": "NEW ENGLAND POWER POOL PARTICIPANTS COMMITTEE",
+          "lastName": "Caiazzo",
+          "firstInitial": "K",
+          "middleInitial": ""
+        },
+        {
+          "afType": "RECIPIENT",
+          "affiliation": "NEW ENGLAND POWER POOL PARTICIPANTS COMMITTEE",
+          "lastName": "GARZA JR",
+          "firstInitial": "R",
+          "middleInitial": ""
+        },
+        {
+          "afType": "AGENT",
+          "affiliation": "DAY PITNEY LLP",
+          "lastName": "Caiazzo",
+          "firstInitial": "K",
+          "middleInitial": ""
+        },
+        {
+          "afType": "AGENT",
+          "affiliation": "DAY PITNEY LLP",
+          "lastName": "Garza Jr",
+          "firstInitial": "R",
+          "middleInitial": ""
+        },
+        {
+          "afType": "AUTHOR",
+          "affiliation": "COMMISSIONERS AND IMMEDIATE STAFF (THE COMMISSION)",
+          "lastName": "*",
+          "firstInitial": "*",
+          "middleInitial": ""
+        },
+        {
+          "afType": "AUTHOR",
+          "affiliation": "SECRETARY OF THE COMMISSION - FERC",
+          "lastName": "Clay",
+          "firstInitial": "C",
+          "middleInitial": "D"
+        }
+      ]
+    },
+    {
+      "reference": "{D8C90A56-DCB8-C29A-8605-A0D9DE800000}-{228765A0-F505-C7AC-9565-A0D9DE800000}",
+      "documentId": "D8C90A56-DCB8-C29A-8605-A0D9DE800000",
+      "description": "Order on Complaint re ExxonMobil Oil Corporation v. LOCAP LLC under OR26-1. ",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260925-3063",
+      "issuedDate": "09/25/2026",
+      "filedDate": "09/25/2026",
+      "postedDate": "09/25/2026",
+      "classTypes": [
+        {
+          "documentClass": "Order/Opinion",
+          "documentType": "Commission Order/Opinion"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "None",
+      "libraries": [
+        "Oil"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "OR26-1-000"
+      ],
+      "transmittals": [
+        {
+          "fileId": "228765A0-F505-C7AC-9565-A0D9DE800000",
+          "fileType": "DOCX",
+          "fileFormat": "Standard",
+          "fileName": "OR26-1-000.docx",
+          "fileDesc": "Notational Order",
+          "fileSize": 65421,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AUTHOR",
+          "affiliation": "COMMISSIONERS AND IMMEDIATE STAFF (THE COMMISSION)",
+          "lastName": "*",
+          "firstInitial": "*",
+          "middleInitial": ""
+        },
+        {
+          "afType": "AUTHOR",
+          "affiliation": "SECRETARY OF THE COMMISSION, FERC",
+          "lastName": "Bose",
+          "firstInitial": "K",
+          "middleInitial": "D"
+        },
+        {
+          "afType": "AUTHOR",
+          "affiliation": "SECRETARY OF THE COMMISSION, FERC",
+          "lastName": "REESE",
+          "firstInitial": "D",
+          "middleInitial": "A"
+        }
+      ]
+    },
+    {
+      "acesssionNumber": "20260920-9001",
+      "description": "Formal Notice re Example Pipeline, LLC under NP26-13.",
+      "category": "Issuance",
+      "issuedDate": "09/20/2026",
+      "filedDate": "09/20/2026",
+      "postedDate": "09/20/2026",
+      "availCode": "P",
+      "docketNumbers": [
+        "NP26-13-000"
+      ],
+      "libraries": [
+        "Gas"
+      ],
+      "classTypes": [
+        {
+          "documentClass": "Report/Form",
+          "documentType": "Formal Notice"
+        }
+      ],
+      "transmittals": [
+        {
+          "fileId": "AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE",
+          "fileType": "PDF",
+          "fileName": "NP26-13-000.pdf",
+          "fileDesc": "Formal Notice"
+        }
+      ]
+    },
+    {
+      "acesssionNumber": "20260918-9002",
+      "description": "Delegated Order re Example Utility under ER26-1.",
+      "category": "Issuance",
+      "issuedDate": "09/18/2026",
+      "availCode": "P",
+      "docketNumbers": [
+        "ER26-1-000"
+      ],
+      "libraries": [
+        "Electric"
+      ],
+      "classTypes": [
+        {
+          "documentClass": "Order/Opinion",
+          "documentType": "Delegated Order"
+        }
+      ],
+      "transmittals": [
+        {
+          "fileId": "BBBBBBBB-BBBB-CCCC-DDDD-EEEEEEEEEEEE",
+          "fileType": "DOCX",
+          "fileName": "ER26-1-000.docx"
+        }
+      ]
+    }
+  ],
+  "totalHits": 5,
+  "numHits": 5,
+  "success": true,
+  "errorMessage": null
+}

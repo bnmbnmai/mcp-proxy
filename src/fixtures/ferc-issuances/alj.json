@@ -1,0 +1,315 @@
+{
+  "searchHits": [
+    {
+      "reference": "{9BEC3831-A132-C1CA-858C-A0062EB00000}-{FDE11EF6-B7AB-C7B1-9384-A0062EB00000}",
+      "documentId": "9BEC3831-A132-C1CA-858C-A0062EB00000",
+      "description": "GP04 | Delayed Release - DE>>eLibrary Test",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260815-4002",
+      "issuedDate": "08/15/2026",
+      "filedDate": "08/15/2026",
+      "postedDate": "08/16/2026",
+      "classTypes": [
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "ALJ Initial Decision"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "None",
+      "libraries": [
+        "Gas"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "GP04-1-000"
+      ],
+      "transmittals": [
+        {
+          "fileId": "FDE11EF6-B7AB-C7B1-9384-A0062EB00000",
+          "fileType": "DOCX",
+          "fileFormat": "Standard",
+          "fileName": "TESTDOCUMENTONLY.docx",
+          "fileDesc": "",
+          "fileSize": 24404,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AGENT",
+          "affiliation": "TEST",
+          "lastName": "Tettegah",
+          "firstInitial": "I",
+          "middleInitial": "x"
+        }
+      ]
+    },
+    {
+      "reference": "{52664431-75CA-C171-900C-9DF979300000}-{A861F5FC-C5C1-CA3F-A213-9DF979300000}",
+      "documentId": "52664431-75CA-C171-900C-9DF979300000",
+      "description": "Initial Decision re Viridon New York Inc. under EL24-67. ",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260505-3059",
+      "issuedDate": "05/05/2026",
+      "filedDate": "05/05/2026",
+      "postedDate": "05/05/2026",
+      "classTypes": [
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "ALJ Initial Decision"
+        }
+      ],
+      "availCode": "N",
+      "familyValue": "child",
+      "libraries": [
+        "Electric"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "EL24-67-001"
+      ],
+      "transmittals": [
+        {
+          "fileId": "A861F5FC-C5C1-CA3F-A213-9DF979300000",
+          "fileType": "PDF",
+          "fileFormat": "Standard",
+          "fileName": "EL24-67-001 Initial Decision PRIV.pdf",
+          "fileDesc": "Initial Decision",
+          "fileSize": 859981,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AUTHOR",
+          "affiliation": "ADMINISTRATIVE LAW JUDGES",
+          "lastName": "MCBARNETTE",
+          "firstInitial": "A",
+          "middleInitial": ""
+        }
+      ]
+    },
+    {
+      "reference": "{348C7F28-B6F6-C28A-859E-9DF979200000}-{211AA503-0E08-C93E-8BF1-9DF979300000}",
+      "documentId": "348C7F28-B6F6-C28A-859E-9DF979200000",
+      "description": "Initial Decision re Viridon New York Inc. under EL24-67. ",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260505-3058",
+      "issuedDate": "05/05/2026",
+      "filedDate": "05/05/2026",
+      "postedDate": "05/05/2026",
+      "classTypes": [
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "ALJ Initial Decision"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "Parent",
+      "libraries": [
+        "Electric"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "EL24-67-001"
+      ],
+      "transmittals": [
+        {
+          "fileId": "211AA503-0E08-C93E-8BF1-9DF979300000",
+          "fileType": "PDF",
+          "fileFormat": "Standard",
+          "fileName": "EL24-67-001 Initial Decision PUB.pdf",
+          "fileDesc": "Initial Decision",
+          "fileSize": 705825,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AUTHOR",
+          "affiliation": "ADMINISTRATIVE LAW JUDGES",
+          "lastName": "MCBARNETTE",
+          "firstInitial": "A",
+          "middleInitial": ""
+        }
+      ]
+    },
+    {
+      "reference": "{ECCD8D70-EF1A-CAD7-87FA-9D5109100000}-{46B4545C-741C-CE08-94E0-9D5109100000}",
+      "documentId": "ECCD8D70-EF1A-CAD7-87FA-9D5109100000",
+      "description": "smoke test 4/2",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20260402-3089",
+      "issuedDate": "04/02/2026",
+      "filedDate": "04/02/2026",
+      "postedDate": "04/02/2026",
+      "classTypes": [
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "ALJ Initial Decision"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Findings of Fact"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Certification of Settlement"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Certification of Record"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Certification of Question and Memorandum to the Commission"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Report to the Commission"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Procedural Order/Procedural Report"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Protective Order"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Discovery Order"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Order Permitting Interlocutory Appeal"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Order on Transcript Correction"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "ALJ Notice"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Untyped During RIMS II Conversion"
+        },
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Certification of Initial Decision and Record"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "None",
+      "libraries": [
+        "ElectricGasHydro"
+      ],
+      "score": 85.35,
+      "docketNumbers": [],
+      "transmittals": [
+        {
+          "fileId": "46B4545C-741C-CE08-94E0-9D5109100000",
+          "fileType": "DOCX",
+          "fileFormat": "Standard",
+          "fileName": "TESTDOCUMENTONLYfortesting.docx",
+          "fileDesc": "smoke test 4/2",
+          "fileSize": 27987,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AUTHOR",
+          "affiliation": "SECRETARY OF THE COMMISSION, FERC",
+          "lastName": "Bose",
+          "firstInitial": "K",
+          "middleInitial": "D"
+        }
+      ]
+    },
+    {
+      "reference": "{7DB90923-D1FD-C98D-86FD-9ABB9FB00000}-{7840DAAE-2068-C017-9625-9ABB9FB00000}",
+      "documentId": "7DB90923-D1FD-C98D-86FD-9ABB9FB00000",
+      "description": "Initial Decision re Public Utilities Commission of the State of California et al. v. Sellers of Long-Terms Contracts to the California\nDepartment of Water Resources under EL02-60 et al. ",
+      "summary": null,
+      "category": "Issuance",
+      "acesssionNumber": "20251125-3026",
+      "issuedDate": "11/25/2025",
+      "filedDate": "11/25/2025",
+      "postedDate": "11/25/2025",
+      "classTypes": [
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "ALJ Initial Decision"
+        }
+      ],
+      "availCode": "P",
+      "familyValue": "None",
+      "libraries": [
+        "Electric"
+      ],
+      "score": 85.35,
+      "docketNumbers": [
+        "EL02-60-018",
+        "EL02-62-017"
+      ],
+      "transmittals": [
+        {
+          "fileId": "7840DAAE-2068-C017-9625-9ABB9FB00000",
+          "fileType": "PDF",
+          "fileFormat": "Standard",
+          "fileName": "EL02-60-018 Initial Decision.docx.pdf",
+          "fileDesc": "Initial Decision",
+          "fileSize": 1481630,
+          "transmittalFk": null
+        }
+      ],
+      "affiliations": [
+        {
+          "afType": "AUTHOR",
+          "affiliation": "ADMINISTRATIVE LAW JUDGES",
+          "lastName": "NAGEL",
+          "firstInitial": "S",
+          "middleInitial": "L"
+        }
+      ]
+    },
+    {
+      "acesssionNumber": "20260301-7001",
+      "description": "Procedural Order re Example Party under EL26-2.",
+      "category": "Issuance",
+      "issuedDate": "03/01/2026",
+      "availCode": "P",
+      "docketNumbers": [
+        "EL26-2-000"
+      ],
+      "libraries": [
+        "Electric"
+      ],
+      "classTypes": [
+        {
+          "documentClass": "ALJ Issuance",
+          "documentType": "Procedural Order"
+        }
+      ],
+      "transmittals": [
+        {
+          "fileId": "CCCCCCCC-BBBB-CCCC-DDDD-EEEEEEEEEEEE",
+          "fileType": "PDF",
+          "fileName": "EL26-2-000 Procedural Order.pdf"
+        }
+      ]
+    }
+  ],
+  "totalHits": 6,
+  "numHits": 6,
+  "success": true,
+  "errorMessage": null
+}
