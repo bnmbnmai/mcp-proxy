@@ -558,7 +558,8 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
   const needle = q.trim().toLowerCase();
   if (!needle) return rows;
   return rows.filter((row) => {
-    const hay = [row.id, row.docket, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
+    // kind, citation, caseNo, and documentId match firm-check. Letter/order bodies stay off this haystack.
+    const hay = [row.id, row.docket, row.citation, row.caseNo, row.documentId, row.kind, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
       .map((value) => str(value).toLowerCase())
       .join(" ");
     return hay.includes(needle);
@@ -669,14 +670,30 @@ export const FREE_OFFICIAL_DEEP_LINK_KEYS = [
   "pageUrl",
 ] as const;
 
+/** Paid letter/order narrative. Free index JSON omits these even if a cache row still carries them. */
+export const FREE_PAID_NARRATIVE_KEYS = [
+  "body",
+  "text",
+  "letter",
+  "narrative",
+  "observations",
+  "fullText",
+  "orderText",
+  "decisionText",
+] as const;
+
 export function isOfficialDeepLinkKey(key: string): boolean {
   return (FREE_OFFICIAL_DEEP_LINK_KEYS as readonly string[]).includes(key);
+}
+
+export function isPaidNarrativeKey(key: string): boolean {
+  return (FREE_PAID_NARRATIVE_KEYS as readonly string[]).includes(key);
 }
 
 export function stripOfficialDeepLinksFromFreeCard(row: Record<string, unknown>): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(row)) {
-    if (isOfficialDeepLinkKey(key)) continue;
+    if (isOfficialDeepLinkKey(key) || isPaidNarrativeKey(key)) continue;
     out[key] = value;
   }
   return out;
