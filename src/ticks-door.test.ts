@@ -351,6 +351,23 @@ import {
   GILCHRIST_URL,
 } from "./cbca-decisions.js";
 import {
+  BODY_NEEDLE_ISLER,
+  BODY_NEEDLE_PHELPS,
+  BODY_NEEDLE_RIVERA,
+  BODY_NEEDLE_WAIS,
+  ISLER_ID,
+  ISLER_URL,
+  MSPB_DECISIONS_AMOUNT_ATOMIC,
+  MSPB_DECISIONS_MANIFEST_PATH,
+  MSPB_DECISIONS_PATH,
+  PHELPS_ID,
+  PHELPS_URL,
+  RIVERA_ID,
+  RIVERA_URL,
+  WAIS_ID,
+  WAIS_URL,
+} from "./mspb-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1070,6 +1087,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/ccb-determinations"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/uscg-alj-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/cbca-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/mspb-decisions"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1319,6 +1337,7 @@ async function main(): Promise<void> {
       CCB_DETERMINATIONS_PATH,
       USCG_ALJ_DECISIONS_PATH,
       CBCA_DECISIONS_PATH,
+      MSPB_DECISIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -10064,6 +10083,163 @@ async function main(): Promise<void> {
     },
   );
 
+  const mspbDir = mkdtempSync(join(tmpdir(), "mspb-decisions-"));
+  const mspbPad = Array.from({ length: 40 }, (_, i) => `Official MSPB slip paragraph ${i + 1}.`).join(" ");
+  const mspbCard = (
+    id: string,
+    docket: string,
+    kind: string,
+    orderKind: string,
+    date: string,
+    institution: string,
+    sourceUrl: string,
+    needle: string,
+    citation = "",
+  ) => ({
+    id,
+    docket,
+    caseNo: docket,
+    kind,
+    orderKind,
+    date,
+    citation,
+    institution,
+    agency: institution.split(", ").slice(1).join(", "),
+    appellant: institution.split(",")[0],
+    fileName: sourceUrl.split("/").pop(),
+    title: `${docket} ${kind} ${orderKind}`,
+    sourceUrl,
+    body: `UNITED STATES OF AMERICA MERIT SYSTEMS PROTECTION BOARD. DOCKET NUMBER ${docket}. THIS FINAL ORDER IS NONPRECEDENTIAL. ${needle} ${mspbPad}`,
+  });
+  writeFileSync(
+    join(mspbDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "mspb-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-28T16:34:39.000Z",
+      asOf: "2026-09-28",
+      license: "17 USC 105",
+      attribution: "Merit Systems Protection Board. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        nonprecedential:
+          "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/NonPrecedentialDecisions_Manifest-updmar2025.json",
+        precedential:
+          "https://mspbpublic.azurewebsites.net/decisions/precedential/PrecedentialDecisions_Manifest_updMar2025.json",
+        pdfHost: "https://mspbpublic.azurewebsites.net/decisions/",
+      },
+      cards: [
+        mspbCard(ISLER_ID, "DC-3443-25-2251-I-1", "nonprecedential", "Final Order", "2026-09-28", "Tanetta N. Isler, Consumer Product Safety Commission", ISLER_URL, BODY_NEEDLE_ISLER),
+        mspbCard(WAIS_ID, "PH-0752-24-0241-I-1", "nonprecedential", "Final Order", "2026-09-17", "Lucianna Wais, Department of the Army", WAIS_URL, BODY_NEEDLE_WAIS),
+        mspbCard(PHELPS_ID, "PH-3443-25-1805-I-1", "nonprecedential", "Final Order", "2026-09-17", "Juliann Phelps, General Services Administration", PHELPS_URL, BODY_NEEDLE_PHELPS),
+        mspbCard(RIVERA_ID, "DA-0752-25-0110-I-1", "precedential", "Opinion and Order", "2026-09-01", "Arielle Rivera, Department of Justice", RIVERA_URL, BODY_NEEDLE_RIVERA, "2026 MSPB 8"),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      MSPB_DECISIONS_DIR: mspbDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-mspb-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${MSPB_DECISIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /mspb-decisions must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, MSPB_DECISIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, MSPB_DECISIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${MSPB_DECISIONS_PATH}?id=${ISLER_ID}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /mspb-decisions?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      const emptySince = await fetch(`${base}${MSPB_DECISIONS_PATH}?since=2026-12-31`);
+      assert.equal(emptySince.status, 304, "empty ?since= delta is 304 unpaid");
+      const unpaidSince = await fetch(`${base}${MSPB_DECISIONS_PATH}?since=${RIVERA_ID}`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /mspb-decisions?since= with newer slips must be 402");
+      const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(since402.accepts[0]?.maxAmountRequired, MSPB_DECISIONS_AMOUNT_ATOMIC, "since bag is $0.05");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_ISLER));
+      assert.ok(!JSON.stringify(body402).includes("Official MSPB slip paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === MSPB_DECISIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(MSPB_DECISIONS_PATH)), "well-known lists /mspb-decisions");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /mspb-decisions"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[MSPB_DECISIONS_PATH]);
+      assert.ok(spec.paths[MSPB_DECISIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/mspb-decisions/index"]);
+
+      const manifest = await fetch(`${base}${MSPB_DECISIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "mspb-decisions free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { id?: string; docket?: string; kind?: string; orderKind?: string; citation?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 4);
+      assert.equal(man.asOf, "2026-09-28");
+      assert.ok(man.cards?.some((card) => card.id === ISLER_ID && card.kind === "nonprecedential"));
+      assert.ok(man.cards?.some((card) => card.id === RIVERA_ID && card.kind === "precedential" && card.citation === "2026 MSPB 8"));
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes(".pdf"), "free manifest has no official PDF deep link");
+      assert.ok(!manJson.includes("Isler_Tanetta"));
+      assert.ok(!manJson.includes("4142556"));
+      assert.ok(manJson.includes("NonPrecedentialDecisions_Manifest"), "free manifest names the official index");
+      assert.ok(!manJson.includes(BODY_NEEDLE_ISLER));
+      assert.ok(!manJson.includes(BODY_NEEDLE_WAIS));
+      assert.ok(!manJson.includes(BODY_NEEDLE_PHELPS));
+      assert.ok(!manJson.includes(BODY_NEEDLE_RIVERA));
+
+      const kindSearch = await fetch(`${base}${MSPB_DECISIONS_MANIFEST_PATH}?kind=precedential`);
+      assert.equal(kindSearch.status, 200);
+      const kindBody = (await kindSearch.json()) as { cards?: { id?: string; kind?: string }[] };
+      assert.ok(kindBody.cards?.some((card) => card.id === RIVERA_ID && card.kind === "precedential"));
+      assert.ok(!kindBody.cards?.some((card) => card.kind === "nonprecedential"));
+
+      const index = await fetch(`${base}/mspb-decisions/index`);
+      assert.equal(index.status, 200, "/mspb-decisions/index is the free catalog");
+
+      const paid = await fetch(`${base}${MSPB_DECISIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; kind?: string; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "mspb-decision-bodies");
+      assert.equal(paidBody.asOf, "2026-09-28");
+      const paidIds = paidBody.cards.map((card) => card.id);
+      assert.ok(paidIds.includes(ISLER_ID));
+      assert.ok(paidIds.includes(WAIS_ID));
+      assert.ok(paidIds.includes(PHELPS_ID));
+      assert.ok(paidIds.includes(RIVERA_ID));
+      assert.ok(paidBody.cards.some((card) => card.kind === "nonprecedential" && card.body.includes(BODY_NEEDLE_ISLER)));
+      assert.ok(paidBody.cards.some((card) => card.kind === "precedential" && card.body.includes(BODY_NEEDLE_RIVERA)));
+      assert.equal(paidBody.records?.[0]?.type, "mspb-decisions");
+
+      const paidOne = await fetch(`${base}${MSPB_DECISIONS_PATH}?id=${ISLER_ID}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneBody = (await paidOne.json()) as { cards: { id: string; body: string }[] };
+      assert.equal(oneBody.cards.length, 1);
+      assert.equal(oneBody.cards[0]?.id, ISLER_ID);
+      assert.ok(oneBody.cards[0]?.body.includes(BODY_NEEDLE_ISLER));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -10889,7 +11065,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10949,6 +11125,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ccb-determinations"), true);
   assert.equal(isPublicBazaarSku("uscg-alj-decisions"), true);
   assert.equal(isPublicBazaarSku("cbca-decisions"), true);
+  assert.equal(isPublicBazaarSku("mspb-decisions"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
