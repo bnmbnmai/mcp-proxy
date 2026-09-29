@@ -955,6 +955,88 @@ const grassLsm = grassPdfs.findIndex((u) => /www\.ams\.usda\.gov\/mnreports\/lsm
 const grassSearch = grassPdfs.findIndex((u) => u.includes("search.ams.usda.gov"));
 assert.ok(grassLsm >= 0 && grassSearch > grassLsm, "lsmngfbeef on www.ams is tried before search.ams");
 
+const agEnergy = parseAmsReportText(
+  fx("ag-energy-2805.txt"),
+  report("2805"),
+  "https://www.ams.usda.gov/mnreports/lswagenergy.pdf",
+);
+assert.equal(parseReportDate(fx("ag-energy-2805.txt")), "2026-09-25");
+assert.equal(agEnergy.length, 14, `expected current-week ag-energy cash rows, got ${agEnergy.length}`);
+assert.ok(agEnergy.every((row) => row.group === "grain" && row.id.startsWith("grain.ams_2805.") && row.asOf === "2026-09-25"));
+assert.ok(agEnergy.every((row) => row.source.includes("AMS_2805") && row.sourceUrl.includes("lswagenergy")));
+const energyById = new Map(agEnergy.map((row) => [row.id, row]));
+const energyExpect: Array<[string, number, number, number, string]> = [
+  ["grain.ams_2805.ethanol.iowa", 1.96, 1.96, 1.96, "$/gal"],
+  ["grain.ams_2805.ethanol.eastern_cornbelt", 2.125, 2.07, 2.18, "$/gal"],
+  ["grain.ams_2805.soybean_oil.illinois", 69.68, 66.43, 72.93, "cents/lb"],
+  ["grain.ams_2805.soybean_oil.indiana_ohio", 68.18, 66.43, 69.93, "cents/lb"],
+  ["grain.ams_2805.soybean_oil.iowa", 67.955, 66.93, 68.98, "cents/lb"],
+  ["grain.ams_2805.soybean_oil.minnesota", 68.955, 68.93, 68.98, "cents/lb"],
+  ["grain.ams_2805.inedible_tallow.chicago", 70.5, 70, 71, "$/cwt"],
+  ["grain.ams_2805.edible_tallow.chicago", 74, 74, 74, "$/cwt"],
+  ["grain.ams_2805.choice_white_grease.central_u_s", 61.5, 61.5, 61.5, "$/cwt"],
+  ["grain.ams_2805.choice_white_grease.minneapolis", 61, 60, 62, "$/cwt"],
+  ["grain.ams_2805.yellow_grease.minneapolis", 55, 51, 59, "$/cwt"],
+  ["grain.ams_2805.yellow_grease.san_joaquin_valley", 60.25, 53.5, 67, "$/cwt"],
+  ["grain.ams_2805.yellow_grease.san_francisco", 54.5, 53.5, 55.5, "$/cwt"],
+  ["grain.ams_2805.yellow_grease.los_angeles", 56.5, 55.5, 57.5, "$/cwt"],
+];
+for (const [id, price, lo, hi, unit] of energyExpect) {
+  const row = energyById.get(id);
+  assert.ok(row, id);
+  assert.equal(row.price, price, id);
+  assert.equal(row.lo, lo, id);
+  assert.equal(row.hi, hi, id);
+  assert.equal(row.unit, unit, id);
+}
+assert.ok(!agEnergy.some((row) => /minnesota|nebraska|wisconsin|south_dakota|biodiesel|biomass|cornstalks|corn_oil|central_u_s/.test(row.id) && row.id.includes("ethanol")), "unquoted ethanol cells are not ticks");
+assert.ok(!agEnergy.some((row) => row.id.includes("biodiesel") || row.id.includes("biomass") || row.id.includes("corn_oil")));
+assert.ok(!agEnergy.some((row) => row.id === "grain.ams_2805.yellow_grease.central_u_s"), "unquoted Central U.S. yellow grease is not a tick");
+assert.ok(!agEnergy.some((row) => row.price === 2.4 || row.price === 2.2 || row.price === 85 || row.price === 1.9), "chart axes and year-ago ethanol are not ticks");
+assert.ok(!agEnergy.some((row) => row.price === 49.49 || row.price === 2.055), "year-ago soybean oil and last-week Eastern Cornbelt are not ticks");
+assert.ok(!agEnergy.some((row) => row.price === 2.12 || row.price === 94.61 || row.price === 3.5646 || row.price === 3.297 || row.price === 4.7303), "Nearby Futures are not ticks");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2805")?.group, "grain");
+assert.deepEqual(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2805")?.pdfNames, ["lswagenergy"]);
+const energyPdfs = officialPdfCandidateOrder("2805", [], ["lswagenergy"]);
+assert.ok(energyPdfs[0].includes("www.ams.usda.gov/mnreports/ams_2805.pdf"));
+const liveEnergy = energyPdfs.indexOf("https://www.ams.usda.gov/mnreports/lswagenergy.pdf");
+const searchEnergy = energyPdfs.findIndex((u) => u.startsWith("https://search.ams.usda.gov/"));
+assert.ok(liveEnergy > 0 && (searchEnergy === -1 || liveEnergy < searchEnergy), "lswagenergy on www.ams.usda.gov is tried before search.ams.usda.gov (ams_2805.pdf is 404)");
+const energyIowaUnq = parseAmsReportText(
+  fx("ag-energy-2805.txt").replace(/Iowa\s+1\.96\s+1\.96/, "Iowa                                        unq               unq"),
+  report("2805"),
+  "https://www.ams.usda.gov/mnreports/lswagenergy.pdf",
+);
+assert.equal(energyIowaUnq.length, 0, "fail-closed when the Iowa ethanol cash print is missing");
+const energyIllinoisUnq = parseAmsReportText(
+  fx("ag-energy-2805.txt").replace(/Illinois\s+66\.43 - 72\.93/, "Illinois                                    unq"),
+  report("2805"),
+  "https://www.ams.usda.gov/mnreports/lswagenergy.pdf",
+);
+assert.equal(energyIllinoisUnq.length, 0, "fail-closed when the Illinois crude soybean oil cash print is missing");
+const energySplit = parseAmsReportText(
+  fx("ag-energy-2805.txt").replace(
+    /Illinois\s+66\.43 - 72\.93\s+68\.43 - 73\.68\s+49\.49\s+Illinois Soybean Processor/,
+    "Illinois                                          Illinois Soybean Processor\n                                               66.43 - 72.93     68.43 - 73.68            49.49",
+  ),
+  report("2805"),
+  "https://www.ams.usda.gov/mnreports/lswagenergy.pdf",
+);
+assert.equal(energySplit.find((row) => row.id.endsWith("soybean_oil.illinois"))?.price, 69.68, "price wrapped onto the next line stays the current-week Illinois quote");
+const energyFuturesOnly = parseAmsReportText(
+  [
+    "National Weekly Ag Energy Round-Up",
+    "Fri, Sep 25, 2026",
+    "W/E 09/25/26",
+    "Nearby Futures",
+    "   CMEGroup Ethanol (Platts)($/gal)            2.1200           2.1350            1.9825          CME Group",
+    "   NYMEX Crude Oil ($/barrel)                  94.61           101.91             64.98          CME Group",
+  ].join("\n"),
+  report("2805"),
+  "https://www.ams.usda.gov/mnreports/lswagenergy.pdf",
+);
+assert.equal(energyFuturesOnly.length, 0, "futures-only text is not a cash tick");
+
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
   listing,
@@ -1604,6 +1686,7 @@ assert.ok(
 assert.ok(slugs.includes("3096"), "Eastern Cornbelt Direct AMS_3096 is on the hay/cattle table");
 assert.ok(["2056", "3510", "3512"].every((s) => slugs.includes(s)), "Arkansas weekly and feed 3510/3512 are on the nationwide walk");
 assert.ok(["3051", "3195", "2863", "3159", "3621", "3657", "3726"].every((s) => slugs.includes(s)), "production-cost PDFs are on the nationwide walk");
+assert.ok(slugs.includes("2805"), "AMS_2805 ag energy is on the nationwide /ticks walk");
 assert.ok(!slugs.includes("3798"), "AMS_3798 stays off this pass");
 assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2998")?.group, "dairy");
@@ -1720,6 +1803,7 @@ for (const killed of ["3776", "3883", "3798"]) {
   assert.ok(SKIPPED_SOURCES.some((row) => row.why.includes(killed)), `SKIPPED_SOURCES names AMS_${killed}`);
 }
 assert.ok(TICKS_COMMODITY_SET.includes("production cost"));
+assert.ok(TICKS_COMMODITY_SET.includes("ag energy"));
 
 assert.ok(!slugs.includes("mx_fv010") && !slugs.includes("mx_fv020"), "discontinued Mexico City terminal is not a slug");
 assert.ok(!slugs.includes("2513") && !slugs.includes("2675"), "LMR hog PDFs are not catalog slugs");
@@ -1989,6 +2073,7 @@ console.log(
     groceryVeal3796: vealAds.length,
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
+    agEnergy2805: agEnergy.length,
     grassFed2811: grass.length,
     hogsSummary: hogs.length,
     feederPigs: feederPigs.length,
