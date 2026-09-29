@@ -709,7 +709,12 @@ export function buildCbcaManifest(snap: CbcaSnapshot | null): Record<string, unk
       sourceUrl: card.sourceUrl,
     })),
     schema: { fields: [...MANIFEST_FIELDS] },
-    sources: snap?.sources ?? emptySources(),
+    sources: {
+      cda: snap?.sources?.cda ?? CDA_LISTING_URL,
+      fema: snap?.sources?.fema ?? FEMA_LISTING_URL,
+      relocation: snap?.sources?.relocation ?? RELO_LISTING_URL,
+      travel: snap?.sources?.travel ?? TRAVEL_LISTING_URL,
+    },
   };
 }
 

@@ -1318,6 +1318,7 @@ async function main(): Promise<void> {
       IBLA_DECISIONS_PATH,
       CCB_DETERMINATIONS_PATH,
       USCG_ALJ_DECISIONS_PATH,
+      CBCA_DECISIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -9989,8 +9990,10 @@ async function main(): Promise<void> {
       assert.equal(unpaidId.status, 402, "unpaid GET /cbca-decisions?id= must be 402");
       const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
       assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
-      const unpaidSince = await fetch(`${base}${CBCA_DECISIONS_PATH}?since=2026-12-31`);
-      assert.equal(unpaidSince.status, 402, "unpaid GET /cbca-decisions?since= must be 402");
+      const emptySince = await fetch(`${base}${CBCA_DECISIONS_PATH}?since=2026-12-31`);
+      assert.equal(emptySince.status, 304, "empty ?since= delta is 304 unpaid");
+      const unpaidSince = await fetch(`${base}${CBCA_DECISIONS_PATH}?since=${BAY_ID}`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /cbca-decisions?since= with newer slips must be 402");
       const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
       assert.equal(since402.accepts[0]?.maxAmountRequired, CBCA_DECISIONS_AMOUNT_ATOMIC, "since bag is $0.05");
       assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_GILCHRIST));
