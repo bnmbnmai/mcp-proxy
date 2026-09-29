@@ -1,0 +1,159 @@
+Document Accession #: 20260505-3058          Filed Date: 05/05/2026
+
+
+
+
+                                     195 FERC ¶ 63,017
+                                UNITED STATES OF AMERICA
+                         FEDERAL ENERGY REGULATORY COMMISSION
+
+
+         Viridon New York Inc.                                      Docket No. EL24-67-001
+
+
+                                          INITIAL DECISION
+
+
+                                          (Issued May 5, 2026)
+
+                                            APPEARANCES
+
+         Jeffrey Janicke, Jean-Luc Kreitner, and Edith Gilmore, on behalf of Commission Trial
+         Staff,
+
+         Scott H. Strauss, Lauren L. Springett, Stephen C. Pearson, and David Drexler, on behalf
+         of New York State Public Service Commission,
+
+         Suzanne Keppeler McBride, Patrick Daugherty, Douglas Smith, and Veronica Gomez, on
+         behalf of Viridon New York Inc.
+
+
+
+         Andrea McBarnette, Presiding Administrative Law Judge
+Document Accession #: 20260505-3058                             Filed Date: 05/05/2026
+
+         Docket No. EL24-67-001                                                                                                              ii
+
+                                                         TABLE OF CONTENTS
+
+                                                                                                                  Paragraph Numbers
+
+         I. Introduction .................................................................................................................... 1.
+         II. Statement of Issues ....................................................................................................... 4.
+         III. Procedural Background ............................................................................................... 5.
+         IV. Factual Background ................................................................................................... 25.
+         V. Order on Summary Disposition .................................................................................. 29.
+           A. Summary Disposition ............................................................................................. 32.
+             1. Participants’ Position .......................................................................................... 33.
+             2. Discussion and Determination ............................................................................ 36.
+           B. Ripeness .................................................................................................................. 41.
+             1. Participants’ Position .......................................................................................... 42.
+             2. Discussion and Determination ............................................................................ 44.
+         VI. Initial Decision .......................................................................................................... 49.
+           A. Summary of Intial Decision ................................................................................... 49.
+           B. Legal Standard ........................................................................................................ 52.
+         VII. ROE - Issue I ............................................................................................................ 54.
+           A. Overview of Commission’s ROE Methodology .................................................... 54.
+              1. Proxy Group........................................................................................................ 58.
+              2. Composite Zone of Reasonableness ................................................................... 59.
+              3. Ranges: Dividing the Composite Zone into Thirds ............................................ 62.
+              4. Risk Assessment ................................................................................................ 63.
+              5. ROE Replacement .............................................................................................. 64.
+           B. Overview of Participants’ ROE Proposals ............................................................. 65.
+           C. Overview of Participant’s ROE Analysis and Results ........................................... 70.
+              1. VNY’s Analysis and Results Overview ............................................................. 70.
+              2. NYSPSC’s Analysis and Results Overview ....................................................... 71.
+              3. Trial Staff’s Analysis and Results Overview ..................................................... 73.
+           D. How to Develop a Proxy Group When the Utility Has No Credit Rating ............. 75.
+              1. Whether to Omit the Credit Rating Screen or Use a Parent Company’s Credit
+              Rating ....................................................................................................................... 76.
+                 a. Participants’ Position ...................................................................................... 76.
+                 b. Discussion and Determination ....................................................................... 79.
+              2. Blackstone as the Ultimate Parent Company of VNY ....................................... 87.
+                 a. Participants’ Position ...................................................................................... 87.
+                 b. Discussion and Determination ....................................................................... 90.
+                    i. Determination ............................................................................................. 93.
+           E. Assessment of Participants’ ROE Analysis and Results ........................................ 95.
+Document Accession #: 20260505-3058                             Filed Date: 05/05/2026
+
+         Docket No. EL24-67-001                                                                                                             iii
+
+                1. Proxy Group........................................................................................................ 98.
+                   a. Participants’ Position .................................................................................... 100.
+                   b. Discussion and Determination ..................................................................... 102.
+                2. Composite Zone of Reasonableness ................................................................. 107.
+                   a. Participants’ Position .................................................................................... 108.
+                   b. Discussion and Determination ..................................................................... 110.
+                3. Ranges: Dividing the Composite Zone into Thirds .......................................... 111.
+                   a. Participants’ Position .................................................................................... 112.
+                   b. Discussion and Determination ..................................................................... 115.
+                4. Risk Analysis .................................................................................................... 117.
+                   a. Participants’ Position .................................................................................... 118.
+                   b. Discussion and Determination ..................................................................... 127.
+                5. ROE Replacement ........................................................................................... 136.
+                   a. Prong I of FPA Section 206 (Existing Base ROE Assessment) ................... 137.
+                   b. Prong II of FPA Section 206 (Replacement of Base ROE) ......................... 140.
+             F. Assessment of Alternate Proxy Group with No Credit Rating Screen ................. 142.
+                1. VNY’s ROE Analysis and Results are not Reliable ......................................... 146.
+                2. NYSPSC’s ROE Analysis Omits a Median Calculation .................................. 147.
+                3. Trial Staff’s Alternate Proxy Group and ROE Analysis are reliable ............... 148.
+                4. ROE Replacement ............................................................................................ 149.
+                   a. Determination ............................................................................................... 150.
+         VIII. Capital Structure – Issue II ................................................................................... 152.
+           A. Participants’ Position............................................................................................ 153.
+           B. Discussion and Determination .............................................................................. 159.
+              1. What is the Capital Structure Dispute?............................................................. 159.
+                 a. Determination ............................................................................................... 161.
+              2. Commission “Three-Prong Test” for Using Capital Structure ......................... 163.
+                 a. Determination ............................................................................................... 168.
+              3. Remedies........................................................................................................... 170.
+                 a. Discussion and Determination ...................................................................... 170.
+                    i. Hypothetical Capital Structure ................................................................ 173.
+                    ii. Recommended Amendment to Formula Rate Template ......................... 174.
+         IX. Conclusion ............................................................................................................... 175.
+         X. Order ......................................................................................................................... 177.
+Document Accession #: 20260505-3058     Filed Date: 05/05/2026
+
+         Docket No. EL24-67-001                                                  iv
+
+
+
+                                  TABLE OF ABBREVIATIONS
+
+
+
+         TERM                         DEFINITION
+
+         BETP IV                      Blackstone Energy Transition Partners IV
+
+         Blackstone                   Blackstone Inc.
+
+         CAPM                         Capital asset pricing model
+
+         DCF                          Discounted cash flow
+
+         FPA                          Federal Power Act
+
+         IBES                         Institutional Brokers’ Estimate System
+
+         NYISO                        New York Independent System Operator
+
+         NYSPSC                       New York State Public Service Commission
+
+         ROE                          Return on equity
+
+         S&P                          Standard & Poor's Global Ratings
+
+         VNY                          Viridon New York Inc.
+Document Accession #: 20260505-3058          Filed Date: 05/05/2026
+
+         Docket No. EL24-67-001                                                               -1-
+
+
+
+         I.    Introduction
+
+         1.     The Commission initiated this proceeding under section 206 of the Federal Power
+         Act (FPA)1 to examine the justness and reasonableness of the formula rate filing of
+         Viridon New York Inc. (VNY).2 The New York State Public Service Commission
+         (NYSP
