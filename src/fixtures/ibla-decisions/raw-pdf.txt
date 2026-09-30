@@ -1,0 +1,6 @@
+%PDF-1.6
+1 0 obj
+<< /Length 12 >>
+stream
+not decision text
+endstream

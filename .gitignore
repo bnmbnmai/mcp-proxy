@@ -135,6 +135,9 @@ data/flra-decisions/
 data/ecab-decisions/
 data/fcc-eb-orders/
 data/nmb-determinations/
+data/eeoc-appellate/
+data/ttab-decisions/
+data/ibla-decisions/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl

@@ -1,0 +1,90 @@
+PREMIUM COAL CO., INC. ET AL.
+
+IBLA 2024-0010 et al.                                          Decided February 2, 2026
+
+Appeals from 21 decisions issued by the Office of Surface Mining Reclamation and
+Enforcement providing notice of its determination to forfeit the performance bonds for
+21 coal mining permits. Permit No. 2866 et al.
+
+       Affirmed; Motion for hearing denied.
+
+APPEARANCES: Stephen W. Ball, Esq., Roanoke, Virginia, for Premium Coal Co., Inc.,
+National Coal, LLC, and S & H Mining, Inc.; Emily D. Morris, Esq., Office of the Solicitor,
+U.S. Department of the Interior, Washington, D.C., for the Office of Surface Mining
+Reclamation and Enforcement; John Henson, Esq., Shawn Tyrell, Esq., and Amanda
+McCulloch, Esq., Office of the Regional Solicitor, U.S. Department of the Interior,
+Knoxville, Tennessee, for the Office of Surface Mining Reclamation and Enforcement.
+
+                  OPINION BY ADMINISTRATIVE JUDGE BALLENGER
+
+        Premium Coal Co., Inc. (Premium), National Coal, LLC (National), and S & H
+Mining, Inc. (S&H) (collectively, Permittees) separately appealed 21 decisions issued by
+the Lexington Field Office of the Office of Surface Mining Reclamation and Enforcement
+(OSMRE) on September 6, 2023 (2023 Decisions). In the 2023 Decisions, OSMRE
+provided notice of its determinations to forfeit (subject to avoidance) the Permittees’
+performance bonds for 21 permits associated with their mining operations in Tennessee
+based on their failures to comply with the terms of the permits and failures to abate the
+violations stated in various Notices of Violation (NOVs) and Cessation Orders (COs). The
+Board consolidated the appeals (2024 Appeals)1 because they involve common questions
+of law and fact.2
+
+
+1
+  The 2024 Appeals were docketed as IBLA Nos. 2024-0010 to -0013, -0015, -0017 to -
+0020, -0022, -0023, -0026 to -0030, and -0032 to -0036. We refer to them generally by
+the lead docket number, IBLA 2024-0010 et al.
+2
+  Order, Motion to Consolidate Granted; Motion to File Overlength Answer Granted;
+Motion for an Extension of Time Granted; Submission and Service of the Administrative
+Record Ordered at 1 (Nov. 14, 2023) (Consolidation Order). While the Permittees and
+their surety have separately appealed 54 decisions issued by OSMRE in early
+
+
+
+                                       201 IBLA 18
+
+                                                                     IBLA 2024-0010 et al.
+
+
+                                        SUMMARY
+
+        The Surface Mining Control and Reclamation Act of 1977 (SMCRA or the Act)
+requires parties seeking to conduct surface coal mining to obtain a permit and to post a
+bond guaranteeing their lawful performance. In Tennessee, OSMRE is responsible for
+inspecting coal mining operations and providing permittees with notice of and an
+opportunity to abate identified violations of governing law. Where a permittee refuses or
+is unable to abate the violations as directed, or otherwise fails to comply with their
+permit, OSMRE initiates the bond forfeiture process by providing notice of its intent to
+forfeit and an opportunity for the permittee or its surety to avoid forfeiture through
+various means. Here, the Permittees do not dispute that they failed to abate the
+violations on which the 2023 Decisions are predicated, after multiple notices, multiple
+abatement opportunities, and the passage of months or even years. We find Permittees’
+argument that they have not “refused to” abate the relevant violations insufficient to
+carry their burden to demonstrate error on the record presented. Otherwise, Permittees
+offer only conclusory and unsupported legal assertions or challenges to matters not
+properly before us in these appeals. Accordingly, we affirm OSMRE’s 2023 Decisions.
+
+                                      BACKGROUND
+
+                                     Legal Background
+
+       SMCRA “establish[es] a nationwide program to protect society and the
+environment from the adverse effects of surface coal mining operations.”3 As part of this
+framework, the Act institutes a system of permitting and bonding for surface coal mining
+operations. Before a party may conduct such operations, it must obtain a permit.4 Every
+
+
+2025 raising issues implicating some (but not all) of the permits and bonds at issue in
+these appeals (as well as others), those appeals have not been consolidated with these,
+and this Decision addresses only the 2023 Decisions and 2024 Appeals. The surety,
+Lexon Insurance Co. (Lexon), was copied on the 2023 Decisions but did not appeal
+them. See, e.g., Administrative Record (AR) Document (Doc.) 1.1, Notice of the
+Regulatory Authority’s Determination to Forfeit Premium Coal Company Incorporated’s
+Performance Bond for Permit No. 2866, Tipple/Prep Plant, Located in Anderson County,
+Tennessee at 1 (Sept. 6, 2023) (2023 Decision). While the 2023 Decisions are dated
+September 5, 2023, the digital signature blocks indicate that they were not signed by the
+decisionmaker until September 6, 2023. Because the 2023 Decisions vary only in their
+references to the specific permit, bond(s), and violation(s) addressed in each, and are
+otherwise substantively identical, we will generally cite to this example as a model when
+discussing their common elements.
+3
