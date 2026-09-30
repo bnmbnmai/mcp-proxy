@@ -1,0 +1,1008 @@
+                                         2                              2025003976
+
+judicial capacity. See 42 U.S.C. § 2000e-16(c) (providing for E.E.O.C. to act “upon
+
+an appeal” from a federal employee alleging unlawful employment discrimination).
+
+      In a typical Title VII case, discharging our quasi-judicial responsibility is a
+
+relatively straightforward exercise. The statute has old roots, and the scope of its
+
+meaning has been thoroughly tilled by the federal courts over the decades. For our
+
+part, we recognize the special “province and duty of the judicial department to say
+
+what the law is.” Loper Bright Enterprises v. Raimondo, 603 U.S. 369, 384 (2024)
+
+(quoting Marbury v. Madison, 1 Cranch 137, 177 (1803)). This means that in most
+
+complaints and appeals arising under Title VII, all we need to do is apply
+
+longstanding precedent, often from the Supreme Court, to the facts before us.
+
+      This appeal presents a rare exception. No federal court has yet authoritatively
+
+addressed whether Title VII permits single-sex bathrooms and other intimate spaces
+
+in the workplace. Nor has any federal court yet authoritatively addressed whether
+
+Title VII requires employers to permit trans-identifying employees to access
+
+bathrooms and other intimate spaces otherwise reserved for the opposite sex.
+
+      To be sure, the Supreme Court in Bostock v. Clayton County recently held that
+
+under Title VII a covered employer’s decision to discharge or refuse to hire
+
+“someone simply for being . . . transgender” constitutes discrimination “because
+
+of . . . sex.” 590 U.S. 644, 681 (2020). But the Court took care to emphasize, “[W]e
+
+do not purport to address bathrooms, locker rooms, or anything else of the kind.” Id.
+                                         3                              2025003976
+
+And in the handful of years since—a blink of an eye in judicial time—no other
+
+federal court has yet authoritatively addressed whether single-sex bathrooms are
+
+lawful under the general principles announced in Bostock. In the absence of guiding
+
+precedent, we have no choice but to undertake our own interpretation of the statute
+
+in order to adjudicate this appeal.
+
+      That said, we do not view the absence of authoritative precedent as an
+
+invitation to act without restraint. Our aim must be to accurately predict how a
+
+responsible court would interpret the statute on this issue. Accordingly, we will use
+
+“the traditional tools of statutory construction, not individual policy preferences.”
+
+Loper Bright, 603 U.S. at 374. Along those lines, we expect that a responsible court
+
+would turn first to the ordinary meaning of the statute’s text. And we expect that a
+
+responsible court would take care to ensure that its holding is further anchored by
+
+the Supreme Court’s other precedents in analogous areas of law.
+
+      When we follow this path to its logical conclusion—and as applied to the facts
+
+presented before us—we find that Title VII permits a federal agency employer to
+
+maintain single-sex bathrooms and similar intimate spaces. And it permits a federal
+
+agency employer to exclude employees, including trans-identifying employees,
+
+from opposite-sex facilities.
+
+      Before embarking on that analysis, we again stress the limited reach of our
+
+quasi-judicial authority. In the run of federal sector complaints and appeals, the
+                                          4                              2025003976
+
+E.E.O.C. does not interpret the statute: we only apply established precedent to facts.
+
+We undertake our own interpretation of the statute here only because circumstances
+
+dictate we must. There is an active controversy before us, and we cannot simply
+
+press the pause button to await authoritative guidance from the courts. The appeal
+
+must be decided, one way or the other.
+
+      Our decision, however, applies only to federal agencies subject to the
+
+E.E.O.C.’s administrative complaint process for federal employees. It does not apply
+
+to any other type of employer, including private sector employers. And our decision
+
+does not bind any federal court.
+
+                                           I
+
+      The underlying facts to this appeal are basic and undisputed. The Complainant
+
+has worked for the Army for some time as a civilian IT specialist at Fort Riley,
+
+Kansas. Complainant is male, and for most of his tenure Complainant voluntarily
+
+used the Army’s male-designated bathrooms and locker rooms without incident. In
+
+summer 2025, Complainant informed his local management he now identified as a
+
+woman, and he requested to use female-designated bathrooms and locker rooms.
+
+Management denied the request, relying on recent instructions from the President to
+
+ensure that “intimate spaces . . . are designated by sex and not identity.” Exec. Order
+
+14168, § 4(d).
+                                         5                            2025003976
+
+      Complainant filed a formal EEO complaint which the Army dismissed for
+
+failure to state a claim. Complainant appeals. We review de novo. See 29 C.F.R.
+
+§ 1614.405(a).
+
+                                        II
+
+      We do not write on a blank slate. In 2015, a majority of the E.E.O.C.’s then-
+
+Commissioners held federal agencies “must allow [trans-identifying employees]
+
+access to the . . . [opposite sex] restroom.” Lusardi v. Dep’t of the Army, EEOC
+
+Appeal No. 0120133395, 2015 WL 1607756, at *8 (Apr. 1, 2015).
+
+      On bathrooms, Lusardi’s reasoning was concerningly threadbare. No analysis
+
+allegedly was needed because, in the then-Commissioners’ view, the core conclusion
+
+was undisputed: “the [Agency] acknowledges that Complainant’s transgender status
+
+was the motivation for its decision to prevent Complainant from using the common
+
+women’s restroom.” Lusardi, 2015 WL 1607756, at *7 (emphasis in original). To
+
+sustain this conclusion, however, the Commissioners simply quoted the responsible
+
+management official, who explained that female employees would be uncomfortable
+
+with the Complainant using the women’s bathroom because “despite the fact that
+
+[the Complainant] is conducting herself as a female, [the Complainant] is still
+
+basically a male, physically.” Id. No other evidence was discussed.
+
+      As a basic matter of evidence, we cannot connect the dots to see how this
+
+statement would tend to “make it more or less probable,” Fed R. Evid. 401(a), that
+                                                 6                                   2025003976
+
+the Complainant’s “transgender status” motivated the decision to exclude him from
+
+the women’s bathroom. Quite the opposite. The preposition “despite” does a lot of
+
+work here. It is not, as the Lusardi Commissioners apparently believed, a synonym
+
+for because. By leading with “despite,” the responsible management official averred
+
+that the Complainant’s “transgender status” and conduct did not figure into the
+
+decision. Nor was the Complainant’s “transgender status” and conduct the source of
+
+his female coworkers’ discomfort. Rather it was the Complainant’s sex, which was
+
+still immutably male, that was the sole reason his female coworkers did not want
+
+him in the women’s bathroom.2
+
+       What the Lusardi Commissioners viewed as a smoking-gun was no more than
+
+a commonsense acknowledgment that changing one’s conduct does not, and cannot,
+
+change one’s sex. Not only is this too slender a reed to sustain the decision, it is no
+
+reed at all. We now undertake the fulsome analysis the Lusardi Commissioners
+
+eschewed.
+
+                                                III
+
+       For the sixty-plus years of Title VII’s existence, it has been unerringly
+
+accepted that employers and other public-facing entities may lawfully maintain
+
+
+2
+  We have no occasion here to revisit whether it is unlawful to exclude a trans-identifying employee
+from the bathroom corresponding to their sex. Executive Order 14168 does not permit agencies to
+do so and the Agency in the instant appeal has not done so. We revisit Lusardi only insofar as it
+held it unlawful for an employer to exclude a trans-identifying employee from the opposite-sex
+bathroom.
+                                                 7                                   2025003976
+
+single-sex bathrooms. 3 However, in recent years, it has been observed,
+
+prospectively, that if Title VII is eventually held to forbid employers from excluding
+
+trans-identifying employees from opposite-sex bathrooms, it must necessarily also
+
+forbid employers from excluding non-trans-identifying employees from opposite-
+
+sex bathrooms. Wittmer v. Phillips 66 Co., 915 F.3d 328, 334 (5th Cir. 2019) (Ho,
+
+J., concurring) (predicting that single-sex bathrooms in the workplace are likely
+
+altogether unlawful if a court adopts a “[sex] blindness approach to Title VII”). In
+
+other words, it would be unlawful to even have men’s and women’s bathrooms in
+
+the first place. All bathrooms would be mixed-sex by law, and every employee
+
+would be required to perform bodily and other private functions in the presence of
+
+the opposite-sex.
+
+       But we think the contrapositive is also true, that if Title VII does not forbid an
+
+employer from excluding non-trans-identifying employees from opposite-sex
+
+bathrooms, then Title VII also does not forbid an employer from excluding trans-
+
+
+
+3
+  While no federal court has yet authoritatively addressed this issue under Title VII, a number of
+courts have acknowledged this assumption, in both cases involving Title VII and in cases
+addressing other statutes and Constitutional provisions. See, e.g., United States v. Virginia, 518
+U.S. 515, 550 n.19 (1996) (noting that admitting women to a previously all-male military academy
+“would undoubtedly require alterations necessary to afford members of each sex privacy from the
+other sex in living arrangements”) (Equal Protection Clause challenge); Chaney v. Plainfield
+Healthcare Ctr., 612 F.3d 908, 913 (7th Cir. 2010) (“[T]he law tolerates same-sex restrooms or
+same-sex dressing rooms, but not white-only rooms, to accommodate privacy needs.”) (analyzing
+Title VII race discrimination claim); Faulkner v. Jones, 10 F.3d 226, 232 (4th Cir. 1993) (“[Society
+has given its] undisputed approval of separate public rest rooms for men and women based on
+privacy concerns.”) (Equal Protection Clause challenge).
+                                           8                               2025003976
+
+identifying employees from opposite-sex bathrooms. Put another way, if an
+
+employer can lawfully bar some men from using the women’s bathroom (or some
+
+women from using the men’s bathroom), then an employer can lawfully bar all men
+
+from using the women’s bathroom (and all women from using the men’s bathroom).
+
+A particular man’s or woman’s “self-identification” would be irrelevant. A man who
+
+identifies as a “transwoman” is still a man; a woman who identifies as a “transman”
+
+is still a woman. Both may be excluded from opposite-sex bathrooms as such.
+
+      Our task then is to thoroughly explain why a responsible federal court, if
+
+asked, would agree with our conclusion that under Title VII, federal agency
+
+employers may lawfully exclude men from the women’s bathroom, and women from
+
+the men’s bathroom. And once this is established, it follows that a responsible
+
+federal court would agree with our conclusion that under Title VII, federal agency
+
+employers may lawfully maintain the same rule—and equal treatment—for their
+
+trans-identifying employees.
+
+                                          IV
+
+      Title VII itself is silent on the topic of single-sex bathrooms, as it is silent on
+
+most of the more prosaic details of the workplace. Congress instead spoke in more
+
+general and arguably grander terms to target a wide gamut of workplace
+
+“discriminat[ion] . . . based on . . . sex.” 42 U.S.C. § 2000e-2(a); see also § 2000e-
+
+16 (extending coverage to federal agency employers). Before we can even begin to
+                                                9                                  2025003976
+
+discuss bathrooms and intimate spaces specifically, we need to ascertain what
+
+“discrimination based on sex” actually means.
+
+       We start with the bedrock principle “that a legislature says in a statute what it
+
+means and means in a statute what it says[.]” Conn. Nat. Bank v. Germain, 503 U.S.
+
+249, 254 (1992). And the most natural and accurate way to understand what a statute
+
+says is to apply “the ordinary public meaning of its terms at the time of its
+
+enactment.” Bostock, 590 U.S. at 654. The key terms here are “sex” and
+
+“discriminate.”
+
+    Sex defined
+
+       Title VII does not define the word sex. And the Supreme Court has yet to fix
+
+its meaning under Title VII. In Bostock, the Court did encounter parties disputing
+
+the definition of sex under Title VII. 590 U.S. at 655. But the Court declined to
+
+resolve the dispute, concluding that “nothing in our approach . . . turns on the
+
+outcome of the parties’ debate [over the definition of sex].” Id. To advance its
+
+decision, the Court assumed for the sake of argument that sex in Title VII “refer[red]
+
+only to the biological distinctions between male and female.” Id. 4
+
+
+
+
+4
+  The Bostock Court’s assumption about the definition of “sex” under Title VII was consistent with
+the Supreme Court’s view of “sex” in other contexts. See, e.g., Frontiero v. Richardson, 411 U.S.
+677, 686 (1973) (“[S]ex, like race and national origin, is an immutable characteristic determined
+solely by the accident of birth.”) (Equal Protection Clause challenge).
+                                          10                              2025003976
+
+      The appeal we face cannot advance on assumptions alone and requires that
+
+we fix the definition of sex under Title VII. What the Court assumed in Bostock, we
+
+think is conclusive: sex, as the term is used in Title VII, “refer[s] to an individual’s
+
+immutable biological classification as either male or female.” Exec. Order 14168,
+
+§ 2(a).
+
+      We base our conclusion on ordinary public meaning. The word sex is common
+
+in everyday English, and definitions from reputable dictionaries—contemporaneous
+
+with Title VII’s passage—provide probative insight. The Eleventh Circuit, looking
+
+for the ordinary public meaning of the word circa 1972, has helpfully collected
+
+numerous entries. Adams by & through Kasper v. Sch. Bd. of St. Johns Cnty., 57
+
+F.4th 791, 812 (11th Cir. 2022) (citing Sex, American Heritage Dictionary of the
+
+English Language (1976) (“The property or quality by which organisms are
+
+classified according to their reproductive functions.”); Sex, American Heritage
+
+Dictionary of the English Language (1979) (same); Sex, Female, Male, Oxford
+
+English Dictionary (re-issue ed. 1978) (defining “sex” as “[e]ither of the two
+
+divisions of organic beings distinguished as male and female respectively,” “female”
+
+as “[b]elonging to the sex which bears offspring,” and “male” as “[o]f or belonging
+
+to the sex which begets offspring, or performs the fecundating function of
+
+generation”); Sex, Webster’s New World Dictionary (1972) (“[E]ither of the two
+
+divisions, male or female, into which persons, animals, or plants are divided, with
+                                                11                                   2025003976
+
+reference to their reproductive functions.”); Sex, Female, Male, Webster’s Seventh
+
+New Collegiate Dictionary (1969) (defining “sex” as “either of two divisions of
+
+organisms distinguished respectively as male or female,” “female” as “an individual
+
+that bears young or produces eggs as distinguished from one that begets young,” and
+
+“male” as “of, relating to, or being the sex that begets young by performing the
+
+fertilizing function”); Sex, Random House College Dictionary (rev. ed. 1980)
+
+(“[E]ither the male or female division of a species, esp. as differentiated with
+
+reference to the reproductive functions.”)). 5
+
+       These entries unambiguously and unanimously acknowledge two sexes, male
+
+and female, each defined by its unique reproductive role and related innate physical
+
+characteristics. 6 We cannot find any contemporaneous definition to establish
+
+otherwise, let alone that sex is defined by non-biological distinctions such as self-
+
+identity or personal preference. Nor could we independently find any persuasive
+
+alternative usage in the contemporaneous English corpus to contradict the
+
+
+5
+  Dictionaries are not authoritative just because they say so. A given dictionary’s persuasiveness
+rests on its methodology. The best dictionaries, we think, will infer meaning, including ordinary
+public meanings and non-ordinary specialized meanings, by surveying usage throughout the
+English corpus. Naturally some dictionaries will be better at this than others, and “courts must take
+care [when relying on dictionaries].” Antonin Scalia, Bryan A. Garner, A Note on the Use of
+Dictionaries, 16 Green Bag 2d 419, 422 (2013). The Eleventh Circuit’s foray demonstrates
+adequate care by surveying multiple reputable dictionaries that define sex at its core, not its
+periphery.
+6
+  We do not here have occasion to apply Title VII to intersex individuals born with both male and
+female sex characteristics. We anticipate that these rare and unique circumstances can be evaluated
+on a case-by-case basis.
+                                                12                                   2025003976
+
+established dictionary definition. Under this definition, Complainant’s sex is male,
+
+from the moment of his conception and continuing even after he began to identify
+
+as transgender.7
+
+    Discrimination defined
+
+       As with the word sex, Title VII does not define the word discrimination or
+
+any derivative. Thankfully, we do not need to peel back layers of dictionary
+
+definitions to arrive at a fixed meaning. 8 Per one of the Supreme Court’s most recent
+
+decisions on Title VII, “The words ‘discriminate against,’ . . . refer to ‘differences
+
+in treatment that injure’ employees.” Muldrow v. City of St. Louis, Mo., 601 U.S.
+
+346, 354 (2024) (quoting Bostock, 590 U.S. at 681). In other words, “[an anti-
+
+discrimination] statute targets practices that ‘treat[] a person worse’ because of sex
+
+or other protected trait.’” Id. (quoting Bostock at 658).
+
+
+
+7
+  Previously, the Lusardi Commissioners held, “[T]here is no cause to question that [someone]—
+who was assigned the sex of male at birth but identifies as female—is female.” 2015 WL 1607756,
+at *8 (emphasis in original). The Lusardi Commissioners did not explain how they came to this
+paradoxical conclusion; they simply floated it as a self-evident axiom untethered from the statute’s
+text and structure. In the absence of rigorous analysis, the Lusardi Commissioners gave the
+impression that they were simply foisting their personal policy preference as an ukase on the rest
+of the federal government. To ignore the ordinary public meaning of Title VII’s text is not just
+wrong, it is deeply disrespectful both to Congress, who chose the text, and the President, who
+signed it. Our approach, in stark contrast, rests on Title VII’s text. We reaffirm our role as
+Congress’s and the President’s instrument, bound to apply the law as it was passed and as it is
+interpreted by the courts. Until newly enacted law or authoritative court decision says otherwise,
+we must conclude that one’s sex, under Title VII, is immutable and enduring.
+8
+ Dictionaries are most useful when defining literal concepts like sex, supra; less when applied to
+abstractions, like the concept of discrimination.
+                                          13                             2025003976
+
+      To determine whether “differences in treatment” have occurred, and whether
+
+they leave employees “worse” off, naturally invites a comparison of similarly
+
+situated employees. Indeed, similarly-situatedness has always been the keystone of
+
+the Court’s discrimination jurisprudence. It figures in time-tested cases like Yick Wo
+
+v. Hopkins, where the Court addressed “unjust and illegal [race] discrimination
+
+between persons in similar circumstances.” 118 U.S. 356, 374 (1886). And it
+
+continues to ground decisions of more recent vintage leading up to Bostock. See,
+
+e.g., Alabama Dept. of Revenue v. CSX Transp., Inc. (CSX II), 575 U.S. 21, 26 (2015)
+
+(“[A] tax discriminates . . . when it treats groups [that] are similarly situated
+
+differently without sufficient justification for the difference in treatment.”)
+
+(quotations omitted); Gen. Motors Corp. v. Tracy, 519 U.S. 278, 298 (1997) (noting
+
+that “[c]onceptually, of course, any notion of discrimination assumes a comparison
+
+of substantially similar entities”) (footnote omitted).
+
+      And the focus on similarly-situatedness has proved essential to every
+
+substantive type of discrimination under federal law. See, e.g., Flowers v.
+
+Mississippi, 588 U.S. 284, 311–13 (2019) (criminal defendant deprived of right to a
+
+fair trial when state strikes jurors of one race but not similarly situated jurors of
+
+another); Dawson v. Steager, 586 U.S. 171, 175 (2019) (unlawful tax discrimination
+
+occurs when state favors state employees over similarly situated federal employees);
+
+CSX II, 575 U.S. at 26 (unlawful tax discrimination occurs when state favors water
+                                          14                             2025003976
+
+carriers over similarly situated railroad); Bank of Am. Corp. v. City of Miami, Fla.,
+
+581 U.S. 189, 194 (2017) (unlawful housing discrimination occurs when bank favors
+
+borrowers of one race over similarly situated borrowers of others); Califano v.
+
+Goldfarb, 430 U.S. 199, 204 (1977) (unlawful sex discrimination occurs when state
+
+favors female widows over similarly situated male widowers); Halliburton Oil Well
+
+Cementing Co. v. Reily, 373 U.S. 64, 70 (1963) (dormant Commerce Clause violated
+
+when state favors in-state taxpayers over similarly situated out-of-state taxpayers);
+
+L. T. Barringer & Co. v. United States, 319 U.S. 1, 6 (1943) (in setting interstate
+
+tariffs, United States may not discriminate between similarly situated shippers). It
+
+follows then that discrimination under Title VII traces the same arc; it means to treat
+
+an employee less favorably than other similarly situated employees.
+
+                                          V
+
+      With these definitions in hand, we can more fully flesh out what is meant by
+
+Title VII’s proscription of discrimination based on sex. It means that sex is
+
+determined by reproductive and related innate physical traits. And it means that
+
+discrimination based on sex occurs when “members of one sex are exposed to
+
+disadvantageous terms or conditions of employment to which [similarly situated]
+
+members of the other sex are not exposed.” Oncale v. Sundowner Offshore Servs.,
+
+Inc., 523 U.S. 75, 80 (1998) (quotations omitted).
+                                             15                                2025003976
+
+       On bathrooms, undoubtedly single-sex facilities differentiate between the
+
+sexes, at least in a literal sense. But the Supreme Court has long understood that Title
+
+VII “does not require either asexuality or androgyny in the workplace.” Oncale, 523
+
+U.S. at 80. And sex-based differences in treatment in the workplace are not
+
+disadvantageous or discriminatory when they reflect the “genuine but innocuous
+
+differences in the ways men and women routinely interact with members of the same
+
+sex and of the opposite sex.” Id.
+
+       More fundamentally, men and women are not similarly situated when it
+
+comes to bathrooms and other intimate spaces, including locker rooms, changing
+
+facilities, showers, sleeping quarters, etc. To start, we need not exhaustively list all
+
+the circumstances when men and women are similarly situated, either in life
+
+generally or in the workplace. In the run of cases, they are. Today, it is the rule, not
+
+the exception, that “the sex characteristic . . . bears no relation to [an individual’s]
+
+ability to perform or contribute to society.” Frontiero, 411 U.S. at 686; see also Price
+
+Waterhouse v. Hopkins, 490 U.S. 228, 239 (1989) (plurality opinion) (“Sex . . . [is]
+
+not relevant to the selection, evaluation, or compensation of employees.”). The
+
+market no longer broadly operates in terms of women’s work or jobs suited only to
+
+men.9 No more may employers make “overbroad generalizations based on sex which
+
+
+9
+ Except in the “extremely narrow” case where sex is a “bona fide occupational qualification.”
+Dothard v. Rawlinson, 433 U.S. 321, 334 (1977) (applying 42 U.S.C. § 2000e-2(e)).
+                                            16                              2025003976
+
+are entirely unrelated to any differences between men and women or which demean
+
+the ability or social status of [one sex over the other].” Parham v. Hughes, 441 U.S.
+
+347, 354 (1979) (considering sex-discrimination under the Equal Protection Clause).
+
+      But    often   similarly   situated        is   not   always   similarly   situated.
+
+“Physical differences between men and women . . . are enduring: The two sexes are
+
+not fungible.” United States v. Virginia, 518 U.S. 515, 533 (1996) (Ginsburg, J.).
+
+And separating men and women is not invidious or discriminatory when it
+
+“realistically reflects the fact that the sexes are not similarly situated in certain
+
+circumstances.” Michael M. v. Superior Ct. of Sonoma Cnty., 450 U.S. 464, 469
+
+(1981). Those “certain circumstances” very often depend on the innate physical
+
+differences between men and women. C.f., Virginia, 518 U.S. at 533.
+
+      In Michael M., for instance, the Court relied on those innate physical
+
+differences to uphold a statutory rape law that exclusively protected young women.
+
+The Court observed, “We need not be medical doctors to discern that young men
+
+and young women are not similarly situated with respect to the problems and the
+
+risks of sexual intercourse. Only women may become pregnant, and they suffer
+
+disproportionately   the   profound    physical,        emotional    and   psychological
+
+consequences of [underage] sexual activity.” Id. at 471–72.
+
+      In another example, the Court found, “Fathers and mothers are not similarly
+
+situated with regard to the proof of biological parenthood.” Tuan Anh Nguyen v.
+                                         17                             2025003976
+
+I.N.S., 533 U.S. 53, 63 (2001). Only a mother can bear a child, and the act alone
+
+establishes the fact of her biological parenthood. Lehr v. Robertson, 463 U.S. 248,
+
+260 n.16 (1983). A father, because of his different reproductive role, must
+
+necessarily resort to different means to prove his biological parenthood. Id.
+
+Differential treatment that follows from these different biological functions would
+
+not be discrimination within the ordinary meaning of the word.
+
+      In this vein, we restate the obvious:      because of their innate physical
+
+differences, men and women are not similarly situated when it comes to using
+
+bathrooms and other intimate spaces in the workplace.
+
+      Those physical differences don’t just functionally impact how men and
+
+women use these spaces, they also establish a powerful expectation that those
+
+functions be undertaken in private without the opposite sex present. It should go
+
+without saying that “[t]he desire to shield one’s unclothed figure from view of
+
+strangers, and particularly strangers of the opposite sex, is impelled by elementary
+
+self-respect and personal dignity.” York v. Story, 324 F.2d 450, 455 (9th Cir. 1963);
+
+see also Doe v. Luzerne Cnty., 660 F.3d 169, 177 (3d Cir. 2011) (“[Female deputy
+
+sheriff] had a reasonable expectation of privacy [when disrobed], particularly while
+
+in the presence of members of the opposite sex.”); Fortner v. Thomas, 983 F.2d
+
+1024, 1030 (11th Cir. 1993) (recognizing a “constitutional right to bodily privacy
+
+because most people have ‘a special sense of privacy in their genitals, and
+                                               18                                  2025003976
+
+involuntary exposure of them in the presence of people of the other sex may be
+
+especially demeaning and humiliating’” (quoting Lee v. Downs, 641 F.2d 1117, 1119
+
+(4th Cir. 1981))). 10
+
+       This vital privacy interest did not evaporate in the wake of Title VII’s passage.
+
+Rather, “[t]he lower federal courts . . . have consistently recognized that privacy
+
+interests may justify sex-based requirements [in the workplace].” Int’l Union, United
+
+Auto., Aerospace & Agr. Implement Workers of Am., UAW v. Johnson Controls, Inc.,
+
+499 U.S. 187, 219 n.8 (1991) (White, J., concurring) (collecting cases). On
+
+bathrooms, for instance, Title VII does not disturb the commonsense expectation
+
+that a washroom attendant should be of the same sex as the customers and employees
+
+using the washroom they are attending. Norwood v. Dale Maint. Sys., Inc., 590 F.
+
+Supp. 1410, 1421 (N.D. Ill. 1984).
+
+       As a rejoinder, it has been argued that these privacy interests are immaterial
+
+when it comes to bathrooms because of lockable stalls. Outside the Title VII context,
+
+the Fourth Circuit, for one, believes a lockable stall is all it takes to cancel out the
+
+
+10
+   Courts have even acknowledged that prisoners, who generally have more limited privacy
+expectations, still have a legitimate interest in not being exposed to members of the opposite sex
+in intimate circumstances. See Robino v. Iranon, 145 F.3d 1109, 1111 (9th Cir. 1998) (Title VII
+did not prohibit state prison from excluding male prison guards from posts monitoring female
+inmates in bathrooms, showers, and other intimate spaces); Jordan v. Gardner, 986 F.2d 1521,
+1530–31 (9th Cir. 1993) (en banc) (clothed searches of prisoners, when performed by guards of
+the opposite sex, constituted cruel and unusual punishment); Cornwell v. Dahlberg, 963 F.2d 912,
+916–17 (6th Cir. 1992) (male inmate strip-searched before female guards raised a valid fourth
+amendment privacy claim).
+                                         19                              2025003976
+
+government’s normally compelling interest in protecting the privacy of school-age
+
+students. Grimm v. Gloucester Cnty. Sch. Bd., 972 F.3d 586, 613–14 (4th Cir. 2020),
+
+as amended (Aug. 28, 2020) (holding that when bathrooms are equipped with
+
+lockable stalls, schools are required to allow trans-identifying boys to use girl’s
+
+bathroom). This is a narrow and mechanical view, and what a court thinks about
+
+schools is not a reliable indicator of what matters in the workplace. This view is not
+
+compatible with Title VII or with the realities of the modern workplace.
+
+      For starters, we are not just looking at bathrooms. The claim before us also
+
+includes shared spaces like locker rooms, where lockable stalls are not prevalent.
+
+And in any event, bathrooms are not used exclusively for excretory functions
+
+performed behind a stall door. Workplace bathrooms often provide employees a
+
+space to change clothes, address medical needs, or undertake other personal hygiene.
+
+The interest in single-sex privacy is especially heightened for women attending to
+
+hygiene related to menstruation, pregnancy, or lactation. No man will ever
+
+experience a period, bear a child, or nurse an infant, and we do not think it improper
+
+that female employees would expect to manage their unique needs in a space
+
+accessible only to other women.
+
+      The weight of this analogous precedent unquestionably shows that women
+
+have a vital privacy interest in using a workplace bathroom or similar intimate space
+
+outside the presence of men. And men have a vital privacy interest in using a
+                                                 20                                    2025003976
+
+workplace bathroom or similar intimate space outside the presence of women.
+
+Because their interests have different polarities, men and women cannot be similarly
+
+situated in this instance. To separate men and women in the workplace under these
+
+circumstances is not discriminatory under Title VII. 11
+
+                                                 VI
+
+       Having established that under Title VII employers may in general maintain
+
+single-sex bathrooms and similar intimate spaces, we ask whether the statute would
+
+compel them to make a specific exception for trans-identifying employees. We think
+
+no.
+
+       Bostock is the natural starting point for this part of the analysis. As already
+
+noted, under Bostock, it is now established that a Title VII-covered employer may
+
+not fire or refuse to hire someone because they are trans-identifying. 590 U.S. at 681.
+
+Under Bostock, this constitutes “discrimination . . . because of sex.” Id. Crucially,
+
+the rule announced in Bostock is one of equal treatment. The rule is violated “if
+
+changing the employee’s sex would have yielded a different choice by the
+
+
+11
+  We have assumed, and Complainant has given us no reason to think otherwise, that the single-
+sex bathrooms provided by the Agency here are of substantially equal quality. It remains the case
+that the intimate facilities offered to one sex cannot be of such material inferiority that they impose
+an “unequal burden” on the members of the sex using those facilities. Accord Jespersen v.
+Harrah’s Operating Co., Inc., 444 F.3d 1104, 1110 (9th Cir. 2006) (en banc) (upholding
+employer’s sex-specific dress and grooming code that did not impose unequal burdens); see also
+Carroll v. Talman Fed. Sav. & Loan Ass’n of Chi., 604 F.2d 1032 (7th Cir. 1979) (Title VII
+violated when female employees were required to wear “clearly identifiable uniform[s]” while
+male employees were allowed to wear “normal business attire”).
+                                         21                                2025003976
+
+employer.” Id. at 659–60. The Bostock test, when applied to Complainant’s
+
+circumstances, does not advance his case. The employer in Bostock treated its trans-
+
+identifying employees differently than non-trans-identifying employees. The
+
+Agency here treats Complainant and other trans-identifying employees the same as
+
+non-trans-identifying employees. Changing Complainant’s sex from male to female
+
+would not change the result; if Complainant were a woman asking to use the
+
+opposite-sex bathroom, the Agency still would have said no. And the same result
+
+follows if Complainant’s trans-identifying status is the only variable changed. If a
+
+non-trans-identifying man asked to use the women’s bathroom, the Agency surely
+
+would have rebuffed the request. That the Agency gives the same answer to male
+
+and female employees alike, and to trans-identifying and non-trans-identifying
+
+employees alike, only goes to show its evenhandedness.
+
+      At bottom, Complainant seeks an interpretation of Title VII granting most-
+
+favored status to trans-identifying employees. He claims entitlement to more-than-
+
+equal treatment compared to his coworkers. He asserts that they must continue to
+
+follow the established rules of workplace conduct by using bathrooms corresponding
+
+to their sex while he is exempted. We can find no support for such special treatment
+
+anywhere in the text of Title VII or in any precedential court decision.
+
+      It is not as if Congress does not know how to grant most-favored status under
+
+Title VII and similar statutes; it has for religion and pregnancy. See E.E.O.C. v.
+                                         22                              2025003976
+
+Abercrombie & Fitch Stores, Inc., 575 U.S. 768, 775 (2015) (“Title VII does not
+
+demand mere neutrality with regard to religious practices—that they be treated no
+
+worse than other practices. Rather, it gives them favored treatment[.]”); 42 U.S.C.
+
+§ 2000e(j) (entitling religious employees to reasonable accommodation for their
+
+beliefs and practices); 42 U.S.C. § 2000gg-1 (entitling female employees to
+
+reasonable accommodation for pregnancy and related conditions). That Congress
+
+has declined to bestow most-favored treatment for trans-identifying employees
+
+under Title VII is not an open invitation for us to usurp the legislative function and
+
+manufacture it. Under Bostock, the Court made it clear that trans-identifying
+
+employees are entitled to equal treatment in the workplace, no more and no less.
+
+This means still following workplace rules that are applicable to all employees,
+
+including a rule to use the bathroom corresponding to one’s sex.
+
+                                         VII
+
+      Critics of today’s opinion may attempt to argue that excluding trans-
+
+identifying individuals from opposite-sex bathrooms would turn the civil rights
+
+clock back to a time when whites-only signs were ubiquitous on bathroom doors.
+
+See, e.g., Adams, 57 F.4th at 860 (Pryor, J., dissenting) (equating single-sex
+
+bathrooms in schools to race-segregated bathrooms). However, that an employer is
+
+permitted to maintain single-sex bathrooms in no way opens the door to segregated
+
+bathrooms based on other protected characteristics, including race. As we have
+                                         23                            2025003976
+
+carefully explained, single-sex bathrooms are permissible only because the sexes are
+
+not similarly situated in this specific context. Again, this is because “[p]hysical
+
+differences between men and women . . . are enduring.” Virginia, 518 U.S. at 533.
+
+In contrast, physical distinctions between individuals of different races are not
+
+enduring; they are literally skin-deep. When it comes to bathrooms, there can be no
+
+doubt that members of different races are similarly situated. To separate bathrooms
+
+by race would serve “no legitimate overriding purpose independent of invidious
+
+racial discrimination.” Loving v. Virginia, 388 U.S. 1, 11 (1967). But the same
+
+cannot be said for separating bathrooms by sex: “[a] sign that says ‘men only’ looks
+
+very different on a bathroom door than a courthouse door.” City of Cleburne, Tex. v.
+
+Cleburne Living Center, 473 U.S. 432, 468–69(1985) (Marshall, J., concurring in
+
+part). Whereas race-segregated bathrooms promote naked favoritism for one race
+
+over another, single-sex bathrooms do “not . . . favor one sex over another, but
+
+[rather] . . . protect the privacy of both sexes.” Wittmer, 915 F.3d at 334 (Ho, J.,
+
+concurring) (emphasis added). Single-sex bathrooms continue to provide trans-
+
+identifying employees with the same benefits and privacy protections as their non-
+
+trans-identifying coworkers. This is equality, not bigotry.
+
+                                        VIII
+
+      Accordingly, we affirm the Agency’s dismissal. Within the EEOC’s
+
+administrative complaint process, that an employee is excluded from an opposite-
+                                         24                              2025003976
+
+sex bathroom or similar intimate space does not by itself state a plausible claim for
+
+relief under Title VII.
+
+                    STATEMENT OF RIGHTS - ON APPEAL
+                        RECONSIDERATION (M1125)
+
+      The Commission may, in its discretion, reconsider this appellate decision if
+Complainant or the Agency submits a written request that contains arguments or
+evidence that tend to establish that:
+      1. The appellate decision involved a clearly erroneous interpretation of
+         material fact or law; or
+      2. The appellate decision will have a substantial impact on the policies,
+         practices, or operations of the agency.
+       Requests for reconsideration must be filed with EEOC’s Office of Federal
+Sector (OFS) within thirty (30) calendar days of receipt of this decision. If the
+party requesting reconsideration elects to file a statement or brief in support of the
+request, that statement or brief must be filed together with the request for
+reconsideration. A party shall have twenty (20) calendar days from receipt of
+another party’s request for reconsideration within which to submit a brief or
+statement in opposition. See 29 C.F.R. § 1614.405; Equal Employment Opportunity
+Management Directive for 29 C.F.R. Part 1614 (EEO MD-110), at Chap. 9 § VII.B
+(Aug. 5, 2015).
+       Complainant should submit their request for reconsideration, and any
+statement or brief in support of their request, via the EEOC Public Portal, which can
+be found at https://publicportal.eeoc.gov/Portal/Login.aspx.            Alternatively,
+Complainant can submit their request and arguments to the Director, Office of
+Federal Sector, Equal Employment Opportunity Commission, via regular mail
+addressed to P.O. Box 77960, Washington, DC 20013, or by certified mail addressed
+to 131 M Street, NE, Washington, DC 20507. In the absence of a legible postmark,
+a complainant’s request to reconsider shall be deemed timely filed if OFS receives
+it by mail within five days of the expiration of the applicable filing period. See 29
+C.F.R. § 1614.604.
+
+       An agency’s request for reconsideration must be submitted in digital format
+via the EEOC’s Federal Sector EEO Portal (FedSEP). See 29 C.F.R. § 1614.403(g).
+Either party’s request and/or statement or brief in opposition must also include proof
+                                             25                            2025003976
+
+of service on the other party, unless Complainant files their request via the EEOC
+Public Portal, in which case no proof of service is required.
+
+       Failure to file within the 30-day time period will result in dismissal of the
+party’s request for reconsideration as untimely, unless extenuating circumstances
+prevented the timely filing of the request. Any supporting documentation must
+be submitted together with the request for reconsideration. The Commission
+will consider requests for reconsideration filed after the deadline only in very limited
+circumstances. See 29 C.F.R. § 1614.604(f).
+
+         COMPLAINANT’S RIGHT TO FILE A CIVIL ACTION (S0124)
+       You have the right to file a civil action in an appropriate United States District
+Court within ninety (90) calendar days from the date that you receive this decision.
+If you file a civil action, you must name as the defendant in the complaint the person
+who is the official Agency head or department head, identifying that person by their
+full name and official title. Failure to do so may result in the dismissal of your case
+in court. “Agency” or “department” means the national organization, and not the
+local office, facility or department in which you work. If you file a request to
+reconsider and also file a civil action, filing a civil action will terminate the
+administrative processing of your complaint.
+
+                     RIGHT TO REQUEST COUNSEL (Z0815)
+
+       If you want to file a civil action but cannot pay the fees, costs, or security to
+do so, you may request permission from the court to proceed with the civil action
+without paying these fees or costs. Similarly, if you cannot afford an attorney to
+represent you in the civil action, you may request the court to appoint an attorney
+for you. You must submit the requests for waiver of court costs or appointment
+of an attorney directly to the court, not the Commission. The court has the sole
+discretion to grant or deny these types of requests. Such requests do not alter the
+time limits for filing a civil action (please read the paragraph titled Complainant’s
+Right to File a Civil Action for the specific time limits).
+
+FOR THE COMMISSION:
+RAYMOND        Digitally signed by RAYMOND
+               WINDMILLER
+
+WINDMILLER     Date: 2026.02.26 13:53:34
+______________________________
+               -05'00'
+
+Raymond Windmiller
+Executive Officer
+Executive Secretariat
+                    26   2025003976
+
+
+
+
+February 26, 2026
+Date
+
