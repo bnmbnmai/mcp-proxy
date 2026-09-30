@@ -35,6 +35,7 @@ build/air-letters.*
 build/superfund-rods.*
 build/ico-mpn.*
 build/cma-ca98.*
+build/ema-referrals.*
 build/ticks-ams.*
 build/paid-records.*
 data/import-alerts/
@@ -68,4 +69,5 @@ data/air-letters/
 data/superfund-rods/
 data/ico-mpn/
 data/cma-ca98/
+data/ema-referrals/
 data/ticks-ams/
