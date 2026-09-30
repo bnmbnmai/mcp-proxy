@@ -1,0 +1,432 @@
+                                              FAI-F0143E4-1
+
+             UNITED STATES
+         DEPARTMENT OF LABOR
+MINE SAFETY AND HEALTH ADMINISTRATION
+
+        REPORT OF INVESTIGATION
+
+                 Underground
+                   (Coal)
+
+   Powered Haulage Accident Fatality Report
+                April 3, 2026
+
+              Ohio County Mine
+       Ohio County Coal Resources, Inc.
+     Dallas, Marshall County, West Virginia
+               ID No. 46-01436
+
+             Accident Investigators
+
+              Joedy Gutta, P.E.
+       Mine Safety and Health Specialist
+
+                  Allan Jack
+       Mine Safety and Health Specialist
+
+
+
+
+              Originating Office
+     Mine Safety and Health Administration
+             Morgantown District
+                604 Cheat Road
+           Morgantown, WV 26508
+       Carlos Mosley, District Manager
+                                  TABLE OF CONTENTS
+
+OVERVIEW                                                        3
+
+GENERAL INFORMATION                                             3
+
+DESCRIPTION OF THE ACCIDENT                                     4
+
+INVESTIGATION OF THE ACCIDENT                                   6
+
+DISCUSSION                                                      6
+
+   Location of the Accident                                     6
+
+   Equipment Involved                                           6
+
+   Maintenance and Repairs in Active Tram Roadway Procedures    7
+
+   Examinations                                                 7
+
+   Training and Experience                                      7
+
+ROOT CAUSE ANALYSIS                                             7
+
+CONCLUSION                                                      9
+
+ENFORCEMENT ACTIONS                                            10
+
+APPENDIX A – Map of the Accident Location                      11
+
+APPENDIX B – Persons Participating in the Investigation        12
+
+
+
+
+                                             ii
+                                          OVERVIEW
+
+On April 3, 2026, at 10:21 a.m., Darin Reece, a 36-year-old section supervisor with 18 years of
+mining experience, died after he was struck by a longwall shield and pinned against a scoop.
+
+The accident occurred because the mine operator did not develop written policies and procedures
+addressing repairs to equipment.
+
+                                  GENERAL INFORMATION
+
+Ohio County Coal Resources, Inc. owns and operates the Ohio County Mine, an underground
+bituminous coal mine located in Dallas, Marshall County, West Virginia. The Ohio County Mine
+employs 462 miners, and operates three 8-hour production shifts daily. The mine extracts coal
+from the Pittsburgh No. 8 coal seam with three continuous mining machine units and one
+longwall unit. The average mining height is 96 inches. Belt conveyors are used to transport the
+coal from the mining units to the surface.
+
+
+
+
+                                                3
+The principal management officials at Ohio County Mine at the time of the accident were:
+
+       Ray Wilhelm                                                        General Manager
+       David Cutlip                                                        Superintendent
+       Drew Dally                                                          Superintendent
+       Matthew Cunningham                                                  Safety Director
+
+The Mine Safety and Health Administration (MSHA) completed the last regular safety and
+health inspection at this mine on March 31, 2026. A regular safety and health inspection was
+ongoing at the time of the accident; however, no MSHA personnel were on site at the time of the
+accident. The 2025 non-fatal days lost incident rate for Ohio County Mine was 5.86, compared to
+the national average of 3.89 for mines of this type.
+
+                              DESCRIPTION OF THE ACCIDENT
+
+Darin Reece, section supervisor, entered the mine at the Golden Ridge Portal with the day shift
+crew at approximately 8:00 a.m. He traveled with Bryan Rankin, longwall support supervisor, on
+a golf cart toward the 3 Left section. The golf cart broke down, and Reece got into a personnel
+carrier with a crew traveling to the 3 Left section. Based on tracking information, Reece arrived
+on the section at 9:08 a.m.
+
+Reece provided work assignments to Garrett Tingley, longwall utility; Justin Wade, continuous
+mining machine operator; and Allan Bonamo, general inside laborer. Wade was assigned to
+operate a scoop to unload the longwall shields that were transported to the 3 Left section by
+locomotives. Wade positioned the longwall shields where they could be picked up and taken to
+the longwall setup face. Tingley and Bonamo were each assigned to operate a scoop to transport
+and position the shields along the longwall setup face.
+
+Tingley conducted a preoperational check on the No. 1054 scoop, which was already loaded with
+a shield from the midnight shift. He then trammed to the setup face to set the shield into place.
+Wade conducted a preoperational check on the No. 555 scoop, which was already loaded with a
+shield from the midnight shift. Wade unloaded the shield in the No. 2-1 crosscut and trammed to
+the track entry to unload and stage shields arriving on the 3 Left section.
+
+Bonamo conducted a preoperational check on the No. 2007 scoop and determined the winch rope
+needed to be repaired. Reece repaired the No. 2007 scoop’s winch rope by cutting out a bad
+section of rope and reweaving the end through the winch rope hook. Bonamo trammed to the
+shield that was left by Wade in the No. 2-1 crosscut. Reece walked into the No. 2-1 crosscut to
+assist with loading the shield. While attempting to load the shield onto the front of the scoop, the
+restraining bolt on the winch reel broke. Reece positioned himself on the scoop to begin making
+repairs on the winch (Appendix A).
+
+Tingley completed setting the shield on the setup face and trammed in reverse, back towards the
+No. 2-1 crosscut, to load another shield. As he rounded the corner from the setup face into the
+No. 2-1 crosscut, the No. 1054 scoop struck the shield partially loaded on Bonamo’s No. 2007
+
+
+
+                                                 4
+scoop. The impact shoved the shield further onto the front of the No. 2007 scoop, striking Reece
+and pinning him between the underside of the shield canopy and the scoop’s glancer bars.
+
+Bonamo exited the cab of the scoop and called for help while moving in Tingley’s direction.
+Tingley trammed forward toward the setup face and was trying to determine what he struck when
+he heard Bonamo. Tingley exited his scoop and observed Reece pinned between the shield
+canopy and the No. 2007 scoop’s glancer bars. Tingley started yelling and signaling with his
+light towards the setup face headgate for help.
+
+Rankin was at the shield Tingley had just set and responded to Tingley’s call for help. Seeing
+Reece, Rankin immediately went to call Gordon Hoover, shift supervisor, for help and to retrieve
+first aid equipment. Hoover travelled to the 3 Left section.
+
+Ralph Dunlop, longwall utility, was also working on the setup face when he heard Tingley call
+for help and responded to the accident. Dunlop saw Reece pinned between the shield canopy and
+the scoop’s glancer bars and realized the shield canopy needed to be raised to free Reece. Dunlop
+went to the headgate and disconnected the shield pressure hose that was being used to pressurize
+the shields on the setup face. Dunlop started stretching it out to reach the shield on the No. 2007
+scoop. Lucas Riley, longwall section supervisor, had just left the 3 Left section on his way out of
+the mine when he learned of the accident and traveled back to the No. 2-1 crosscut and aided
+Dunlop with the hose. They connected the shield pressure hose to the shield pinning Reece and
+pressurized it, lifting the shield off Reece.
+
+Cody Holland, maintenance supervisor; William Rinderer, roof bolter on a continuous mining
+machine; and Shawn Silver, longwall machine operator, arrived at the scene. Silver brought first
+aid supplies and a backboard. The miners placed Reece on the backboard and transported him to
+the emergency ride. Tom Ott, longwall maintenance manager, and Lance Rossini, longwall
+maintenance coordinator, arrived as Reece was being placed into the emergency ride. Rankin
+drove the emergency ride while Rinderer, Ott, Rossini, and Holland provided aid to Reece.
+Hoover met the ride on his way into the section and notified Jason Collins, dispatcher, of the
+accident. Collins made the call to 911 at 10:30 a.m.
+
+Erik Costello, continuous mining machine mechanic and emergency medical technician (EMT),
+met the emergency ride on the way out of the mine. Costello entered the ride and Rossini exited
+to make room. Costello assessed Reece, did not detect a pulse, and made the decision to attempt
+cardiopulmonary resuscitation (CPR). Sloan Geho, assistant electrical coordinator and EMT,
+entered the emergency ride and assisted with CPR. Costello radioed Collins to request life flight
+transportation from the mine for Reece. The emergency ride arrived at the portal bottom and
+transported Reece to the surface. Reece’s care was turned over to Dallas Emergency Medical
+Services (EMS). Dallas EMS paramedics provided an assessment to Matthew Davis, Doctor of
+Osteopathic Medicine at WV Medical Coordination Center, who pronounced Reece dead at
+11:18 a.m.
+
+
+
+
+                                                5
+                            INVESTIGATION OF THE ACCIDENT
+
+On April 3, 2026, at 11:14 a.m., Matthew Cunningham, safety director, called the Department of
+Labor National Contact Center (DOLNCC). The DOLNCC notified Tyler Peddicord, assistant
+district manager. James Baker, assistant district manager, received email notification of the
+accident and notified Larry Johnson, supervisory mine safety and health inspector. Johnson sent
+Ralph James, mine safety and health inspector, to the mine to secure the scene and obtain written
+statements from miners. Baker assigned Joedy Gutta, mine safety and health specialist, as the
+lead investigator and they traveled to the mine. Peddicord assigned Allan Jack, mine safety and
+health specialist, to assist in the investigation and he traveled to the mine.
+
+At 12:52 p.m., James issued an order under the provisions of Section 103(k) of the Mine Act to
+ensure the safety of the miners and preservation of evidence. Gutta and Baker arrived at the mine
+at 2:40 p.m. and Jack arrived at 3:18 p.m.
+
+The MSHA accident investigation team together with the West Virginia Office of Miners’ Health
+Safety and Training conducted an examination of the accident scene, interviewed miners and
+mine management, and reviewed conditions and work procedures relevant to the accident. Refer
+to Appendix B for a list of persons who participated in the investigation.
+
+                                          DISCUSSION
+
+Location of the Accident
+The accident occurred on the 3 Left longwall setup in the No. 2-1 crosscut. The No. 2-1 crosscut
+was the only accessible roadway to the setup face because the shields were already set from the
+headgate to the 8th shield and from the tailgate to the 52nd shield. Investigators believe the turn
+from the setup face prevented a clear line of sight from the No. 1054 scoop operator’s
+compartment to identify the No. 2007 scoop and shield sitting in the No. 2-1 crosscut.
+
+Equipment Involved
+The equipment involved in the accident included two Caterpillar Model SH650 battery scoops
+and a Caterpillar Model 2013 longwall shield. The scoops were equipped with glancer bars that
+were designed to prevent a longwall shield canopy from damaging the operator canopy or other
+components installed on top of the scoops.
+
+The No. 1054 scoop made impact with the shield that was partially loaded on the No. 2007
+scoop. The investigators inspected and tested the scoop and determined the operating condition
+of the scoop did not contribute to the accident.
+
+The No. 2007 scoop was stationary while repairs were being made to the winch reel. The
+investigators visually inspected the scoop and tested the directional lights but did not perform
+function testing of the scoop since it was partially loaded with the shield and was not being
+operated at the time of the accident. The investigators found the scoop parked with the
+directional lights on and facing away from the setup face. The investigators determined the
+condition of the scoop did not contribute to the accident.
+
+
+
+                                                 6
+The Caterpillar shield, serial number 4088598, located on the duck bill of the No. 2007 scoop,
+was collapsed in a transport position, not connected to any hydraulic lines, and unable to be
+operated at the time of the accident. The investigators determined that the condition of the shield
+did not contribute to the accident.
+
+Maintenance and Repairs in Active Tram Roadway Procedures
+The operator did not have written policies or procedures to address performing maintenance or
+equipment repairs in an active tram roadway. There were no barricades, blocking, or warning
+lights in place to prevent equipment from entering the No. 2-1 crosscut. There was also no
+communication with the other scoop operators that the No. 2007 scoop was being repaired in the
+crosscut. Investigators determined this contributed to the accident.
+
+Examinations
+A pre-shift examination of the 3 Left section was conducted on April 3, 2026, between 5:00 a.m.
+and 5:28 a.m. The examination did not document any violations or hazardous conditions present.
+The investigators determined that the examination did not contribute to the accident.
+
+Training and Experience
+Reece had 18 years of mining experience, with over 11 years at the Ohio County Mine and 17
+years as a section supervisor. Reece received annual refresher training on February 17, 2026.
+Investigators determined Reece received all training in accordance with MSHA Part 48 training
+regulations.
+
+Tingley had 4 years total mining experience, with 3 years and 6 months at the Ohio County
+Mine. He had 2 years and 6 months of experience as a longwall utility laborer. Tingley received
+task training on the Caterpillar SH650 scoop on October 18, 2024, and annual refresher training
+on October 18, 2025. Investigators determined Tingley received all training in accordance with
+MSHA Part 48 training regulations.
+
+Bonamo had 10 years total mining experience including 7 months as a general inside laborer at
+the Ohio County Mine. Bonamo received scoop operator task training on November 13, 2025,
+and annual refresher training on August 20, 2025. Based on testimony, Bonamo was trained on
+the Caterpillar SH650 scoop by Reece on April 2, 2026, but no documentation could be
+provided. Investigators determined Bonamo received all training in accordance with MSHA Part
+48 training regulations.
+
+                                   ROOT CAUSE ANALYSIS
+
+The accident investigation team conducted an analysis to identify the underlying causes of the
+accident. The accident investigation team identified the following root cause, and the mine
+operator implemented the corresponding corrective action to prevent a recurrence.
+
+1. Root Cause: The mine operator did not have policies or procedures to address performing
+   maintenance or repairs.
+
+
+
+
+                                                 7
+Corrective Action: A safeguard was issued to address longwall set up and recovery regarding
+work performed on scoops and mobile equipment in haulage and tram roads. All impacted
+miners have been trained on the safeguard requirements.
+
+
+
+
+                                           8
+                                        CONCLUSION
+
+On April 3, 2026, at 10:21 a.m., Darin Reece, a 36-year-old section supervisor with 18 years of
+mining experience, died after he was struck by a longwall shield and pinned against a scoop.
+
+The accident occurred because the mine operator did not develop written policies and procedures
+addressing repairs to equipment.
+
+
+Approved By:
+
+
+
+________________________________                                        ____________________
+Carlos T. Mosley                                                                Date
+District Manager
+
+
+
+
+                                                9
+                                 ENFORCEMENT ACTIONS
+
+1. A 103(k) order was issued to Ohio County Coal Resources, Inc.
+
+   A fatal accident occurred on April 3, 2026, at 10:21 a.m. This order is being issued under the
+   authority of the Federal Mine Safety and Health Act of 1977, under Section 103(k) to insure
+   the safety of all persons at the mine and requires the operator to obtain the approval of an
+   authorized representative of MSHA of any plan to recover any person in the mine or to
+   recover the mine or affected area. This order prohibits any activity in the affected area. The
+   operator is reminded of the obligation to preserve all evidence that would aid in investigating
+   the cause or causes of the accident in accordance with 30 CFR 50.12.
+
+2. A 314(b) safeguard was issued to Ohio County Coal Resources, Inc. under the provisions of
+   30 CFR 75.1403.
+
+   On April 3, 2026, at 10:21 a.m., a section supervisor died after he was struck by a longwall
+   shield and pinned against a scoop while performing maintenance.
+
+   This is a notice to provide safeguard for the movement of equipment:
+
+   A. No work shall be performed on mobile equipment while a shield is loaded or partially
+      loaded.
+
+   B. No work shall be performed on mobile equipment in, active tram road if the mobile
+      equipment can be removed from the tram road.
+
+   C. If mobile equipment cannot be removed and repairs are being made in an active tram
+      road, approved strobe lights, and readily visible extension rods (pogo sticks) or cones
+      shall be used in all working areas of an underground mine where maintenance or repair
+      work is being performed and where there is a risk of collision or contact by any other
+      equipment that may be traveling in the affected area. The strobe lights, and extension
+      rods or cones shall be installed to provide warning to mobile equipment approaching the
+      work area.
+
+   D. A foreman shall be responsible for communicating the location of repair work activity to
+      mobile equipment operators utilizing the haulage or tram roads where the miners are
+      working.
+
+
+
+
+                                               10
+APPENDIX A – Map of the Accident Location
+
+
+
+
+                 11
+                 APPENDIX B – Persons Participating in the Investigation
+
+                             Ohio County Coal Company, Inc.
+Eric Koontz                                                                    Vice President
+Kyle Abeyta                                                        Corporate Safety Manager
+John Hayes                                                         Corporate Safety Manager
+Brian Hough                                                        Corporate Safety Manager
+Michael Savasta                                                    Corporate Safety Manager
+Ray Wilhelm                                                                 General Manager
+David Cutlip                                                                  Superintendent
+Drew Dally                                                                    Superintendent
+Matthew Cunningham                                                            Safety Director
+Bryan Rankin                                                    Longwall Support Supervisor
+Lucas Riley                                                     Longwall Section Supervisor
+Sloan Geho                                                   Assistant Electrical Coordinator
+Lance Rossini                                            Longwall Maintenance Coordinator
+Tom Ott                                                     Longwall Maintenance Manager
+Gordon Hoover                                                                Shift Supervisor
+Cody Holland                                                         Maintenance Supervisor
+Andrew Balcar                                                                General Counsel
+Christopher Pence                                              Attorney / Hardy Pence PLLC
+Michael Taylor                                                 Attorney / Hardy Pence PLLC
+Justin Wade                                            Continuous Mining Machine Operator
+Greggory Pepperling                                Roof Bolter (Continuous Mining Machine)
+William Rinderer                                   Roof Bolter (Continuous Mining Machine)
+Erik Costello                                         Continuous Mining Machine Mechanic
+Justin Schafer                                                                      Mechanic
+Michael Sprowls                                                                     Mechanic
+Shawn Silver                                                     Longwall Machine Operator
+Travis Altmeyer                                                              Longwall Utility
+Ralph Dunlop                                                                 Longwall Utility
+Garrett Tingley                                                              Longwall Utility
+Allan Bonamo                                                          General Inside Laborer
+Jason Collins                                                                      Dispatcher
+Beryl Blake                                                             Shuttle Car Operator
+
+                             United Mine Workers of America
+Thomas McGary                                                     International Representative
+Michael Kelley                                                                 Local President
+Josh Downing                                                                Safety Committee
+Mike Knight                                                                 Safety Committee
+
+                 West Virginia Office of Miners’ Health Safety and Training
+Frank Foster                                                                         Director
+Jeremy Ball                                                                   Deputy Director
+John Boothroyd                                                     Assistant Attorney General
+
+                                            12
+Edward Peddicord                                                     Inspector-at-Large
+Tadd Rankin                                                Assistant Inspector-at-Large
+Michael Matlick                                                       District Inspector
+Chris Ray                                                             District Inspector
+Ricky Rinehart                                                        District Inspector
+John Sparks                                                           District Inspector
+
+                   Mine Safety and Health Administration
+James Baker                                                Assistant District Manager
+Benjamin Hall                            Supervisory Mine Safety and Health Specialist
+Rodney Fultz                                         Mine Safety and Health Specialist
+Joedy Gutta                                          Mine Safety and Health Specialist
+Allan Jack                                           Mine Safety and Health Specialist
+Ralph James                                          Mine Safety and Health Inspector
+
+
+
+
+                                    13
+

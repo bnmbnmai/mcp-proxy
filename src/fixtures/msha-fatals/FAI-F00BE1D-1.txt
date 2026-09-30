@@ -1,0 +1,562 @@
+                                               FAI-F00BE1D-1
+
+             UNITED STATES
+         DEPARTMENT OF LABOR
+MINE SAFETY AND HEALTH ADMINISTRATION
+
+        REPORT OF INVESTIGATION
+
+                  Underground
+                    (Coal)
+
+      Machinery Accident Fatality Report
+               March 5, 2026
+
+                 Deer Run Mine
+               Patton Mining LLC
+     Hillsboro, Montgomery County, Illinois
+                ID No. 11-03182
+
+             Accident Investigators
+
+                Steven Dingess
+        Mine Safety and Health Inspector
+
+                Stephen Tisdale
+        Mine Safety and Health Inspector
+
+
+
+
+              Originating Office
+     Mine Safety and Health Administration
+         2300 Willow Street Suite 200
+             Vincennes, IN 47591
+     Mary Jo Bishop, Acting District Manager
+                                  TABLE OF CONTENTS
+
+OVERVIEW                                                       1
+
+GENERAL INFORMATION                                            1
+
+DESCRIPTION OF THE ACCIDENT                                    2
+
+INVESTIGATION OF THE ACCIDENT                                  3
+
+DISCUSSION                                                     4
+
+   Location of the Accident                                    4
+
+   Equipment Involved                                          4
+
+   Proximity Detection System                                  4
+
+   Defeating the Proximity Detection System                    6
+
+   Roof Control Plan                                           6
+
+   Examinations                                                7
+
+   Training and Experience                                     7
+
+ROOT CAUSE ANALYSIS                                            7
+
+CONCLUSION                                                     9
+
+ENFORCEMENT ACTIONS                                           10
+
+APPENDIX A – Section Map                                      11
+
+APPENDIX B – Persons Participating in the Investigation       12
+
+APPENDIX C – Diagram of a Complete PDS                        13
+
+APPENDIX D – Photograph of Smith’s Miner Wearable Component   14
+
+APPENDIX E– Red Zone Image from Roof Control Plan             15
+
+
+
+
+                                             ii
+                                         OVERVIEW
+
+On March 5, 2026, at 1:14 p.m., Jessie Smith, a 32-year-old continuous mining machine (CMM)
+operator with more than 6 years of mining experience died after being pinned between the CMM
+and the coal rib while tramming the CMM to the coal face of No. 3 entry.
+
+The accident occurred because the mine operator did not: 1) ensure miners followed provisions
+in the approved Roof Control Plan to prevent them from working or traveling in the red zone of
+the CMM while it was being moved or repositioned; and 2) ensure the miner wearable
+component (MWC) of the CMM’s proximity detection system (PDS) was worn in accordance
+with the manufacturer's recommendation.
+
+                                 GENERAL INFORMATION
+
+Patton Mining LLC owns and operates Deer Run Mine. Deer Run Mine is an underground
+bituminous coal mine located in Hillsboro, Montgomery County, Illinois. Deer Run Mine
+employs 80 miners and operates three 8-hour shifts, 5 days per week. Miners extract coal from
+the Herrin No. 6 coal seam with three mechanized mining units (MMU). Two MMUs consist of
+continuous mining machines, shuttle cars, roof bolting machines, scoops, and belt feeders. One
+MMU consists of a longwall shearer, pan line, and a stage loader. Coal is transported by belt
+conveyors to an onsite processing facility.
+
+
+
+
+                                               1
+The principal management officials at the Deer Run Mine at the time of the accident were:
+
+       Justice Carter                                                    General Manager
+       Tony Gilson                                                         Superintendent
+       Daniel Skinner                                                      Safety Director
+
+The Mine Safety and Health Administration (MSHA) completed the last regular safety and
+health inspection at this mine on December 23, 2025. The 2025 non-fatal days lost incident rate
+for the Deer Run Mine was 6.53, compared to the national average of 3.11 for mines of this type.
+
+                              DESCRIPTION OF THE ACCIDENT
+
+On March 5, 2026, Smith reported to work for the day shift at the Deer Run Mine. He was
+assigned the job duty as the substitute for one of the two CMM operators assigned to Headgate
+No. 9. The Headgate No. 9 crew, including Smith, entered the mine slope at 7:05 a.m. and
+traveled in a personnel carrier to the section. The Headgate No. 9 crew arrived at the section at
+7:25 a.m. and prepared for production.
+
+Joshua Goodman, CMM No. 29 operator, started mining the first cut out of entry No. 2. When
+Joshua Goodman finished, at 9:18 a.m. Smith started operating CMM No. 28 on Headgate No. 9.
+Smith mined one cut out of the No. 3 entry, ending at 10:04 a.m. Joshua Goodman then mined a
+cut out of the No. 1 entry, and after finishing the mining cut, trammed CMM No. 29 back to the
+No. 2 entry.
+
+After Joshua Goodman finished mining one cut out of the No. 2 entry left crosscut, Smith walked
+to the No. 3 entry where CMM No. 28 was already parked to take his second mining cut for the
+day. Cody Rufus, shuttle car operator, trammed the shuttle car into the No. 22 crosscut between
+the No. 2 and No. 3 entries in the last open crosscut. For further reference, a map of the section
+can be found in Appendix A.
+
+At 1:15 p.m., Rufus walked to the No. 3 entry to check on Smith, later stating in an interview
+that something did not seem right at the time. Rufus found Smith pinned between the conveyor
+tail of CMM No. 28 and the coal rib. Rufus then ran across the section to alert the other miners
+that Smith was pinned and to get help. Joshua Goodman heard Rufus’s call for help. Brian Gall,
+production coordinator, heard about the accident from Colby Cagle, ventilation technician, who
+also heard Rufus’s call. By the time Rufus returned to the accident scene, Joshua Goodman and
+Gall were working to get Smith unpinned. Joshua Goodman took the remote-control unit (RCU)
+from Smith. Gall and Rufus checked Smith’s vital signs. While he was pinned, they could not
+detect a pulse. The CMM could not be moved while the MWCs worn by Rufus and Gall were
+located in the PDS shutdown zone. Because of this, Rufus and Gall took their MWCs off and
+tossed them, so they were out of the PDS shutdown zone. At 1:18 p.m. Joshua Goodman
+repositioned the conveyor tail away from Smith, unpinning him. After Smith was unpinned,
+Joshua Goodman, Rufus, and Gall detected a weak pulse.
+
+
+
+
+                                                 2
+At 1:18 p.m., Joshua Goodman, Rufus, and Gall worked to open Smith’s airway. Smith was
+secured on a backboard and carried to Headgate No. 9 personnel carrier. Rufus checked again for
+a pulse, and no pulse was detected. Rufus and Gall performed cardiopulmonary resuscitation as
+Johnathan Goodman, shuttle car operator, transported Smith to the surface.
+
+When arriving on the surface at 1:43 p.m., the ambulance was waiting and transported Smith to
+Hillsboro Health Hospital. The ambulance arrived at Hillsboro Health Hospital at 1:59 p.m. and
+Dr. Sabir Rahmanny, attending physician, pronounced Smith dead on March 5, 2026, at 2:12
+p.m.
+
+                           INVESTIGATION OF THE ACCIDENT
+
+On March 5, 2026, at 1:30 p.m., Daniel Skinner, safety director, called the Department of
+Labor National Contact Center (DOLNCC). After contacting the DOLNCC, Skinner called
+Rexdon Boliard, mine safety and health inspector. Boliard contacted Dustin Galloway, staff
+assistant. Mary Jo Bishop, acting district manager, and Kevin Hirsch, assistant district
+manager, joined the call and Boliard informed them of the accident. Boliard informed them
+that he was enroute to the Litchfield field office, then he would be heading to the mine.
+Hirsch informed Daniel Bradley, supervisory mine safety and health inspector, of the
+accident. Bradley contacted Steven Dingess, mine safety and health inspector, and assigned
+him as the lead accident investigator.
+
+On March 5, 2026, at 2:40 p.m., Boliard arrived at the mine and issued an order under the
+provisions of section 103(k) of the Mine Act to ensure the safety of the miners and
+preservation of evidence. MSHA's accident investigation team, along with Bill Patterson,
+Illinois Department of Natural Resources (IDNR) inspector at large, conducted interviews
+with miners and mine management, examined the accident scene, and reviewed conditions
+and work procedures relevant to the accident.
+
+On March 7, 2026, Dingess, Tisdale, and Galloway conducted additional examinations at
+the mine with the help of MSHA Technical Support personnel Nicholas Fallova, general
+engineer, and Robert Bates, electrical engineer. Static tests of the PDS were performed with
+the placement of the machine as it was during the accident. After those tests were
+completed, CMM No. 28 was repositioned, and additional static and dynamic tests were
+performed around the entire machine. Jarrod Farris, Matrix Design Group field service
+technician, downloaded the Matrix data from CMM No. 28.
+
+On March 11, 2026, Tisdale, along with Chris Norris, maintenance chief, and Zach Denney,
+maintenance foreman, were able to retrieve the Joy/Komatsu data stored on CMM No. 28.
+MSHA Technical Support was able to overlap both the Matrix data and Joy/Komatsu data to
+show Smith’s MWC was not being worn in accordance with the manufacturer's
+recommendation. For further reference, a list of people who participated in the investigation
+can be found in Appendix B.
+
+
+
+
+                                               3
+                                         DISCUSSION
+
+Location of the Accident
+The accident occurred just inby the intersection of crosscut No. 22 in the No. 3 entry on
+Headgate No. 9 (Appendix A). The mine height in the entry where the accident occurred
+was 10 feet 3 inches. The mine floor was dry. The mine roof had metal screen wire installed
+and no support was installed in the coal ribs. Ventilation tubing was hung from the roof and
+extended from the No. 3 entry face to the auxiliary fan located in the return air course in the
+No. 3 entry.
+
+Equipment Involved
+The No. 28 CMM involved in the accident was a Joy Global/Komatsu, Inc., Model 12CM-
+27. The mine operator placed No. 28 CMM in service at the mine on September 11, 2023,
+after a re-build by Coal Age. The mine operator equipped the CMM with a Matrix
+IntelliZone PDS by Matrix Design Group. The No. 28 CMM was equipped with the Joy
+Network Architecture (JNA) control system.
+
+Proximity Detection System
+The purpose of the PDS is to stop the CMM before it contacts miners when it is being
+repositioned or trammed. The PDS activates an audio and visual warning when a CMM is a
+certain distance from a miner wearing an MWC. The PDS disables the tram and conveyor tail
+swing functions of the CMM before the CMM contacts a miner wearing an MWC. The PDS
+relies on signals between MWCs and machine mounted components (MMC) on the CMM. For
+further reference, an illustration of a complete PDS is in Appendix C.
+
+The MMCs include four electromagnetic field generators (referred to as drivers) and one
+Machine Mounted Locator (MML). Two drivers are located near the front of the CMM, one on
+each side, and two drivers are located near the rear, one on each side. One MML was mounted on
+the right side of CMM No. 28. MMLs are designed to prevent tramming or swinging of the
+conveyor tail of a CMM if the electromagnetic signal from one of the drivers changes by a
+preset amount. The PDS uses the electromagnetic fields generated by the drivers and radio
+signals from the MWCs to determine the location of each MWC relative to the CMM. When an
+MWC enters the warning or shutdown zones in the electromagnetic field, the MMCs and MWC
+recognize the intrusion and relay the appropriate signal to the system. For further reference, a
+photograph of Smith's MWC is in Appendix D.
+
+The PDS has two zones: a warning zone and a shutdown zone. When the system is working
+properly and a miner enters the warning zone while wearing an MWC, yellow lights flash on all
+four drivers, and the MWC emits a slow beeping signal with a flashing yellow light. If a miner
+wearing an MWC enters the shutdown zone, red lights flash on all four drivers, the MWC emits a
+fast-beeping signal with a flashing red light, and the PDS disables the tram and conveyor tail
+swing functions of the CMM.
+
+However, if the MWC is metallically shielded, the electromagnetic fields from the drivers are not
+accurately measured by the MWC, and the warning and shutdown zones do not work as
+intended. A warning from the Matrix user manual states: “Do not position the MWC on the
+
+                                               4
+continuous mining machine.”
+
+Investigators reviewed electronic data stored on the PDS and JNA control system. PDS and JNA
+data revealed:
+
+ •     The JNA data revealed Smith was tramming CMM No. 28 when he became pinned.
+ •     The Matrix electronic data from Smith’s MWC, while he was tramming the No. 28
+       CMM, depicted behavior that was consistent with an MWC that was metallically
+       shielded.
+ •     At 1:14 p.m. the No. 28 CMM conveyor tail repositioned toward the right rib while
+       tramming and the right rear of the CMM turned toward the right rib, pinning Smith.
+ •     At 1:18 p.m., the JNA control system showed the CMM restarting and the conveyor
+       tail moving away from Smith.
+
+An MWC must be associated as the CMM operator before the PDS will allow the CMM to be
+operated. To associate the MWC as the CMM operator, a miner must double click the button on
+the MWC then double click again when the screen asks to confirm. After Smith was transported
+to the surface, Shannon Wilson, scoop operator, found Smith’s MWC in an area of the conveyor
+tail of No. 28 CMM that shielded the MWC, allowing the CMM to operate without triggering the
+shutdown zone given Smith’s location. Wilson then placed the MWC in the pouch on Smith’s
+belt and placed the belt on the ground in the location he found it, near the conveyor tail.
+
+Joshua Goodman told investigators that when the fatal accident occurred, he was not wearing his
+MWC because it was in the area of the conveyor tail of the No. 29 CMM that shielded the
+MWC, like Smith’s MWC. As previously stated, the other miners had to either step out of the
+shutdown zone or place their MWCs to an area outside of the shutdown zone so Joshua
+Goodman could start the No. 28 CMM and reposition the conveyor tail.
+
+On March 7, 2026, investigators conducted static and dynamic tests on the PDS on the No.
+28 CMM. Static tests measure warning and shutdown zone distances by positioning MWCs
+in warning and shutdown zone locations while the CMM is not moving. This is done to
+measure the warning and shutdown zone distances around the CMM. Dynamic tests are
+performed by tramming the CMM toward an MWC that is stationary to see if the PDS will
+stop the CMM before contacting an MWC.
+
+Investigators performed static testing to simulate conditions at the time of the accident,
+placing Smith’s MWC in a pouch on his mining belt along with other items that he had
+possession of at the time of the accident: a self-contained self-rescuer, an electronic tracker,
+and a battery for the No. 28 CMM RCU. The RCU was used with the No. 28 CMM in the
+same position it was in at the time of the accident. During the static testing, investigators
+observed that the PDS worked as it should when the MWC was used in the Matrix User
+Manual’s recommended location on the body or in a Matrix-approved pouch. When the
+MWC was placed in the No. 28 CMM conveyor tail, as was found after the accident, the
+drivers would turn green and allow No. 28 CMM to operate with full tram and conveyor tail
+functioning during repositioning.
+
+
+                                               5
+Investigators performed additional static tests with the help of MSHA Technical Support by
+using Smith’s MWC and taking measurements of the warning and shutdown zones around
+the No. 28 CMM. Investigators observed that the PDS stopped the CMM before the CMM
+contacted the MWC at the rear half of the CMM where the victim was located, including
+around the conveyor tail.
+
+Dynamic testing was performed with Smith’s MWC at the location of the accident, and at
+other locations around the CMM. When Smith's MWC was placed at the location of the
+accident, the PDS stopped the CMM before the CMM contacted the MWC each time the
+dynamic test was conducted. To simulate the conditions at the time of the accident during
+these dynamic tests, investigators placed Smith's MWC in a pouch on his miner's belt along
+with other items Smith had possession of at the time of the accident: a self-contained self-
+rescuer, an electronic tracker, and a battery for the RCU. Investigators placed the miner's
+belt along the right rib at the accident location. Investigators performed additional dynamic
+tests by placing Smith's MWC in stationary positions around the CMM. The PDS stopped
+the CMM from contacting the MWC in all dynamic tests.
+
+Investigators determined that if Smith had been wearing his MWC in the Matrix User Manual’s
+recommended location (on his body or in a Matrix-approved pouch), the PDS would have
+entered “shutdown” mode and would have prevented the CMM from contacting him.
+
+Defeating the Proximity Detection System
+Investigators determined through interviews that Smith, along with other CMM operators,
+were defeating the PDS by placing the MWC in areas of the conveyor tail that surrounded
+the MWC with metal. This created an electromagnetic shield that caused the PDS to assign
+locations to the MWC outside the shutdown zone. When the MWC was shielded in this
+manner, it allowed the CMM operator to be anywhere around the CMM while performing
+any function of the machine including tramming and repositioning the tail.
+
+Brian Millburg, section foreman, stated during interviews that a week prior to the accident
+he observed Smith taking his MWC out of an area of the No. 28 CMM conveyor tail that
+would allow him to tram the machine while being positioned in the shutdown zone. After
+observing Smith doing this, Millburg verbally counseled Smith not to place his MWC on the
+conveyor tail. However, no other disciplinary action was taken. Additionally, Millburg
+observed Joshua Goodman defeating the MWC in this same way approximately 2 months
+prior to the accident. Joshua Goodman stated during interviews that it was common practice
+for CMM operators to place their MWCs in an area of the conveyor tail to operate the CMM
+in the shutdown zone. The mine operator had no written policy to discipline CMM operators for
+defeating the PDS and operating the CMM in the shutdown zone. Investigators determined that
+the mine operator did not ensure the MWC of the CMMs PDS was worn in accordance with the
+manufacturer's recommendation, which contributed to the accident.
+
+Roof Control Plan
+Deer Run Mine’s roof control plan (RCP) was submitted on June 11, 2020 and approved by
+MSHA on June 15, 2020. Page 19, item 4 of the RCP states: “during place changing, including
+repositioning of the continuous mining machine within the working place, all persons involved
+
+                                               6
+with the move shall be positioned in an area outby any part of the continuous mining machine
+while the machine is being trammed.” Red zone illustrations on page 22 of the RCP address the
+red zone provisions. The RCP states "Red Zones are No Zones!” For further reference,
+illustrations of red zones around CMMs can be found in Appendix E.
+
+The RCP’s red zone provisions were not followed. The accident occurred when the victim was in
+the red zone and became pinned between the CMM and the coal rib while tramming the CMM to
+the working place. Investigators determined that this contributed to the accident.
+
+Examinations
+The last electrical examination of the No. 28 CMM was conducted on February 28, 2026, and the
+examination report states that the examiner rewrapped splices. Investigators determined,
+however, that because re-insulating trailing cable splices does not affect the functionality of the
+PDS system, this did not contribute to the accident.
+
+Training and Experience
+Smith had over six years of underground mining experience with about four years of
+experience as a CMM operator. Smith received his CMM training at Deer Run Mine on
+February 14, 2022 and his PDS training on July 30, 2020. Investigators determined Smith
+received all training in accordance with MSHA Part 48 training regulations.
+
+                                   ROOT CAUSE ANALYSIS
+
+The accident investigation team conducted an analysis to identify the underlying causes of the
+accident. The team identified the following root causes, and the mine operator implemented the
+corresponding corrective actions to prevent a recurrence.
+
+1. Root Cause: The mine operator did not ensure miners followed provisions in the approved
+   RCP to prevent them from working or traveling in the red zone of the CMM while it was
+   being moved or repositioned.
+
+   Corrective Actions: The mine operator retrained miners on the following provision of the
+   approved RCP: Page 19, item 4, specifies that during place changing, including re-
+   positioning of the continuous mining machine within the working place, all persons involved
+   with the move shall be positioned in an area outby any part of the continuous mining machine
+   while the machine is being trammed. Additionally, the illustration on page 22 states: “Red
+   Zones are No Zones.”
+
+2. Root Cause: The mine operator did not ensure the MWC of the CMM’s PDS was worn in
+   accordance with the manufacturer's recommendation.
+
+   Corrective Action: The mine operator developed and implemented procedures for PDS
+   examinations and red zone safety and implemented them into the RCP. The procedures
+   require a foreman to visually examine for proper placement of the MWC on each CMM
+   operator at the beginning of the shift and a mid-shift visual exam is performed. The
+   foreman is required to record the examinations in the on-shift exam record for each shift.
+
+                                                 7
+All CMM operators shall wear a high-visibility vest, and the MWC shall be visible at
+approximately mid-chest height. The mine operator developed a policy regarding CMM
+operators’ attire and MWC placement. The policy was posted with other MSHA plan
+postings for all mine personnel to see. The mine operator retrained all miners and
+foremen using Matrix trainers on how to conduct a proper static and dynamic test, and
+proper placement of the MWC.
+
+
+
+
+                                        8
+                                       CONCLUSION
+
+On March 5, 2026, at 1:14 p.m., Jessie Smith, a 32-year-old CMM operator with more than 6
+years of mining experience died after being pinned between the CMM and the coal rib while
+tramming the CMM to the coal face of No. 3 entry.
+
+The accident occurred because the mine operator did not: 1) ensure miners followed provisions
+in the approved RCP to prevent them from working or traveling in the red zone of the CMM
+while it was being moved or repositioned; and 2) ensure the MWC of the CMMs PDS was worn
+in accordance with the manufacturer's recommendation.
+
+Approved By:
+
+
+
+
+Mary Jo Bishop                                                              Date
+Acting District Manager
+
+
+
+
+                                              9
+                                ENFORCEMENT ACTIONS
+
+1. A 103(k) order was issued to Patton Mining LLC.
+
+   A fatal accident occurred on March 5, 2026, at approximately 1:20 p.m. at this mine in the
+   Headgate 9 MMU 001 when a miner operator was pinned against the rib in the No. 3 entry
+   by the No. 28 continuous mining machine. This order is being issued under the authority of
+   the Federal Mine Safety and Health Act of 1977, under Section 103(k) to insure the safety of
+   all persons at the mine, and requires the operator to obtain the approval of an authorized
+   representative of MSHA of any plan to recover any person in the mine or to recover the mine
+   or affected area. This order prohibits any activity in the affected area. The operator is
+   reminded of the obligation to preserve all evidence that would aid in investigating the cause
+   or causes of the accident in accordance with 30 CFR 50.12.
+
+2. A 104(d)(2) order was issued to Patton Mining LLC for a violation of 30 CFR 75.220(a)(l).
+
+   The mine operator did not follow the conditions of the roof control plan (RCP) approved by
+   the District Manager on Headgate No. 9 on March 5, 2026, when a miner was fatally injured
+   in the red zone while tramming continuous mining machine (CMM) No. 28 to the coal face of
+   entry No. 3 inby the last open crosscut. The miner was positioned beside CMM while it was
+   being trammed. On page 22 of the approved RCP the illustration states: “Red Zones Are No
+   Zones.” The approved RCP on page 19, item No. 4 states: “during place changing, including
+   re-positioning of the continuous mining machine within the working place, all persons
+   involved with the move shall be positioned in an area outby any part of the continuous
+   mining machine while the machine is being trammed. If an operator’s compartment is
+   provided and a cab or canopy is required due to the mining height, then the continuous miner
+   shall be trammed from the compartment.” Neither of these parts of the roof control plan was
+   followed by the mine operator. The mine operator engaged in aggravated conduct
+   constituting more than ordinary negligence. This violation is an unwarrantable failure to
+   comply with a mandatory standard.
+
+3. A 104(d)(2) order was issued to Patton Mining LLC for a violation of 30 CFR 75.1732(a).
+
+   On March 5, 2026, at 1:14 p.m., a fatal accident occurred on the Headgate No.9. A
+   continuous mining machine (CMM) operator was pinned between CMM No. 28’s right side
+   conveyor tail near the rear of the machine and the coal rib, while tramming CMM No. 28 in
+   the No. 3 entry inby the last open crosscut to the coal face. The mine operator knew CMM
+   operators were placing the MWC of the PDS in an area of the conveyor tail that allowed
+   them to operate the CMM in the shutdown zone. Multiple CMM operators had been caught
+   operating the CMMs with the MWCs in the conveyor tail of the CMM. The mine had no
+   written policy to discipline CMM operators for operating the CMM in the shutdown zone.
+   The mine operator engaged in aggravated conduct constituting more than ordinary
+   negligence. This violation is an unwarrantable failure to comply with a mandatory standard.
+
+
+
+
+                                              10
+APPENDIX A – Section Map
+
+
+
+
+          11
+                   APPENDIX B – Persons Participating in the Investigation
+
+                                    Patton Mining, LLC
+Justice Carter                                                              General Manager
+Tony Gilson                                                                    Superintendent
+Nicholas Lands                                                      Corporate Safety Director
+Daniel Skinner                                                                 Safety Director
+Brian Monk                                                                           Engineer
+Brian Gall                                                             Production Coordinator
+Chris Norris                                                               Maintenance Chief
+Zach Denney                                                            Maintenance Foreman
+Brian Millburg                                                               Section Foreman
+Joshua Goodman                                                                CMM Operator
+Devin Roach                                                                   CMM Operator
+Johnathan Goodman                                                       Shuttle Car Operator
+Cody Rufus                                                              Shuttle Car Operator
+Kanan Riggs                                                                      Roof Bolter
+Holten Enloe                                                                     Roof Bolter
+Tyler Walters                                                                    Roof Bolter
+Colby Cagle                                                           Ventilation Technician
+Shannon Wilson                                                                Scoop Operator
+Mathew Page                                                          Maintenance Electrician
+
+                                      Joy Global, Inc.
+Bryon Helfrich                                                        Field Service Technician
+
+                                   Matrix Design Group
+
+Jarrod Farris                                                        Field Service Technician
+
+                         Illinois Department of Natural Resources
+
+Bill Patterson                                                               Inspector at Large
+Ryan Kern                                                                       State Inspector
+Jay Mattern                                                                     State Inspector
+
+                            Mine Safety and Health Administration
+
+Rexdon Boliard                                             Mine Safety and Health Inspector
+Stephen Tisdale                                            Mine Safety and Health Inspector
+Steven Dingess                                             Mine Safety and Health Inspector
+Dustin Galloway                                                             Staff Assistant
+Nicholas Fallova                                                          General Engineer
+Robert Bates                                                            Electrical Engineer
+
+
+
+                                             12
+APPENDIX C – Diagram of a Complete PDS
+
+
+
+
+    1. Miner wearable component (MWC)
+                   2.Drivers
+               3. Power supply
+           4. Controller assembly
+            5.Splitter Assemblies
+               6.Wave antenna
+              7. Dome antenna
+     8. Machine mounted locator (MML)
+
+
+
+
+                 13
+APPENDIX D – Photograph of Smith’s Miner Wearable Component
+
+
+
+
+                            14
+APPENDIX E– Red Zone Image from Roof Control Plan
+
+
+
+
+                       15
+

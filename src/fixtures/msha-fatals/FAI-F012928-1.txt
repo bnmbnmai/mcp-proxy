@@ -1,0 +1,415 @@
+                                                                 FAI-F012928-1
+
+                UNITED STATES
+            DEPARTMENT OF LABOR
+   MINE SAFETY AND HEALTH ADMINISTRATION
+
+              REPORT OF INVESTIGATION
+
+                        Underground
+                          (Coal)
+
+Fall of Face, Rib, Pillar or Highwall Accident Fatality Report
+                         May 19, 2026
+
+                      Bailey Mine
+         Consol Pennsylvania Coal Company LLC
+         Wind Ridge, Greene County, Pennsylvania
+                    ID No. 36-07230
+
+                   Accident Investigators
+
+                    Nicholas Blevins
+             Mine Safety and Health Specialist
+
+                     Travis Hamrick
+             Mine Safety and Health Specialist
+
+
+
+
+                    Originating Office
+           Mine Safety and Health Administration
+                   Morgantown District
+                     604 Cheat Road
+            Morgantown, West Virginia 26508
+             Carlos Mosley, District Manager
+                                  TABLE OF CONTENTS
+
+OVERVIEW                                                   1
+
+GENERAL INFORMATION                                        1
+
+DESCRIPTION OF THE ACCIDENT                                2
+
+INVESTIGATION OF THE ACCIDENT                              3
+
+DISCUSSION                                                 3
+
+   Location of the Accident                                3
+
+   Geology                                                 4
+
+   Approved Roof Control Plan                              4
+
+   Examinations                                            4
+
+   Training and Experience                                 5
+
+ROOT CAUSE ANALYSIS                                        5
+
+CONCLUSION                                                 6
+
+ENFORCEMENT ACTIONS                                        7
+
+APPENDIX A – Map of the Accident Location                  8
+
+APPENDIX B – Persons Participating in the Investigation    9
+
+APPENDIX C – Location of Accident                         10
+
+
+
+
+                                             ii
+                                          OVERVIEW
+
+On May 19, 2026, at 9:50 p.m., Zachary Wolfe, a 34-year-old assistant shift foreman with 13
+years of mining experience, died when a large section of rib fell and pinned him to the mine
+floor.
+
+The accident occurred because there were inadequate policies and procedures in place to support
+or otherwise control the mine ribs where miners work or travel.
+
+                                  GENERAL INFORMATION
+
+Core Natural Resources, Inc. owns Consol Pennsylvania Coal Company, LLC, who operates the
+Bailey Mine, an underground bituminous coal mine located in Aleppo, Greene County,
+Pennsylvania. The Bailey Mine employs 699 miners, and operates three 8-hour production shifts,
+6 days per week. The mine extracts coal from the Pittsburgh No. 8 coal seam with seven
+continuous mining machine units and two longwall units. The average mining height is 96
+inches. Belt conveyors are used to transport the coal from the mining units to the surface.
+Core Natural Resources, Inc utilizes Jennmar Services as a contractor that supplies laborers to
+the Bailey Mine to perform a variety of services.
+
+The principal management officials at the Bailey Mine at the time of the accident were:
+
+       Timothy Stevens                                                   General Manager
+       Steve Barr                                                         Superintendent
+       Benjamin Sibert                                                     Mine Foreman
+       Michael Tennant                                                  Manager of Safety
+
+                                                1
+The Mine Safety and Health Administration (MSHA) completed the last regular safety and
+health inspection at this mine on March 31, 2026. A regular safety and health inspection was
+ongoing at the time of the accident; however, no MSHA personnel were on site at the time of the
+accident. The 2025 non-fatal days lost incident rate for the Bailey Mine was 1.72, compared to
+the national average of 3.89 for mines of this type.
+
+                              DESCRIPTION OF THE ACCIDENT
+
+Zachary Wolfe, assistant shift foreman, entered the mine at the Aleppo Portal for the afternoon
+shift at approximately 4:35 p.m. He traveled to the 15L tailgate section to check the section
+status. Wolfe then traveled to the 7 South Mains section and arrived at approximately 9:00 p.m.
+He walked to the left side of the section and met with Levi Durbin, section supervisor, to check
+the section status. Wolfe then walked to the right side of the 7 South Mains and met with Matt
+Pratt, section supervisor. Wolfe and Pratt walked to the 24 block No. 6-7 crosscut to evaluate the
+rib roll condition that had been recorded in the pre-shift examination book.
+
+Deja Schultz, general inside contractor, and Zachary Rampero, general inside contractor, were
+working in the 24 block No. 6-7 crosscut off-loading supplies from supply cars using the No. 35
+scoop. Schultz and Rampero were employed by Jennmar Services.
+
+Pratt had instructed Rampero to clean the rib roll from the walkway earlier in the shift.
+According to interviews, Schultz and Rampero told Wolfe and Pratt the inby rib corner in the No.
+6-7 crosscut had been taking weight and making noise during their shift. Pratt and Wolfe
+evaluated the rib and informed Schultz and Rampero that posts needed to be set to danger the
+area off. Wolfe said he would help get the posts set in the crosscut. Schultz and Rampero went to
+retrieve posts, cap blocks, and wedges to set in the area.
+
+Wolfe, Schultz, and Rampero set the first post at the corner of the rib. Wolfe then instructed Pratt
+to retrieve a piece of rope to wrap around the perimeter of the posts once they were all set to
+barricade the area off. Wolfe, Schultz, and Rampero set the second post. Wolfe radioed David
+Camus, mine examiner, to inform him that the rib roll condition reported in the pre-shift
+examination book was corrected and could be recorded as such.
+
+Wolfe and Rampero began installing the third post while Schultz handed them the cap blocks and
+wedges. Wolfe began driving the wedge above the third post when a large piece of rock fell from
+the rib and pinned him to the mine floor. Schultz and Rampero dove out of the way of the falling
+rock. Once the dust cleared, Schultz could see Wolfe underneath the fallen rock. Schultz checked
+Wolfe’s pulse but did not detect one. Schultz immediately ran toward the 7 South Mains power
+center to find help. For further reference, a map of the accident location can be found in
+Appendix A.
+
+Schultz encountered Pratt on the way to the power center and told him what happened. Pratt
+radioed James Peel, bunker attendant, and informed him of the accident. Peel called Harvey
+Livingood, tracking center operator, and informed him of the accident. Livingood called 911 at
+9:59 p.m. Pratt proceeded to the accident scene and immediately radioed for help from the 7
+South section crew members. Durbin and Rick Guy, section equipment operator and emergency
+
+                                                 2
+medical technician (EMT), responded to the accident scene. Guy checked for Wolfe’s pulse but
+did not detect one. Other crew members from both 7 South Mains sections began arriving at the
+accident scene. Guy asked for a scoop operator to lift the rock pinning Wolfe because it was too
+large to move by hand. Jeff Hillberry, utility, operated the scoop that was being used to unload
+supplies. Guy directed Hillberry while he maneuvered the scoop under the rock to lift it. Crew
+members blocked the rock as it was being lifted by the scoop. After a few lifts by the scoop, the
+rock was raised high enough to remove Wolfe.
+
+Crew members placed Wolfe on a backboard and carried him to a diesel personnel carrier located
+on the track. Guy used a stethoscope from the EMT kit to check for Wolfe’s pulse but he did not
+detect one. Guy and other crew members rode with Wolfe in the personnel carrier to the portal
+bottom and transported Wolfe to the surface. Wolfe’s care was transferred to Washington County
+Ambulance and Chair Service. Greene County, Pennsylvania Coroner Carl E. Rush also arrived
+at the mine site and pronounced Wolfe deceased at 11:39 p.m. on May 19, 2026.
+
+                             INVESTIGATION OF THE ACCIDENT
+
+On May 19, 2026, at 10:36 p.m., Peel called the Department of Labor National Contact Center
+(DOLNCC). The DOLNCC notified Larry Johnson, supervisory mine safety and health
+inspector. James Baker, assistant district manager, received an email notification of the accident
+and notified Michael Stark, staff assistant. Stark assigned Nicholas Blevins, mine safety and
+health specialist, as the lead investigator. Baker and Blevins traveled to the mine. Stark assigned
+Travis Hamrick, mine safety and health specialist, to assist in the investigation and he traveled to
+the mine.
+
+Baker and Blevins arrived at the Aleppo Portal at 2:05 a.m. on May 20, 2026. Blevins issued an
+order under the provisions of Section 103(k) of the Mine Act to ensure the safety of the miners
+and preservation of evidence. Hamrick arrived at 2:15 a.m. on May 20, 2026.
+
+The MSHA accident investigation team together with the Pennsylvania Department of
+Environmental Protection – Bureau of Mine Safety conducted an examination of the accident
+scene, interviewed miners and mine management, and reviewed conditions and work procedures
+relevant to the accident. For reference, a list of persons who participated in the investigation can
+be found in Appendix B.
+
+                                          DISCUSSION
+
+Location of the Accident
+The accident occurred on the 7 South Mains section in the No. 6-7 crosscut at 24 block. This
+crosscut is adjacent to the track which is used to transport supplies to the 7 South Mains sections.
+This crosscut was mined in January 2026. The depth of cover at the accident location was
+approximately 1,060 feet and the mining height was 9 feet. For further reference, a map of the
+location of the accident can be found in Appendix C.
+
+
+
+
+                                                 3
+Geology
+The mine floor is typically a firm shale, but where the accident occurred the mine floor was
+weaker and moisture sensitive. The bottom portion of the coal seam was left unmined as a barrier
+to the weak floor and to create solid roadways for equipment to operate on. The mine operator
+directed the crews to mine additional roof strata to maintain the entry height because of the
+unmined floor coal. The crosscut entry height was 9 feet. The rib strata consisted of 52 inches of
+coal, 10 inches of rock binder, 10 inches of rider seam coal, and 36 inches of shale. Mining the
+additional roof strata exposed more of the top layer of shale. Crosscuts in the east-west direction,
+such as the No. 6-7 crosscut, typically exhibited heavier sloughage of the coal caused by the cleat
+orientation. The sloughage of the coal can create an overhanging rock brow in the shale portion
+of the rib. The rock that pinned Wolfe fell from the top layer of shale and measured 96 inches
+long, 30 inches wide, and ranged from 18 to 26 inches thick. The approximate weight of the
+fallen material is 3 tons.
+
+Approved Roof Control Plan
+The approved Roof Control Plan (RCP) at the time of the accident required rib bolts to be
+installed when the depth of cover is greater than 700 feet and where the mining height is greater
+than 7 feet. The plan required a minimum of one 36-inch long rib bolt be installed no more than
+10 feet apart during the active mining cycle. A variety of skin control components were also
+approved to be used in conjunction with the rib bolts. A 12-foot wide spacing tolerance was
+permitted after the initial rib bolting cycle to allow for damaged or loose rib bolts.
+
+The rib support installed in the No. 6-7 crosscut was a mixture of 36-inch long and 48-inch long
+mechanically anchored rib bolts with an 18 by 18-inch pie pan, and a 6 by 6-inch metal bearing
+plate. The rib supports were installed on approximately 4-foot spacing, and each rib bolt was
+within 6 inches above or below the interface of the rider coal seam to the top layer of shale. The
+ventilation tubing was on this rib during initial mining. More of the top shale layer of the rib was
+exposed but the rib bolts could not be installed as high as they needed to be because of the
+ventilation tubing.
+
+According to interviews, prior to the accident, several of the rib bolts in the area where the rib
+roll occurred were loose and not in contact with the rib due to sloughage. This location is outby
+the loading point and therefore no longer considered part of the active mining cycle. The mine
+operator was in compliance with the approved RCP; however, the location of the rib bolts was
+not adequate to control the mine rib. The investigation team determined the loose rib bolts and
+the lack of rib bolts installed in the upper shale layer of the rib contributed to the accident.
+
+Examinations
+A pre-shift examination of the 7 South Mains track was conducted on May 19, 2026, between
+12:00 p.m. and 1:30 p.m. The examination documented a rib roll located on the 7 South track at
+24 block along the walk side of the track. The investigation team determined the examination did
+not contribute to the accident.
+
+
+
+
+                                                 4
+Training and Experience
+Wolfe had 13 years of mining experience, all at the Bailey Mine, and 2 years as the assistant shift
+foreman. Wolfe received annual refresher training on March 4, 2026. Investigators determined
+Wolfe received all training in accordance with MSHA Part 48 training regulations.
+
+Schultz had 7 years and 7 months of mining experience, with the last 5 months at the Bailey
+Mine, all as a general inside contractor. Schultz received annual refresher training on July 2,
+2025. Investigators determined Schultz received all training in accordance with MSHA Part 48
+training regulations.
+
+Rampero had 5 months of mining experience, all at the Bailey Mine, and all as a general inside
+contractor. Rampero received 80-hour new miner training on December 4, 2025. Investigators
+determined Rampero received all training in accordance with MSHA Part 48 training regulations.
+
+
+                                   ROOT CAUSE ANALYSIS
+
+The accident investigation team conducted an analysis to identify the underlying causes of the
+accident. The accident investigation team identified the following root cause, and the mine
+operator implemented the corresponding corrective action to prevent a recurrence.
+
+Root Cause: The accident occurred because there were inadequate policies and procedures in
+place to support or otherwise control the mine ribs where miners work or travel.
+
+Corrective Action: The mine operator developed and implemented the following action plan for
+rib bolting procedures on development. The action plan was approved.
+
+Primary rib bolts installed during the initial mining cycle when using full face continuous mining
+machine with integral bolters:
+   1. The spacing of rib bolts will not exceed 5 feet horizontally during the active mining
+      cycle. One of the following options shall be used:
+
+       a. Two 48-inch (minimum) length rib bolts in conjunction with pie pans, mini monster
+          mats, or equivalent, installed vertically. The upper bolt will be installed in the upper
+          third of the entry or place being mined. The lower bolt will be in the upper half of the
+          entry or place being mined.
+
+       b. Two 48-inch (minimum) in length rib bolts in conjunction with a minimum 48-inch
+          length T3 Channel (with 2 holes) or equivalent. The channel will extend into the
+          upper third of the entry or place being mined. If necessary, the upper bolt may be
+          installed during the secondary mining cycle.
+
+   2. Provisions in the current approved roof control plan shall remain in effect.
+
+   3. The more rigid GMS pie pans shall be used in the 7 South Mains Right and Left Sections.
+
+
+                                                5
+The mine operator has trained all miners in the action plan procedures. This training will also be
+provided for newly hired employees and during annual refresher training for all miners.
+
+
+                                         CONCLUSION
+
+On May 19, 2026, at 9:50 p.m., Zachary Wolfe, a 34-year-old assistant shift foreman with 13
+years of mining experience, died when a large section of rib fell and pinned him to the mine
+floor.
+
+The accident occurred because there were inadequate policies and procedures in place to support
+or otherwise control the mine ribs where miners work or travel.
+
+Approved By:
+
+
+
+________________________________                                         ____________________
+Carlos Mosley                                                                    Date
+District Manager
+
+
+
+
+                                                 6
+                                 ENFORCEMENT ACTIONS
+
+1. A 103(k) order was issued to Consol Pennsylvania Coal Company LLC.
+
+   A fatal accident occurred on May 19, 2026, at approximately 9:45 p.m. This order is being
+   issued under the authority of the Federal Mine Safety and Health Act of 1977, under Section
+   103(k) to insure the safety of all persons at the mine, and requires the operator to obtain the
+   approval of an authorized representative of MSHA of any plan to recover any person in the
+   mine or to recover the mine or affected area. This order prohibits any activity in the affected
+   area. The operator is reminded of the obligation to preserve all evidence that would aid in
+   investigating the cause or causes of the accident in accordance with 30 CFR 50.12.
+
+2. A 104(a) citation was issued to Consol Pennsylvania Coal Company LLC under the
+   provisions of 30 CFR 75.202(a).
+
+   The operator did not adequately support or otherwise control the mine rib in the No. 6-7
+   crosscut at 24 block in 7 South Mains. On May 19, 2026, an assistant shift foreman was
+   fatally injured when a large section of rib fell out and pinned him to the mine floor. The
+   victim and two contractors were in the process of setting posts to barricade off the area to
+   prevent travel along the rib line. The barricade was being constructed as a corrective action to
+   a hazard noted in the pre-shift book on the previous shift. The size of the rock measured 96
+   inches long, 30 inches wide, and ranged from 18 to 26 inches thick.
+
+
+
+
+                                                7
+                             APPENDIX A – Map of the Accident Location
+
+
+
+
+The posts (pink) were set left to right.
+
+
+
+
+                                              8
+                     APPENDIX B – Persons Participating in the Investigation
+
+                            Consol Pennsylvania Coal Company LLC
+
+Joshua Koontz                                                      Vice President of Operations
+Todd Moore                                                             Vice President of Safety
+Michael Tennant                                                              Manager of Safety
+Scott Watson                                                     Manager of Risk Management
+Gaven Verbosky                                            Manager of Safety (Enlow Fork Mine)
+Timothy Stevens                                                               General Manager
+Steve Barr                                                                       Superintendent
+Ben Sibert                                                                       Mine Foreman
+Brett Hixson                                                                     Mine Engineer
+Johnathan Chmelik                                                      Assistant Mine Engineer
+Levi Durbin                                                                  Section Supervisor
+Matt Pratt                                                                   Section Supervisor
+David Camus                                                                     Mine Examiner
+David Duplinksy                                                                 Mine Examiner
+Rick Guy                                                     Section Equipment Operator/EMT
+Jeff Hillberry                                                                           Utility
+Deja Schultz                                               General Inside Contractor (Jennmar)
+Zachary Rampero                                            General Inside Contractor (Jennmar)
+
+
+       Pennsylvania Department of Environmental Protection – Bureau of Mine Safety
+
+Bradley Russian                                                 Bituminous Program Manager
+Michael Hess                                Bituminous Underground Mine Inspector Supervisor
+Mathia Mooney                                                      Bituminous Mine Inspector
+Dale Piper                                                         Bituminous Mine Inspector
+
+
+                             Mine Safety and Health Administration
+
+James Baker                                                         Assistant District Manager
+Michael Stark                                                                   Staff Assistant
+Nicholas Blevins                                              Mine Safety and Health Specialist
+Travis Hamrick                                                Mine Safety and Health Specialist
+Allan Jack                                                    Mine Safety and Health Specialist
+Christopher Mark                                              Principal Roof Control Specialist
+Christopher Snyder                                               Supervisory General Engineer
+Clifford Nelson                                                                       Geologist
+
+
+
+
+                                               9
+                   APPENDIX C – Location of Accident
+
+
+
+
+The depth of cover in the orange highlighted area was approximately 1,060 ft.
+
+
+
+
+                                     10
+
