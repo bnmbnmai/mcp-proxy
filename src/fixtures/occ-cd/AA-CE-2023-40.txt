@@ -1,0 +1,1601 @@
+                                                                                   #2023-031
+                          UNITED STATES OF AMERICA
+                        DEPARTMENT OF THE TREASURY
+                OFFICE OF THE COMPTROLLER OF THE CURRENCY
+
+
+In the Matter of:                                               )
+                                                                )
+United Fidelity Bank, FSB                                       )          AA-CE-2023-40
+Evansville, Indiana                                             )
+                                                                )
+
+                                      CONSENT ORDER
+
+       WHEREAS, the Office of the Comptroller of the Currency (“OCC”) has supervisory
+
+authority over United Fidelity Bank, FSB, Evansville, Indiana (“Bank”);
+
+       WHEREAS, the OCC intends to initiate cease and desist proceedings against the Bank
+
+pursuant to 12 U.S.C. § 1818(b), through the issuance of a Notice of Charges, for engaging in
+
+unsafe or unsound practice(s), including those relating to oversight by its management and board
+
+of directors (“board”); strategic planning; capital planning; stress testing; policy development
+
+and approval; management and board reporting; contingency funding planning; model risk
+
+management; concentration risk management; credit review; credit analysis; risk assessment;
+
+allowance for credit losses methodology; data management; internal audit; and internal controls.
+
+These unsafe or unsound practice(s) are included in, but may not be limited to, the areas of
+
+corporate governance and enterprise risk management, credit underwriting and administration,
+
+liquidity risk management, and interest rate risk management;
+
+       WHEREAS, in the interest of cooperation and to avoid additional costs associated with
+
+administrative and judicial proceedings with respect to the above matter, the Bank, by and
+
+through its duly elected and acting board, consents to the issuance of this Consent Order
+
+(“Order”), by the OCC through the duly authorized representative of the Comptroller of the
+
+Currency (“Comptroller”); and
+        NOW, THEREFORE, pursuant to the authority vested in the OCC by Section 8(b) of
+
+the Federal Deposit Insurance Act, as amended, 12 U.S.C. § 1818(b), the OCC hereby orders
+
+that:
+
+                                            ARTICLE I
+
+                                          JURISDICTION
+
+        (1)      The Bank is an “insured depository institution” as that term is defined in
+
+12 U.S.C. § 1813(c)(2).
+
+        (2)      The Bank is a federal savings association within the meaning of 12 U.S.C.
+
+§ 1813(q)(1)(C), and is chartered and examined by the OCC. See 12 U.S.C. §§ 1461 et seq.,
+
+5412(b)(2)(B).
+
+        (3)      The OCC is the “appropriate federal banking agency” as that term is defined in
+
+12 U.S.C. § 1813(q) and is therefore authorized to initiate and maintain this cease and desist
+
+action against the Bank pursuant to 12 U.S.C. § 1818(b).
+
+                                            ARTICLE II
+
+                                 COMPTROLLER’S FINDINGS
+
+        The Comptroller finds, and the Bank neither admits nor denies, the following:
+
+        (1)      The Bank has engaged in unsafe or unsound practices, including those related to
+
+its board and management oversight; strategic planning; capital planning; stress testing; policy
+
+development and approval; management and board reporting; contingency funding planning;
+
+model risk management; concentration risk management; credit review; credit analysis; risk
+
+assessment; allowance for credit losses methodology; data management; internal audit; and
+
+internal controls.
+
+
+
+
+                                                  2
+                                                ARTICLE III
+
+                                 COMPLIANCE RESPONSIBILITIES
+
+        (1)      The board shall monitor and oversee the Bank’s compliance with the provisions
+
+of this Order. The board shall meet at least monthly and maintain minutes of its meetings.
+
+        (2)      Within forty-five (45) days of the date of this Order, and thereafter within thirty
+
+(30) days after the end of each quarter, the board shall submit to the Assistant Deputy
+
+Comptroller (“ADC”) a written progress report setting forth in detail:
+
+                 (a)      a description of the corrective actions needed to achieve compliance with
+
+                          each Article of this Order;
+
+                 (b)      the specific corrective actions undertaken to comply with each Article of
+
+                          this Order; and
+
+                 (c)      the results and status of the corrective actions.
+
+                                                     ARTICLE IV
+
+                                CAPITAL PLAN AND HIGHER MINIMUMS
+
+        (1)      Within sixty (60) days of the date of this Order, the Bank shall achieve and
+
+thereafter maintain the following capital ratios as defined in and as calculated in accordance with
+
+12 C.F.R. Part 3:1
+
+                (a)      a common equity tier 1 capital ratio at least equal to eight percent (8%);
+
+                (b)      a leverage ratio at least equal to nine percent (9%);
+
+                (c)      a tier 1 capital ratio at least equal to ten percent (10%); and
+
+                (d)      a total capital ratio at least equal to twelve percent (12%).
+
+
+
+1
+  For purposes of the capital conservation buffer set forth at 12 C.F.R. § 3.11, the Bank’s minimum total capital
+ratio, minimum tier 1 capital ratio, and minimum common equity tier 1 capital ratio requirements are deemed to be
+those that are set forth in 12 C.F.R. § 3.10.
+
+
+                                                        3
+        (2)      Notwithstanding any election to use the community bank leverage ratio (“CBLR”)
+
+framework under 12 C.F.R. § 3.12, the Bank is subject to the minimum capital levels prescribed
+
+in paragraph (1) of this Article pursuant to the OCC’s authority to impose affirmative corrective
+
+actions pursuant to 12 U.S.C. § 1818(b)(6) and must demonstrate compliance with these
+
+requirements by completing Schedule RC-R to the Consolidated Reports of Condition and
+
+Income in accordance with the instructions for Banks that have not made the CBLR election in
+
+addition to Schedule RC-R, CBLR.
+
+        (3)      The requirement in this Order to meet and maintain a specific capital level for any
+
+capital measure means that the Bank may not be deemed to be “well capitalized” for purposes of
+
+12 U.S.C. § 1831o and 12 C.F.R. Part 6, pursuant to 12 C.F.R. § 6.4.2
+
+        (4)      Within thirty (30) days of the date of this Order, the board shall adopt an effective
+
+internal capital planning process to assess the Bank’s capital adequacy in relation to its overall
+
+risks and to ensure maintenance of appropriate capital levels, which shall in no event be less than
+
+the requirements of paragraph (1) of this Article. Thereafter, management shall implement, and
+
+the board shall verify, no less than annually, or more frequently if appropriate or required by the
+
+ADC, adherence to the capital planning process. The capital planning process shall be consistent
+
+with safe and sound practices and ensure the integrity, objectivity, and consistency of the process
+
+through adequate governance. Refer to the “Capital and Dividends” booklet of the Comptroller’s
+
+Handbook.
+
+        (5)      Within sixty (60) days of the date of this Order, the board shall submit to the
+
+ADC for review and determination of no supervisory objection an acceptable written capital plan
+
+for the Bank, consistent with the Strategic Plan required by Article VI, covering at least a five-
+
+
+2
+ The Bank may not solicit, accept, renew, or roll over any brokered deposit (as defined in 12 C.F.R. § 337.6(a)(2))
+except in compliance with the applicable restrictions of 12 U.S.C. § 1831f and 12 C.F.R. § 337.6.
+
+
+                                                         4
+year period (“Capital Plan”). Refer to “Capital and Dividends” booklet of the Comptroller’s
+
+Handbook. Except as provided in paragraph (7) of this Article, the Bank’s Capital Plan shall, at a
+
+minimum:
+
+               (a)    appropriately quantify and support reasonable board-approved capital
+
+                      limits, which shall in no event be less than the requirements of paragraph
+
+                      (1) of this Article;
+
+               (b)    quantitatively and qualitatively evaluate all relevant risks to capital using
+
+                      appropriate, supported assumptions;
+
+               (c)    determine the Bank’s capital needs in relation to material risks and
+
+                      strategic direction, consistent with the Strategic Plan required by Article
+
+                      VI;
+
+               (d)    identify and establish a strategy to maintain capital and strengthen capital
+
+                      if necessary and establish a contingency commensurate with the Bank’s
+
+                      overall risk and complexity; and
+
+               (e)    include appropriate capital stress testing, including for commercial real
+
+                      estate concentrations.
+
+       (6)     The Bank may declare or pay a dividend or make a capital distribution only:
+
+               (a)    when the dividend or capital distribution would comply with 12 U.S.C.
+
+                      § 1831o(d)(1) and 12 C.F.R. §§ 3.11(a)(4) and 5.55; and
+
+               (b)    following the ADC’s prior written determination of no supervisory
+
+                      objection to the dividend or capital distribution.
+
+       (7)     Within thirty (30) days following receipt of the ADC’s written determination of
+
+no supervisory objection to the Bank’s Capital Plan or to any subsequent amendment to the
+
+
+
+
+                                                5
+Capital Plan, the board shall adopt and Bank management, subject to board review and ongoing
+
+monitoring, shall immediately implement and thereafter ensure adherence to the Capital Plan.
+
+The board shall review the effectiveness of the Capital Plan at least annually, no later than
+
+January 31 each year, and more frequently if necessary or if required by the OCC, and amend the
+
+Capital Plan as needed or directed by the OCC. Any amendment to the Capital Plan must be
+
+submitted to the ADC for review and prior written determination of no supervisory objection.
+
+       (8)     If the Bank fails to submit an acceptable Capital Plan as required by
+
+paragraph (5) of this Article, fails to implement or adhere to a Capital Plan to which the ADC
+
+has taken no supervisory objection pursuant to paragraph (5) of this Article, or fails to achieve
+
+and maintain the minimum capital ratios as required by paragraph (1) of this Article, then in the
+
+sole discretion of the ADC, the Bank shall, upon written direction of the ADC, within sixty (60)
+
+days develop and submit to the ADC for review and prior written determination of no
+
+supervisory objection, a Disposition Plan that shall detail the board’s proposal to sell or merge
+
+the Bank, or implement a voluntary liquidation plan in accordance with 12 C.F.R. § 5.48.
+
+       (9)     In the event that the Disposition Plan submitted by the Bank’s board outlines a
+
+sale or merger of the Bank, the Disposition Plan shall, at a minimum, address the steps that will
+
+be taken and the associated timeline to ensure that a definitive agreement for the sale or merger
+
+is executed not later than one hundred twenty (120) days after receipt of the ADC’s written
+
+determination of no supervisory objection to the Disposition Plan.
+
+       (10)    If the Disposition Plan outlines a voluntary liquidation of the Bank, the
+
+Disposition Plan shall detail the actions and steps necessary to accomplish the liquidation in
+
+conformance with 12 C.F.R. § 5.48, and the dates by which each step of the liquidation shall be
+
+completed, including the date by which the Bank will terminate its charter. In the event of
+
+
+
+
+                                                 6
+liquidation, the Bank shall hold a shareholder vote, pursuant to 12 C.F.R. § 5.48, and commence
+
+liquidation within one hundred twenty (120) days of receiving the ADC’s written determination
+
+of no supervisory objection to the Disposition Plan.
+
+                                               ARTICLE V
+
+                   BOARD OVERSIGHT AND MANAGEMENT SUPERVISION
+
+        (1)     Within one hundred and twenty (120) days of the date of this Order, the board
+
+ shall ensure that the Bank has a sufficient number of effective and qualified management in
+
+ place for all senior executive officers to carry out the board’s policies, take the necessary steps
+
+ to implement corporate governance and decision-making processes to correct the deficiencies
+
+ identified in the most recent Report of Examination and to timely address deficiencies
+
+ described in future or any supervisory or regulatory communications, and take the necessary
+
+ steps to ensure compliance with applicable laws, rules, and regulations and compliance with
+
+ the Order. For the purposes of this Order, “deficiencies” includes deficient practices, including
+
+ policies, procedures, practices, and controls; and violations of laws, regulations, final agency
+
+ orders, conditions imposed in writing, or written agreements.
+
+        (2)     Within thirty (30) days of the date of this Order, the board shall:
+
+                 (a)     engage an independent third party to review board and management
+
+                         supervision. The review must assess and conclude on the sufficiency of
+
+                         board and management composition, an assessment of the board’s
+
+                         collective and individual director’s overall strengths and weaknesses,
+
+                         committee structures, reporting lines, and staffing levels for each area of
+
+                         the Bank relative to the institution’s activities and risk profile; and
+
+                 (b)     establish or adjust job descriptions for the Bank’s senior management
+
+
+
+                                                  7
+              (Executive, Senior, First, and Vice President) positions.
+
+(3)   Within ninety (90) days of the date of this Order, the board shall ensure:
+
+      (a)     the development and implementation a written plan to address findings
+
+              from the independent third-party assessment required under paragraph
+
+              (2)(a) of this Article;
+
+      (b)     the population of the Bank’s policies and procedures are identified and
+
+              assessed for adequacy relative to current practices and reasonable risk
+
+              appetite. The assessment must determine which policies require
+
+              improvement, a mechanism to monitor revisions, and approval of new or
+
+              updated policies and procedures, a reasonable timeline for
+
+              implementation, and an ongoing process to ensure policies remain
+
+              current as management practices evolve;
+
+      (c)     the population of the Bank’s key internal models used for decision
+
+              making and risk identification is identified, and an adequate process is in
+
+              place to validate the models, on a periodic basis based on risk, and to
+
+              ensure that management appropriately responds to any model validation,
+
+              audit, compliance, or regulatory criticisms and policy breaches; and
+
+      (d)     the board receives and reviews sufficient reporting from management,
+
+              including scope, frequency, timing, and content, regarding the operation
+
+              of the Bank and compliance with this Order to enable the directors to
+
+              provide oversight and fulfill their fiduciary duties and other
+
+              responsibilities required by law in accordance with safe and sound
+
+              practices (refer to the “Corporate and Risk Governance” booklet of the
+
+
+
+                                        8
+                         Comptroller’s Handbook for guidance).
+
+                                           ARTICLE VI
+
+                                           STRATEGIC PLAN
+
+       (1)     Within ninety (90) days of the date of this Order, the board shall submit to the
+
+ADC for review and prior written determination of no supervisory objection an acceptable,
+
+revised written strategic plan for the Bank, covering at least a five-year period (“Strategic Plan”).
+
+The Strategic Plan shall establish objectives for addressing the Bank’s high risk profile, earnings
+
+performance, loan and total asset growth, balance sheet mix, off-balance-sheet activities, liability
+
+structure, capital and liquidity adequacy, and market segments together with strategies to achieve
+
+those objectives, and shall, at a minimum, include:
+
+                 (a)     a mission statement that forms the framework for the establishment of
+
+                         strategic goals and objectives;
+
+                 (b)     the strategic goals and objectives to be accomplished, including key
+
+                         financial indicators and risk tolerances;
+
+                 (c)     a risk profile that evaluates credit, interest rate, liquidity, price,
+
+                         operational, compliance, strategic, and reputation risks in relationship to
+
+                         capital;
+
+                 (d)     concentration limits commensurate with the Bank’s risk profile and
+
+                         capital base;
+
+                 (e)     an assessment of the Bank’s strengths, weaknesses, opportunities and
+
+                         threats that impact its strategic goals and objectives; and
+
+                 (f)     a realistic and comprehensive financial forecast to include projections
+
+                         for major balance sheet and income statement accounts and desired
+
+
+
+
+                                                   9
+                         financial ratios over the period covered by the Strategic Plan.
+
+       (2)     At least quarterly, a written evaluation of the Bank’s performance against the
+
+Strategic Plan shall be prepared by Bank management and submitted to the board. The board’s
+
+review of the evaluation and discussion of any required corrective actions to address any
+
+identified shortcomings shall be documented in the board’s meeting minutes.
+
+       (3)     Within thirty (30) days following the board’s receipt of the ADC’s written
+
+determination of no supervisory objection to the revised Strategic Plan or to any subsequent
+
+update or amendment to the Strategic Plan, the board shall adopt, and Bank management, subject
+
+to board review and ongoing monitoring, shall immediately implement and thereafter ensure
+
+adherence to the Strategic Plan. The board shall review the effectiveness of the Strategic Plan,
+
+including whether the bank has sufficient staffing, expertise, internal controls, information
+
+systems; policies; procedures; and other risk management systems to effectively execute
+
+strategic initiatives in a safe and sound manner, at least annually, no later than thirty (30) days
+
+after each calendar year end, and more frequently, if necessary or required by the OCC in
+
+writing. The board shall amend the Strategic Plan as needed or directed by the OCC. Any update
+
+or amendment to the Strategic Plan must be submitted to the ADC for review and prior written
+
+determination of no supervisory objection.
+
+       (4)     Until the Strategic Plan required under this Article has been submitted by the
+
+Bank for the ADC’s review, has received a written determination of no supervisory objection
+
+from the ADC, and has been adopted by the Board, the Bank shall not significantly deviate from
+
+the products, services, asset composition and size, funding sources, structure, operations,
+
+policies, procedures, and markets of the Bank that existed immediately before the effective date
+
+of this Order without first obtaining the ADC’s prior written determination of no supervisory
+
+
+
+
+                                                 10
+objection to such significant deviation.
+
+       (5)     The Bank may not initiate any action that significantly deviates from a Strategic
+
+Plan (that has received written determination of no supervisory objection from the ADC and has
+
+been adopted by the Board) without a prior written determination of no supervisory objection
+
+from the ADC.
+
+       (6)     Any request by the Bank for prior written determination of no supervisory
+
+objection to a significant deviation described in paragraphs (4) or (5) of this Article shall be
+
+submitted in writing to the ADC at least sixty (60) days in advance of the proposed significant
+
+deviation. Such written request by the Bank shall include an assessment of the effects of such
+
+proposed change on the Bank’s condition and risk profile, including a profitability analysis and
+
+an evaluation of the adequacy of the Bank’s organizational structure, staffing, management
+
+information systems, internal controls, and written policies and procedures to identify, measure,
+
+monitor, and control the risks associated with the proposed change.
+
+       (7)     For the purposes of this Article, changes that may constitute a significant
+
+deviation include, but are not limited to, a change in the Bank’s markets, marketing strategies,
+
+products and services, marketing partners, underwriting practices and standards, credit
+
+administration, account management, collection strategies or operations, fee structure or pricing,
+
+accounting processes and practices, asset composition and size, or funding strategy, any of
+
+which, alone or in the aggregate, may have a material effect on the Bank’s operations or financial
+
+performance; or any other changes in personnel, operations, or external factors that may have a
+
+material effect on the Bank’s operations or financial performance.
+
+
+
+
+                                                 11
+                                           ARTICLE VII
+
+                              CONCENTRATIONS OF CREDIT
+
+       (1)     Within sixty (60) days of the date of this Order, the board shall submit to the
+
+ADC for review and prior written determination of no supervisory objection an acceptable
+
+written Concentration Risk Management Program (“Concentration Program”). Refer to the
+
+“Concentrations of Credit” booklet of the Comptroller’s Handbook. For purposes of this Article,
+
+a concentration of credit is as defined in the “Concentrations of Credit” booklet of the
+
+Comptroller’s Handbook.
+
+        (2)    The Concentration Program shall include, at a minimum:
+
+                 (a)     proper identification of the Bank’s concentrations of credit including,
+
+                         but not limited to, the Bank’s concentration in commercial real estate,
+
+                         including multifamily affordable housing;
+
+                 (b)     a periodic written analysis of the concentrations of credit identified
+
+                         under paragraph (2), subparagraph (a) of this Article that identifies and
+
+                         assesses the inherent risks in Article VI, paragraph (1), subparagraph (c)
+
+                         and considers the impact of concentration levels on the plan in Article
+
+                         VI and the aspects of Article VI, paragraph (1), subparagraphs (b), (d),
+
+                         and (f);
+
+                 (c)     a periodic written market analysis for the primary geographic markets of
+
+                         the concentrations of credit identified under paragraph (2), subparagraph
+
+                         (a) of this Article;
+
+                 (d)     the establishment of safe and sound, formal limits and sub-limits for all
+
+                         concentrations of credit based on a percentage of tier 1 capital plus the
+
+
+
+
+                                                 12
+                       allowance for credit losses, appropriately stratified by, but not limited to,
+
+                       property type, industry, geographic market, tenant concentrations,
+
+                       occupancy, risk rating, loan structure, loan-to-values, debt service
+
+                       coverage, and loans with policy exceptions;
+
+                (e)    timely and accurate reporting of concentrations to the board monthly
+
+                       based upon total committed amounts relative to board-approved limits;
+
+                (f)    development and implementation of action plans, approved by the board,
+
+                       to reduce concentrations to conform to the established limits set in
+
+                       paragraph (2), subparagraph (d) of this Article, including strategies and
+
+                       procedures when concentrations approach or exceed board-approved
+
+                       limits;
+
+                (g)    portfolio-level stress tests to quantify the impact of changes to portfolio-
+
+                       specific characteristics and market conditions on earnings and capital,
+
+                       consistent with the size, characteristics, and risk profile of the
+
+                       multifamily affordable housing portfolio, that contain sufficient
+
+                       sensitivity analysis; and
+
+                (h)    a detailed contingency plan to reduce concentration risk in the event of
+
+                       adverse market conditions, including reasonable action plans.
+
+       (3)    Within thirty (30) days following receipt of the ADC’s written determination of
+
+no supervisory objection to the Concentration Program or to any subsequent amendment to the
+
+Concentration Program, the board shall adopt and Bank management, subject to board review
+
+and ongoing monitoring, shall immediately implement and thereafter ensure adherence to the
+
+Concentration Program. The board shall review the effectiveness of the Concentration Program
+
+
+
+
+                                               13
+no later than thirty (30) days after each calendar year-end, and more frequently, if necessary or if
+
+required by the OCC in writing, and amend the Concentration Program as needed or directed by
+
+the OCC. Any amendment to the Concentration Program must be submitted to the ADC for
+
+review and prior written determination of no supervisory objection.
+
+                                         ARTICLE VIII
+
+                             LIQUIDITY RISK MANAGEMENT
+
+       (1)     Within thirty (30) days of the date of this Order, the board shall submit to the
+
+ADC for review and prior written determination of no supervisory objection an acceptable
+
+written Liquidity Risk Management Program (“Liquidity Program”) for the Bank, covering at
+
+least a five-year period. The Liquidity Program shall provide for the identification, measurement,
+
+monitoring, and control of the Bank’s liquidity risk exposure. The Liquidity Program shall
+
+emphasize the importance of a cushion of highly liquid assets; diversified funding sources; and a
+
+formal, well-developed, written contingency funding plan, with robust stress testing. Refer to the
+
+“Liquidity” booklet of the Comptroller’s Handbook. In addition to the general requirements set
+
+forth above, the Liquidity Program shall, at a minimum:
+
+                 (a)     identify appropriate policies, procedures, and risk limits to manage
+
+                         liquidity risk, commensurate with the Bank’s complexity, risk profile,
+
+                         and business activities. Risk limits must be supported with robust
+
+                         analysis and informed by the potential impact of severe short-term stress
+
+                         testing;
+
+                 (b)     ensure appropriate monthly reporting to the board, or a committee
+
+                         thereof, and, if established, applicable management committee including
+
+                         reporting on adherence to all liquidity-related policy limits;
+
+
+
+
+                                                 14
+                 (c)     develop a plan to improve the Bank’s primary liquidity position (liquid
+
+                         assets) and contingent sources, including secured funding availability,
+
+                         over both the short- and medium-term, with timelines and key dates
+
+                         included; and
+
+                 (d)     include an appropriate contingency funding plan that incorporates, at a
+
+                         minimum:
+
+                         (i)    an identification of early warning liquidity triggers;
+
+                         (ii)   a quantitative projection of expected funding capacity under
+
+                                appropriate short- and intermediate-term stress events, based on
+
+                                realistic assessments of the behaviors of funding providers during
+
+                                stress events; and
+
+                        (iii)   detail of reporting lines for internal and external communication
+
+                                throughout a stress event.
+
+       (2)     Within thirty (30) days following the board’s receipt of the ADC’s written
+
+determination of no supervisory objection to the Liquidity Program or to any subsequent update
+
+or amendment to the Liquidity Program, the board shall adopt, and Bank management, subject to
+
+board review and ongoing monitoring, shall immediately implement and thereafter ensure
+
+adherence to the Liquidity Program. The board shall review and update the Liquidity Program,
+
+including after the expiration of the five-year period referenced in paragraph (1) of this Article,
+
+at least annually, no later than January 31 of each year, and more frequently, if necessary, or if
+
+required by the OCC in writing. The Bank shall submit the revised Liquidity Program to the
+
+ADC for prior written determination of no supervisory objection. At the next board meeting
+
+following receipt of the ADC’s written determination of no supervisory objection, the board shall
+
+
+
+
+                                                 15
+adopt and Bank management, subject to board review and ongoing monitoring, shall
+
+immediately implement and adhere to the revised Liquidity Program and any amendments or
+
+revisions thereto.
+
+                                          ARTICLE IX
+
+                         INTEREST RATE RISK MANAGEMENT
+
+       (1)     Within ninety (90) days of the date of this Order, the board shall adopt a written
+
+Interest Rate Risk Program (“IRR Program”). Refer to the “Interest Rate Risk” booklet of the
+
+Comptroller’s Handbook, OCC Bulletin 2010-1 (“Interagency Advisory on Interest Rate Risk
+
+Management”) (Jan. 2010), OCC Bulletin 2012-5 (“Interest Rate Risk Management: FAQs on
+
+2010 Interagency Advisory on Interest Rate Risk Management”) (Jan. 2012), and OCC Bulletin
+
+2011-12 (“Sound Practices for Model Risk Management: Supervisory Guidance on Model Risk
+
+Management”) (Apr. 2011).
+
+       (2)     The IRR Program shall include, at a minimum:
+
+               (a)    a plan to improve the Bank’s interest rate risk exposure;
+
+               (b)    establishment of prudent short- and long-term tolerance limits for interest
+
+                      rate risk the board is willing to accept, including, but not limited to, net
+
+                      income at risk given the Bank’s business model;
+
+               (c)    adequate and documented support for the reasonableness of assumptions
+
+                      used in the Bank’s interest rate risk model and risk measurement
+
+                      calculations;
+
+               (d)    implementation of effective tools to measure and monitor the Bank’s
+
+                      performance and overall interest rate risk profile, including, but not
+
+                      limited to, dynamic balance sheet model runs and exposures in changes to
+
+
+
+
+                                                16
+                       the yield curve;
+
+               (e)     ongoing internal monitoring and backtesting of key deposit beta and decay
+
+                       assumptions on a periodic basis;
+
+               (f)     timely and appropriate quarterly reporting to the board and applicable
+
+                       management committee, including comparison of actual exposures to set
+
+                       limits, and, as applicable, specific action plans to restore exposures to
+
+                       within set limits; and
+
+               (g)     independent review of the Bank’s adherence to the IRR Program,
+
+                       assumptions and inputs used in the Bank’s interest rate risk model,
+
+                       sensitivity analysis and stress testing, validation of the Bank’s interest rate
+
+                       risk model, and backtesting of actual performance to simulated results,
+
+                       including earnings at risk, and net income at risk simulations with
+
+                       appropriate documentation, on at least an annual basis.
+
+       (3)     Upon adoption of the IRR Program, Bank management, subject to board review
+
+and ongoing monitoring, shall immediately implement and thereafter ensure adherence to the
+
+IRR Program. The board shall review the effectiveness of the IRR Program at least annually, and
+
+more frequently, if necessary or if required by the OCC in writing. Any amendment to the IRR
+
+Program must be submitted to the ADC within thirty (30) days of board approval.
+
+                                           ARTICLE X
+
+                     CREDIT UNDERWRITING AND ADMINISTRATION
+
+        (1)    Within ninety (90) days of the date of this Order, the board shall adopt a credit
+
+underwriting and administration program (“Credit Underwriting and Administration Program”)
+
+designed to ensure the Bank obtains and analyzes credit and collateral information sufficient to
+
+
+
+
+                                                 17
+identify, monitor, and report the Bank’s credit risk, properly account for loans, and assign
+
+accurate risk ratings in a timely manner. The Credit Underwriting and Administration Program
+
+shall be consistent with safe and sound banking practices.
+
+       (2)     The Credit Underwriting and Administration Program shall, at a minimum,
+
+include:
+
+               (a)     policies that address acceptable loan types, terms, covenants, collateral
+
+                       requirements, supervisory loan-to-value (LTV) limits, and loan-level
+
+                       stress testing;
+
+               (b)     a description of the types of credit information required from borrowers
+
+                       and guarantors prior to making a loan determination, including, annual
+
+                       audited statements, interim financial statements, personal financial
+
+                       statements, and tax returns with supporting schedules;
+
+               (c)     procedures that require any extensions of credit are granted, by renewal or
+
+                       otherwise, only after obtaining the required credit information and
+
+                       adequately analyzing and documenting in credit presentations the
+
+                       borrower’s and guarantor’s cash flow, debt service requirements,
+
+                       contingent liabilities, global liquidity condition, collateral, sensitivity
+
+                       analysis, market analysis, inherent risks, policy exceptions, with
+
+                       assumptions clearly documented, in support of the credit decision;
+
+               (d)     policies and procedures to ensure consistent and accurate debt service
+
+                       coverage calculations are used for underwriting new and existing loans;
+
+               (e)     procedures to identify and accurately track all exceptions and efforts to
+
+                       mitigate or cure exceptions, including but not limited to financial
+
+
+
+
+                                                  18
+                      exceptions, collateral exceptions, policy exceptions, underwriting
+
+                      exceptions, and supervisory LTV exceptions;
+
+               (f)    procedures to ensure the number of loans with exceptions, and their
+
+                      aggregate dollar value, are reported to the board on a quarterly basis. The
+
+                      board shall establish, and management shall implement and thereafter
+
+                      ensure adherence to, aggregate exception level limits;
+
+               (g)    a plan to address the Bank’s current exposure to loans exceeding the
+
+                      Bank’s legal lending limit and supervisory LTV limits, with concrete
+
+                      strategies and associated timelines;
+
+               (h)    procedures to establish covenants and identify, track, and approve
+
+                      covenant waivers in accordance with the applicable loan agreements and
+
+                      limit the number and frequency of such exceptions;
+
+               (i)    procedures to report the number of loans with covenant waivers, and their
+
+                      aggregate dollar value, to the board on a quarterly basis; and
+
+               (j)    an independent loan review process, with appropriate frequency, reporting
+
+                      directly to the board or a designated committee thereof.
+
+       (3)     Upon adoption of the Credit Underwriting and Administration Program, Bank
+
+management, subject to board review and ongoing monitoring, shall immediately implement and
+
+thereafter ensure adherence to the Credit Underwriting and Administration Program. The board
+
+shall review the effectiveness of the Credit Underwriting and Administration Program at least
+
+annually, and more frequently if necessary or if required by the OCC in writing. Any amendment
+
+to the Credit Underwriting and Administration Program must be submitted to the ADC within
+
+thirty (30) days of board approval.
+
+
+
+
+                                               19
+                                          ARTICLE XI
+
+                                      ANNUAL REVIEWS
+
+       (1)    Within thirty (30) days of the date of this Order, the board shall adopt a written
+
+Annual Review Program for the Bank’s commercial loans. The Annual Review Program shall
+
+include, at a minimum:
+
+              (a)    identification of the universe of commercial loans requiring an annual
+
+                     review;
+
+              (b)    development and adherence to an annual review schedule for the
+
+                     commercial loans identified in paragraph (1), subparagraph (a) of this
+
+                     Article;
+
+              (c)    risk-based reviews of commercial lending relationships to support or
+
+                     revise current risk ratings on at least an annual basis that:
+
+                          (i)    include an adequate analysis of repayment capacity, both primary
+
+                                 and secondary sources of repayment, with timely and
+
+                                 comprehensive financial information and a clear audit trail to
+
+                                 accurate DSCR calculations with supporting narrative
+
+                                 conclusions;
+
+                         (ii)    incorporate meaningful stress testing of key variables;
+
+                         (iii)   contain an assessment of the borrower’s performance to
+
+                                 projections or plan, as applicable, with discussion of the impact
+
+                                 of deviations on repayment capacity and risk rating;
+
+                         (iv)    incorporate discussion of the collateral, including most recent
+
+                                 valuation or changes thereto, and condition;
+
+
+
+
+                                                 20
+                       (v)      tie geographic market analysis data to the specific loan or project
+
+                                assumptions and reconcile key variances; and
+
+                       (vi)     address refinance risk and the potential impact of significant
+
+                                changes in terms upon maturity or refinance.
+
+              (d)     periodic reporting directly to the board, or designated committee thereof,
+
+                      regarding the status of the internal annual review process.
+
+       (2)    Upon adoption of the Annual Review Program, Bank management, subject to
+
+board review and ongoing monitoring, shall immediately implement and thereafter ensure
+
+adherence to the Annual Review Program and any amendments thereto. The board shall review
+
+the effectiveness of the Annual Review Program at least annually, and more frequently if
+
+necessary or if required by the OCC in writing, and amend the Annual Review Program as
+
+needed or directed by the OCC in writing. Any amendment to the Annual Review Program must
+
+be submitted to the ADC within thirty (30) days of board approval.
+
+                                         ARTICLE XII
+
+                              ALLOWANCE FOR CREDIT LOSSES
+
+
+       (1)    Within thirty (30) days of the date of this Order, the board shall adopt a written
+
+program for maintaining and reporting an adequate allowance for credit losses (“ACL Program”)
+
+in accordance with generally accepted accounting principles (“GAAP”) and the instructions for
+
+reporting the ACL on the Consolidated Reports of Condition and Income (“call reports”). Refer
+
+to the “Allowance for Credit Losses” booklet of the Comptroller's Handbook and the
+
+“Interagency Policy Statement on Allowances for Credit Losses” dated April 21, 2023 (OCC
+
+Bulletin 2023-11). The ACL Program shall, at a minimum, include criteria and procedures for:
+
+              (a)     segmenting and documenting financial assets, including the multi-family
+
+
+
+                                                21
+                        housing portfolio, that share similar risk characteristics, including risk
+
+                        layering, and measuring the expected credit losses from each identified
+
+                        group consistent with GAAP, including Accounting Standards
+
+                        Codification (“ASC”) Subtopic 326-20, at least quarterly;
+
+                (b)     supporting the assumptions and estimation of expected credit losses and
+
+                        adjustments with documentation and analysis of qualitative and
+
+                        environmental factors and reasonable and supportable forecasts that affect
+
+                        the collectability of the Bank’s financial assets in addition to consideration
+
+                        of historical credit losses;
+
+                (c)     independently validating the Bank’s ACL methodology on an annual basis
+
+                        and reporting the conclusions to the board, which shall address identified
+
+                        deficiencies through revision of the ACL Program in a manner consistent
+
+                        with this Article; and
+
+                (d)     documenting the board’s determination, at least quarterly, of the adequacy
+
+                        of the Bank’s ACL amount to be reported in the Bank’s call report,
+
+                        including the factors considered and rationale supporting the board’s
+
+                        conclusion.
+
+        (2)     Upon adoption of the ACL Program, Bank management shall immediately
+
+implement and thereafter ensure adherence to the ACL Program.
+
+        (3)     If at any time the Bank’s actual ACL balance is determined to be inappropriate in
+
+comparison to the ACL balance calculated pursuant to this Article, the board shall remedy the
+
+inadequacy through additional provisions from earnings in the quarter the inadequacy is
+
+discovered, prior to the filing of the Bank’s call report. If previously filed call reports are
+
+
+
+
+                                                   22
+determined to be inaccurate due to a miscalculated ACL, the Bank must refile such call reports
+
+within sixty (60) days of this order.
+
+                                         ARTICLE XIII
+
+                                    CREDIT DERIVATIVES
+
+       (1)     Within thirty (30) days of the date of this Order, the board shall adopt a written
+
+Credit Derivatives Program. Refer to OCC Bulletin 2011-30 (“Counterparty Credit Risk
+
+Management: Interagency Supervisory Guidance”) (Jul. 2011).
+
+       (2)     The Credit Derivatives Program shall include, at a minimum:
+
+               (a)     a plan to address the Bank’s current exposure to loans exceeding its legal
+
+                       lending limit inappropriately supported by the diminished credit
+
+                       derivatives’ structure;
+
+               (b)     the inclusion of gross loan balances of loans with credit derivatives to
+
+                       calculate credit concentrations, the ACL, and capital stress tests and
+
+                       update internal policies and procedures to reflect this change;
+
+               (c)     revisions to the Bank’s credit derivative policy to include:
+
+                         (i)     criteria for determining when seeking credit protection through a
+
+                                 derivative is desired, including amount and tenor in relation to
+
+                                 the underlying loans;
+
+                         (ii)    expectations for credit derivative risk monitoring, including MIS
+
+                                 and reporting;
+
+                        (iii)    expectations for the credit derivative committee and board;
+
+                        (iv)     meaningful risk limits, including a limit for maximum allowable
+
+                                 exposure to a single-name credit derivative;
+
+
+
+
+                                                  23
+                        (v)    expectations and criteria for monitoring counterparty credit risk;
+
+                               and
+
+                       (vi)    expectations for periodic independent audits and model
+
+                               validation of credit derivatives;
+
+              (d)     appropriate counterparty credit risk analyses that:
+
+                        (i)    include a counterparty credit risk assessment framework with
+
+                               established minimum standards tailored to the size and
+
+                               complexity of the counterparty credit risk profile, including, but
+
+                               not limited to, governance, risk measurement and management of
+
+                               counterparty risk metrics and limits, and legal and operational
+
+                               risk management; and
+
+                        (ii)   include an evaluation of the risk that the counterparty could
+
+                               default or deteriorate in creditworthiness before final settlement
+
+                               of contractual obligations.
+
+       (3)    Upon adoption of the Credit Derivatives Program, Bank management, subject to
+
+board review and ongoing monitoring, shall immediately implement and thereafter ensure
+
+adherence to the Credit Derivatives Program and any amendments thereto. The board shall
+
+review the effectiveness of the Credit Derivatives Program at least annually, and more frequently
+
+if necessary or if required by the OCC in writing. Any amendment to the Credit Derivatives
+
+Program must be submitted to the ADC within thirty (30) days of board approval.
+
+                                        ARTICLE XIV
+
+                                     INTERNAL AUDIT
+
+       (1)    Within sixty (60) days of the effective date of this Order, the Bank shall revise,
+
+
+
+                                               24
+and the board shall adopt, a comprehensive, written internal audit program that adequately
+
+assesses controls and operations to allow the board and management to understand the
+
+sufficiency of the Bank’s internal controls system (“Internal Audit Program”). Upon adoption,
+
+Bank management, subject to board review and ongoing monitoring, shall immediately
+
+implement and adhere to the Internal Audit Program and any amendments or revisions thereto.
+
+       (2)     Management shall ensure the Internal Audit Program’s compliance with the
+
+standards for internal audit systems set forth in Section II.B of the Interagency Guidelines
+
+Establishing Standards for Safety and Soundness, appendix A to 12 C.F.R. Part 30. Refer to the
+
+“Internal and External Audits” booklet of the Comptroller’s Handbook for related safe and sound
+
+principles. The Internal Audit Program shall incorporate standards of safety and soundness that
+
+are commensurate with the Bank’s size, complexity, scope of activities, and risk profile and
+
+shall, at a minimum, require:
+
+               (a)     the development of an annual risk assessment of the Bank’s auditable
+
+                       areas, with annual documented audit committee approval of the risk
+
+                       assessment;
+
+               (b)     the development of an internal audit plan that is risk-based, supported by
+
+                       the annual risk assessment, and provides adequate audit scope, coverage,
+
+                       and frequency for all areas of the Bank, with annual documented audit
+
+                       committee approval;
+
+               (c)     monthly reporting to the audit committee on any material variance from
+
+                       the plan and action items to get back on schedule; and
+
+               (d)     persons independent of the operational functions perform the audits, and
+
+                       all internal audit reports be in writing and distributed directly, not through
+
+
+
+
+                                                 25
+                      any intervening party, to the audit committee in a timely manner after
+
+                      audit completion.
+
+       (3)     Upon adoption of the Internal Audit Program, Bank management, subject to board
+
+review and ongoing monitoring, shall immediately implement and thereafter ensure adherence to
+
+the Internal Audit Program. The board shall review the effectiveness of the Internal Audit
+
+Program at least annually, and more frequently if necessary or if required by the OCC in writing.
+
+Any amendment to the Internal Audit Program must be submitted to the ADC within thirty (30)
+
+days of board approval.
+
+                                          ARTICLE XV
+
+                          GENERAL BOARD RESPONSIBILITIES
+
+        (1)     The board shall ensure that the Bank has timely adopted and implemented all
+
+corrective actions required by this Order, and shall verify that the Bank adheres to the corrective
+
+actions and they are effective in addressing the Bank’s deficiencies that resulted in this Order.
+
+       (2)      In each instance in which this Order imposes responsibilities upon the board, it is
+
+intended to mean that the board shall:
+
+               (a)    authorize, direct, and adopt corrective actions on behalf of the Bank as
+
+                      may be necessary to perform the obligations and undertakings imposed on
+
+                      the board by this Order;
+
+               (b)    ensure the Bank has sufficient processes, management, personnel, control
+
+                      systems, and corporate and risk governance to implement and adhere to all
+
+                      provisions of this Order;
+
+               (c)    require that Bank management and personnel have sufficient training and
+
+                      authority to execute their duties and responsibilities pertaining to or
+
+
+
+
+                                                  26
+             resulting from this Order;
+
+      (d)    hold Bank management and personnel accountable for executing their
+
+             duties and responsibilities pertaining to or resulting from this Order;
+
+      (e)    require appropriate, adequate, and timely reporting to the board by Bank
+
+             management of corrective actions directed by the board to be taken under
+
+             the terms of this Order; and
+
+      (f)    address any noncompliance with corrective actions in a timely and
+
+             appropriate manner.
+
+                               ARTICLE XVI
+
+                                   WAIVERS
+
+(1)   The Bank, by executing and consenting to this Order, waives:
+
+      (a)    any and all rights to the issuance of a Notice of Charges pursuant to
+
+             12 U.S.C. § 1818;
+
+      (b)    any and all procedural rights available in connection with the issuance of
+
+             this Order;
+
+      (c)    any and all rights to a hearing and a final agency decision pursuant to
+
+             12 U.S.C. § 1818 and 12 C.F.R. Part 109;
+
+      (d)    any and all rights to seek any type of administrative or judicial review of
+
+             this Order;
+
+      (e)    any and all claims for fees, costs, or expenses against the OCC, or any of
+
+             its officers, employees, or agents related in any way to this enforcement
+
+             matter or this Order, whether arising under common law or under the
+
+             terms of any statute, including, but not limited to, the Equal Access to
+
+
+
+
+                                       27
+                       Justice Act, 5 U.S.C. § 504 and 28 U.S.C. § 2412;
+
+               (f)     any and all rights to assert these proceedings, the consent to and/or the
+
+                       issuance of this Order, as the basis for a claim of double jeopardy in any
+
+                       pending or future proceedings brought by the United States Department of
+
+                       Justice or any other governmental entity; and
+
+               (g)     any and all rights to challenge or contest the validity of this Order.
+
+                                         ARTICLE XVII
+
+                                     OTHER PROVISIONS
+
+       (1)     As a result of this Order, pursuant to 12 C.F.R. § 5.51(c)(7)(ii), the Bank is in
+
+“troubled condition,” and is not an “eligible savings association” for purposes of 12 C.F.R. § 5.3,
+
+unless otherwise informed in writing by the OCC.
+
+       (2)     This Order supersedes all prior OCC communications issued pursuant to 12
+
+C.F.R. §§ 5.3 and 5.51(c)(7)(ii).
+
+                                        ARTICLE XVIII
+
+                                            CLOSING
+
+        (1)     This Order is a settlement of the cease and desist proceedings against the Bank
+
+contemplated by the OCC, based on the unsafe or unsound practices described in the
+
+Comptroller’s Findings set forth in Article II of this Order. The OCC releases and discharges
+
+the Bank from all potential liability for a cease and desist order that has been or might have
+
+been asserted by the OCC based on the practices described in Article II of this Order, to the
+
+extent known to the OCC as of the effective date of this Order. The OCC expressly reserves its
+
+right to assess civil money penalties or take other enforcement actions if the OCC determines
+
+that the Bank has continued, or failed to correct, the practices described in Article II of this
+
+
+
+
+                                                 28
+Order or that the Bank otherwise is violating or has violated this Order. These actions could
+
+include additional requirements and restrictions, such as:
+
+               (a)    requirements that the Bank make or increase investments, acquire or hold
+
+                      additional capital or liquidity, or simplify or reduce its operations; or
+
+               (b)    restrictions on the Bank’s growth, business activities, or payment of
+
+                      dividends.
+
+       (2)     Nothing in this Order shall prevent the OCC from:
+
+               (a)    instituting enforcement actions other than a cease and desist order against
+
+                      the Bank based on the Comptroller’s Findings set forth in Article II of this
+
+                      Order;
+
+               (b)    instituting enforcement actions against the Bank based on any other
+
+                      findings, including if the OCC determines that the Bank has continued, or
+
+                      failed to correct, the practices described in Article II of this Order or that
+
+                      the Bank otherwise is violating or has violated this Order;
+
+               (c)    instituting enforcement actions against institution-affiliated parties (as
+
+                      defined by 12 U.S.C. § 1813(u)) based on the Comptroller’s Findings set
+
+                      forth in Article II of this Order, or any other findings; or
+
+               (d)    utilizing the Comptroller’s Findings set forth in Article II of this Order in
+
+                      future enforcement actions against the Bank or its institution-affiliated
+
+                      parties to establish a pattern or the continuation of a pattern.
+
+       (3)     Nothing in this Order is a release, discharge, compromise, settlement, dismissal,
+
+or resolution of any actions, or in any way affects any actions that may be or have been brought
+
+by any other representative of the United States or an agency thereof, including, without
+
+
+
+
+                                                29
+limitation, the United States Department of Justice.
+
+        (4)    This Order is:
+
+               (a)    a “cease-and-desist order issued upon consent” within the meaning of
+
+                      12 U.S.C. § 1818(b);
+
+               (b)    a “cease-and-desist order which has become final” within the meaning of
+
+                      12 U.S.C. § 1818(e);
+
+               (c)    an “order issued with the consent of the depository institution” within the
+
+                      meaning of 12 U.S.C. § 1818(h)(2);
+
+               (d)    an “effective and outstanding . . . order” within the meaning of 12 U.S.C.
+
+                      § 1818(i)(1); and
+
+               (e)    a “final order” within the meaning of 12 U.S.C. § 1818(i)(2) and (u).
+
+        (5)     This Order is effective upon its issuance by the OCC, through the Comptroller’s
+
+duly authorized representative. Except as otherwise expressly provided herein, all references to
+
+“days” in this Order shall mean calendar days and the computation of any period of time
+
+imposed by this Order shall not include the date of the act or event that commences the period of
+
+time.
+
+        (6)     The provisions of this Order shall remain effective except to the extent that, and
+
+until such time as, such provisions are amended, suspended, waived, or terminated in writing by
+
+the OCC, through the Comptroller’s duly authorized representative. If the Bank seeks an
+
+extension, amendment, suspension, waiver, or termination of any provision of this Order, the
+
+board or a board-designee shall submit a written request to the ADC asking for the desired relief.
+
+Any request submitted pursuant to this paragraph shall include a statement setting forth in detail
+
+the circumstances that warrant the desired relief or prevent the Bank from complying with the
+
+
+
+
+                                                30
+relevant provision(s) of the Order, and shall be accompanied by relevant supporting
+
+documentation. The OCC’s decision concerning a request submitted pursuant to this paragraph,
+
+which will be communicated to the board in writing, is final and not subject to further review.
+
+       (7)      The Bank will not be deemed to be in compliance with this Order until it has
+
+adopted, implemented, and adhered to all of the corrective actions set forth in each Article of this
+
+Order; the corrective actions are effective in addressing the Bank’s deficiencies; and the OCC
+
+has verified and validated the corrective actions. An assessment of the effectiveness of the
+
+corrective actions requires sufficient passage of time for the Bank to demonstrate the sustained
+
+effectiveness of the corrective actions.
+
+       (8)      This Order is not a contract binding on the United States, the United States
+
+Treasury Department, the OCC, or any officer, employee, or agent of the OCC and neither the
+
+Bank nor the OCC intends this Order to be a contract.
+
+       (9)      Each citation, issuance, or guidance referenced in this Order includes any
+
+subsequent citation, issuance, or guidance that replaces, supersedes, amends, or revises the
+
+referenced cited citation, issuance, or guidance.
+
+       (10)     This Order applies to the Bank and all its subsidiaries.
+
+       (11)     No separate promise or inducement of any kind has been made by the OCC, or
+
+by its officers, employees, or agents, to cause or induce the Bank to consent to the issuance of
+
+this Order.
+
+       (12)    All reports, plans, or programs submitted to the OCC pursuant to this Order shall
+
+be forwarded through the OCC’s secure portal with an email notification to the ADC.
+
+       (13)    The terms of this Order, including this paragraph, are not subject to amendment or
+
+modification by any extraneous expression, prior agreements, or prior arrangements between the
+
+
+
+
+                                                    31
+parties, whether oral or written.
+
+IN TESTIMONY WHEREOF, the undersigned, authorized by the Comptroller as his duly
+
+authorized representative, has hereunto set his signature on behalf of the Comptroller.
+
+
+
+ //s// Digitally Signed, Dated: 2023.10.31
+
+ Victor A. Osorio                                                  Date
+ Assistant Deputy Comptroller
+ Louisville Office
+
+
+IN TESTIMONY WHEREOF, the undersigned, as the duly elected and acting Board of
+
+Directors of United Fidelity Bank, FSB, have hereunto set their signatures on behalf of the Bank.
+
+
+/s/                                                                  10/20/2023
+ Paul E. Becker                                                     Date
+
+
+ /s/                                                                10/31/23
+ Ron Brown                                                          Date
+
+
+ /s/                                                                10/31/23
+ Bruce A. Cordingley                                                Date
+
+
+ /s/                                                                10-31-23
+ Donald R. Neel                                                     Date
+
+
+ /s/                                                                10/31/23
+ Sean O’ Connor                                                     Date
+
+
+ /s/                                                                10/20/23
+ Stephen R. Oettinger                                               Date
+
+
+ /s/                                                                10/30/23
+ Gerald K. Pedigo                                                   Date
+
+
+                                                32
+/s/                         10/24/2023
+Barry Schnakenburg          Date
+
+
+/s/                         10-20-23
+James J. Sullos, Jr.        Date
+
+
+
+
+                       33
+

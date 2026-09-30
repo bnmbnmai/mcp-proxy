@@ -2,10 +2,13 @@
  * OCC institution Cease-and-Desist / Consent Order TEXT door.
  * Official per-order PDFs from occ.gov/static/enforcement-actions only. Does not invent order text.
  * ExportToJSON is 6051-row metadata (listing only). Not IAP / people / prohibition / CMP-against-person.
+ * First-slice miss: still-active rows whose PDF is only ea{AA-docket}.pdf.
+ * Official leftover catalog is the same EASearch ExportToJSON — terminated institution C&Ds
+ * plus leftover-active rows whose StartDocuments are ea{YYYY-NNN}.pdf.
  * Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
@@ -23,6 +26,8 @@ export const EXPORT_URL = "https://apps.occ.gov/EASearch/Search/ExportToJSON";
 export const PDF_HOST = "www.occ.gov";
 export const PDF_BASE = "https://www.occ.gov/static/enforcement-actions/";
 export const DOCKET_RE = /\bAA-[A-Z]{2,4}-\s?\d{4}-\d+\b/i;
+/** Official PDF stem: modern AA-docket (optional letter suffix) or leftover numeric StartDocument. */
+export const PDF_STEM_RE = /^(?:AA-[A-Z]{2,4}-\d{4}-\d+[A-Z]?|\d{4}-\d+)$/i;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "OCC";
 
@@ -57,10 +62,12 @@ export type OccExportRow = {
 export type OccCdListing = {
   id: string;
   docket: string;
+  pdfId: string;
   bank: string;
   location: string | null;
   date: string | null;
   sourceUrl: string;
+  sourceUrls: string[];
 };
 
 export type OccCdCard = {
@@ -128,6 +135,16 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
   return m[0].replace(/\s+/g, "").toUpperCase();
 }
 
+/** Official enforcement-actions filename stem (AA-docket or leftover YYYY-NNN). */
+export function officialStem(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  const compact = raw.replace(/\s+/g, "").trim();
+  const aa = compact.match(/AA-[A-Z]{2,4}-\d{4}-\d+[A-Z]?/i);
+  if (aa) return aa[0].toUpperCase();
+  const num = compact.match(/^(\d{4}-\d+)$/);
+  return num ? num[1] : null;
+}
+
 export function isoDate(raw: string | null | undefined): string | null {
   if (!raw) return null;
   const iso = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
@@ -160,19 +177,21 @@ export function isoDate(raw: string | null | undefined): string | null {
 
 export function officialOccPdfUrl(urlOrDocket: string): string | null {
   if (!urlOrDocket) return null;
-  const docketOnly = normalizeDocket(urlOrDocket);
-  if (docketOnly && !/[./]/.test(urlOrDocket.trim())) {
-    return `${PDF_BASE}ea${docketOnly}.pdf`;
+  const stemOnly = officialStem(urlOrDocket);
+  if (stemOnly && !/[./]/.test(urlOrDocket.trim())) {
+    return `${PDF_BASE}ea${stemOnly}.pdf`;
   }
   try {
     const parsed = new URL(urlOrDocket, "https://www.occ.gov");
     const host = parsed.hostname.toLowerCase();
     if (host === "web.archive.org") return null;
     if (host !== "www.occ.gov" && host !== "occ.gov") return null;
-    const m = parsed.pathname.match(/\/static\/enforcement-actions\/ea(AA-[A-Z]{2,4}-\d{4}-\d+)\.pdf$/i);
+    const m = parsed.pathname.match(
+      /\/static\/enforcement-actions\/ea(AA-[A-Z]{2,4}-\d{4}-\d+[A-Z]?|\d{4}-\d+)\.pdf$/i,
+    );
     if (!m) return null;
-    const docket = normalizeDocket(m[1]);
-    return docket ? `${PDF_BASE}ea${docket}.pdf` : null;
+    const stem = officialStem(m[1]);
+    return stem ? `${PDF_BASE}ea${stem}.pdf` : null;
   } catch {
     return null;
   }
@@ -181,7 +200,7 @@ export function officialOccPdfUrl(urlOrDocket: string): string | null {
 export function pdfIdFromUrl(url: string): string | null {
   const official = officialOccPdfUrl(url);
   if (!official) return null;
-  const m = official.match(/\/ea(AA-[A-Z]{2,4}-\d{4}-\d+)\.pdf$/i);
+  const m = official.match(/\/ea(AA-[A-Z]{2,4}-\d{4}-\d+[A-Z]?|\d{4}-\d+)\.pdf$/i);
   return m ? m[1].toUpperCase() : null;
 }
 
@@ -213,25 +232,41 @@ export function docketFromRow(row: OccExportRow): string | null {
   return null;
 }
 
+export function stemsFromRow(row: OccExportRow): string[] {
+  const stems: string[] = [];
+  for (const doc of row.StartDocuments ?? []) {
+    const stem = officialStem(doc);
+    if (stem && !stems.includes(stem)) stems.push(stem);
+  }
+  const docketStem = officialStem(row.DocketNumber) || officialStem(docketFromRow(row) ?? "");
+  if (docketStem && !stems.includes(docketStem)) stems.push(docketStem);
+  return stems;
+}
+
 export function parseExportRows(rows: OccExportRow[]): OccCdListing[] {
   const found: OccCdListing[] = [];
   const seen = new Set<string>();
   for (const row of rows) {
     if (!isInstitutionCdRow(row)) continue;
-    if (isTerminatedRow(row)) continue;
-    const docket = docketFromRow(row);
+    const stems = stemsFromRow(row);
+    const sourceUrls = stems
+      .map((stem) => officialOccPdfUrl(stem))
+      .filter((url): url is string => Boolean(url));
+    if (sourceUrls.length === 0) continue;
+    const docket = docketFromRow(row) || stems[0];
     if (!docket) continue;
-    const sourceUrl = officialOccPdfUrl(docket);
-    if (!sourceUrl) continue;
     if (seen.has(docket)) continue;
     seen.add(docket);
+    const sourceUrl = sourceUrls[0];
     found.push({
       id: docket,
       docket,
+      pdfId: pdfIdFromUrl(sourceUrl) || stems[0],
       bank: ((row.Institution ?? row.Company) ?? "").trim(),
       location: (row.Location ?? "").trim() || null,
       date: isoDate(row.StartDate),
       sourceUrl,
+      sourceUrls,
     });
   }
   found.sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
@@ -404,17 +439,17 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("OCC_CD_LIMIT", "5");
+  const raw = env("OCC_CD_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("OCC_CD_MAX_FETCH", "8");
+  const raw = env("OCC_CD_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -434,12 +469,18 @@ export async function fetchOccJson(url: string): Promise<unknown> {
   return await res.json();
 }
 
+export function isPdfBytes(bytes: Uint8Array): boolean {
+  return new TextDecoder().decode(bytes.slice(0, 5)) === "%PDF-";
+}
+
 export async function fetchOccBytes(url: string): Promise<Uint8Array> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
-  return new Uint8Array(await res.arrayBuffer());
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  if (!isPdfBytes(bytes)) throw new Error(`${url} is not an official PDF`);
+  return bytes;
 }
 
 export function pdfToText(pdfPath: string): string {
@@ -460,12 +501,36 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+const FIXTURE_LISTING_JSON = [
+  "listing-excerpt.json",
+  "leftover-listing-excerpt.json",
+  "listing.json",
+  "export.json",
+];
+
+function mergeOfficialListings(listed: OccCdListing[]): OccCdListing[] {
+  const seen = new Set<string>();
+  const out: OccCdListing[] = [];
+  for (const row of listed) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  out.sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
+  return out;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: OccCdListing[]; listedCount: number }> {
   if (dir) {
-    const raw = readNamedFile(dir, ["listing-excerpt.json", "listing.json", "export.json"]);
-    const rows = raw ? (JSON.parse(raw) as OccExportRow[]) : [];
-    const listed = Array.isArray(rows) ? parseExportRows(rows) : [];
-    return { listed, listedCount: listed.length };
+    const listed: OccCdListing[] = [];
+    for (const name of FIXTURE_LISTING_JSON) {
+      const raw = readNamedFile(dir, [name]);
+      if (!raw) continue;
+      const rows = JSON.parse(raw) as OccExportRow[];
+      if (Array.isArray(rows)) listed.push(...parseExportRows(rows));
+    }
+    const merged = mergeOfficialListings(listed);
+    return { listed: merged, listedCount: merged.length };
   }
   const rows = (await fetchOccJson(EXPORT_URL)) as OccExportRow[];
   const listed = Array.isArray(rows) ? parseExportRows(rows) : [];
@@ -530,20 +595,38 @@ export async function collectOccCd(opts?: {
     if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
     if (!dir) await pause(pauseMs);
     try {
-      const localText = readNamedFile(dir, [`${row.docket}.txt`, `${row.docket}-excerpt.txt`, `${row.id}.txt`]);
+      const localText = readNamedFile(dir, [
+        `${row.docket}.txt`,
+        `${row.docket}-excerpt.txt`,
+        `${row.id}.txt`,
+        `${row.pdfId}.txt`,
+      ]);
       if (dir && !localText) {
         skippedNoText += 1;
         continue;
       }
-      const pdfFile = join(cacheDir, `ea${row.docket}.pdf`);
+      const urls = row.sourceUrls?.length ? row.sourceUrls : [row.sourceUrl];
       const text =
         localText ??
         (await (async () => {
-          if (!existsSync(pdfFile)) {
-            writeFileSync(pdfFile, await fetchOccBytes(row.sourceUrl));
-            fetchedPdfs += 1;
+          let lastErr: unknown;
+          for (const url of urls) {
+            const pdfId = pdfIdFromUrl(url) || row.pdfId || row.docket;
+            const pdfFile = join(cacheDir, `ea${pdfId}.pdf`);
+            try {
+              if (existsSync(pdfFile) && !isPdfBytes(new Uint8Array(readFileSync(pdfFile)))) {
+                unlinkSync(pdfFile);
+              }
+              if (!existsSync(pdfFile)) {
+                writeFileSync(pdfFile, await fetchOccBytes(url));
+                fetchedPdfs += 1;
+              }
+              return pdfToText(pdfFile);
+            } catch (err) {
+              lastErr = err;
+            }
           }
-          return pdfToText(pdfFile);
+          throw lastErr instanceof Error ? lastErr : new Error("Official OCC leftover PDF missed");
         })());
       const parsed = parseOccCdText(text, {
         sourceUrl: row.sourceUrl,
@@ -551,7 +634,7 @@ export async function collectOccCd(opts?: {
         location: row.location,
         date: row.date,
         docket: row.docket,
-        pdfId: row.docket,
+        pdfId: row.pdfId || row.docket,
         id: row.id,
       });
       if (!isRealOccCdBody(parsed.body)) {
