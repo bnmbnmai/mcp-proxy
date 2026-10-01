@@ -1,0 +1,180 @@
+{
+  "status": "ok",
+  "fetchedAt": "2026-09-29T22:54:47.479Z",
+  "asOf": "2026-08-28",
+  "cardCount": 8,
+  "listedCount": 599,
+  "fetchedPdfs": 8,
+  "skippedNoText": 0,
+  "reused": 0,
+  "addedThisRun": 8,
+  "failed": [],
+  "cards": [
+    {
+      "id": "FAI-F012928-1",
+      "mine": "Bailey Mine",
+      "operator": "Consol Pennsylvania Coal Company, LLC",
+      "state": "Pennsylvania",
+      "sector": "coal",
+      "accidentDate": "2026-05-19",
+      "reportDate": "2026-08-28",
+      "classification": "Fall of Face, Rib, Side or Highwall",
+      "victimRole": "assistant shift foreman",
+      "rootCauseCount": 1,
+      "enforcementCount": 2,
+      "citations": [
+        "103(k) order",
+        "104(a) citation"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2026/may-19-2026-fatality/final-report",
+      "bodyChars": 18020
+    },
+    {
+      "id": "FAI-F00BE1D-1",
+      "mine": "Deer Run Mine",
+      "operator": "Patton Mining LLC",
+      "state": "Illinois",
+      "sector": "coal",
+      "accidentDate": "2026-03-05",
+      "reportDate": "2026-08-11",
+      "classification": "Machinery",
+      "victimRole": "continuous mining machine operator",
+      "rootCauseCount": 2,
+      "enforcementCount": 3,
+      "citations": [
+        "103(k) order",
+        "30 CFR 75.220(a)(1)",
+        "104(d)(2) order",
+        "30 CFR 75.1732(a)"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+      "bodyChars": 26193
+    },
+    {
+      "id": "FAI-6322887-1",
+      "mine": "Panther Eagle Mine",
+      "operator": "Marfork Coal Company",
+      "state": "West Virginia",
+      "sector": "coal",
+      "accidentDate": "2026-04-02",
+      "reportDate": "2026-07-24",
+      "classification": "Fall of Roof or Back",
+      "victimRole": "shuttle car operator",
+      "rootCauseCount": 3,
+      "enforcementCount": 4,
+      "citations": [
+        "103(k) order",
+        "30 CFR 75.202(b)",
+        "104(a) citation",
+        "30 CFR 75.220(a)(1)",
+        "104(d)(1) citation",
+        "9554305",
+        "30 CFR 75.362(a)(3)(i)",
+        "104(d)(1) order"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2026/april-2-2026-fatality/final-report",
+      "bodyChars": 21505
+    },
+    {
+      "id": "FAI-F031904-1",
+      "mine": "Danby Quarry",
+      "operator": "Vermont Quarries Corp.",
+      "state": "Vermont",
+      "sector": "metal/nonmetal",
+      "accidentDate": "2026-01-19",
+      "reportDate": "2026-07-07",
+      "classification": "Falling, Rolling, or Sliding Rock or Material of Any Kind",
+      "victimRole": "mill saw operator",
+      "rootCauseCount": 1,
+      "enforcementCount": 2,
+      "citations": [
+        "103(k) order",
+        "30 CFR 57.16001",
+        "104(a) citation"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2026/january-19-2026-fatality/final-report",
+      "bodyChars": 10954
+    },
+    {
+      "id": "FAI-F0143E4-1",
+      "mine": "Ohio County Mine",
+      "operator": "Ohio County Coal Resources, Inc.",
+      "state": "West Virginia",
+      "sector": "coal",
+      "accidentDate": "2026-04-03",
+      "reportDate": "2026-06-30",
+      "classification": "Powered Haulage",
+      "victimRole": "section supervisor",
+      "rootCauseCount": 1,
+      "enforcementCount": 2,
+      "citations": [
+        "103(k) order",
+        "314(b) safeguard"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2026/april-3-2026-fatality/final-report",
+      "bodyChars": 18548
+    },
+    {
+      "id": "FAI-F0293CA-1",
+      "mine": "Rockydale-Flatrock Quarry",
+      "operator": "Mundy Stone Company",
+      "state": "Virginia",
+      "sector": "metal/nonmetal",
+      "accidentDate": "2025-12-22",
+      "reportDate": "2026-05-12",
+      "classification": "Exploding Vessels Under Pressure",
+      "victimRole": "contract field service technician",
+      "rootCauseCount": 3,
+      "enforcementCount": 4,
+      "citations": [
+        "103(k) order",
+        "30 CFR 56.4604",
+        "104(a) citation",
+        "30 CFR 56.15007"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2025/december-22-2025-fatality/final-report",
+      "bodyChars": 16305
+    },
+    {
+      "id": "FAI-F0155BA-1",
+      "mine": "Carlsbad Plant",
+      "operator": "United Salt Carlsbad LLC",
+      "state": "New Mexico",
+      "sector": "metal/nonmetal",
+      "accidentDate": "2025-11-22",
+      "reportDate": "2026-04-21",
+      "classification": "Handling Material",
+      "victimRole": "plant operator",
+      "rootCauseCount": 1,
+      "enforcementCount": 1,
+      "citations": [
+        "103(k) order"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2025/november-22-2025-fatality/final-report",
+      "bodyChars": 14005
+    },
+    {
+      "id": "FAI-F010DE2-1",
+      "mine": "Lower War Eagle",
+      "operator": "Greenbrier Minerals, LLC",
+      "state": "West Virginia",
+      "sector": "coal",
+      "accidentDate": "2025-12-18",
+      "reportDate": "2026-04-03",
+      "classification": "Powered Haulage",
+      "victimRole": "outby foreman",
+      "rootCauseCount": 2,
+      "enforcementCount": 3,
+      "citations": [
+        "103(k) order",
+        "314(b) safeguard",
+        "30 CFR 75.1725(a)",
+        "104(a) citation"
+      ],
+      "sourceUrl": "https://www.msha.gov/data-reports/fatality-reports/2025/december-18-2025-fatality/final-report",
+      "bodyChars": 19311
+    }
+  ],
+  "product": "msha-fatality-final-bodies",
+  "note": "Id, mine, operator, state, sector, dates, classification, victim role, counts, citations, and sourceUrl only. Report body stays out of git. listedCount is unique final-report HTML pages on the MSHA search index, not PDFs downloaded. Cold collect on 2026-09-29 with MSHA_FATALS_LIMIT=8 and MSHA_FATALS_MAX_FETCH=8. cardCount 8 is that first slice: the five 2026 finals through May 19 plus the three newest late-2025 finals that still fit the limit. Three seeds are pinned (Deer Run, Panther Eagle, Ohio County) and all five 2026 finals extracted. No report failed text extraction. Cached ids do not consume a later LIMIT, so a second collect grows the bag. Preliminary reports and fatality alerts are not this SKU."
+}

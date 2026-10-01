@@ -37,6 +37,9 @@ import {
   parseDetailsListings,
   parseSearchDownloadEis,
   parseSearchRows,
+  eisSearchCoveredByBag,
+  eisSearchFingerprint,
+  eisSearchUnchanged,
   selectEisReportCard,
   solveAltchaPow,
 } from "./eis-reports.js";
@@ -53,6 +56,119 @@ async function main(): Promise<void> {
   assert.equal(lastWeek[0]?.ceqNumber, "20260104");
   assert.equal(lastWeek[0]?.date, "2026-08-28");
   assert.equal(lastWeek.length, 5, "five last-week habit rows");
+  const searchFp = eisSearchFingerprint(lastWeek);
+  assert.equal(eisSearchFingerprint(lastWeek), searchFp, "CDX search stamp is stable");
+  assert.equal(eisSearchUnchanged(null, searchFp), false);
+  assert.equal(
+    eisSearchUnchanged(
+      {
+        ok: true,
+        product: PRODUCT_ID,
+        status: "ok",
+        reason: null,
+        fetchedAt: "2026-09-28T00:00:00.000Z",
+        asOf: "2026-08-28",
+        license: LICENSE,
+        attribution: ATTRIBUTION,
+        searchFingerprint: searchFp,
+        sources: { search: "", lastWeek: LAST_WEEK_URL, last30: "", details: "" },
+        cards: [
+          {
+            ...SEED_LISTINGS[0],
+            kind: "Final",
+            body: readFx("20260036.txt"),
+          },
+        ],
+      },
+      searchFp,
+    ),
+    true,
+    "unchanged CDX search keeps the prior bag and does not launch Chrome",
+  );
+  assert.equal(
+    eisSearchUnchanged(
+      {
+        ok: true,
+        product: PRODUCT_ID,
+        status: "ok",
+        reason: null,
+        fetchedAt: "2026-09-28T00:00:00.000Z",
+        asOf: "2026-08-28",
+        license: LICENSE,
+        attribution: ATTRIBUTION,
+        searchFingerprint: `${searchFp}\n999\t20269999\t2026-09-01`,
+        sources: { search: "", lastWeek: LAST_WEEK_URL, last30: "", details: "" },
+        cards: [
+          {
+            ...SEED_LISTINGS[0],
+            kind: "Final",
+            body: readFx("20260036.txt"),
+          },
+        ],
+      },
+      searchFp,
+    ),
+    false,
+  );
+  assert.equal(
+    eisSearchCoveredByBag(
+      {
+        ok: true,
+        product: PRODUCT_ID,
+        status: "ok",
+        reason: null,
+        fetchedAt: "2026-09-28T00:00:00.000Z",
+        asOf: "2026-08-28",
+        license: LICENSE,
+        attribution: ATTRIBUTION,
+        sources: { search: "", lastWeek: LAST_WEEK_URL, last30: "", details: "" },
+        cards: lastWeek.map((row) => ({
+          id: row.ceqNumber,
+          ceqNumber: row.ceqNumber,
+          eisId: row.eisId,
+          attachmentId: "",
+          documentType: row.documentType,
+          date: row.date,
+          title: row.title,
+          agency: row.agency,
+          state: row.state,
+          pageUrl: row.pageUrl,
+          sourceUrl: row.pageUrl,
+          attachmentTitle: "",
+          kind: "Final",
+          body: readFx("20260036.txt"),
+        })),
+      },
+      lastWeek,
+    ),
+    true,
+    "search rows already in the bag do not launch Chrome",
+  );
+  assert.equal(
+    eisSearchCoveredByBag(
+      {
+        ok: true,
+        product: PRODUCT_ID,
+        status: "ok",
+        reason: null,
+        fetchedAt: "2026-09-28T00:00:00.000Z",
+        asOf: "2026-08-28",
+        license: LICENSE,
+        attribution: ATTRIBUTION,
+        sources: { search: "", lastWeek: LAST_WEEK_URL, last30: "", details: "" },
+        cards: [
+          {
+            ...SEED_LISTINGS[0],
+            kind: "Final",
+            body: readFx("20260036.txt"),
+          },
+        ],
+      },
+      lastWeek,
+    ),
+    false,
+    "a search row missing from the bag still collects",
+  );
   assert.ok(lastWeek.every((r) => officialEisPageUrl(r.pageUrl)));
   assert.ok(LAST_WEEK_URL.includes("commonSearch=lastWeek"));
   const f35Dl = lastWeek.find((r) => r.eisId === "569578");
@@ -129,6 +245,7 @@ async function main(): Promise<void> {
   assert.ok(snap.cards.length >= 2, "htmlDir collect caches Clinch River + F-35 full EIS text");
   assert.equal(snap.cards[0]?.id, "20260104", "newest habit card is last-week F-35");
   assert.equal(snap.asOf, "2026-08-28");
+  assert.match(snap.searchFingerprint ?? "", /569578/, "collect records the CDX search stamp");
   assert.ok(snap.cards.every((c) => isRealEisBody(c.body)));
   assert.ok(snap.cards.some((c) => c.id === "20260036"));
   assert.ok(snap.cards.some((c) => c.body.includes("ML26035A285")));

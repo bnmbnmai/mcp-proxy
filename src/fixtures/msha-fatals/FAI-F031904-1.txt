@@ -1,0 +1,297 @@
+                                                                         FAI-F031904-1
+
+                          UNITED STATES
+                      DEPARTMENT OF LABOR
+             MINE SAFETY AND HEALTH ADMINISTRATION
+
+                        REPORT OF INVESTIGATION
+
+                                  Underground
+                                   (Marble)
+
+Falling, Rolling, or Sliding Rock or Material of Any Kind Accident Fatality Report
+                                 January 19, 2026
+
+                            Vermont Quarries Corp.
+                                Danby Quarry
+                        Danby, Rutland County, Vermont
+                               ID No. 43-00042
+
+                              Accident Investigator
+
+                                Andrew Grabo
+                        Mine Safety and Health Inspector
+
+
+
+
+                              Originating Office
+                     Mine Safety and Health Administration
+                              Warrendale District
+                        178 Thorn Hill Road, Suite 100
+                            Warrendale, PA 15086
+                        Peter Montali, District Manager
+                                 TABLE OF CONTENTS
+
+OVERVIEW                                                  1
+
+GENERAL INFORMATION                                       1
+
+DESCRIPTION OF THE ACCIDENT                               2
+
+INVESTIGATION OF THE ACCIDENT                             3
+
+DISCUSSION                                                3
+
+   Location of the Accident                               3
+
+   Equipment Involved                                     3
+
+   Examinations                                           3
+
+   Training and Experience                                3
+
+ROOT CAUSE ANALYSIS                                       4
+
+CONCLUSION                                                5
+
+ENFORCEMENT ACTIONS                                       6
+
+APPENDIX A – Wire Saw                                     7
+
+APPENDIX B – Persons Participating in the Investigation   8
+
+APPENDIX C – View of the Accident Scene                   9
+
+
+
+
+                                             ii
+                                         OVERVIEW
+
+On January 19, 2026, at approximately 10:00 a.m., Joseph Jaworski, Sr., a 71-year-old mill saw
+operator with 32 years of experience, was injured when an unsecured marble slab struck him. On
+April 2, 2026, Jaworski died from complications related to those injuries.
+
+The accident occurred because the mine operator did not properly store and support materials to
+prevent fall-of-material hazards.
+
+                                 GENERAL INFORMATION
+
+Vermont Quarries Corp. owns and operates Danby Quarry. The Danby Quarry is an underground
+marble mine located in Danby, Rutland County, Vermont. The mine employs 22 miners and
+operates two 8-hour shifts, 6 days per week. The mine uses wire and undercutting saws to extract
+large blocks of marble. Front-end loaders are used to transport the unfinished blocks from the
+face to the underground mill for further processing. Wire saws, gang saws, and polishers are used
+to produce finished products. The finished products are used for countertops, monuments, and
+architectural products.
+
+
+
+
+                                               1
+The principal management officials at Danby Quarry at the time of the accident were:
+
+       Luca Manolini                                                     General Manager
+       Keith Millard                                                     Quarry Manager
+
+The Mine Safety and Health Administration (MSHA) completed the last regular safety and
+health inspection at this mine on December 4, 2025. The 2025 nonfatal days lost incident rate for
+the Danby Quarry was 3.73, compared to the national average of 1.46 for mines of this type.
+
+                             DESCRIPTION OF THE ACCIDENT
+
+On January 19, 2026, at 7:00 a.m., Jaworski started his shift by clocking in at the underground
+office and traveling to the mill trim saw area where he began work alone. He began his shift by
+marking large blocks of marble to cut into slabs, approximately 4,500 pounds in weight. He then
+made the cuts using a wire saw in preparation for further processing with gang saws. The wire
+saw uses an endless wire rope with embedded diamonds to cut through the blocks of marble
+(Appendix A). After the marble slabs were cut with the trim saw, the slabs remained stacked
+vertically for loading and transport by the front-end loader. Jaworski continued to work alone in
+the trim saw area until he took a break at 9:00 a.m. Jaworski interacted with other employees
+during the break.
+
+Around 9:15 a.m., Jaworski returned to the trim saw area alone to perform final cuts to the block.
+Jaworski then contacted Kenny Abbott, front-end loader operator, to remove the finished marble
+slabs and waste slabs from the trim saw area. Abbott transferred the first three slabs to the
+storage and waste area. While Abbott was away, Jaworski remained in the trim saw area alone.
+Abbott returned to the trim saw area, loaded the fourth slab, and transported it to the storage and
+waste area. Abbott observed Jaworski standing next to the fifth slab.
+
+At 10:10 a.m., James Heavens, mechanic, was working in the mechanic’s shop nearby, when he
+heard a slab of marble fall. Heavens went to the trim saw area where he saw that Jaworski had
+been struck by a marble slab and was lying face down partially beneath the fallen slab. Heavens
+immediately yelled to Tonya Powers, secretary, to call 911. Powers called 911 at 10:10 a.m.
+Heavens, Abbott, and Keith Millard, quarry manager, responded to provide first aid. At 10:26
+a.m., the Danby Mt-Tabor Fire Department and Northshire EMS traveled into the mine to render
+care. EMS transported Jaworski out of the mine.
+
+Jaworski was then transferred to a Life Net helicopter which transported him to the University of
+Vermont Hospital, located in Burlington, Vermont. Jaworski remained under the care of the
+University of Vermont Hospital for internal injuries and multiple broken bones until 12:59 p.m.
+on April 2, 2026, when Erica Lash, MD, pronounced Jaworski dead due to complications related
+to those injuries.
+
+
+
+
+                                                2
+                            INVESTIGATION OF THE ACCIDENT
+
+On January 19, 2026, at 10:23 a.m., Tonya Powers, secretary, called the Department of Labor
+National Contact Center (DOLNCC). The DOLNCC contacted Kevin Abel, assistant district
+manager. Abel contacted Brandt Berryann, supervisory mine safety and health inspector, who
+contacted Andrew Grabo, mine safety and health inspector. Grabo was assigned as the lead
+accident investigator and dispatched to the mine to investigate the accident. At 2:20 p.m., Grabo
+arrived at the mine and issued an order under the provisions of Section 103(k) of the Mine Act to
+ensure the safety of the miners and preservation of evidence. Grabo investigated the accident
+scene; interviewed miners, mine management, and other relevant personnel; and reviewed the
+conditions and practices relevant to the accident. Refer to Appendix B for a list of persons who
+participated in the investigation.
+
+                                          DISCUSSION
+
+Location of the Accident
+The accident occurred at the underground mill trim saw area (Appendix C).
+
+Equipment Involved
+The wire saw involved in the accident was a Marathon LGR4INVTC. The investigator
+conducted an examination of the wire saw and found no defects that contributed to the accident.
+
+Examinations
+On the day of the accident, Jaworski conducted a workplace examination of the mill trim saw
+area prior to making any cuts to the marble blocks. No hazards were noted on the examination
+record. The investigator determined that the workplace examination was adequate and did not
+contribute to the accident.
+
+Training and Experience
+Jaworski had over 32 years of mining experience, all at Danby Quarry. On April 2, 2024,
+Jaworski received task training on the wire saw. Jaworski most recently received Annual
+Refresher Training on February 25, 2025. Jaworski received all training in accordance with
+MSHA Part 48 training regulations. The investigator determined training did not contribute to
+the accident.
+
+Work Procedures
+The mine operator had work procedures in place regarding cutting, storing, and supporting cut
+marble slabs. Marble blocks are cut into slabs using a wire saw with an endless wire rope of
+embedded diamonds. After cutting, the slabs remain stacked vertically in rows on wooden
+cribbing until they are loaded and transported by front-end loaders.
+
+The mine operator had a policy requiring that the front-end loader be used to block the motion of
+the unsupported marble slabs prior to any miner entering the area immediately in front of the
+stacked slabs. When the slabs were not supported by the front-end loader, no miners were to
+enter the area in front of the slabs. At the time of the accident, the front-end loader had left the
+mill trim saw area to transport a cut slab, leaving the next marble slab unsupported. Jaworski
+
+
+
+                                                 3
+entered the area immediately in front of the unsupported marble slab and was crushed when the
+slab fell forward. Investigators determined that the procedures for storing and supporting the cut
+marble slabs were not followed. Additionally, investigators determined that the procedures for
+supporting the cut marble slabs with the front-end loader were not adequate because the
+procedure did not prevent a fall-of-material hazard when the front-end loader was not in place,
+which contributed to the accident.
+
+                                   ROOT CAUSE ANALYSIS
+
+The accident investigator conducted an analysis to identify the underlying causes of the accident.
+The accident investigator identified the following root cause, and the mine operator implemented
+the corresponding corrective action to prevent a recurrence.
+
+1. Root Cause: The mine operator did not properly store and support materials to prevent fall-
+   of-material hazards.
+
+   Corrective Action: The mine operator installed a new concrete pad with metal tracks and bars
+   so that marble slabs can be properly stored and to prevent fall-of-material hazards to miners
+   working in the area (Appendix A).
+
+
+
+
+                                                 4
+                                        CONCLUSION
+
+On January 19, 2026, Joseph Jaworski Sr., a 71-year-old mill saw operator with 32 years of
+experience, was injured when an unsecured slab of marble struck him. On April 2, 2026, at 12:59
+p.m., Jaworski died from complications related to those injuries.
+
+The accident occurred because the mine operator did not properly store and support materials to
+prevent fall-of-material hazards.
+
+
+Approved by:
+
+
+
+__________________________________                                       _____________
+Peter Montali                                                                  Date
+District Manager
+
+
+
+
+                                               5
+                                 ENFORCEMENT ACTIONS
+
+1. A 103(k) order was issued to Vermont Quarries Corp.
+
+   An accident occurred on January 19, 2026, at approximately 10:10 a.m. This order is being
+   issued under the authority of the Federal Mine Safety and Health Act of 1977, under Section
+   103(k) to insure the safety of all persons at the mine, and requires the operator to obtain the
+   approval of an authorized representative of MSHA of any plan to recover any person in the
+   mine or to recover the mine or affected area. This order prohibits any activity in the affected
+   area. The operator is reminded of the obligation to preserve all evidence that would aid in
+   investigating the cause or causes of the accident in accordance with 30 CFR 50.12.
+
+2. A 104(a) citation was issued to Vermont Quarries Corp. for a violation of 30 CFR 57.16001.
+
+   An accident occurred on January 19, 2026, at approximately 10:10 a.m., in the trim saw area.
+   Slabs of marble, weighing approximately 4,500 pounds, were stacked and stored in a manner
+   that created a fall-of-material hazard. The miner working in the area was struck by the falling
+   slab of marble and received crushing injuries. The miner died on April 2, 2026, from
+   complications related to his injuries.
+
+
+
+
+                                                6
+                                      APPENDIX A – Wire Saw
+
+
+
+
+This photograph shows the new concrete pad with metal tracks and bars installed as part of the corrective
+action to support cut marble slabs.
+
+
+
+
+                                                    7
+                  APPENDIX B – Persons Participating in the Investigation
+
+                                  Vermont Quarries Corp.
+
+Luca Manolini                                                             General Manager
+Keith Millard                                                              Quarry Manager
+Ricky Clayton                                                        Miners’ Representative
+Kenny Abbott                                                               Loader Operator
+James Heavens                                                                    Mechanic
+
+
+                          Mine Safety and Health Administration
+
+Brandt Berryann                                 Supervisory Mine Safety and Health Inspector
+Andrew Grabo                                                Mine Safety and Health Inspector
+
+
+
+
+                                            8
+APPENDIX C – View of the Accident Scene
+
+
+
+
+                  9
+

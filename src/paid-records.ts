@@ -87,6 +87,8 @@ export const EXTRACTED_BODY_SKUS = [
   "cbca-decisions",
   "mspb-decisions",
   "ferc-issuances",
+  "cftc-reparations",
+  "msha-fatals",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -195,6 +197,8 @@ export const USCG_ALJ_DECISIONS_TYPE = "uscg-alj-decisions";
 export const CBCA_DECISIONS_TYPE = "cbca-decisions";
 export const MSPB_DECISIONS_TYPE = "mspb-decisions";
 export const FERC_ISSUANCES_TYPE = "ferc-issuances";
+export const CFTC_REPARATIONS_TYPE = "cftc-reparations";
+export const MSHA_FATALS_TYPE = "msha-fatals";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -277,6 +281,8 @@ export const CBCA_DECISIONS_SOURCE = "https://www.cbca.gov/decisions/cda-cases.h
 export const MSPB_DECISIONS_SOURCE =
   "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/NonPrecedentialDecisions_Manifest-updmar2025.json";
 export const FERC_ISSUANCES_SOURCE = "https://elibrary.ferc.gov/eLibrarywebapi/api/Search/AdvancedSearch";
+export const CFTC_REPARATIONS_SOURCE = "https://www.cftc.gov/LawRegulation/Dispositions/index.htm";
+export const MSHA_FATALS_SOURCE = "https://www.msha.gov/data-and-reports/fatality-reports/search";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -569,7 +575,7 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
   if (!needle) return rows;
   return rows.filter((row) => {
     // kind, citation, caseNo, and documentId match firm-check. Letter/order bodies stay off this haystack.
-    const hay = [row.id, row.accession, row.docket, row.dockets, row.citation, row.caseNo, row.documentId, row.kind, row.orderKind, row.library, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
+    const hay = [row.id, row.accession, row.docket, row.dockets, row.citation, row.caseNo, row.documentId, row.kind, row.orderKind, row.library, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.mine, row.operator, row.state, row.sector, row.classification, row.accidentDate, row.reportDate, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
       .map((value) => str(value).toLowerCase())
       .join(" ");
     return hay.includes(needle);
@@ -864,6 +870,7 @@ export function normalizeCardRecords(
       firm:
         str(row.firm) ||
         str(row.institution) ||
+        str(row.operator) ||
         str(row.bank) ||
         str(row.creditUnion) ||
         str(row.holder) ||
@@ -1202,6 +1209,20 @@ export function paidFercIssuancesBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, FERC_ISSUANCES_TYPE, FERC_ISSUANCES_SOURCE, opts);
+}
+
+export function paidCftcReparationsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, CFTC_REPARATIONS_TYPE, CFTC_REPARATIONS_SOURCE, opts);
+}
+
+export function paidMshaFatalsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, MSHA_FATALS_TYPE, MSHA_FATALS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

@@ -77,6 +77,9 @@ async function withServer(
     GMP_DIR: join(tmpdir(), "gmp-absent-mcp-"),
     GMP_MD_DIR: join(tmpdir(), "gmp-md-absent-mcp-"),
     SHOP_REQUEST_LOG: "0",
+    // MCP search fetches discoveryOrigin(). A host X402_RESOURCE_URL would send that
+    // fetch at the live shop instead of this listener.
+    X402_RESOURCE_URL: undefined,
     ...envPatch,
   };
   for (const [k, v] of Object.entries(patch)) {
@@ -207,6 +210,7 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === "/fsis-humane"));
       assert.ok(shop.products.some((p) => p.path === "/epa-cafo"));
       assert.ok(shop.products.some((p) => p.path === "/fmshrc-orders"));
+      assert.ok(shop.products.some((p) => p.path === "/msha-fatals"));
       assert.ok(shop.products.some((p) => p.path === "/bsee-reports"));
       assert.ok(shop.products.some((p) => p.path === "/oshrc-orders"));
       assert.ok(shop.products.some((p) => p.path === "/epa-alj"));
@@ -229,6 +233,7 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === "/cbca-decisions"));
       assert.ok(shop.products.some((p) => p.path === "/mspb-decisions"));
       assert.ok(shop.products.some((p) => p.path === "/ferc-issuances"));
+      assert.ok(shop.products.some((p) => p.path === "/cftc-reparations"));
 
       const wellKnown = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         mcp?: string;
@@ -256,6 +261,7 @@ async function main(): Promise<void> {
       assert.ok(localPaths.includes("/fsis-humane"), "local well-known lists /fsis-humane");
       assert.ok(localPaths.includes("/epa-cafo"), "local well-known lists /epa-cafo");
       assert.ok(localPaths.includes("/fmshrc-orders"), "local well-known lists /fmshrc-orders");
+      assert.ok(localPaths.includes("/msha-fatals"), "local well-known lists /msha-fatals");
       assert.ok(localPaths.includes("/bsee-reports"), "local well-known lists /bsee-reports");
       assert.ok(localPaths.includes("/oshrc-orders"), "local well-known lists /oshrc-orders");
       assert.ok(localPaths.includes("/epa-alj"), "local well-known lists /epa-alj");
@@ -278,6 +284,7 @@ async function main(): Promise<void> {
       assert.ok(localPaths.includes("/cbca-decisions"), "local well-known lists /cbca-decisions");
       assert.ok(localPaths.includes("/mspb-decisions"), "local well-known lists /mspb-decisions");
       assert.ok(localPaths.includes("/ferc-issuances"), "local well-known lists /ferc-issuances");
+      assert.ok(localPaths.includes("/cftc-reparations"), "local well-known lists /cftc-reparations");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llms.includes("GET/POST /mcp"));
@@ -354,6 +361,7 @@ async function main(): Promise<void> {
       assert.ok(listBody.result.tools.some((t) => t.name === "fsis-humane"), "MCP tools include /fsis-humane from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "epa-cafo"), "MCP tools include /epa-cafo from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "fmshrc-orders"), "MCP tools include /fmshrc-orders from well-known");
+      assert.ok(listBody.result.tools.some((t) => t.name === "msha-fatals"), "MCP tools include /msha-fatals from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "bsee-reports"), "MCP tools include /bsee-reports from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "oshrc-orders"), "MCP tools include /oshrc-orders from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "epa-alj"), "MCP tools include /epa-alj from well-known");
@@ -376,6 +384,7 @@ async function main(): Promise<void> {
       assert.ok(listBody.result.tools.some((t) => t.name === "cbca-decisions"), "MCP tools include /cbca-decisions from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "mspb-decisions"), "MCP tools include /mspb-decisions from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "ferc-issuances"), "MCP tools include /ferc-issuances from well-known");
+      assert.ok(listBody.result.tools.some((t) => t.name === "cftc-reparations"), "MCP tools include /cftc-reparations from well-known");
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",

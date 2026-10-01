@@ -1184,6 +1184,8 @@ async function main(): Promise<void> {
   assert.equal(EXTRACTED_BODY_SKUS.includes("cbca-decisions"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("mspb-decisions"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("ferc-issuances"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("cftc-reparations"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("msha-fatals"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {
@@ -1403,6 +1405,18 @@ async function main(): Promise<void> {
     { id: "ferc-commission-20260925-3063", date: "2026-09-25" },
     { id: "ferc-alj-20260505-3058", date: "2026-05-05" },
     { id: "ferc-alj-20251125-3026", date: "2025-11-25" },
+  ]);
+  doorCursor("cftc-reparations", [
+    { id: "cftc-disposition-26-r021-2026-09-29", date: "2026-09-29" },
+    { id: "cftc-disposition-26-r032-2026-09-18", date: "2026-09-18" },
+    { id: "cftc-disposition-26-r030-2026-09-18", date: "2026-09-18" },
+    { id: "cftc-opinion-23-r001-2025-12-12", date: "2025-12-12" },
+  ]);
+  doorCursor("msha-fatals", [
+    { id: "FAI-F012928-1", date: "2026-08-28" },
+    { id: "FAI-F00BE1D-1", date: "2026-08-11" },
+    { id: "FAI-6322887-1", date: "2026-07-24" },
+    { id: "FAI-F0143E4-1", date: "2026-06-30" },
   ]);
   doorCursor("nmb-determinations", [
     { id: "nmb-53-31", date: "2026-07-12" },

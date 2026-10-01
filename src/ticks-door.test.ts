@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, facilitatorFailureDetail, cdpFacilitatorBodyProblems, inspectPaymentHeader, paymentHeaderShapeLine, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -385,6 +385,29 @@ import {
   VIRIDON_URL,
 } from "./ferc-issuances.js";
 import {
+  ASMAD_ID,
+  BODY_NEEDLE_ASMAD,
+  BODY_NEEDLE_SHAH,
+  CFTC_REPARATIONS_AMOUNT_ATOMIC,
+  CFTC_REPARATIONS_MANIFEST_PATH,
+  CFTC_REPARATIONS_PATH,
+  SHAH_ID,
+} from "./cftc-reparations.js";
+import {
+  BODY_NEEDLE_DEER_RUN,
+  BODY_NEEDLE_OHIO,
+  BODY_NEEDLE_PANTHER,
+  DEER_RUN_ID,
+  DEER_RUN_PAGE,
+  MSHA_FATALS_AMOUNT_ATOMIC,
+  MSHA_FATALS_MANIFEST_PATH,
+  MSHA_FATALS_PATH,
+  OHIO_COUNTY_ID,
+  OHIO_COUNTY_PAGE,
+  PANTHER_EAGLE_ID,
+  PANTHER_EAGLE_PAGE,
+} from "./msha-fatals.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -419,6 +442,11 @@ async function withServer(
   }
   if (!Object.prototype.hasOwnProperty.call(envPatch, "SETTLE_LOG")) {
     envPatch = { ...envPatch, SETTLE_LOG: "0" };
+  }
+  // MCP search fetches discoveryOrigin(). A host X402_RESOURCE_URL would send that
+  // fetch at the live shop instead of this listener.
+  if (!Object.prototype.hasOwnProperty.call(envPatch, "X402_RESOURCE_URL")) {
+    envPatch = { ...envPatch, X402_RESOURCE_URL: undefined };
   }
   for (const [k, v] of Object.entries(envPatch)) {
     prev[k] = process.env[k];
@@ -1084,6 +1112,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/fsis-humane"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-cafo"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/fmshrc-orders"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/msha-fatals"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/bsee-reports"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/oshrc-orders"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-alj"]?.get?.["x-payment-info"]);
@@ -1106,6 +1135,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/cbca-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/mspb-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ferc-issuances"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/cftc-reparations"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1335,6 +1365,7 @@ async function main(): Promise<void> {
       FSIS_HUMANE_PATH,
       EPA_CAFO_PATH,
       FMSHRC_ORDERS_PATH,
+      MSHA_FATALS_PATH,
       BSEE_REPORTS_PATH,
       OSHRC_ORDERS_PATH,
       EPA_ALJ_PATH,
@@ -1357,6 +1388,7 @@ async function main(): Promise<void> {
       CBCA_DECISIONS_PATH,
       MSPB_DECISIONS_PATH,
       FERC_ISSUANCES_PATH,
+      CFTC_REPARATIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -10429,6 +10461,309 @@ async function main(): Promise<void> {
     },
   );
 
+  const cftcRepDir = mkdtempSync(join(tmpdir(), "cftc-reparations-"));
+  const cftcRepPad = Array.from({ length: 40 }, (_, i) => `Official CFTC reparations paragraph ${i + 1}.`).join(" ");
+  const cftcRepCard = (
+    id: string,
+    docket: string,
+    kind: string,
+    date: string,
+    institution: string,
+    needle: string,
+  ) => ({
+    id,
+    docket,
+    dockets: [docket],
+    caseNo: docket,
+    kind,
+    orderKind: kind === "opinion" ? "Commission opinion" : "Reparations disposition",
+    date,
+    institution,
+    title: institution,
+    sourceUrl: `https://www.cftc.gov/sites/default/files/2026/09/${id}.pdf`,
+    body: `COMMODITY FUTURES TRADING COMMISSION. CFTC Docket No. ${docket}. INITIAL DECISION. ${needle} ${cftcRepPad}`,
+  });
+  writeFileSync(
+    join(cftcRepDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "cftc-reparations-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-29T18:31:26.000Z",
+      asOf: "2026-09-29",
+      license: "17 USC 105",
+      attribution: "Commodity Futures Trading Commission. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        dispositions: "https://www.cftc.gov/LawRegulation/Dispositions/index.htm",
+        opinions: "https://www.cftc.gov/LawRegulation/OpinionsAdjudicatoryOrders/index.htm",
+      },
+      cards: [
+        cftcRepCard(ASMAD_ID, "26-R021", "disposition", "2026-09-29", "Cristofer Arguedas Asmad v. Interactive Brokers, LLC", BODY_NEEDLE_ASMAD),
+        cftcRepCard(SHAH_ID, "23-R001", "opinion", "2025-12-12", "Himanshu Shah v. GAIN Capital Group, LLC", BODY_NEEDLE_SHAH),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CFTC_REPARATIONS_DIR: cftcRepDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-cftc-reparations-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CFTC_REPARATIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /cftc-reparations must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, CFTC_REPARATIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CFTC_REPARATIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${CFTC_REPARATIONS_PATH}?id=${ASMAD_ID}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /cftc-reparations?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      const emptySince = await fetch(`${base}${CFTC_REPARATIONS_PATH}?since=2026-12-31`);
+      assert.equal(emptySince.status, 304, "empty ?since= delta is 304 unpaid");
+      const unpaidSince = await fetch(`${base}${CFTC_REPARATIONS_PATH}?since=${SHAH_ID}`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /cftc-reparations?since= with newer slips must be 402");
+      const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(since402.accepts[0]?.maxAmountRequired, CFTC_REPARATIONS_AMOUNT_ATOMIC, "since bag is $0.05");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_ASMAD));
+      assert.ok(!JSON.stringify(body402).includes("Official CFTC reparations paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CFTC_REPARATIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(CFTC_REPARATIONS_PATH)), "well-known lists /cftc-reparations");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /cftc-reparations"));
+      assert.ok(llms.includes("GET /cftc-orders"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[CFTC_REPARATIONS_PATH]);
+      assert.ok(spec.paths[CFTC_REPARATIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/cftc-reparations/index"]);
+
+      const manifest = await fetch(`${base}${CFTC_REPARATIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "cftc-reparations free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { id?: string; docket?: string; kind?: string; title?: string; date?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 2);
+      assert.equal(man.asOf, "2026-09-29");
+      assert.ok(man.cards?.some((card) => card.id === ASMAD_ID && card.docket === "26-R021" && card.kind === "disposition" && card.date === "2026-09-29"));
+      assert.ok(man.cards?.some((card) => card.id === SHAH_ID && card.kind === "opinion" && card.title?.includes("Shah")));
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes(".pdf"), "free manifest has no official PDF deep link");
+      assert.ok(!manJson.includes(BODY_NEEDLE_ASMAD));
+      assert.ok(!manJson.includes(BODY_NEEDLE_SHAH));
+      assert.ok(manJson.includes("Dispositions/index.htm"));
+      assert.ok(!manJson.includes("_format=json"));
+
+      const kindSearch = await fetch(`${base}${CFTC_REPARATIONS_MANIFEST_PATH}?kind=opinion`);
+      assert.equal(kindSearch.status, 200);
+      const kindBody = (await kindSearch.json()) as { cards?: { id?: string; kind?: string }[] };
+      assert.ok(kindBody.cards?.some((card) => card.id === SHAH_ID && card.kind === "opinion"));
+      assert.ok(!kindBody.cards?.some((card) => card.kind === "disposition"));
+
+      const qSearch = await fetch(`${base}${CFTC_REPARATIONS_MANIFEST_PATH}?q=26-R021`);
+      assert.equal(qSearch.status, 200);
+      const qBody = (await qSearch.json()) as { cards?: { id?: string }[] };
+      assert.ok(qBody.cards?.some((card) => card.id === ASMAD_ID));
+
+      const index = await fetch(`${base}/cftc-reparations/index`);
+      assert.equal(index.status, 200, "/cftc-reparations/index is the free catalog");
+
+      const paid = await fetch(`${base}${CFTC_REPARATIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; kind?: string; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "cftc-reparations-bodies");
+      assert.equal(paidBody.asOf, "2026-09-29");
+      assert.ok(paidBody.cards.some((card) => card.id === ASMAD_ID && card.kind === "disposition" && card.body.includes(BODY_NEEDLE_ASMAD)));
+      assert.ok(paidBody.cards.some((card) => card.id === SHAH_ID && card.kind === "opinion" && card.body.includes(BODY_NEEDLE_SHAH)));
+      assert.equal(paidBody.records?.[0]?.type, "cftc-reparations");
+
+      const paidOne = await fetch(`${base}${CFTC_REPARATIONS_PATH}?id=${ASMAD_ID}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneRep = (await paidOne.json()) as { cards: { id: string; body: string }[] };
+      assert.equal(oneRep.cards.length, 1);
+      assert.equal(oneRep.cards[0]?.id, ASMAD_ID);
+      assert.ok(oneRep.cards[0]?.body.includes(BODY_NEEDLE_ASMAD));
+    },
+  );
+
+  const mshaDir = mkdtempSync(join(tmpdir(), "msha-fatals-"));
+  const mshaPad = Array.from({ length: 40 }, (_, i) => `Official MSHA final report paragraph ${i + 1}.`).join(" ");
+  const mshaCard = (
+    id: string,
+    mine: string,
+    operator: string,
+    state: string,
+    sector: string,
+    accidentDate: string,
+    reportDate: string,
+    classification: string,
+    page: string,
+    needle: string,
+    victimRole: string,
+  ) => ({
+    id,
+    pageUrl: page,
+    mine,
+    operator,
+    institution: operator,
+    firm: operator,
+    state,
+    sector,
+    accidentDate,
+    reportDate,
+    date: reportDate,
+    classification,
+    victimRole,
+    rootCauses: [`Root cause sentence for ${mine}.`],
+    enforcement: [{ action: "104(a) citation", standard: "30 CFR 75.220(a)(1)", citation: needle === BODY_NEEDLE_PANTHER ? needle : "", summary: "Enforcement summary." }],
+    citations: needle === BODY_NEEDLE_PANTHER ? [needle] : ["104(a) citation"],
+    mineId: "11-03182",
+    title: `${mine} — ${classification}`,
+    sourceUrl: page,
+    pdfUrl: "",
+    body: `REPORT OF INVESTIGATION ${id} MINE SAFETY AND HEALTH ADMINISTRATION ROOT CAUSE ANALYSIS. ${needle} ${mshaPad}`,
+  });
+  writeFileSync(
+    join(mshaDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "msha-fatality-final-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-29T12:00:00.000Z",
+      asOf: "2026-08-11",
+      license: "17 USC 105",
+      attribution: "Mine Safety and Health Administration. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: { search: "https://www.msha.gov/data-and-reports/fatality-reports/search" },
+      cards: [
+        mshaCard(DEER_RUN_ID, "Deer Run Mine", "Patton Mining LLC", "Illinois", "coal", "2026-03-05", "2026-08-11", "Machinery", DEER_RUN_PAGE, BODY_NEEDLE_DEER_RUN, "continuous mining machine operator"),
+        mshaCard(PANTHER_EAGLE_ID, "Panther Eagle Mine", "Marfork Coal Company", "West Virginia", "coal", "2026-04-02", "2026-07-24", "Fall of Roof or Back", PANTHER_EAGLE_PAGE, BODY_NEEDLE_PANTHER, "shuttle car operator"),
+        mshaCard(OHIO_COUNTY_ID, "Ohio County Mine", "Ohio County Coal Resources, Inc.", "West Virginia", "coal", "2026-04-03", "2026-06-30", "Powered Haulage", OHIO_COUNTY_PAGE, BODY_NEEDLE_OHIO, "section supervisor"),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      MSHA_FATALS_DIR: mshaDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-msha-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${MSHA_FATALS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /msha-fatals must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, MSHA_FATALS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, MSHA_FATALS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${MSHA_FATALS_PATH}?id=${DEER_RUN_ID}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /msha-fatals?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      const emptySince = await fetch(`${base}${MSHA_FATALS_PATH}?since=2026-12-31`);
+      assert.equal(emptySince.status, 304, "empty ?since= delta is 304 unpaid");
+      const unpaidSince = await fetch(`${base}${MSHA_FATALS_PATH}?since=2026-07-01`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /msha-fatals?since= with newer reports must be 402");
+      const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(since402.accepts[0]?.maxAmountRequired, MSHA_FATALS_AMOUNT_ATOMIC, "since bag is $0.05");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_DEER_RUN));
+      assert.ok(!JSON.stringify(body402).includes(".pdf"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === MSHA_FATALS_PATH), true);
+      const fmshrcAt = shop.products.findIndex((p) => p.path === "/fmshrc-orders");
+      const mshaAt = shop.products.findIndex((p) => p.path === MSHA_FATALS_PATH);
+      assert.equal(mshaAt, fmshrcAt + 1, "/msha-fatals sits next to /fmshrc-orders");
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(MSHA_FATALS_PATH)), "well-known lists /msha-fatals");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /msha-fatals"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[MSHA_FATALS_PATH]);
+      assert.ok(spec.paths[MSHA_FATALS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/msha-fatals/index"]);
+
+      const manifest = await fetch(`${base}${MSHA_FATALS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "msha-fatals free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { id?: string; mine?: string; sector?: string; body?: string; sourceUrl?: string; paidUrl?: string; rootCauses?: unknown; pdfUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 3);
+      assert.equal(man.asOf, "2026-08-11");
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && !("rootCauses" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes(".pdf"), "free manifest has no PDF link");
+      assert.ok(!manJson.includes(BODY_NEEDLE_DEER_RUN));
+      assert.ok(!manJson.includes(BODY_NEEDLE_PANTHER));
+      assert.ok(!manJson.includes(BODY_NEEDLE_OHIO));
+      assert.ok(manJson.includes("https://www.msha.gov/data-and-reports/fatality-reports/search"));
+
+      const sectorSearch = await fetch(`${base}${MSHA_FATALS_MANIFEST_PATH}?sector=coal`);
+      assert.equal(sectorSearch.status, 200);
+      const sectorBody = (await sectorSearch.json()) as { cards?: { id?: string; sector?: string }[] };
+      assert.equal(sectorBody.cards?.length, 3);
+      assert.ok(sectorBody.cards?.every((card) => card.sector === "coal"));
+
+      const qSearch = await fetch(`${base}${MSHA_FATALS_MANIFEST_PATH}?q=Deer%20Run`);
+      assert.equal(qSearch.status, 200);
+      const qBody = (await qSearch.json()) as { cards?: { id?: string }[] };
+      assert.ok(qBody.cards?.some((card) => card.id === DEER_RUN_ID));
+      assert.equal(qBody.cards?.length, 1);
+
+      const index = await fetch(`${base}/msha-fatals/index`);
+      assert.equal(index.status, 200, "/msha-fatals/index is the free catalog");
+
+      const paid = await fetch(`${base}${MSHA_FATALS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; mine?: string; operator?: string; rootCauses?: string[]; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "msha-fatality-final-bodies");
+      assert.equal(paidBody.asOf, "2026-08-11");
+      assert.ok(paidBody.cards.some((card) => card.id === DEER_RUN_ID && card.mine === "Deer Run Mine" && card.operator === "Patton Mining LLC" && card.body.includes(BODY_NEEDLE_DEER_RUN)));
+      assert.ok(paidBody.cards.some((card) => card.id === PANTHER_EAGLE_ID && (card.rootCauses?.length ?? 0) >= 1));
+      assert.equal(paidBody.records?.[0]?.type, "msha-fatals");
+
+      const paidOne = await fetch(`${base}${MSHA_FATALS_PATH}?id=${OHIO_COUNTY_ID}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneBody = (await paidOne.json()) as { cards: { id: string; body: string; victimRole?: string }[] };
+      assert.equal(oneBody.cards.length, 1);
+      assert.equal(oneBody.cards[0]?.id, OHIO_COUNTY_ID);
+      assert.ok(oneBody.cards[0]?.body.includes(BODY_NEEDLE_OHIO));
+      assert.equal(oneBody.cards[0]?.victimRole, "section supervisor");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -11179,7 +11514,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, MSHA_FATALS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -11254,7 +11589,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions", "ferc-issuances"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "msha-fatals", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions", "mspb-decisions", "ferc-issuances", "cftc-reparations"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -11294,6 +11629,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("fsis-humane"), true);
   assert.equal(isPublicBazaarSku("epa-cafo"), true);
   assert.equal(isPublicBazaarSku("fmshrc-orders"), true);
+  assert.equal(isPublicBazaarSku("msha-fatals"), true);
   assert.equal(isPublicBazaarSku("bsee-reports"), true);
   assert.equal(isPublicBazaarSku("oshrc-orders"), true);
   assert.equal(isPublicBazaarSku("epa-alj"), true);
@@ -11316,6 +11652,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("cbca-decisions"), true);
   assert.equal(isPublicBazaarSku("mspb-decisions"), true);
   assert.equal(isPublicBazaarSku("ferc-issuances"), true);
+  assert.equal(isPublicBazaarSku("cftc-reparations"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -11409,6 +11746,87 @@ async function main(): Promise<void> {
   assert.equal(wellPayload.accepted?.network, NETWORK_V2);
   assert.equal(wellPayload.accepted?.extra?.name, "USD Coin");
   assert.equal(wellPayload.payload?.authorization?.value, TICKS_AMOUNT_ATOMIC);
+
+  const signedAuthorization = v1Exact.payload.authorization;
+  const signedSignature = v1Exact.payload.signature;
+  const assertCarried = (header: string, label: string) => {
+    const body = facilitatorBody(header, ticksReqs);
+    const inner = (body.paymentPayload as { payload?: { signature?: string; authorization?: { value?: string } } }).payload;
+    assert.equal(inner?.signature, signedSignature, label);
+    assert.equal(inner?.authorization?.value, TICKS_AMOUNT_ATOMIC, label);
+    assert.deepEqual(cdpFacilitatorBodyProblems(body), [], label);
+    const line = paymentHeaderShapeLine(inspectPaymentHeader(header));
+    assert.equal(line.includes(signedSignature), false, `${label} shape log must not include the signature`);
+    assert.equal(line.includes(signedAuthorization.from), false, `${label} shape log must not include the payer`);
+    assert.match(line, /scheme=exact/, label);
+    return line;
+  };
+  const v1Line = assertCarried(JSON.stringify(v1Exact), "v1 json");
+  assert.match(v1Line, /x402Version=1/);
+  assert.match(v1Line, /network=base/);
+  assert.match(v1Line, /keys=.*payload/);
+  assert.match(v1Line, /payloadKeys=signature,authorization/);
+  const v1Base64 = Buffer.from(JSON.stringify(v1Exact), "utf8").toString("base64");
+  assertCarried(v1Base64, "v1 base64");
+  assertCarried(Buffer.from(v1Base64, "utf8").toString("base64"), "v1 base64-in-base64");
+  const v2Exact = {
+    x402Version: 2,
+    accepted: {
+      scheme: "exact",
+      network: NETWORK_V2,
+      asset: USDC_BASE,
+      amount: TICKS_AMOUNT_ATOMIC,
+      payTo: PAY_TO,
+      maxTimeoutSeconds: 60,
+      extra: { name: "USD Coin", version: "2" },
+    },
+    payload: v1Exact.payload,
+  };
+  const v2Line = assertCarried(JSON.stringify(v2Exact), "v2 json");
+  assert.match(v2Line, /x402Version=2/);
+  assert.match(v2Line, /network=eip155:8453/);
+  assertCarried(
+    JSON.stringify({
+      ...v2Exact,
+      payload: Buffer.from(JSON.stringify(v1Exact.payload), "utf8").toString("base64"),
+    }),
+    "v2 payload is base64",
+  );
+  assertCarried(JSON.stringify({ paymentPayload: v2Exact }), "nested paymentPayload");
+  assertCarried(
+    Buffer.from(Buffer.from(JSON.stringify(v2Exact), "utf8").toString("base64"), "utf8").toString("base64"),
+    "v2 base64-in-base64",
+  );
+
+  const missingView = inspectPaymentHeader(JSON.stringify({
+    x402Version: 2,
+    scheme: "exact",
+    network: NETWORK_V2,
+    accepted: { scheme: "exact", network: NETWORK_V2 },
+  }));
+  assert.equal(missingView.inner, null);
+  assert.match(missingView.missing ?? "", /signed authorization and signature/);
+  assert.equal(
+    (facilitatorBody(JSON.stringify({ x402Version: 1, scheme: "exact", network: "base" }), ticksReqs).paymentPayload as { payload?: unknown }).payload,
+    undefined,
+    "a header with no authorization does not invent paymentPayload.payload",
+  );
+  const signatureOnly = inspectPaymentHeader(JSON.stringify({
+    x402Version: 1,
+    scheme: "exact",
+    network: "base",
+    payload: { signature: signedSignature },
+  }));
+  assert.match(signatureOnly.missing ?? "", /missing the signed authorization/);
+  assert.doesNotMatch(signatureOnly.missing ?? "", /signature\.$/);
+  const authorizationOnly = inspectPaymentHeader(JSON.stringify({
+    x402Version: 1,
+    scheme: "exact",
+    network: "base",
+    payload: { authorization: signedAuthorization },
+  }));
+  assert.match(authorizationOnly.missing ?? "", /missing the signature/);
+  assert.match(inspectPaymentHeader("not-a-payment").missing ?? "", /could not be decoded/);
   const wellReqs = wellFormed.paymentRequirements as { amount?: string; extra?: { name?: string } };
   assert.equal(wellReqs.amount, TICKS_AMOUNT_ATOMIC);
   assert.equal(wellReqs.extra?.name, "USD Coin", "do not change the /ticks EIP-712 name");
@@ -11446,6 +11864,68 @@ async function main(): Promise<void> {
     [],
     "client accepted.extra bag keys must be stripped before CDP verify",
   );
+  const v1Echo = (paymentRequiredBody("https://ticks.bnm.farm/ticks", "ticks").accepts as Record<string, unknown>[])[0];
+  const echoedV1 = facilitatorBody(
+    JSON.stringify({
+      x402Version: 2,
+      accepted: v1Echo,
+      payload: v1Exact.payload,
+      resource: { url: "https://ticks.bnm.farm/ticks", mimeType: "application/json" },
+    }),
+    ticksReqs,
+  );
+  assert.deepEqual(
+    cdpFacilitatorBodyProblems(echoedV1),
+    [],
+    "echoing the v1 402 accepts[0] must not be forwarded as paymentPayload.accepted",
+  );
+  const echoedAccepted = (echoedV1.paymentPayload as { accepted?: Record<string, unknown> }).accepted;
+  const echoedReqs = echoedV1.paymentRequirements as Record<string, unknown>;
+  assert.equal(echoedAccepted?.network, NETWORK_V2);
+  assert.equal(echoedAccepted?.amount, TICKS_AMOUNT_ATOMIC);
+  assert.equal(echoedAccepted?.maxAmountRequired, undefined);
+  assert.equal(echoedAccepted?.resource, undefined);
+  assert.equal(echoedAccepted?.description, undefined);
+  assert.equal(echoedAccepted?.mimeType, undefined);
+  assert.deepEqual(echoedAccepted, echoedReqs, "accepted must match our sanitized requirements");
+  const cheapAccepted = facilitatorBody(
+    JSON.stringify({
+      x402Version: 2,
+      accepted: {
+        scheme: "exact",
+        network: NETWORK_V2,
+        asset: USDC_BASE,
+        amount: "1",
+        payTo: PAY_TO,
+        maxTimeoutSeconds: 60,
+        extra: { name: "USD Coin", version: "2" },
+      },
+      payload: v1Exact.payload,
+    }),
+    ticksReqs,
+  );
+  assert.equal(
+    (cheapAccepted.paymentPayload as { accepted?: { amount?: string } }).accepted?.amount,
+    TICKS_AMOUNT_ATOMIC,
+    "client accepted.amount must not lower the price sent to CDP",
+  );
+  assert.equal(
+    facilitatorFailureDetail({
+      errorType: "invalid_request",
+      errorMessage: "'paymentPayload' is invalid: must match one of [x402V2PaymentPayload, x402V1PaymentPayload]",
+    }),
+    "invalid_request: 'paymentPayload' is invalid: must match one of [x402V2PaymentPayload, x402V1PaymentPayload]",
+  );
+  assert.equal(
+    facilitatorFailureDetail({
+      isValid: false,
+      invalidReason: "insufficient_funds",
+      invalidMessage: "payer does not have enough USDC",
+      payer: "0x1111111111111111111111111111111111111111",
+    }),
+    "insufficient_funds: payer does not have enough USDC",
+  );
+  assert.equal(facilitatorFailureDetail({ payer: "0x1111111111111111111111111111111111111111" }), "");
   const baggyProblems = cdpFacilitatorBodyProblems({
     x402Version: 2,
     paymentPayload: {
@@ -11561,6 +12041,28 @@ async function main(): Promise<void> {
       assert.match(receipt.transaction ?? "", /^0x[0-9a-fA-F]{64}$/);
       assert.equal(receipt.payer, "0x1111111111111111111111111111111111111111");
       assert.ok(receipt.network === NETWORK_V1 || receipt.network === NETWORK_V2);
+
+      captured.length = 0;
+      const bare = await fetch(`${base}${TICKS_PATH}`, {
+        headers: { "X-PAYMENT": JSON.stringify({ x402Version: 2, scheme: "exact", network: NETWORK_V2 }) },
+      });
+      assert.equal(bare.status, 402, "header with no authorization stays 402");
+      const bareBody = (await bare.json()) as { error?: string; accepts?: { payTo?: string }[] };
+      assert.match(bareBody.error ?? "", /missing the signed authorization and signature/);
+      assert.equal(bareBody.accepts?.[0]?.payTo, PAY_TO, "missing-authorization 402 keeps payment requirements");
+      assert.equal(captured.length, 0, "missing authorization must not POST to the facilitator");
+
+      captured.length = 0;
+      const nested = Buffer.from(
+        Buffer.from(JSON.stringify(v2Exact), "utf8").toString("base64"),
+        "utf8",
+      ).toString("base64");
+      const nestedPaid = await fetch(`${base}${TICKS_PATH}`, {
+        headers: { "PAYMENT-SIGNATURE": nested },
+      });
+      assert.equal(nestedPaid.status, 200, "base64-in-base64 v2 PAYMENT-SIGNATURE still settles");
+      assert.ok(captured.some((c) => c.path === "/verify" && c.status === 200));
+      assert.ok(captured.every((c) => c.problems.length === 0));
     },
   );
   await new Promise<void>((resolve, reject) =>

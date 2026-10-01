@@ -105,6 +105,8 @@
  * GET /epa-cafo/manifest.json — free count + institution/docket/date (no letter body)
  * GET /fmshrc-orders — FMSHRC ALJ + Commission Decision/Order PDF text ($0.02 id / $0.05 page)
  * GET /fmshrc-orders/manifest.json — free count + operator/docket/date (no decision body)
+ * GET /msha-fatals — MSHA Fatality Investigation Final Report PDF text ($0.02 id / $0.05 page)
+ * GET /msha-fatals/manifest.json — free count + asOf + mine/operator/state/sector/dates (no report body, no PDF link)
  * GET /bsee-reports — BSEE District Accident Investigation Report PDF text ($0.02 id / $0.05 page)
  * GET /bsee-reports/manifest.json — free count + title/date/lease/area-block/accident-type (no report body)
  * GET /oshrc-orders — OSHRC ALJ Decision/Order + Commission Final Order PDF/HTML text ($0.02 id / $0.05 page)
@@ -149,6 +151,8 @@
  * GET /mspb-decisions/manifest.json — free count + docket/kind/date/institution (no decision narrative)
  * GET /ferc-issuances — FERC eLibrary Commission order/opinion + ALJ initial-decision text ($0.02 id / $0.05 page)
  * GET /ferc-issuances/manifest.json — free count + accession/docket/kind/date/institution (no order narrative)
+ * GET /cftc-reparations — CFTC reparations disposition + Commission opinion text ($0.02 id / $0.05 page)
+ * GET /cftc-reparations/manifest.json — free count + docket/kind/date/title (no decision narrative)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -502,6 +506,14 @@ import {
   loadFmshrcManifest,
 } from "./fmshrc-orders.js";
 import {
+  MSHA_FATALS_AMOUNT_ATOMIC,
+  MSHA_FATALS_MANIFEST_PATH,
+  MSHA_FATALS_PATH,
+  filterMshaManifestBySector,
+  loadMshaFatals,
+  loadMshaManifest,
+} from "./msha-fatals.js";
+import {
   BSEE_REPORTS_AMOUNT_ATOMIC,
   BSEE_REPORTS_MANIFEST_PATH,
   BSEE_REPORTS_PATH,
@@ -658,6 +670,14 @@ import {
   loadFercManifest,
 } from "./ferc-issuances.js";
 import {
+  CFTC_REPARATIONS_AMOUNT_ATOMIC,
+  CFTC_REPARATIONS_MANIFEST_PATH,
+  CFTC_REPARATIONS_PATH,
+  filterCftcReparationsManifestByKind,
+  loadCftcReparations,
+  loadCftcReparationsManifest,
+} from "./cftc-reparations.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -685,6 +705,7 @@ import {
   paidEisReportsBody,
   paidEpaCafoBody,
   paidFmshrcOrdersBody,
+  paidMshaFatalsBody,
   paidBseeReportsBody,
   paidOshrcOrdersBody,
   paidEpaAljBody,
@@ -707,6 +728,7 @@ import {
   paidCbcaDecisionsBody,
   paidMspbDecisionsBody,
   paidFercIssuancesBody,
+  paidCftcReparationsBody,
   paidFsisHumaneBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
@@ -1208,7 +1230,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "ftc-orders" | "nlrb-decisions" | "flra-decisions" | "ecab-decisions" | "fcc-eb-orders" | "nmb-determinations" | "eeoc-appellate" | "ttab-decisions" | "ibla-decisions" | "ccb-determinations" | "uscg-alj-decisions" | "cbca-decisions" | "mspb-decisions" | "ferc-issuances" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "msha-fatals" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "ftc-orders" | "nlrb-decisions" | "flra-decisions" | "ecab-decisions" | "fcc-eb-orders" | "nmb-determinations" | "eeoc-appellate" | "ttab-decisions" | "ibla-decisions" | "ccb-determinations" | "uscg-alj-decisions" | "cbca-decisions" | "mspb-decisions" | "ferc-issuances" | "cftc-reparations" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -1261,6 +1283,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "fsis-humane",
   "epa-cafo",
   "fmshrc-orders",
+  "msha-fatals",
   "bsee-reports",
   "oshrc-orders",
   "epa-alj",
@@ -1283,6 +1306,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "cbca-decisions",
   "mspb-decisions",
   "ferc-issuances",
+  "cftc-reparations",
 ];
 
 export function form483IsPublic(): boolean {
@@ -1560,6 +1584,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("FMSHRC_ORDERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : FMSHRC_ORDERS_AMOUNT_ATOMIC;
   }
+  if (sku === "msha-fatals") {
+    const raw = env("MSHA_FATALS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : MSHA_FATALS_AMOUNT_ATOMIC;
+  }
   if (sku === "bsee-reports") {
     const raw = env("BSEE_REPORTS_USDC_ATOMIC");
     return raw.length > 0 ? raw : BSEE_REPORTS_AMOUNT_ATOMIC;
@@ -1647,6 +1675,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "ferc-issuances") {
     const raw = env("FERC_ISSUANCES_USDC_ATOMIC");
     return raw.length > 0 ? raw : FERC_ISSUANCES_AMOUNT_ATOMIC;
+  }
+  if (sku === "cftc-reparations") {
+    const raw = env("CFTC_REPARATIONS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : CFTC_REPARATIONS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -1934,7 +1966,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "cftc-orders": {
     description:
-      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Does not invent order text. " + PAID_WINDOW_COPY,
+      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Does not invent order text. Not /cftc-reparations (reparations YY-R dispositions and Commission opinions). " + PAID_WINDOW_COPY,
     resourcePath: CFTC_ORDERS_PATH,
   },
   "fifra-orders": {
@@ -2065,6 +2097,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /fmshrc-orders when you need official FMSHRC ALJ or Commission Decision/Order TEXT extracted from fmshrc.gov decision PDFs. License 17 USC 105. Does not invent decision text. Index is operator / docket / date only — full TEXT is in the PDF. " +
       PAID_WINDOW_COPY,
     resourcePath: FMSHRC_ORDERS_PATH,
+  },
+  "msha-fatals": {
+    description:
+      "Call GET /msha-fatals when you need official MSHA Fatality Investigation Final Report TEXT extracted from msha.gov Final Report PDFs. License 17 USC 105. Does not invent report text. Index is report id / mine / operator / state / sector / accident date / report date / classification only — root causes, citations, and full TEXT are in the PDF. Preliminary reports and fatality alerts are not this SKU. Not /fmshrc-orders. " +
+      PAID_WINDOW_COPY,
+    resourcePath: MSHA_FATALS_PATH,
   },
   "bsee-reports": {
     description:
@@ -2197,6 +2235,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /ferc-issuances when you need official FERC eLibrary Commission Order/Opinion and ALJ Initial Decision TEXT extracted from elibrary.ferc.gov slips. License 17 USC 105. Does not invent order text. Free index is accession, docket, kind (commission or alj), order kind, date, citation, institution, and library. asOf is the newest issuance date in the cache. Both kinds stay on this door. Harvest Commission Order/Opinion and ALJ Initial Decision slips only. Delegated orders, notices, dissents, and ALJ procedural or discovery orders are not this SKU. Not /ferc-orders (cms.ferc.gov civil-penalty stipulation and show-cause text). Not Westlaw. Not Lexis. " +
       PAID_WINDOW_COPY,
     resourcePath: FERC_ISSUANCES_PATH,
+  },
+  "cftc-reparations": {
+    description:
+      "Call GET /cftc-reparations when you need official CFTC reparations disposition and Commission opinion TEXT extracted from cftc.gov PDFs. License 17 USC 105. Does not invent decision text. Free index is docket, kind (disposition or opinion), order kind, date, institution, and title. asOf is the newest decision date in the cache. Both kinds stay on this door. Dispositions are reparations YY-R dockets from the Dispositions HTML index. Opinions are Commission opinions and adjudicatory orders from the Opinions and Adjudicatory Orders HTML index. The index is HTML only. Statutory-disqualification dispositions are not this SKU. Not /cftc-orders (enforcement institution orders such as Docket No. 26-04). Not Westlaw. Not Lexis. " +
+      PAID_WINDOW_COPY,
+    resourcePath: CFTC_REPARATIONS_PATH,
   },
   "form-483": {
     description:
@@ -3619,6 +3663,44 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "msha-fatals": {
+    ok: true,
+    product: "msha-fatality-final-bodies",
+    status: "ok",
+    fetchedAt: "2026-09-29T00:00:00.000Z",
+    asOf: "2026-08-11",
+    source: "https://www.msha.gov/data-and-reports/fatality-reports/search",
+    recordCount: 1,
+    records: [
+      {
+        id: "FAI-F00BE1D-1",
+        date: "2026-08-11",
+        firm: "Patton Mining LLC",
+        url: "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+        type: "msha-fatals",
+      },
+    ],
+    cards: [
+      {
+        id: "FAI-F00BE1D-1",
+        mine: "Deer Run Mine",
+        operator: "Patton Mining LLC",
+        state: "Illinois",
+        sector: "coal",
+        accidentDate: "2026-03-05",
+        reportDate: "2026-08-11",
+        date: "2026-08-11",
+        classification: "Machinery",
+        victimRole: "continuous mining machine operator",
+        rootCauses: ["The mine operator did not ensure miners stayed out of the red zone of the continuous mining machine."],
+        enforcement: [{ action: "104(d)(2) order", standard: "30 CFR 75.220(a)(1)", citation: "", summary: "Roof control plan." }],
+        citations: ["104(d)(2) order", "30 CFR 75.220(a)(1)"],
+        title: "Deer Run Mine — Machinery",
+        sourceUrl: "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+        body: "REPORT OF INVESTIGATION. Machinery Accident Fatality Report. Official MSHA final-report text extracted from the Final Report PDF.",
+      },
+    ],
+  },
   "bsee-reports": {
     ok: true,
     product: "bsee-district-investigation-bodies",
@@ -4355,6 +4437,39 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "cftc-reparations": {
+    ok: true,
+    product: "cftc-reparations-bodies",
+    status: "ok",
+    fetchedAt: "2026-09-29T18:31:26.000Z",
+    asOf: "2026-09-29",
+    source: "https://www.cftc.gov/LawRegulation/Dispositions/index.htm",
+    recordCount: 1,
+    records: [
+      {
+        id: "cftc-disposition-26-r021-2026-09-29",
+        date: "2026-09-29",
+        firm: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+        url: "https://www.cftc.gov/sites/default/files/2026/09/Asmad092926.pdf",
+        type: "cftc-reparations",
+      },
+    ],
+    cards: [
+      {
+        id: "cftc-disposition-26-r021-2026-09-29",
+        docket: "26-R021",
+        dockets: ["26-R021"],
+        caseNo: "26-R021",
+        kind: "disposition",
+        orderKind: "Reparations disposition",
+        date: "2026-09-29",
+        institution: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+        title: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+        sourceUrl: "https://www.cftc.gov/sites/default/files/2026/09/Asmad092926.pdf",
+        body: "COMMODITY FUTURES TRADING COMMISSION. CFTC Docket No. 26-R021. INITIAL DECISION ON DEFAULT.",
+      },
+    ],
+  },
   "form-483": {
     ok: true,
     product: "fda-form-483-bodies",
@@ -5012,42 +5127,234 @@ function skipSettle(): boolean {
   return env("X402_SKIP_SETTLE") === "1";
 }
 
-function decodePayment(payment: string): Record<string, unknown> | null {
-  const tryParse = (raw: string): Record<string, unknown> | null => {
-    try {
-      const parsed = JSON.parse(raw) as unknown;
-      return parsed && typeof parsed === "object" && !Array.isArray(parsed)
-        ? (parsed as Record<string, unknown>)
-        : null;
-    } catch {
-      return null;
-    }
-  };
-  return tryParse(payment) ?? tryParse(Buffer.from(payment, "base64").toString("utf8"));
-}
-
-function paymentPayload(payment: string): Record<string, unknown> | null {
-  const decoded = decodePayment(payment);
-  if (!decoded) return null;
-  if (decoded.payload && typeof decoded.payload === "object") return decoded;
-  if (decoded.authorization && decoded.signature) {
-    return { x402Version: 1, scheme: "exact", network: NETWORK_V1, payload: decoded };
-  }
-  return decoded;
-}
-
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
-function innerPaymentPayload(raw: Record<string, unknown> | null): Record<string, unknown> | null {
-  if (!raw) return null;
-  if (isPlainObject(raw.payload)) return raw.payload;
-  if (typeof raw.signature === "string" && isPlainObject(raw.authorization)) {
-    return { signature: raw.signature, authorization: raw.authorization };
+function tryParseJson(raw: string): unknown {
+  try {
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return undefined;
   }
-  if (typeof raw.transaction === "string") return { transaction: raw.transaction };
+}
+
+/** Base64 or base64url text that itself looks like JSON or another base64 layer. */
+function decodeBase64ToText(raw: string): string | null {
+  const trimmed = raw.trim();
+  if (trimmed.length < 16 || trimmed.length > 200_000) return null;
+  if (!/^[A-Za-z0-9+/_=-]+$/.test(trimmed)) return null;
+  const normalized = trimmed.replace(/-/g, "+").replace(/_/g, "/");
+  const pad = normalized.length % 4 === 0 ? normalized : normalized + "=".repeat(4 - (normalized.length % 4));
+  const buf = Buffer.from(pad, "base64");
+  if (buf.length === 0) return null;
+  const text = buf.toString("utf8").trim();
+  if (!text || text.includes("\uFFFD")) return null;
+  const head = text[0];
+  if (head !== "{" && head !== "[" && head !== '"' && !/^[A-Za-z0-9+/_=-]+$/.test(text)) return null;
+  return text;
+}
+
+/** JSON, a JSON string, or base64 (including base64-in-base64) of those. */
+function unwrapJsonish(input: string, depth = 0): unknown {
+  if (depth > 4) return null;
+  const trimmed = input.trim();
+  if (!trimmed) return null;
+  const asJson = tryParseJson(trimmed);
+  if (asJson !== undefined) {
+    if (typeof asJson === "string") return unwrapJsonish(asJson, depth + 1);
+    return asJson;
+  }
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return unwrapJsonish(trimmed.slice(1, -1), depth + 1);
+  }
+  const decoded = decodeBase64ToText(trimmed);
+  if (decoded && decoded !== trimmed) return unwrapJsonish(decoded, depth + 1);
   return null;
+}
+
+function safeKey(key: string): string | null {
+  return /^[A-Za-z0-9_-]{1,64}$/.test(key) ? key : null;
+}
+
+function safeToken(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return /^[A-Za-z0-9:._-]{1,80}$/.test(trimmed) ? trimmed : null;
+}
+
+function asAuthorization(value: unknown): Record<string, unknown> | null {
+  if (isPlainObject(value) && Object.keys(value).length > 0) return value;
+  if (typeof value === "string") {
+    const parsed = unwrapJsonish(value);
+    if (isPlainObject(parsed) && Object.keys(parsed).length > 0) return parsed;
+  }
+  return null;
+}
+
+function authorizationOf(node: Record<string, unknown>): Record<string, unknown> | null {
+  const direct = asAuthorization(node.authorization);
+  if (direct) return direct;
+  const message = asAuthorization(node.message);
+  if (!message) return null;
+  if (message.from == null && message.value == null && message.to == null) return null;
+  return message;
+}
+
+function signatureOf(node: Record<string, unknown>): string | null {
+  return typeof node.signature === "string" && node.signature.trim() ? node.signature : null;
+}
+
+/**
+ * The object that carries both the EIP-3009 authorization and its signature.
+ * Walks v1 (scheme/network/payload), v2 (accepted/payload), nested
+ * paymentPayload, and payload fields that are themselves JSON or base64.
+ */
+function findSignedPayload(node: unknown, depth = 0): { signature: string; authorization: Record<string, unknown> } | null {
+  if (!isPlainObject(node) || depth > 6) return null;
+  const signature = signatureOf(node);
+  const authorization = authorizationOf(node);
+  if (signature && authorization) return { signature, authorization };
+
+  if (typeof node.payload === "string") {
+    const inner = unwrapJsonish(node.payload);
+    const found = findSignedPayload(inner, depth + 1);
+    if (found) return found;
+    if (signature && isPlainObject(inner)) {
+      const nested = authorizationOf(inner);
+      if (nested) return { signature, authorization: nested };
+    }
+  }
+
+  for (const key of ["payload", "paymentPayload", "payment", "data", "exact"]) {
+    const child = node[key];
+    if (!isPlainObject(child)) continue;
+    const found = findSignedPayload(child, depth + 1);
+    if (found) return found;
+    if (signature) {
+      const nested = authorizationOf(child);
+      if (nested) return { signature, authorization: nested };
+    }
+  }
+  return null;
+}
+
+function treeHasAuthorization(node: unknown, depth = 0): boolean {
+  if (!isPlainObject(node) || depth > 6) return false;
+  if (authorizationOf(node)) return true;
+  if (typeof node.payload === "string") {
+    if (treeHasAuthorization(unwrapJsonish(node.payload), depth + 1)) return true;
+  }
+  for (const key of ["payload", "paymentPayload", "payment", "data", "exact"]) {
+    if (treeHasAuthorization(node[key], depth + 1)) return true;
+  }
+  return false;
+}
+
+function treeHasSignature(node: unknown, depth = 0): boolean {
+  if (!isPlainObject(node) || depth > 6) return false;
+  if (signatureOf(node)) return true;
+  if (typeof node.payload === "string") {
+    if (treeHasSignature(unwrapJsonish(node.payload), depth + 1)) return true;
+  }
+  for (const key of ["payload", "paymentPayload", "payment", "data", "exact"]) {
+    if (treeHasSignature(node[key], depth + 1)) return true;
+  }
+  return false;
+}
+
+export type PaymentHeaderView = {
+  decoded: Record<string, unknown> | null;
+  topKeys: string[];
+  payloadKeys: string[];
+  /** 1, 2, or null when absent or not a version we will log. */
+  x402Version: 1 | 2 | null;
+  scheme: string | null;
+  network: string | null;
+  inner: { signature: string; authorization: Record<string, unknown> } | null;
+  /** Set when inner is missing. Says which of authorization / signature was absent. */
+  missing: string | null;
+};
+
+function payloadObjectOf(node: Record<string, unknown>): Record<string, unknown> | null {
+  if (isPlainObject(node.payload)) return node.payload;
+  if (typeof node.payload === "string") {
+    const inner = unwrapJsonish(node.payload);
+    if (isPlainObject(inner)) return inner;
+  }
+  if (isPlainObject(node.paymentPayload)) return payloadObjectOf(node.paymentPayload);
+  return null;
+}
+
+function metaOf(node: Record<string, unknown>): Pick<PaymentHeaderView, "topKeys" | "payloadKeys" | "x402Version" | "scheme" | "network"> {
+  const topKeys = Object.keys(node).map(safeKey).filter((key): key is string => Boolean(key));
+  const payloadObj = payloadObjectOf(node);
+  const payloadKeys = payloadObj
+    ? Object.keys(payloadObj).map(safeKey).filter((key): key is string => Boolean(key))
+    : [];
+  const accepted = isPlainObject(node.accepted)
+    ? node.accepted
+    : isPlainObject(node.paymentPayload) && isPlainObject(node.paymentPayload.accepted)
+      ? node.paymentPayload.accepted
+      : null;
+  const versionRaw = typeof node.x402Version === "number"
+    ? node.x402Version
+    : isPlainObject(node.paymentPayload) && typeof node.paymentPayload.x402Version === "number"
+      ? node.paymentPayload.x402Version
+      : null;
+  const x402Version = versionRaw === 1 || versionRaw === 2 ? versionRaw : null;
+  const scheme = safeToken(node.scheme) ?? (accepted ? safeToken(accepted.scheme) : null);
+  const network = safeToken(node.network) ?? (accepted ? safeToken(accepted.network) : null);
+  return { topKeys, payloadKeys, x402Version, scheme, network };
+}
+
+export function inspectPaymentHeader(payment: string): PaymentHeaderView {
+  const empty: PaymentHeaderView = {
+    decoded: null,
+    topKeys: [],
+    payloadKeys: [],
+    x402Version: null,
+    scheme: null,
+    network: null,
+    inner: null,
+    missing: "Payment header could not be decoded as JSON or base64 JSON. Missing the signed authorization.",
+  };
+  const unwrapped = unwrapJsonish(payment);
+  if (!isPlainObject(unwrapped)) return empty;
+  const meta = metaOf(unwrapped);
+  const inner = findSignedPayload(unwrapped);
+  if (inner) {
+    return { decoded: unwrapped, ...meta, inner, missing: null };
+  }
+  const hasAuth = treeHasAuthorization(unwrapped);
+  const hasSig = treeHasSignature(unwrapped);
+  const missing = hasAuth && !hasSig
+    ? "Payment header is missing the signature."
+    : hasSig && !hasAuth
+      ? "Payment header is missing the signed authorization."
+      : "Payment header is missing the signed authorization and signature.";
+  return { decoded: unwrapped, ...meta, inner: null, missing };
+}
+
+/** Key names, version, scheme, and network only. Never values, signatures, or addresses. */
+export function paymentHeaderShapeLine(view: PaymentHeaderView): string {
+  const version = view.x402Version === null ? "absent" : String(view.x402Version);
+  return `payment header keys=${view.topKeys.join(",") || "none"} payloadKeys=${view.payloadKeys.join(",") || "none"} x402Version=${version} scheme=${view.scheme ?? "absent"} network=${view.network ?? "absent"}`;
+}
+
+/** Redacted journal line for one paid attempt. Returns the 402 error when verify must not be POSTed. */
+function paymentHeaderMissing(payment: string): string | null {
+  const view = inspectPaymentHeader(payment);
+  console.error(paymentHeaderShapeLine(view));
+  if (view.inner) return null;
+  return view.missing ?? "Payment header is missing the signed authorization.";
+}
+
+function decodePayment(payment: string): Record<string, unknown> | null {
+  return inspectPaymentHeader(payment).decoded;
 }
 
 function caip2Network(network: unknown): string {
@@ -5124,10 +5431,6 @@ function extraFieldProblems(label: string, extra: unknown): string[] {
   return problems;
 }
 
-function normalizeAccepted(accepted: Record<string, unknown>): Record<string, unknown> {
-  return { ...accepted, extra: facilitatorExtra(accepted.extra) };
-}
-
 function v2PaymentRequirements(requirements: Record<string, unknown>): Record<string, unknown> {
   const amount = String(requirements.amount ?? requirements.maxAmountRequired ?? "");
   return {
@@ -5186,20 +5489,31 @@ export function facilitatorPaymentRequirements(
  * paymentRequirements is v2 (eip155:8453, amount, no resource / extensions).
  * accepted.extra and paymentRequirements.extra are EIP-712 only
  * (name/version). Bag-size keys stay on the unpaid 402 extra.
+ *
+ * Do not forward the client's `accepted` object. The unpaid JSON body is
+ * still v1 (`network: "base"`, `maxAmountRequired`, `resource`, `description`,
+ * `mimeType`). A client that copies `accepts[0]` into `paymentPayload.accepted`
+ * makes CDP /verify HTTP 400 `invalid_request` before it looks at the
+ * signature, so a funded authorization is never checked. The signed
+ * EIP-3009 authorization is checked against our requirements.
  */
 export function facilitatorBody(
   payment: string,
   requirements: Record<string, unknown>,
 ): Record<string, unknown> {
-  const raw = paymentPayload(payment);
-  const inner = innerPaymentPayload(raw);
+  const view = inspectPaymentHeader(payment);
+  const raw = view.decoded;
+  const inner = view.inner;
   const reqs = v2PaymentRequirements(requirements);
-  const accepted = normalizeAccepted(isPlainObject(raw?.accepted) ? raw.accepted : reqs);
+  const accepted = {
+    ...reqs,
+    extra: isPlainObject(reqs.extra) ? { ...reqs.extra } : reqs.extra,
+  };
   const payload: Record<string, unknown> = {
     x402Version: 2,
     accepted,
   };
-  if (inner) payload.payload = inner;
+  if (inner) payload.payload = { signature: inner.signature, authorization: inner.authorization };
   const resource = resourceInfo(raw, requirements);
   if (resource) payload.resource = resource;
   const extensions = payloadExtensions(raw, requirements);
@@ -5295,6 +5609,24 @@ export function cdpFacilitatorBodyProblems(body: unknown): string[] {
   return problems;
 }
 
+function detailField(value: unknown, max = 240): string {
+  if (typeof value !== "string") return "";
+  const trimmed = value.replace(/\s+/g, " ").trim();
+  return trimmed.length <= max ? trimmed : trimmed.slice(0, max);
+}
+
+/**
+ * CDP /verify and /settle return HTTP 400 both for a schema `invalid_request`
+ * and for a payment problem (`invalidReason` such as a bad signature).
+ * The status line alone cannot tell those apart.
+ */
+export function facilitatorFailureDetail(body: unknown): string {
+  if (!isPlainObject(body)) return "";
+  const reason = detailField(body.errorType) || detailField(body.invalidReason) || detailField(body.errorReason);
+  const message = detailField(body.errorMessage) || detailField(body.invalidMessage) || detailField(body.message);
+  return [reason, message].filter(Boolean).join(": ");
+}
+
 export function cdpEnvStatus(): "set" | "CDP env not set" {
   return env("CDP_API_KEY_ID") && env("CDP_API_KEY_SECRET") ? "set" : "CDP env not set";
 }
@@ -5325,6 +5657,7 @@ async function facilitatorPost(
   payment: string,
   requirements: Record<string, unknown>,
 ): Promise<Record<string, unknown> | null> {
+  if (!inspectPaymentHeader(payment).inner) return null;
   const base = env("X402_FACILITATOR_URL");
   if (!base) return null;
   const url = `${base.replace(/\/$/, "")}${path}`;
@@ -5361,7 +5694,8 @@ async function facilitatorPost(
       }
     }
     if (!res.ok) {
-      console.error(`facilitator ${path} HTTP ${res.status}`);
+      const detail = facilitatorFailureDetail(body);
+      console.error(`facilitator ${path} HTTP ${res.status}${detail ? ` ${detail}` : ""}`);
       return null;
     }
     return body;
@@ -5397,14 +5731,9 @@ function localSettleKeyFile(): string {
 async function localEip3009Settle(payment: string, requirements: Record<string, unknown>): Promise<SettleAttempt> {
   const keyFile = localSettleKeyFile();
   if (!keyFile || !existsSync(keyFile)) return { ok: false };
-  const wrapper = paymentPayload(payment);
-  const inner = (wrapper?.payload && typeof wrapper.payload === "object"
-    ? (wrapper.payload as Record<string, unknown>)
-    : wrapper) ?? {};
-  const auth = (inner.authorization && typeof inner.authorization === "object"
-    ? (inner.authorization as Record<string, unknown>)
-    : null);
-  const signature = typeof inner.signature === "string" ? inner.signature : "";
+  const signed = inspectPaymentHeader(payment).inner;
+  const auth = signed?.authorization ?? null;
+  const signature = signed?.signature ?? "";
   if (!auth || !signature) return { ok: false };
   const wantAmount = String(requirements.maxAmountRequired ?? requirements.amount ?? "");
   const to = String(auth.to ?? "").toLowerCase();
@@ -5652,6 +5981,7 @@ export function llmsTxt(): string {
     `- GET /fsis-humane — $0.05 — USDA FSIS humane-handling enforcement letter text (official fsis.usda.gov NOS / NOIE / deferral / abeyance / reinstatement PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-cafo — $0.05 — EPA Part 22 CAFO / ESA administrative penalty letter text (official yosemite.epa.gov and regional epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /fmshrc-orders — $0.05 — FMSHRC ALJ + Commission Decision/Order text (official fmshrc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /msha-fatals — $0.05 — MSHA Fatality Investigation Final Report text (official msha.gov Final Report PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /bsee-reports — $0.05 — BSEE District Accident Investigation Report text (official bsee.gov district-investigation PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /oshrc-orders — $0.05 — OSHRC ALJ Decision/Order + Commission Final Order text (official oshrc.gov PDF/HTML caches). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-alj — $0.05 — EPA OALJ Initial Decision and Order + ALJ Order text (official yosemite.epa.gov/oarm/alj PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -5674,6 +6004,7 @@ export function llmsTxt(): string {
     `- GET /cbca-decisions — $0.05 — CBCA decision, dismissal, and order text (official cbca.gov decision PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /mspb-decisions — $0.05 — MSPB nonprecedential and precedential decision text (official mspbpublic.azurewebsites.net PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ferc-issuances — $0.05 — FERC eLibrary Commission order/opinion and ALJ initial-decision text (official elibrary.ferc.gov slips). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cftc-reparations — $0.05 — CFTC reparations disposition and Commission opinion text (official cftc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -5742,6 +6073,7 @@ export function llmsTxt(): string {
     "- GET /fsis-humane/manifest.json — FSIS humane-handling letter count + establishment/letter type/date (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /epa-cafo/manifest.json — EPA CAFO / ESA letter count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /fmshrc-orders/manifest.json — FMSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
+    "- GET /msha-fatals/manifest.json — MSHA fatality final-report count + asOf + mine/operator/state/sector/dates (full catalog + page cursor; ?q= is free search; ?sector=coal|metal/nonmetal is exact; not the report body, not a PDF link)",
     "- GET /bsee-reports/manifest.json — BSEE district investigation count + title/date/lease/area-block/accident-type (full catalog + page cursor; ?q= is free search; not the report body)",
     "- GET /oshrc-orders/manifest.json — OSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /epa-alj/manifest.json — EPA OALJ Decision/Order count + case/docket/date/label (full catalog + page cursor; ?q= is free search; not the decision body)",
@@ -5764,6 +6096,7 @@ export function llmsTxt(): string {
     "- GET /cbca-decisions/manifest.json — CBCA decision count + docket/program/kind/date/institution (full catalog + page cursor; ?q= is free search; not the decision narrative)",
     "- GET /mspb-decisions/manifest.json — MSPB decision count + docket/kind/order kind/date/institution (full catalog + page cursor; ?q= is free search; ?kind=nonprecedential|precedential is an exact kind filter; not the decision narrative)",
     "- GET /ferc-issuances/manifest.json — FERC eLibrary issuance count + accession/docket/kind/order kind/date/institution (full catalog + page cursor; ?q= is free search; ?kind=commission|alj is an exact kind filter; not the order narrative)",
+    "- GET /cftc-reparations/manifest.json — CFTC reparations count + docket/kind/order kind/date/title (full catalog + page cursor; ?q= is free search; ?kind=disposition|opinion is an exact kind filter; not the decision narrative)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -5830,7 +6163,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, TTAB_DECISIONS_PATH, IBLA_DECISIONS_PATH, CCB_DETERMINATIONS_PATH, USCG_ALJ_DECISIONS_PATH, CBCA_DECISIONS_PATH, MSPB_DECISIONS_PATH, FERC_ISSUANCES_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, MSHA_FATALS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, TTAB_DECISIONS_PATH, IBLA_DECISIONS_PATH, CCB_DETERMINATIONS_PATH, USCG_ALJ_DECISIONS_PATH, CBCA_DECISIONS_PATH, MSPB_DECISIONS_PATH, FERC_ISSUANCES_PATH, CFTC_REPARATIONS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -6129,6 +6462,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const fsisHumaneAtomic = amountAtomicFor("fsis-humane");
   const epaCafoAtomic = amountAtomicFor("epa-cafo");
   const fmshrcOrdersAtomic = amountAtomicFor("fmshrc-orders");
+  const mshaFatalsAtomic = amountAtomicFor("msha-fatals");
   const bseeReportsAtomic = amountAtomicFor("bsee-reports");
   const oshrcOrdersAtomic = amountAtomicFor("oshrc-orders");
   const epaAljAtomic = amountAtomicFor("epa-alj");
@@ -6151,6 +6485,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const cbcaDecisionsAtomic = amountAtomicFor("cbca-decisions");
   const mspbDecisionsAtomic = amountAtomicFor("mspb-decisions");
   const fercIssuancesAtomic = amountAtomicFor("ferc-issuances");
+  const cftcReparationsAtomic = amountAtomicFor("cftc-reparations");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -6204,6 +6539,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const fsisHumanePrice = (Number(fsisHumaneAtomic) / 1e6).toFixed(2);
   const epaCafoPrice = (Number(epaCafoAtomic) / 1e6).toFixed(2);
   const fmshrcOrdersPrice = (Number(fmshrcOrdersAtomic) / 1e6).toFixed(2);
+  const mshaFatalsPrice = (Number(mshaFatalsAtomic) / 1e6).toFixed(2);
   const bseeReportsPrice = (Number(bseeReportsAtomic) / 1e6).toFixed(2);
   const oshrcOrdersPrice = (Number(oshrcOrdersAtomic) / 1e6).toFixed(2);
   const epaAljPrice = (Number(epaAljAtomic) / 1e6).toFixed(2);
@@ -6226,6 +6562,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const cbcaDecisionsPrice = (Number(cbcaDecisionsAtomic) / 1e6).toFixed(2);
   const mspbDecisionsPrice = (Number(mspbDecisionsAtomic) / 1e6).toFixed(2);
   const fercIssuancesPrice = (Number(fercIssuancesAtomic) / 1e6).toFixed(2);
+  const cftcReparationsPrice = (Number(cftcReparationsAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -6283,6 +6620,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/fsis-humane ($0.05)",
     "/epa-cafo ($0.05)",
     "/fmshrc-orders ($0.05)",
+    "/msha-fatals ($0.05)",
     "/bsee-reports ($0.05)",
     "/oshrc-orders ($0.05)",
     "/epa-alj ($0.05)",
@@ -6305,6 +6643,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/cbca-decisions ($0.05)",
     "/mspb-decisions ($0.05)",
     "/ferc-issuances ($0.05)",
+    "/cftc-reparations ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -7501,6 +7840,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [MSHA_FATALS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMshaFatals",
+          summary: "MSHA Fatality Investigation Final Report text",
+          description: SKU_COPY["msha-fatals"].description,
+          priceUsdc: mshaFatalsPrice,
+          amountAtomic: mshaFatalsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["msha-fatals"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       [BSEE_REPORTS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getBseeReports",
@@ -8005,6 +8368,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [CFTC_REPARATIONS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getCftcReparations",
+          summary: "CFTC reparations disposition and Commission opinion text",
+          description: SKU_COPY["cftc-reparations"].description,
+          priceUsdc: cftcReparationsPrice,
+          amountAtomic: cftcReparationsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["cftc-reparations"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       [MSPB_DECISIONS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getMspbDecisions",
@@ -8403,6 +8790,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           "Count, operator, docket, date, and paidUrl. Not the decision body.",
         ),
       },
+      [MSHA_FATALS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "MSHA fatality final-report free manifest",
+          "Count and asOf, plus mine, operator, state, sector, accident date, report date, classification, and paidUrl. Not the report body. Not a PDF link.",
+        ),
+      },
       [BSEE_REPORTS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "BSEE district investigation free manifest",
@@ -8533,6 +8926,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FERC eLibrary issuances free manifest",
           "Count, accession, docket, kind, order kind, date, citation, institution, library, and paidUrl. ?kind=commission or ?kind=alj is an exact filter. Not the order narrative.",
+        ),
+      },
+      [CFTC_REPARATIONS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "CFTC reparations free manifest",
+          "Count, docket, kind, order kind, date, institution, title, and paidUrl. ?kind=disposition or ?kind=opinion is an exact filter. Not the decision narrative.",
         ),
       },
       ...(listed483
@@ -8754,6 +9153,15 @@ async function servePaid(
     return;
   }
 
+  const missingAuthorization = paymentHeaderMissing(payment);
+  if (missingAuthorization) {
+    logPaid(402);
+    sendJson(res, 402, { ...body402, error: missingAuthorization }, {
+      "PAYMENT-REQUIRED": paymentRequiredHeader,
+    });
+    return;
+  }
+
   const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
@@ -8861,6 +9269,15 @@ async function servePaidPdf(
 
   if (skipSettle()) {
     await serve();
+    return;
+  }
+
+  const missingAuthorization = paymentHeaderMissing(payment);
+  if (missingAuthorization) {
+    logPaid(402);
+    sendJson(res, 402, { ...body402, error: missingAuthorization }, {
+      "PAYMENT-REQUIRED": paymentRequiredHeader,
+    });
     return;
   }
 
@@ -9334,6 +9751,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           manifest: FMSHRC_ORDERS_MANIFEST_PATH,
         },
         {
+          path: MSHA_FATALS_PATH,
+          product: "msha-fatality-final-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("msha-fatals"),
+          manifest: MSHA_FATALS_MANIFEST_PATH,
+        },
+        {
           path: BSEE_REPORTS_PATH,
           product: "bsee-district-investigation-bodies",
           priceUsdc: "0.05",
@@ -9486,6 +9910,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           priceUsdc: "0.05",
           amountAtomic: amountAtomicFor("ferc-issuances"),
           manifest: FERC_ISSUANCES_MANIFEST_PATH,
+        },
+        {
+          path: CFTC_REPARATIONS_PATH,
+          product: "cftc-reparations-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("cftc-reparations"),
+          manifest: CFTC_REPARATIONS_MANIFEST_PATH,
         },
         ...(form483IsPublic()
           ? [
@@ -10112,6 +10543,22 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === MSHA_FATALS_MANIFEST_PATH) {
+    sendExtractedManifest(
+      req,
+      res,
+      port,
+      url,
+      filterMshaManifestBySector(await loadMshaManifest(), url.searchParams.get("sector")),
+    );
+    return;
+  }
+
+  if (path === MSHA_FATALS_PATH) {
+    await servePaid(req, res, port, "msha-fatals", async (opts) => paidMshaFatalsBody(await loadMshaFatals(), opts));
+    return;
+  }
+
   if (path === BSEE_REPORTS_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadBseeManifest());
     return;
@@ -10380,6 +10827,24 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === CFTC_REPARATIONS_MANIFEST_PATH) {
+    sendExtractedManifest(
+      req,
+      res,
+      port,
+      url,
+      filterCftcReparationsManifestByKind(await loadCftcReparationsManifest(), url.searchParams.get("kind")),
+    );
+    return;
+  }
+
+  if (path === CFTC_REPARATIONS_PATH) {
+    await servePaid(req, res, port, "cftc-reparations", async (opts) =>
+      paidCftcReparationsBody(await loadCftcReparations(), opts),
+    );
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -10415,7 +10880,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FTC_ORDERS_PATH, FTC_ORDERS_MANIFEST_PATH, NLRB_DECISIONS_PATH, NLRB_DECISIONS_MANIFEST_PATH, FLRA_DECISIONS_PATH, FLRA_DECISIONS_MANIFEST_PATH, ECAB_DECISIONS_PATH, ECAB_DECISIONS_MANIFEST_PATH, FCC_EB_ORDERS_PATH, FCC_EB_ORDERS_MANIFEST_PATH, NMB_DETERMINATIONS_PATH, NMB_DETERMINATIONS_MANIFEST_PATH, EEOC_APPELLATE_PATH, EEOC_APPELLATE_MANIFEST_PATH, TTAB_DECISIONS_PATH, TTAB_DECISIONS_MANIFEST_PATH, IBLA_DECISIONS_PATH, IBLA_DECISIONS_MANIFEST_PATH, CCB_DETERMINATIONS_PATH, CCB_DETERMINATIONS_MANIFEST_PATH, USCG_ALJ_DECISIONS_PATH, USCG_ALJ_DECISIONS_MANIFEST_PATH, CBCA_DECISIONS_PATH, CBCA_DECISIONS_MANIFEST_PATH, MSPB_DECISIONS_PATH, MSPB_DECISIONS_MANIFEST_PATH, FERC_ISSUANCES_PATH, FERC_ISSUANCES_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, ERC8004_PATH, AGENT_REGISTRATION_PATH, AGENT_REGISTRATION_WELL_KNOWN_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, MSHA_FATALS_PATH, MSHA_FATALS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FTC_ORDERS_PATH, FTC_ORDERS_MANIFEST_PATH, NLRB_DECISIONS_PATH, NLRB_DECISIONS_MANIFEST_PATH, FLRA_DECISIONS_PATH, FLRA_DECISIONS_MANIFEST_PATH, ECAB_DECISIONS_PATH, ECAB_DECISIONS_MANIFEST_PATH, FCC_EB_ORDERS_PATH, FCC_EB_ORDERS_MANIFEST_PATH, NMB_DETERMINATIONS_PATH, NMB_DETERMINATIONS_MANIFEST_PATH, EEOC_APPELLATE_PATH, EEOC_APPELLATE_MANIFEST_PATH, TTAB_DECISIONS_PATH, TTAB_DECISIONS_MANIFEST_PATH, IBLA_DECISIONS_PATH, IBLA_DECISIONS_MANIFEST_PATH, CCB_DETERMINATIONS_PATH, CCB_DETERMINATIONS_MANIFEST_PATH, USCG_ALJ_DECISIONS_PATH, USCG_ALJ_DECISIONS_MANIFEST_PATH, CBCA_DECISIONS_PATH, CBCA_DECISIONS_MANIFEST_PATH, MSPB_DECISIONS_PATH, MSPB_DECISIONS_MANIFEST_PATH, FERC_ISSUANCES_PATH, FERC_ISSUANCES_MANIFEST_PATH, CFTC_REPARATIONS_PATH, CFTC_REPARATIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, ERC8004_PATH, AGENT_REGISTRATION_PATH, AGENT_REGISTRATION_WELL_KNOWN_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -10493,6 +10958,7 @@ if (isMain()) {
     console.error(`${FSIS_HUMANE_PATH} $${Number(amountAtomicFor("fsis-humane")) / 1e6} USDC`);
     console.error(`${EPA_CAFO_PATH} $${Number(amountAtomicFor("epa-cafo")) / 1e6} USDC`);
     console.error(`${FMSHRC_ORDERS_PATH} $${Number(amountAtomicFor("fmshrc-orders")) / 1e6} USDC`);
+    console.error(`${MSHA_FATALS_PATH} $${Number(amountAtomicFor("msha-fatals")) / 1e6} USDC`);
     console.error(`${BSEE_REPORTS_PATH} $${Number(amountAtomicFor("bsee-reports")) / 1e6} USDC`);
     console.error(`${OSHRC_ORDERS_PATH} $${Number(amountAtomicFor("oshrc-orders")) / 1e6} USDC`);
     console.error(`${EPA_ALJ_PATH} $${Number(amountAtomicFor("epa-alj")) / 1e6} USDC`);
@@ -10515,6 +10981,7 @@ if (isMain()) {
     console.error(`${CBCA_DECISIONS_PATH} $${Number(amountAtomicFor("cbca-decisions")) / 1e6} USDC`);
     console.error(`${MSPB_DECISIONS_PATH} $${Number(amountAtomicFor("mspb-decisions")) / 1e6} USDC`);
     console.error(`${FERC_ISSUANCES_PATH} $${Number(amountAtomicFor("ferc-issuances")) / 1e6} USDC`);
+    console.error(`${CFTC_REPARATIONS_PATH} $${Number(amountAtomicFor("cftc-reparations")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

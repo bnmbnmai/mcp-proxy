@@ -274,6 +274,24 @@ async function main(): Promise<void> {
         },
       ],
     },
+    cftcReparations: {
+      fetchedAt: "2026-09-29T18:31:26.000Z",
+      asOf: "2026-09-29",
+      cards: [
+        {
+          id: "cftc-disposition-26-r021-2026-09-29",
+          institution: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+          docket: "26-R021",
+          caseNo: "26-R021",
+          kind: "disposition",
+          orderKind: "Reparations disposition",
+          date: "2026-09-29",
+          title: "Cristofer Arguedas Asmad v. Interactive Brokers, LLC",
+          sourceUrl: "https://www.cftc.gov/sites/default/files/2026/09/secret.pdf",
+          body: "SECRET CFTC REPARATIONS purported account statement",
+        },
+      ],
+    },
     fercIssuances: {
       fetchedAt: "2026-09-28T16:34:39.000Z",
       asOf: "2026-09-28",
@@ -291,6 +309,30 @@ async function main(): Promise<void> {
           title: "CP23-29-002 Commission Order/Opinion",
           sourceUrl: "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260928-3137",
           body: "SECRET FERC ISSUANCE BODY Hudspeth County",
+        },
+      ],
+    },
+    mshaFatals: {
+      fetchedAt: "2026-08-11T00:00:00.000Z",
+      asOf: "2026-08-11",
+      cards: [
+        {
+          id: "FAI-F00BE1D-1",
+          mine: "Deer Run Mine",
+          operator: "Patton Mining LLC",
+          institution: "Patton Mining LLC",
+          firm: "Patton Mining LLC",
+          state: "Illinois",
+          sector: "coal",
+          classification: "Machinery",
+          accidentDate: "2026-03-05",
+          reportDate: "2026-08-11",
+          date: "2026-08-11",
+          title: "Deer Run Mine Machinery fatality final report",
+          sourceUrl: "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+          victimRole: "continuous mining machine operator",
+          rootCauses: ["The red zone was not maintained"],
+          body: "SECRET MSHA BODY miner wearable component",
         },
       ],
     },
@@ -398,6 +440,8 @@ async function main(): Promise<void> {
     "cbca-decisions",
     "mspb-decisions",
     "ferc-issuances",
+    "cftc-reparations",
+    "msha-fatals",
     "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
@@ -418,6 +462,8 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("CBCA decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("MSPB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("FERC eLibrary issuances"));
+  assert.ok(FIRM_CHECK_NOTE.includes("CFTC reparations dispositions and Commission opinions"));
+  assert.ok(FIRM_CHECK_NOTE.includes("MSHA fatality final reports"));
   assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
@@ -629,6 +675,19 @@ async function main(): Promise<void> {
   assert.ok(!JSON.stringify(mspb.matches).includes("involuntary due to coercion"));
   assert.ok(!JSON.stringify(mspb.matches).includes("mspbpublic.azurewebsites.net"));
 
+  const cftcRep = firmCheckFromIndexes("Interactive Brokers", indexes);
+  assert.equal(cftcRep.matches[0]?.door, "cftc-reparations");
+  assert.equal(cftcRep.matches[0]?.id, "cftc-disposition-26-r021-2026-09-29");
+  assert.equal(cftcRep.matches[0]?.paidUrl, "/cftc-reparations?id=cftc-disposition-26-r021-2026-09-29");
+  assert.equal(cftcRep.matches[0]?.pagePaidUrl, "/cftc-reparations");
+  assert.equal(cftcRep.matches[0]?.priceUsdc, "0.02");
+  assert.equal(cftcRep.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (cftcRep.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (cftcRep.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(cftcRep.matches).includes("SECRET CFTC REPARATIONS"));
+  assert.ok(!JSON.stringify(cftcRep.matches).includes("purported account statement"));
+  assert.ok(!JSON.stringify(cftcRep.matches).includes(".pdf"));
+
   const ferc = firmCheckFromIndexes("Saguaro", indexes);
   assert.equal(ferc.matches[0]?.door, "ferc-issuances");
   assert.equal(ferc.matches[0]?.id, "ferc-commission-20260928-3137");
@@ -641,6 +700,27 @@ async function main(): Promise<void> {
   assert.ok(!JSON.stringify(ferc.matches).includes("SECRET FERC"));
   assert.ok(!JSON.stringify(ferc.matches).includes("Hudspeth County"));
   assert.ok(!JSON.stringify(ferc.matches).includes("elibrary.ferc.gov"));
+
+  const msha = firmCheckFromIndexes("Deer Run", indexes);
+  assert.equal(msha.matches[0]?.door, "msha-fatals");
+  assert.equal(msha.matches[0]?.id, "FAI-F00BE1D-1");
+  assert.equal(msha.matches[0]?.firm, "Patton Mining LLC");
+  assert.equal(msha.matches[0]?.paidUrl, "/msha-fatals?id=FAI-F00BE1D-1");
+  assert.equal(msha.matches[0]?.pagePaidUrl, "/msha-fatals");
+  assert.equal(msha.matches[0]?.priceUsdc, "0.02");
+  assert.equal(msha.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (msha.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (msha.matches[0] ?? {})));
+  assert.ok(!("victimRole" in (msha.matches[0] ?? {})));
+  assert.ok(!("rootCauses" in (msha.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(msha.matches).includes("SECRET MSHA"));
+  assert.ok(!JSON.stringify(msha.matches).includes("miner wearable component"));
+  assert.ok(!JSON.stringify(msha.matches).includes(".pdf"));
+  assert.ok(!JSON.stringify(msha.matches).includes("msha.gov"));
+
+  const patton = firmCheckFromIndexes("Patton Mining", indexes);
+  assert.equal(patton.matches[0]?.door, "msha-fatals");
+  assert.equal(patton.matches[0]?.id, "FAI-F00BE1D-1");
 
   const eeoc = firmCheckFromIndexes("Lenard", indexes);
   assert.equal(eeoc.matches[0]?.door, "eeoc-appellate");
