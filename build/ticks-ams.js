@@ -1,9 +1,9 @@
 /**
- * Nationwide USDA AMS hay / cattle / grain / wool / dairy / hogs / produce report bodies
+ * Nationwide USDA AMS hay / cattle / sheep / grain / wool / dairy / hogs / produce report bodies
  * for the existing GET /ticks door. Official PDFs (and NAL/esmis archive copies).
  * Same product: idaho-hay-feeder-ticks. Does not open a new SKU. Does not wrap marsapi
  * (403 without a key), LMR datamart JSON, NASS Quick Stats, WASDE/PSD/ESR, CME APIs,
- * the National Feeder dashboard, or SJ_LS850.txt.
+ * the National Feeder dashboard, SJ_LS850.txt, or SA_LS855.txt.
  * AMS_2911 National Wool Review is public-domain 17 USC 105; parse the official PDF only.
  * AMS_2872 National Daily Hog and Pork Summary is the official AMS public PDF, not an
  * LMR dashboard / datamart wrap. Individual LM_HG* / LM_PK* PDFs stay skipped.
@@ -20,12 +20,17 @@
  * cents/lb weighted averages only — previous-week reprint is not a tick.
  * Weekly grocery / retail feature ads fatten the same $0.05 bag: AMS_2995 dairy
  * ads already live; siblings AMS_2756 chicken, AMS_2757 eggs, AMS_2867 turkey,
- * AMS_2868 pork, AMS_3228 beef, AMS_3229 lamb, AMS_3796 veal land as
+ * AMS_2868 pork, AMS_3228 beef, AMS_3229 lamb, AMS_3796 veal, AMS_3797 goat land as
  * dairy.ams_* grocery-ad rows. AMS_3324 / fvwretail specialty-crops grocery
  * ads land on the existing produce group. Current-week advertised wtd avg
  * only — previous-week / year-ago reprints and regional detail pages are not
  * ticks. Official bodies are ugly mnreports PDFs (marsapi 403; LMR datamart
  * "Invalid slug id"). AMS_3725 Egg Markets Overview is leftover narrative.
+ * AMS_2907 National Direct Sheep and AMS_1772 Billings sheep/goat auction land
+ * on the same table as sheep.ams_* $/cwt rows. A live "no confirmed sales"
+ * direct week stays empty — do not backfill an older ESMIS trade week.
+ * Per-unit replacement sheep/goats are $/head and stay off. SA_LS855.txt is
+ * free plaintext and stays off. Other sheep/goat barns and LMR boxed lamb stay off.
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
  * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
@@ -190,6 +195,7 @@ export const AMS_NATIONAL_REPORTS = [
     { slug: "3228", group: "dairy", region: "national_retail", title: "Grocery Store Beef Feature", esmisPublication: "" },
     { slug: "3229", group: "dairy", region: "national_retail", title: "Grocery Store Lamb Feature", esmisPublication: "" },
     { slug: "3796", group: "dairy", region: "national_retail", title: "Grocery Store Veal Feature", esmisPublication: "" },
+    { slug: "3797", group: "dairy", region: "national_retail", title: "Grocery Store Goat Feature", esmisPublication: "" },
     { slug: "1598", group: "dairy", region: "national", title: "Dry Products Price Summary", esmisPublication: "" },
     { slug: "1045", group: "dairy", region: "central", title: "Dry Whey Central", esmisPublication: "" },
     { slug: "1048", group: "dairy", region: "west", title: "Nonfat Dry Milk West", esmisPublication: "" },
@@ -204,6 +210,8 @@ export const AMS_NATIONAL_REPORTS = [
     { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
     { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
     { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
+    { slug: "2907", group: "sheep", region: "national", title: "National Direct Sheep", esmisPublication: "national-direct-sheep-report" },
+    { slug: "1772", group: "sheep", region: "billings_pay", title: "Public Auction Yards Sheep and Goat Auction (Billings)", esmisPublication: "" },
     { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
     { slug: "2315", group: "produce", region: "new_york", title: "New York Terminal Market Vegetables", esmisPublication: "", pdfNames: ["nx_fv020"] },
     { slug: "2290", group: "produce", region: "chicago", title: "Chicago Terminal Market Fruit", esmisPublication: "", pdfNames: ["hx_fv010"] },
@@ -225,6 +233,7 @@ export const SKIPPED_SOURCES = [
     { id: "lmr-datamart", why: "mpr.datamart.ams.usda.gov already exposes LMR cattle as no-auth JSON — skip wrapping that body" },
     { id: "feeder-dashboard", why: "National Feeder & Stocker Cattle Dashboard is a web app, not an ugly PDF/HTML report body" },
     { id: "SJ_LS850", why: "https://www.ams.usda.gov/mnreports/SJ_LS850.txt already returns the official plaintext body" },
+    { id: "SA_LS855", why: "https://www.ams.usda.gov/mnreports/SA_LS855.txt already returns the official plaintext body — leak-FAIL free clean text, do not wrap" },
     { id: "nass-quick-stats", why: "documented no-auth JSON API — KILL" },
     { id: "nass-monthly-cold-storage", why: "NASS monthly Cold Storage txt/Quick Stats is free structured NASS — KILL; official AMS_1095 weekly PDF is the cold-storage print on this door" },
     { id: "wasde-psd-esr", why: "documented no-auth USDA JSON/CSV — KILL" },
@@ -249,7 +258,7 @@ export const SKIPPED_SOURCES = [
     { id: "dairy-waf-empty", why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes" },
     { id: "ams_3096_waf", why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty" },
     { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
-    { id: "sheep-goats", why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks" },
+    { id: "sheep-goats", why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, and Billings PAY sheep/goat AMS_1772 are on /ticks. SA_LS855.txt stays off" },
     { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
     { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757" },
     { id: "cotton-rice", why: "official AMS rice PDFs leftover. Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) is already on /ticks grain rows" },
@@ -911,7 +920,9 @@ function parseAuctionCowSale(text, report, source, sourceUrl, asOf) {
 }
 /** Live official PDF is an intentional empty, not a parser miss. */
 export function cattleReportIntentionalEmpty(text) {
-    return /No trades this week/i.test(text) || /not established this week/i.test(text);
+    return /No trades this week/i.test(text)
+        || /not established this week/i.test(text)
+        || /no confirmed sales this week/i.test(text);
 }
 export function looksLikeVideoAuction(text) {
     return /VIDEO AUCTION/i.test(text) && /Est\.?\s*Wt/i.test(text);
@@ -1272,6 +1283,311 @@ function headlineCattle(rows, report, source, sourceUrl, asOf) {
         });
     }
     return out;
+}
+const SHEEP_DIRECT_HDR_RE = /^(Lambs|Hair Lambs|Feeder Lambs|Ewes|Hair Ewes|Rams|Hair Rams)\s+-\s+(.+?)\s+\(Per (Cwt|Unit)\b/i;
+function directSheepKind(name) {
+    if (/hair/i.test(name) && /lamb/i.test(name))
+        return { tok: "feeder-hair-lamb", commodity: "Feeder hair lambs" };
+    if (/lamb/i.test(name))
+        return { tok: "feeder-lamb", commodity: "Feeder lambs" };
+    if (/hair/i.test(name) && /ewe/i.test(name))
+        return { tok: "ewe-hair", commodity: "Hair ewes" };
+    if (/ewe/i.test(name))
+        return { tok: "ewe", commodity: "Ewes" };
+    if (/hair/i.test(name) && /ram/i.test(name))
+        return { tok: "ram-hair", commodity: "Hair rams" };
+    if (/ram/i.test(name))
+        return { tok: "ram", commodity: "Rams" };
+    return { tok: token(name), commodity: name };
+}
+/**
+ * National Direct Sheep Delivery/Freight table. Current FOB keeps the cash id.
+ * Forward FOB is emitted only for a class with no Current FOB. DEL is not a
+ * cash tick. Per-unit replacement rows are $/head and stay off. A week that
+ * says there were no confirmed sales returns no rows.
+ */
+export function parseDirectSheepReport(text, report, sourceUrl) {
+    if (!/DIRECT TRADES/i.test(text))
+        return [];
+    const asOf = parseReportDate(text);
+    if (!asOf)
+        return [];
+    const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+    const drafts = [];
+    let inDirect = false;
+    let sex = "";
+    let grade = "";
+    let delivery = "";
+    let freight = "";
+    for (const raw of text.split(/\r?\n/)) {
+        const line = raw.replace(/\s+/g, " ").trim();
+        if (!line)
+            continue;
+        if (/DIRECT TRADES/i.test(line)) {
+            inDirect = true;
+            sex = "";
+            grade = "";
+            delivery = "";
+            freight = "";
+            continue;
+        }
+        if (!inDirect)
+            continue;
+        if (/^(Please Note|BASIS TRADES)\b/i.test(line))
+            break;
+        const hdr = line.match(SHEEP_DIRECT_HDR_RE);
+        if (hdr) {
+            if (/unit/i.test(hdr[3])) {
+                sex = "";
+                grade = "";
+                continue;
+            }
+            sex = hdr[1];
+            grade = hdr[2];
+            delivery = "";
+            freight = "";
+            continue;
+        }
+        if (!sex)
+            continue;
+        const row = line.match(DIRECT_ROW_RE);
+        if (!row)
+            continue;
+        if (row[1] && row[2]) {
+            delivery = row[1];
+            freight = row[2].toUpperCase();
+        }
+        if (!delivery || freight !== "FOB")
+            continue;
+        const head = Number(row[3].replace(/,/g, ""));
+        const wt = Number(row[6]);
+        const lo = Number(row[7]);
+        const hi = row[8] ? Number(row[8]) : lo;
+        const avg = Number(row[9]);
+        const note = (row[10] ?? "").trim();
+        if (!Number.isFinite(avg) || avg < 20 || avg > 900)
+            continue;
+        if (!Number.isFinite(wt) || wt < 20 || wt > 450)
+            continue;
+        const kind = directSheepKind(sex);
+        drafts.push({
+            sex: kind.commodity,
+            grade,
+            sexTok: kind.tok,
+            gradeTok: cattleGradeTok(grade),
+            delivery,
+            freight,
+            head,
+            wt,
+            lo,
+            hi,
+            avg,
+            note,
+        });
+    }
+    const groups = new Map();
+    for (const draft of drafts) {
+        const key = `${draft.sexTok}|${draft.gradeTok}`;
+        const list = groups.get(key) ?? [];
+        list.push(draft);
+        groups.set(key, list);
+    }
+    const out = [];
+    for (const group of groups.values()) {
+        const current = group.filter((d) => /^current$/i.test(d.delivery));
+        const forward = group.filter((d) => !/^current$/i.test(d.delivery));
+        const use = current.length > 0 ? current : forward;
+        for (const draft of use) {
+            const forwardTok = current.length > 0 ? "" : `${token(draft.delivery)}_fob`;
+            const id = [
+                "sheep",
+                `ams_${report.slug}`,
+                token(report.region),
+                draft.sexTok,
+                draft.gradeTok,
+                ...(forwardTok ? [forwardTok] : []),
+                `${draft.wt}lb`,
+            ].join(".");
+            out.push({
+                id,
+                group: "sheep",
+                commodity: draft.sex,
+                label: `${report.title} ${draft.sex} ${draft.grade} ${draft.delivery} ${draft.freight} ${draft.wt} lb`,
+                market: report.title,
+                classGrade: `USDA ${draft.grade}, ${draft.wt} lb, ${draft.head} head, ${draft.delivery} ${draft.freight}${draft.note ? `, ${draft.note}` : ""}`,
+                unit: "$/cwt",
+                price: roundMoney(draft.avg),
+                lo: draft.lo,
+                hi: draft.hi,
+                asOf,
+                source,
+                sourceUrl,
+                reportDate: asOf,
+                series: id,
+            });
+        }
+    }
+    return dedupeTicks(assignUniqueIds(out));
+}
+const SHEEP_AUCTION_SECTION_RE = /^(FEEDER SHEEP\/LAMBS|SLAUGHTER SHEEP\/LAMBS|REPLACEMENT SHEEP\/LAMBS|FEEDER GOATS|SLAUGHTER GOATS|REPLACEMENT GOATS)$/i;
+const SHEEP_AUCTION_HDR_RE = /^([A-Z][A-Z0-9 /]+?)\s+-\s+(.+?)\s+\(Per (Cwt|Unit)\b/i;
+function sheepAuctionGradeTok(grade) {
+    const g = grade.trim().toLowerCase();
+    if (/choice and prime 2-3/.test(g))
+        return "cp23";
+    if (/choice and prime/.test(g))
+        return "cp";
+    if (/choice 1-3/.test(g))
+        return "c13";
+    if (/medium and large 2-3/.test(g))
+        return "ml23";
+    if (/medium and large 1-2/.test(g))
+        return "ml12";
+    if (/medium and large 2/.test(g))
+        return "ml2";
+    if (/medium and large 1/.test(g))
+        return "ml1";
+    if (/medium 1-2/.test(g))
+        return "m12";
+    if (/medium 2/.test(g))
+        return "m2";
+    if (/good 2-3/.test(g))
+        return "good23";
+    if (/good 3-4/.test(g))
+        return "good34";
+    if (/utility 1-2/.test(g))
+        return "util12";
+    if (/cull 1/.test(g))
+        return "cull1";
+    if (/selection 1/.test(g))
+        return "sel1";
+    if (/selection 2/.test(g))
+        return "sel2";
+    if (/selection 3/.test(g))
+        return "sel3";
+    if (/^1-2$/.test(g))
+        return "12";
+    return token(grade);
+}
+function sheepAuctionKind(section, klass) {
+    const feeder = /feeder/i.test(section);
+    const k = klass.toUpperCase().replace(/\s+/g, " ").trim();
+    if (k === "LAMBS") {
+        return feeder
+            ? { tok: "feeder-lamb", commodity: "Feeder lambs" }
+            : { tok: "slaughter-lamb", commodity: "Slaughter lambs" };
+    }
+    if (k === "HAIR LAMBS") {
+        return feeder
+            ? { tok: "feeder-hair-lamb", commodity: "Feeder hair lambs" }
+            : { tok: "slaughter-hair-lamb", commodity: "Slaughter hair lambs" };
+    }
+    if (k === "HAIR BREEDS")
+        return { tok: "slaughter-hair-breed", commodity: "Slaughter hair breeds" };
+    if (k === "WOOLED")
+        return { tok: "slaughter-wooled", commodity: "Slaughter wooled lambs" };
+    if (k === "EWES")
+        return { tok: "slaughter-ewe", commodity: "Slaughter ewes" };
+    if (k === "HAIR EWES")
+        return { tok: "slaughter-hair-ewe", commodity: "Slaughter hair ewes" };
+    if (k === "RAMS")
+        return { tok: "slaughter-ram", commodity: "Slaughter rams" };
+    if (k === "HAIR RAMS")
+        return { tok: "slaughter-hair-ram", commodity: "Slaughter hair rams" };
+    if (k === "KIDS") {
+        return feeder
+            ? { tok: "feeder-kid", commodity: "Feeder kids" }
+            : { tok: "slaughter-kid", commodity: "Slaughter kids" };
+    }
+    if (k === "NANNIES/DOES")
+        return { tok: "slaughter-nanny", commodity: "Slaughter nannies" };
+    if (k === "BUCKS/BILLIES")
+        return { tok: "slaughter-buck", commodity: "Slaughter bucks" };
+    if (k === "WETHERS")
+        return { tok: "slaughter-wether", commodity: "Slaughter wethers" };
+    return { tok: token(klass), commodity: klass };
+}
+/** Billings-style sheep and goat auction. $/cwt actual-weight rows only. Per-unit replacement stock stays off. */
+export function parseSheepGoatAuctionReport(text, report, sourceUrl) {
+    const asOf = parseReportDate(text);
+    if (!asOf)
+        return [];
+    const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+    const out = [];
+    let section = "";
+    let klass = "";
+    let grade = "";
+    let perUnit = false;
+    for (const raw of text.split(/\r?\n/)) {
+        const line = raw.replace(/\s+/g, " ").trim();
+        if (!line)
+            continue;
+        const sectionHit = line.match(SHEEP_AUCTION_SECTION_RE);
+        if (sectionHit) {
+            section = sectionHit[1];
+            klass = "";
+            grade = "";
+            perUnit = false;
+            continue;
+        }
+        if (/^(Please Note|Explanatory Notes|Source:)\b/i.test(line)) {
+            section = "";
+            klass = "";
+            perUnit = false;
+            continue;
+        }
+        const hdr = line.match(SHEEP_AUCTION_HDR_RE);
+        if (hdr && section) {
+            klass = hdr[1].replace(/\s+/g, " ").trim();
+            grade = hdr[2].replace(/\s+/g, " ").trim();
+            perUnit = /unit/i.test(hdr[3]);
+            continue;
+        }
+        if (!section || !klass || perUnit)
+            continue;
+        const row = line.match(AUCTION_CATTLE_ROW);
+        if (!row)
+            continue;
+        const head = Number(row[1]);
+        const wt = Number(row[4]);
+        const lo = Number(row[5]);
+        const hi = row[6] ? Number(row[6]) : lo;
+        const avg = Number(row[7]);
+        if (!Number.isFinite(avg) || avg < 20 || avg > 900)
+            continue;
+        if (!Number.isFinite(wt) || wt < 15 || wt > 400)
+            continue;
+        if (!Number.isFinite(head) || head < 1)
+            continue;
+        const kind = sheepAuctionKind(section, klass);
+        const note = line.slice(row[0].length).replace(/\s+/g, " ").trim();
+        const id = [
+            "sheep",
+            `ams_${report.slug}`,
+            token(report.region),
+            kind.tok,
+            sheepAuctionGradeTok(grade),
+            `${wt}lb`,
+        ].join(".");
+        out.push({
+            id,
+            group: "sheep",
+            commodity: kind.commodity,
+            label: `${report.title} ${klass} ${grade} ${wt} lb`,
+            market: report.title,
+            classGrade: `USDA ${grade}, ${wt} lb, ${head} head${note ? `, ${note}` : ""}`,
+            unit: "$/cwt",
+            price: roundMoney(avg),
+            lo,
+            hi,
+            asOf,
+            source,
+            sourceUrl,
+            reportDate: asOf,
+            series: id,
+        });
+    }
+    return dedupeTicks(assignUniqueIds(out));
 }
 export function parseGrainReport(text, report, sourceUrl) {
     const asOf = parseReportDate(text);
@@ -1751,7 +2067,7 @@ export function parseDairyRetailAds(text, report, sourceUrl) {
     }
     return dedupeTicks(out);
 }
-const RETAIL_LP_SLUGS = new Set(["2756", "2757", "2867", "2868", "3228", "3229", "3796"]);
+const RETAIL_LP_SLUGS = new Set(["2756", "2757", "2867", "2868", "3228", "3229", "3796", "3797"]);
 const RETAIL_LP_COMMODITY = {
     "2756": "Chicken",
     "2757": "Shell eggs",
@@ -1760,6 +2076,7 @@ const RETAIL_LP_COMMODITY = {
     "3228": "Beef",
     "3229": "Lamb",
     "3796": "Veal",
+    "3797": "Goat",
 };
 const RETAIL_LP_REQUIRED = {
     "2756": ["whole.whole_bagged_fryer.conventional.fresh", "parts.breast_boneless_skinless_regular.conventional.fresh"],
@@ -1769,6 +2086,7 @@ const RETAIL_LP_REQUIRED = {
     "3228": ["chuck.chuck_roast_boneless_regular.conventional.fresh"],
     "3229": ["loin.loin_chops_regular.antibiotic_free.fresh"],
     "3796": ["breast.breast_regular.conventional.fresh"],
+    "3797": ["leg.leg_bone_in_regular.conventional.frozen", "other_misc.stew_meat_goat.conventional.fresh"],
 };
 const RETAIL_PAGE_RE = /Weekly Grocery Store|Email us with|Advertised Prices|MARKET HIGHLIGHTS|Explanatory Notes|Source:\s+USDA|Page \d|for Monday,|Metric\s+|Total Outlets|Activity Index|Feature Rate|This week in|The information contained/i;
 const RETAIL_HEADER_RE = /Section\s+.*Wtd Avg/i;
@@ -2920,6 +3238,11 @@ export function parseAmsReportText(text, report, sourceUrl) {
         return parseHayReport(text, report, sourceUrl);
     if (report.group === "cattle")
         return parseCattleReport(text, report, sourceUrl);
+    if (report.group === "sheep") {
+        if (report.slug === "2907")
+            return parseDirectSheepReport(text, report, sourceUrl);
+        return parseSheepGoatAuctionReport(text, report, sourceUrl);
+    }
     if (report.group === "wool")
         return parseWoolReport(text, report, sourceUrl);
     if (report.group === "dairy") {
@@ -3492,7 +3815,7 @@ export async function collectAmsNational(opts) {
                     lastErr = "official PDF reported no trades / not established this week";
                     break;
                 }
-                lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton print";
+                lastErr = "official PDF had no parseable hay/cattle/sheep/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton print";
             }
             catch (err) {
                 lastErr = err instanceof Error ? err.message : String(err);
