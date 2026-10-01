@@ -5127,42 +5127,234 @@ function skipSettle(): boolean {
   return env("X402_SKIP_SETTLE") === "1";
 }
 
-function decodePayment(payment: string): Record<string, unknown> | null {
-  const tryParse = (raw: string): Record<string, unknown> | null => {
-    try {
-      const parsed = JSON.parse(raw) as unknown;
-      return parsed && typeof parsed === "object" && !Array.isArray(parsed)
-        ? (parsed as Record<string, unknown>)
-        : null;
-    } catch {
-      return null;
-    }
-  };
-  return tryParse(payment) ?? tryParse(Buffer.from(payment, "base64").toString("utf8"));
-}
-
-function paymentPayload(payment: string): Record<string, unknown> | null {
-  const decoded = decodePayment(payment);
-  if (!decoded) return null;
-  if (decoded.payload && typeof decoded.payload === "object") return decoded;
-  if (decoded.authorization && decoded.signature) {
-    return { x402Version: 1, scheme: "exact", network: NETWORK_V1, payload: decoded };
-  }
-  return decoded;
-}
-
 function isPlainObject(value: unknown): value is Record<string, unknown> {
   return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
-function innerPaymentPayload(raw: Record<string, unknown> | null): Record<string, unknown> | null {
-  if (!raw) return null;
-  if (isPlainObject(raw.payload)) return raw.payload;
-  if (typeof raw.signature === "string" && isPlainObject(raw.authorization)) {
-    return { signature: raw.signature, authorization: raw.authorization };
+function tryParseJson(raw: string): unknown {
+  try {
+    return JSON.parse(raw) as unknown;
+  } catch {
+    return undefined;
   }
-  if (typeof raw.transaction === "string") return { transaction: raw.transaction };
+}
+
+/** Base64 or base64url text that itself looks like JSON or another base64 layer. */
+function decodeBase64ToText(raw: string): string | null {
+  const trimmed = raw.trim();
+  if (trimmed.length < 16 || trimmed.length > 200_000) return null;
+  if (!/^[A-Za-z0-9+/_=-]+$/.test(trimmed)) return null;
+  const normalized = trimmed.replace(/-/g, "+").replace(/_/g, "/");
+  const pad = normalized.length % 4 === 0 ? normalized : normalized + "=".repeat(4 - (normalized.length % 4));
+  const buf = Buffer.from(pad, "base64");
+  if (buf.length === 0) return null;
+  const text = buf.toString("utf8").trim();
+  if (!text || text.includes("\uFFFD")) return null;
+  const head = text[0];
+  if (head !== "{" && head !== "[" && head !== '"' && !/^[A-Za-z0-9+/_=-]+$/.test(text)) return null;
+  return text;
+}
+
+/** JSON, a JSON string, or base64 (including base64-in-base64) of those. */
+function unwrapJsonish(input: string, depth = 0): unknown {
+  if (depth > 4) return null;
+  const trimmed = input.trim();
+  if (!trimmed) return null;
+  const asJson = tryParseJson(trimmed);
+  if (asJson !== undefined) {
+    if (typeof asJson === "string") return unwrapJsonish(asJson, depth + 1);
+    return asJson;
+  }
+  if (
+    (trimmed.startsWith('"') && trimmed.endsWith('"')) ||
+    (trimmed.startsWith("'") && trimmed.endsWith("'"))
+  ) {
+    return unwrapJsonish(trimmed.slice(1, -1), depth + 1);
+  }
+  const decoded = decodeBase64ToText(trimmed);
+  if (decoded && decoded !== trimmed) return unwrapJsonish(decoded, depth + 1);
   return null;
+}
+
+function safeKey(key: string): string | null {
+  return /^[A-Za-z0-9_-]{1,64}$/.test(key) ? key : null;
+}
+
+function safeToken(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const trimmed = value.trim();
+  return /^[A-Za-z0-9:._-]{1,80}$/.test(trimmed) ? trimmed : null;
+}
+
+function asAuthorization(value: unknown): Record<string, unknown> | null {
+  if (isPlainObject(value) && Object.keys(value).length > 0) return value;
+  if (typeof value === "string") {
+    const parsed = unwrapJsonish(value);
+    if (isPlainObject(parsed) && Object.keys(parsed).length > 0) return parsed;
+  }
+  return null;
+}
+
+function authorizationOf(node: Record<string, unknown>): Record<string, unknown> | null {
+  const direct = asAuthorization(node.authorization);
+  if (direct) return direct;
+  const message = asAuthorization(node.message);
+  if (!message) return null;
+  if (message.from == null && message.value == null && message.to == null) return null;
+  return message;
+}
+
+function signatureOf(node: Record<string, unknown>): string | null {
+  return typeof node.signature === "string" && node.signature.trim() ? node.signature : null;
+}
+
+/**
+ * The object that carries both the EIP-3009 authorization and its signature.
+ * Walks v1 (scheme/network/payload), v2 (accepted/payload), nested
+ * paymentPayload, and payload fields that are themselves JSON or base64.
+ */
+function findSignedPayload(node: unknown, depth = 0): { signature: string; authorization: Record<string, unknown> } | null {
+  if (!isPlainObject(node) || depth > 6) return null;
+  const signature = signatureOf(node);
+  const authorization = authorizationOf(node);
+  if (signature && authorization) return { signature, authorization };
+
+  if (typeof node.payload === "string") {
+    const inner = unwrapJsonish(node.payload);
+    const found = findSignedPayload(inner, depth + 1);
+    if (found) return found;
+    if (signature && isPlainObject(inner)) {
+      const nested = authorizationOf(inner);
+      if (nested) return { signature, authorization: nested };
+    }
+  }
+
+  for (const key of ["payload", "paymentPayload", "payment", "data", "exact"]) {
+    const child = node[key];
+    if (!isPlainObject(child)) continue;
+    const found = findSignedPayload(child, depth + 1);
+    if (found) return found;
+    if (signature) {
+      const nested = authorizationOf(child);
+      if (nested) return { signature, authorization: nested };
+    }
+  }
+  return null;
+}
+
+function treeHasAuthorization(node: unknown, depth = 0): boolean {
+  if (!isPlainObject(node) || depth > 6) return false;
+  if (authorizationOf(node)) return true;
+  if (typeof node.payload === "string") {
+    if (treeHasAuthorization(unwrapJsonish(node.payload), depth + 1)) return true;
+  }
+  for (const key of ["payload", "paymentPayload", "payment", "data", "exact"]) {
+    if (treeHasAuthorization(node[key], depth + 1)) return true;
+  }
+  return false;
+}
+
+function treeHasSignature(node: unknown, depth = 0): boolean {
+  if (!isPlainObject(node) || depth > 6) return false;
+  if (signatureOf(node)) return true;
+  if (typeof node.payload === "string") {
+    if (treeHasSignature(unwrapJsonish(node.payload), depth + 1)) return true;
+  }
+  for (const key of ["payload", "paymentPayload", "payment", "data", "exact"]) {
+    if (treeHasSignature(node[key], depth + 1)) return true;
+  }
+  return false;
+}
+
+export type PaymentHeaderView = {
+  decoded: Record<string, unknown> | null;
+  topKeys: string[];
+  payloadKeys: string[];
+  /** 1, 2, or null when absent or not a version we will log. */
+  x402Version: 1 | 2 | null;
+  scheme: string | null;
+  network: string | null;
+  inner: { signature: string; authorization: Record<string, unknown> } | null;
+  /** Set when inner is missing. Says which of authorization / signature was absent. */
+  missing: string | null;
+};
+
+function payloadObjectOf(node: Record<string, unknown>): Record<string, unknown> | null {
+  if (isPlainObject(node.payload)) return node.payload;
+  if (typeof node.payload === "string") {
+    const inner = unwrapJsonish(node.payload);
+    if (isPlainObject(inner)) return inner;
+  }
+  if (isPlainObject(node.paymentPayload)) return payloadObjectOf(node.paymentPayload);
+  return null;
+}
+
+function metaOf(node: Record<string, unknown>): Pick<PaymentHeaderView, "topKeys" | "payloadKeys" | "x402Version" | "scheme" | "network"> {
+  const topKeys = Object.keys(node).map(safeKey).filter((key): key is string => Boolean(key));
+  const payloadObj = payloadObjectOf(node);
+  const payloadKeys = payloadObj
+    ? Object.keys(payloadObj).map(safeKey).filter((key): key is string => Boolean(key))
+    : [];
+  const accepted = isPlainObject(node.accepted)
+    ? node.accepted
+    : isPlainObject(node.paymentPayload) && isPlainObject(node.paymentPayload.accepted)
+      ? node.paymentPayload.accepted
+      : null;
+  const versionRaw = typeof node.x402Version === "number"
+    ? node.x402Version
+    : isPlainObject(node.paymentPayload) && typeof node.paymentPayload.x402Version === "number"
+      ? node.paymentPayload.x402Version
+      : null;
+  const x402Version = versionRaw === 1 || versionRaw === 2 ? versionRaw : null;
+  const scheme = safeToken(node.scheme) ?? (accepted ? safeToken(accepted.scheme) : null);
+  const network = safeToken(node.network) ?? (accepted ? safeToken(accepted.network) : null);
+  return { topKeys, payloadKeys, x402Version, scheme, network };
+}
+
+export function inspectPaymentHeader(payment: string): PaymentHeaderView {
+  const empty: PaymentHeaderView = {
+    decoded: null,
+    topKeys: [],
+    payloadKeys: [],
+    x402Version: null,
+    scheme: null,
+    network: null,
+    inner: null,
+    missing: "Payment header could not be decoded as JSON or base64 JSON. Missing the signed authorization.",
+  };
+  const unwrapped = unwrapJsonish(payment);
+  if (!isPlainObject(unwrapped)) return empty;
+  const meta = metaOf(unwrapped);
+  const inner = findSignedPayload(unwrapped);
+  if (inner) {
+    return { decoded: unwrapped, ...meta, inner, missing: null };
+  }
+  const hasAuth = treeHasAuthorization(unwrapped);
+  const hasSig = treeHasSignature(unwrapped);
+  const missing = hasAuth && !hasSig
+    ? "Payment header is missing the signature."
+    : hasSig && !hasAuth
+      ? "Payment header is missing the signed authorization."
+      : "Payment header is missing the signed authorization and signature.";
+  return { decoded: unwrapped, ...meta, inner: null, missing };
+}
+
+/** Key names, version, scheme, and network only. Never values, signatures, or addresses. */
+export function paymentHeaderShapeLine(view: PaymentHeaderView): string {
+  const version = view.x402Version === null ? "absent" : String(view.x402Version);
+  return `payment header keys=${view.topKeys.join(",") || "none"} payloadKeys=${view.payloadKeys.join(",") || "none"} x402Version=${version} scheme=${view.scheme ?? "absent"} network=${view.network ?? "absent"}`;
+}
+
+/** Redacted journal line for one paid attempt. Returns the 402 error when verify must not be POSTed. */
+function paymentHeaderMissing(payment: string): string | null {
+  const view = inspectPaymentHeader(payment);
+  console.error(paymentHeaderShapeLine(view));
+  if (view.inner) return null;
+  return view.missing ?? "Payment header is missing the signed authorization.";
+}
+
+function decodePayment(payment: string): Record<string, unknown> | null {
+  return inspectPaymentHeader(payment).decoded;
 }
 
 function caip2Network(network: unknown): string {
@@ -5309,8 +5501,9 @@ export function facilitatorBody(
   payment: string,
   requirements: Record<string, unknown>,
 ): Record<string, unknown> {
-  const raw = paymentPayload(payment);
-  const inner = innerPaymentPayload(raw);
+  const view = inspectPaymentHeader(payment);
+  const raw = view.decoded;
+  const inner = view.inner;
   const reqs = v2PaymentRequirements(requirements);
   const accepted = {
     ...reqs,
@@ -5320,7 +5513,7 @@ export function facilitatorBody(
     x402Version: 2,
     accepted,
   };
-  if (inner) payload.payload = inner;
+  if (inner) payload.payload = { signature: inner.signature, authorization: inner.authorization };
   const resource = resourceInfo(raw, requirements);
   if (resource) payload.resource = resource;
   const extensions = payloadExtensions(raw, requirements);
@@ -5464,6 +5657,7 @@ async function facilitatorPost(
   payment: string,
   requirements: Record<string, unknown>,
 ): Promise<Record<string, unknown> | null> {
+  if (!inspectPaymentHeader(payment).inner) return null;
   const base = env("X402_FACILITATOR_URL");
   if (!base) return null;
   const url = `${base.replace(/\/$/, "")}${path}`;
@@ -5537,14 +5731,9 @@ function localSettleKeyFile(): string {
 async function localEip3009Settle(payment: string, requirements: Record<string, unknown>): Promise<SettleAttempt> {
   const keyFile = localSettleKeyFile();
   if (!keyFile || !existsSync(keyFile)) return { ok: false };
-  const wrapper = paymentPayload(payment);
-  const inner = (wrapper?.payload && typeof wrapper.payload === "object"
-    ? (wrapper.payload as Record<string, unknown>)
-    : wrapper) ?? {};
-  const auth = (inner.authorization && typeof inner.authorization === "object"
-    ? (inner.authorization as Record<string, unknown>)
-    : null);
-  const signature = typeof inner.signature === "string" ? inner.signature : "";
+  const signed = inspectPaymentHeader(payment).inner;
+  const auth = signed?.authorization ?? null;
+  const signature = signed?.signature ?? "";
   if (!auth || !signature) return { ok: false };
   const wantAmount = String(requirements.maxAmountRequired ?? requirements.amount ?? "");
   const to = String(auth.to ?? "").toLowerCase();
@@ -8964,6 +9153,15 @@ async function servePaid(
     return;
   }
 
+  const missingAuthorization = paymentHeaderMissing(payment);
+  if (missingAuthorization) {
+    logPaid(402);
+    sendJson(res, 402, { ...body402, error: missingAuthorization }, {
+      "PAYMENT-REQUIRED": paymentRequiredHeader,
+    });
+    return;
+  }
+
   const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
@@ -9071,6 +9269,15 @@ async function servePaidPdf(
 
   if (skipSettle()) {
     await serve();
+    return;
+  }
+
+  const missingAuthorization = paymentHeaderMissing(payment);
+  if (missingAuthorization) {
+    logPaid(402);
+    sendJson(res, 402, { ...body402, error: missingAuthorization }, {
+      "PAYMENT-REQUIRED": paymentRequiredHeader,
+    });
     return;
   }
 

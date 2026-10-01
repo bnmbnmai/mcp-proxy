@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, facilitatorFailureDetail, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, facilitatorFailureDetail, cdpFacilitatorBodyProblems, inspectPaymentHeader, paymentHeaderShapeLine, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -11746,6 +11746,87 @@ async function main(): Promise<void> {
   assert.equal(wellPayload.accepted?.network, NETWORK_V2);
   assert.equal(wellPayload.accepted?.extra?.name, "USD Coin");
   assert.equal(wellPayload.payload?.authorization?.value, TICKS_AMOUNT_ATOMIC);
+
+  const signedAuthorization = v1Exact.payload.authorization;
+  const signedSignature = v1Exact.payload.signature;
+  const assertCarried = (header: string, label: string) => {
+    const body = facilitatorBody(header, ticksReqs);
+    const inner = (body.paymentPayload as { payload?: { signature?: string; authorization?: { value?: string } } }).payload;
+    assert.equal(inner?.signature, signedSignature, label);
+    assert.equal(inner?.authorization?.value, TICKS_AMOUNT_ATOMIC, label);
+    assert.deepEqual(cdpFacilitatorBodyProblems(body), [], label);
+    const line = paymentHeaderShapeLine(inspectPaymentHeader(header));
+    assert.equal(line.includes(signedSignature), false, `${label} shape log must not include the signature`);
+    assert.equal(line.includes(signedAuthorization.from), false, `${label} shape log must not include the payer`);
+    assert.match(line, /scheme=exact/, label);
+    return line;
+  };
+  const v1Line = assertCarried(JSON.stringify(v1Exact), "v1 json");
+  assert.match(v1Line, /x402Version=1/);
+  assert.match(v1Line, /network=base/);
+  assert.match(v1Line, /keys=.*payload/);
+  assert.match(v1Line, /payloadKeys=signature,authorization/);
+  const v1Base64 = Buffer.from(JSON.stringify(v1Exact), "utf8").toString("base64");
+  assertCarried(v1Base64, "v1 base64");
+  assertCarried(Buffer.from(v1Base64, "utf8").toString("base64"), "v1 base64-in-base64");
+  const v2Exact = {
+    x402Version: 2,
+    accepted: {
+      scheme: "exact",
+      network: NETWORK_V2,
+      asset: USDC_BASE,
+      amount: TICKS_AMOUNT_ATOMIC,
+      payTo: PAY_TO,
+      maxTimeoutSeconds: 60,
+      extra: { name: "USD Coin", version: "2" },
+    },
+    payload: v1Exact.payload,
+  };
+  const v2Line = assertCarried(JSON.stringify(v2Exact), "v2 json");
+  assert.match(v2Line, /x402Version=2/);
+  assert.match(v2Line, /network=eip155:8453/);
+  assertCarried(
+    JSON.stringify({
+      ...v2Exact,
+      payload: Buffer.from(JSON.stringify(v1Exact.payload), "utf8").toString("base64"),
+    }),
+    "v2 payload is base64",
+  );
+  assertCarried(JSON.stringify({ paymentPayload: v2Exact }), "nested paymentPayload");
+  assertCarried(
+    Buffer.from(Buffer.from(JSON.stringify(v2Exact), "utf8").toString("base64"), "utf8").toString("base64"),
+    "v2 base64-in-base64",
+  );
+
+  const missingView = inspectPaymentHeader(JSON.stringify({
+    x402Version: 2,
+    scheme: "exact",
+    network: NETWORK_V2,
+    accepted: { scheme: "exact", network: NETWORK_V2 },
+  }));
+  assert.equal(missingView.inner, null);
+  assert.match(missingView.missing ?? "", /signed authorization and signature/);
+  assert.equal(
+    (facilitatorBody(JSON.stringify({ x402Version: 1, scheme: "exact", network: "base" }), ticksReqs).paymentPayload as { payload?: unknown }).payload,
+    undefined,
+    "a header with no authorization does not invent paymentPayload.payload",
+  );
+  const signatureOnly = inspectPaymentHeader(JSON.stringify({
+    x402Version: 1,
+    scheme: "exact",
+    network: "base",
+    payload: { signature: signedSignature },
+  }));
+  assert.match(signatureOnly.missing ?? "", /missing the signed authorization/);
+  assert.doesNotMatch(signatureOnly.missing ?? "", /signature\.$/);
+  const authorizationOnly = inspectPaymentHeader(JSON.stringify({
+    x402Version: 1,
+    scheme: "exact",
+    network: "base",
+    payload: { authorization: signedAuthorization },
+  }));
+  assert.match(authorizationOnly.missing ?? "", /missing the signature/);
+  assert.match(inspectPaymentHeader("not-a-payment").missing ?? "", /could not be decoded/);
   const wellReqs = wellFormed.paymentRequirements as { amount?: string; extra?: { name?: string } };
   assert.equal(wellReqs.amount, TICKS_AMOUNT_ATOMIC);
   assert.equal(wellReqs.extra?.name, "USD Coin", "do not change the /ticks EIP-712 name");
@@ -11960,6 +12041,28 @@ async function main(): Promise<void> {
       assert.match(receipt.transaction ?? "", /^0x[0-9a-fA-F]{64}$/);
       assert.equal(receipt.payer, "0x1111111111111111111111111111111111111111");
       assert.ok(receipt.network === NETWORK_V1 || receipt.network === NETWORK_V2);
+
+      captured.length = 0;
+      const bare = await fetch(`${base}${TICKS_PATH}`, {
+        headers: { "X-PAYMENT": JSON.stringify({ x402Version: 2, scheme: "exact", network: NETWORK_V2 }) },
+      });
+      assert.equal(bare.status, 402, "header with no authorization stays 402");
+      const bareBody = (await bare.json()) as { error?: string; accepts?: { payTo?: string }[] };
+      assert.match(bareBody.error ?? "", /missing the signed authorization and signature/);
+      assert.equal(bareBody.accepts?.[0]?.payTo, PAY_TO, "missing-authorization 402 keeps payment requirements");
+      assert.equal(captured.length, 0, "missing authorization must not POST to the facilitator");
+
+      captured.length = 0;
+      const nested = Buffer.from(
+        Buffer.from(JSON.stringify(v2Exact), "utf8").toString("base64"),
+        "utf8",
+      ).toString("base64");
+      const nestedPaid = await fetch(`${base}${TICKS_PATH}`, {
+        headers: { "PAYMENT-SIGNATURE": nested },
+      });
+      assert.equal(nestedPaid.status, 200, "base64-in-base64 v2 PAYMENT-SIGNATURE still settles");
+      assert.ok(captured.some((c) => c.path === "/verify" && c.status === 200));
+      assert.ok(captured.every((c) => c.problems.length === 0));
     },
   );
   await new Promise<void>((resolve, reject) =>
