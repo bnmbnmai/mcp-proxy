@@ -12,15 +12,16 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry (chicken 3646 / turkey 3647) on dairy.*, cold storage on
  * dairy.ams_1095.*, cotton on grain.ams_3024.*, ag energy on grain.ams_2805.*,
- * grocery/retail feature ads on dairy.ams_* / produce.ams_3324, grass-fed DTC
- * on dairy.ams_2811.grassfed.*,
+ * grocery/retail feature ads on dairy.ams_* / produce.ams_3324 (goat ads are
+ * dairy.ams_3797), grass-fed DTC on dairy.ams_2811.grassfed.*,
  * production-cost fuels and fertilizer on inputs.ams_*.
- * Manitoba Agriculture weekly auction-mart cattle (and the sheep/goat rows in
- * that same PDF) are C$/cwt rows on this same $0.05 table. Not a new path.
- * Name them in free copy. Do not rename product.id.
+ * Sheep/goat auction and direct prints are sheep.ams_1772 / sheep.ams_2907
+ * on this same bag. Manitoba Agriculture weekly auction-mart cattle (and the
+ * sheep/goat rows in that same PDF) are C$/cwt rows on this same $0.05 table.
+ * Not a new path. Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
-  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, grass-fed DTC, production cost, ag energy";
+  "hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, grass-fed DTC, production cost, ag energy";
 
 /**
  * Unpaid GET /ticks accepts[].description. CDP limit is 500 characters.
