@@ -1,9 +1,9 @@
 /**
- * Nationwide USDA AMS hay / cattle / grain / wool / dairy / hogs / produce report bodies
+ * Nationwide USDA AMS hay / cattle / sheep / grain / wool / dairy / hogs / produce report bodies
  * for the existing GET /ticks door. Official PDFs (and NAL/esmis archive copies).
  * Same product: idaho-hay-feeder-ticks. Does not open a new SKU. Does not wrap marsapi
  * (403 without a key), LMR datamart JSON, NASS Quick Stats, WASDE/PSD/ESR, CME APIs,
- * the National Feeder dashboard, or SJ_LS850.txt.
+ * the National Feeder dashboard, SJ_LS850.txt, or SA_LS855.txt.
  * AMS_2911 National Wool Review is public-domain 17 USC 105; parse the official PDF only.
  * AMS_2872 National Daily Hog and Pork Summary is the official AMS public PDF, not an
  * LMR dashboard / datamart wrap. Individual LM_HG* / LM_PK* PDFs stay skipped.
@@ -20,12 +20,17 @@
  * cents/lb weighted averages only — previous-week reprint is not a tick.
  * Weekly grocery / retail feature ads fatten the same $0.05 bag: AMS_2995 dairy
  * ads already live; siblings AMS_2756 chicken, AMS_2757 eggs, AMS_2867 turkey,
- * AMS_2868 pork, AMS_3228 beef, AMS_3229 lamb, AMS_3796 veal land as
+ * AMS_2868 pork, AMS_3228 beef, AMS_3229 lamb, AMS_3796 veal, AMS_3797 goat land as
  * dairy.ams_* grocery-ad rows. AMS_3324 / fvwretail specialty-crops grocery
  * ads land on the existing produce group. Current-week advertised wtd avg
  * only — previous-week / year-ago reprints and regional detail pages are not
  * ticks. Official bodies are ugly mnreports PDFs (marsapi 403; LMR datamart
  * "Invalid slug id"). AMS_3725 Egg Markets Overview is leftover narrative.
+ * AMS_2907 National Direct Sheep and AMS_1772 Billings sheep/goat auction land
+ * on the same table as sheep.ams_* $/cwt rows. A live "no confirmed sales"
+ * direct week stays empty — do not backfill an older ESMIS trade week.
+ * Per-unit replacement sheep/goats are $/head and stay off. SA_LS855.txt is
+ * free plaintext and stays off. Other sheep/goat barns and LMR boxed lamb stay off.
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
  * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
@@ -54,7 +59,7 @@ export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const ESMIS_HOST = "https://esmis.nal.usda.gov";
 export declare const MNREPORTS_PDF: (slug: string) => string;
 export declare const VIEW_REPORT: (slug: string) => string;
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce";
+export type AmsGroup = "hay" | "cattle" | "sheep" | "grain" | "wool" | "dairy" | "hogs" | "produce";
 export type AmsReport = {
     slug: string;
     group: AmsGroup;
@@ -82,6 +87,9 @@ export declare const SKIPPED_SOURCES: readonly [{
 }, {
     readonly id: "SJ_LS850";
     readonly why: "https://www.ams.usda.gov/mnreports/SJ_LS850.txt already returns the official plaintext body";
+}, {
+    readonly id: "SA_LS855";
+    readonly why: "https://www.ams.usda.gov/mnreports/SA_LS855.txt already returns the official plaintext body — leak-FAIL free clean text, do not wrap";
 }, {
     readonly id: "nass-quick-stats";
     readonly why: "documented no-auth JSON API — KILL";
@@ -156,7 +164,7 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice";
 }, {
     readonly id: "sheep-goats";
-    readonly why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks";
+    readonly why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, and Billings PAY sheep/goat AMS_1772 are on /ticks. SA_LS855.txt stays off";
 }, {
     readonly id: "poultry-eggs";
     readonly why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows";
@@ -243,6 +251,15 @@ export declare function parseVideoAuctionReport(text: string, report: AmsReport,
  */
 export declare function parseDirectFeederTrades(text: string, report: AmsReport, sourceUrl: string): AmsTick[] | null;
 export declare function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * National Direct Sheep Delivery/Freight table. Current FOB keeps the cash id.
+ * Forward FOB is emitted only for a class with no Current FOB. DEL is not a
+ * cash tick. Per-unit replacement rows are $/head and stay off. A week that
+ * says there were no confirmed sales returns no rows.
+ */
+export declare function parseDirectSheepReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/** Billings-style sheep and goat auction. $/cwt actual-weight rows only. Per-unit replacement stock stays off. */
+export declare function parseSheepGoatAuctionReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseGrainReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseWoolReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];

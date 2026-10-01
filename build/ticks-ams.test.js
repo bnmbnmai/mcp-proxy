@@ -16,7 +16,7 @@ function report(slug) {
     assert.ok(found, slug);
     return found;
 }
-const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail"];
+const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail", "sheep"];
 assert.equal(PRODUCT_PUBLIC_ID, "us-hay-cattle-grain-ticks", "do not rename the public product.id");
 assert.equal(SAMPLE_TABLE_SKU.ticks.length, 3, "free slice stays 3 rows");
 assert.ok(!SAMPLE_TABLE_SKU.asOf.startsWith("2026-01"), "sample is not the January 2026 can");
@@ -178,6 +178,60 @@ assert.equal(vealAds.length, 2, `expected lightly-tested veal grocery ads, got $
 const vealBreast = vealAds.find((row) => row.id === "dairy.ams_3796.breast.breast_regular.conventional.fresh");
 assert.ok(vealBreast, "national conventional veal breast");
 assert.equal(vealBreast.price, 9.99);
+const goatAds = parseAmsReportText(fx("retail-goat-3797.txt"), report("3797"), "https://www.ams.usda.gov/mnreports/ams_3797.pdf");
+assert.equal(parseReportDate(fx("retail-goat-3797.txt")), "2026-09-25");
+assert.equal(goatAds.length, 3, `expected national goat grocery ads, got ${goatAds.length}`);
+assert.ok(goatAds.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_3797.") && row.unit === "$/lb"));
+assert.ok(goatAds.every((row) => row.asOf === "2026-09-25"));
+const goatLeg = goatAds.find((row) => row.id === "dairy.ams_3797.leg.leg_bone_in_regular.conventional.frozen");
+assert.ok(goatLeg, "national conventional frozen bone-in goat leg");
+assert.equal(goatLeg.price, 5.99);
+assert.match(goatLeg.classGrade, /19/);
+const goatStew = goatAds.find((row) => row.id === "dairy.ams_3797.other_misc.stew_meat_goat.conventional.fresh");
+assert.ok(goatStew, "national conventional fresh goat stew");
+assert.equal(goatStew.price, 5.99);
+assert.equal(goatAds.find((row) => row.id === "dairy.ams_3797.other_misc.stew_meat_goat.conventional.frozen")?.price, 5.8);
+assert.ok(!goatAds.some((row) => row.price === 5.89 || row.price === 5.33), "previous-week and year-ago goat reprints are not ticks");
+assert.ok(!goatAds.some((row) => /northeast|southeast|midwest/i.test(row.id)), "regional goat grocery pages are not ticks");
+const goatAdsMissing = parseAmsReportText(fx("retail-goat-3797.txt").replace(/Leg, Bone-In, Regular\s+Conventional\s+Frozen\s+19[\s\S]*?\n/, ""), report("3797"), "https://www.ams.usda.gov/mnreports/ams_3797.pdf");
+assert.equal(goatAdsMissing.length, 0, "fail-closed when a required current-week goat grocery print is missing");
+const directSheep = parseAmsReportText(fx("direct-sheep-2907.txt"), report("2907"), "https://www.ams.usda.gov/mnreports/ams_2907.pdf");
+assert.equal(parseReportDate(fx("direct-sheep-2907.txt")), "2023-09-15");
+assert.equal(directSheep.length, 1, `expected one current FOB direct sheep print, got ${directSheep.length}`);
+const feederLamb = directSheep[0];
+assert.equal(feederLamb.id, "sheep.ams_2907.national.feeder-lamb.ml12.112lb");
+assert.equal(feederLamb.group, "sheep");
+assert.equal(feederLamb.unit, "$/cwt");
+assert.equal(feederLamb.price, 210.8);
+assert.equal(feederLamb.lo, 210);
+assert.equal(feederLamb.hi, 212);
+assert.match(feederLamb.classGrade, /3000 head/);
+assert.equal(feederLamb.asOf, "2023-09-15");
+assert.ok(feederLamb.source.includes("AMS_2907") && feederLamb.sourceUrl.includes("2907"));
+const directSheepEmpty = fx("direct-sheep-2907-empty.txt");
+assert.equal(parseReportDate(directSheepEmpty), "2026-09-25");
+assert.equal(cattleReportIntentionalEmpty(directSheepEmpty), true);
+assert.equal(parseAmsReportText(directSheepEmpty, report("2907"), "https://www.ams.usda.gov/mnreports/ams_2907.pdf").length, 0, "a live no-confirmed-sales direct sheep week stays empty");
+const sheepAuction = parseAmsReportText(fx("auction-sheep-goat-1772.txt"), report("1772"), "https://www.ams.usda.gov/mnreports/ams_1772.pdf");
+assert.equal(parseReportDate(fx("auction-sheep-goat-1772.txt")), "2026-09-21");
+assert.ok(sheepAuction.length >= 40, `expected Billings sheep/goat $/cwt rows, got ${sheepAuction.length}`);
+assert.ok(sheepAuction.every((row) => row.group === "sheep" && row.id.startsWith("sheep.ams_1772.billings_pay.") && row.unit === "$/cwt" && row.asOf === "2026-09-21"));
+const billingsLamb = sheepAuction.find((row) => row.id === "sheep.ams_1772.billings_pay.feeder-lamb.ml12.43lb");
+assert.ok(billingsLamb, "feeder lambs ML 1-2 43 lb");
+assert.equal(billingsLamb.price, 430.77);
+assert.equal(billingsLamb.lo, 430);
+assert.equal(billingsLamb.hi, 435);
+const billingsKid = sheepAuction.find((row) => row.id === "sheep.ams_1772.billings_pay.feeder-kid.sel1.35lb");
+assert.ok(billingsKid, "feeder kids selection 1 35 lb");
+assert.equal(billingsKid.price, 427.01);
+const billingsEwe = sheepAuction.find((row) => row.id === "sheep.ams_1772.billings_pay.slaughter-ewe.good23.179lb");
+assert.ok(billingsEwe, "slaughter ewes good 2-3 179 lb");
+assert.equal(billingsEwe.price, 122.28);
+assert.ok(!sheepAuction.some((row) => row.price === 147), "per-unit replacement hair ewes stay off the $/cwt table");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3797")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2907")?.group, "sheep");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1772")?.group, "sheep");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2907")?.esmisPublication, "national-direct-sheep-report");
 const produceAds = parseAmsReportText(fx("retail-specialty-crops-3324.txt"), report("3324"), "https://www.ams.usda.gov/mnreports/fvwretail.pdf");
 assert.equal(parseReportDate(fx("retail-specialty-crops-3324.txt")), "2026-09-18");
 assert.ok(produceAds.length >= 40, `expected national specialty-crops grocery ads, got ${produceAds.length}`);
@@ -402,7 +456,7 @@ for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
     assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
-assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3797", "2907", "1772", "3324", "3024"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
 const shopIndex = readFileSync(join(repoRoot, "SHOP-INDEX.md"), "utf8");
 const openapi = JSON.parse(readFileSync(join(repoRoot, "openapi.json"), "utf8"));
@@ -426,6 +480,9 @@ console.log(JSON.stringify({
     groceryBeef3228: beefAds.length,
     groceryLamb3229: lambAds.length,
     groceryVeal3796: vealAds.length,
+    groceryGoat3797: goatAds.length,
+    directSheep2907: directSheep.length,
+    billingsSheepGoat1772: sheepAuction.length,
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
     torrington2101: torrington.length,

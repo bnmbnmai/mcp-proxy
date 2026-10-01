@@ -42,6 +42,8 @@ async function main(): Promise<void> {
   assert.ok(TICKS_COMMODITY_SET.includes("poultry"));
   assert.ok(TICKS_COMMODITY_SET.includes("cotton"));
   assert.ok(TICKS_COMMODITY_SET.includes("grocery retail"));
+  assert.ok(TICKS_COMMODITY_SET.includes("sheep"));
+  assert.ok(!TICKS_COMMODITY_SET.includes("/sheep"));
   assert.equal(two[1].path, "/ofwat-enforcement");
   assert.equal(two[1].kind, "body");
   const md2 = shopIndexMarkdown(two);

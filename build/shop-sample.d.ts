@@ -9,18 +9,19 @@ export declare const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache"
 /**
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
- * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
- * Name them in free copy. Do not rename product.id.
+ * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324
+ * (goat ads are dairy.ams_3797). Sheep/goat auction and direct prints are
+ * sheep.ams_1772 / sheep.ams_2907 on this same bag. Do not rename product.id.
  */
-export declare const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
+export declare const TICKS_COMMODITY_SET = "hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
 /** OpenAPI GET /ticks description. Same bag. No path-split. */
-export declare const TICKS_OPENAPI_DESCRIPTION = "Call GET /ticks when you need the current official USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table \u2014 not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.";
+export declare const TICKS_OPENAPI_DESCRIPTION = "Call GET /ticks when you need the current official USDA farm market prices (hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table \u2014 not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.";
 /** Unpaid 402 resource + accepts[].description. Keep under CDP 500 chars. */
-export declare const TICKS_402_DESCRIPTION = "Call GET /ticks when you need the current official USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). $0.05 = entire current table.";
+export declare const TICKS_402_DESCRIPTION = "Call GET /ticks when you need the current official USDA farm market prices (hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). $0.05 = entire current table.";
 /** llms.txt /ticks bullet (price + bag; door adds rebuy sentence). */
-export declare const TICKS_LLMS_BULLET = "GET /ticks \u2014 $0.05 \u2014 USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water.";
+export declare const TICKS_LLMS_BULLET = "GET /ticks \u2014 $0.05 \u2014 USDA farm market prices (hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water.";
 /** Catalog / README / SHOP-INDEX /ticks bag cell. */
-export declare const TICKS_BAG = "USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table";
+export declare const TICKS_BAG = "USDA farm market prices (hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table";
 /** Short agent prompt with exact shop URLs. */
 export declare const SAMPLE_HOW_TO_USE: readonly ["Search a free index: GET https://ticks.bnm.farm/{door}/manifest.json?q=…", "Then one official text: GET https://ticks.bnm.farm/{door}?id=… ($0.02)", "Or a page of 10: GET https://ticks.bnm.farm/{door} ($0.05; whole current set if n<10)", "Tables: GET https://ticks.bnm.farm/ticks and GET https://ticks.bnm.farm/import-alerts ($0.05 = entire current table)", "Table rebuy: pay GET /ticks once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll with If-None-Match (or ?since=) → HTTP 304 no charge when unchanged → pay again only when the body/ETag changes", "Free 3-row /ticks slice (not the whole $0.05 table): GET https://ticks.bnm.farm/sample"];
 /**
@@ -37,7 +38,7 @@ export declare const SAMPLE_TABLE_SKU: {
     readonly fetchedAt: "2026-09-25T15:18:53.000Z";
     readonly asOf: "2026-09-22";
     readonly source: "USDA farm market prices cache";
-    readonly note: "$0.05 buys the entire current USDA farm market price table (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). This free slice is 3 rows. Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.";
+    readonly note: "$0.05 buys the entire current USDA farm market price table (hay, cattle, sheep, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). This free slice is 3 rows. Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.";
     readonly recordCount: 3;
     readonly markets: readonly [{
         readonly id: "ams_2770";
