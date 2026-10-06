@@ -402,7 +402,120 @@ for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
     assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
-assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+const ethanolWeekly = parseAmsReportText(fx("ethanol-weekly-3616.txt"), report("3616"), "https://www.ams.usda.gov/mnreports/ams_3616.pdf");
+assert.equal(parseReportDate(fx("ethanol-weekly-3616.txt")), "2026-10-02");
+assert.equal(ethanolWeekly.length, 51, `AMS_3616 rows, got ${ethanolWeekly.length}`);
+const ilEthanol = ethanolWeekly.find((row) => row.id === "inputs.ams_3616.national.ethanol.illinois.trade.fob_r");
+assert.ok(ilEthanol, "Illinois FOB-R ethanol");
+assert.equal(ilEthanol.price, 2.03);
+assert.equal(ilEthanol.lo, 2.03);
+assert.equal(ilEthanol.hi, 2.03);
+assert.equal(ilEthanol.unit, "$/gal");
+assert.equal(ilEthanol.group, "inputs");
+assert.equal(ilEthanol.asOf, "2026-10-02");
+assert.equal(ethanolWeekly.find((row) => row.id === "inputs.ams_3616.national.ethanol.illinois.trade.fob_t")?.price, 2.15);
+assert.equal(ethanolWeekly.find((row) => row.id === "inputs.ams_3616.national.ethanol.iowa.trade.fob_r")?.price, 2.07);
+assert.equal(ethanolWeekly.find((row) => row.id === "grain.ams_3616.national.distillers_corn_oil_feed_grade.illinois.ask.fob_t")?.price, 67.67);
+assert.equal(ethanolWeekly.find((row) => row.id === "grain.ams_3616.national.distillers_corn_oil_feed_grade.illinois.ask.fob_t")?.unit, "cents/lb");
+assert.equal(ethanolWeekly.find((row) => row.id === "grain.ams_3616.national.distillers_grain_dried_10.illinois.ask.fob_t")?.price, 202.5);
+assert.equal(ethanolWeekly.filter((row) => row.group === "inputs").length, 10, "ethanol $/gal rows");
+assert.ok(!ethanolWeekly.some((row) => row.price === 502.25 || row.price === 3.4026), "CBOT/NYMEX settlements stay off");
+assert.ok(!ethanolWeekly.some((row) => /lethbridge|new_orleans|chicago_beyond/i.test(row.id)), "export point stays off");
+assert.ok(ethanolWeekly.every((row) => row.source.includes("AMS_3616") && row.sourceUrl.endsWith("ams_3616.pdf") && row.asOf === "2026-10-02"));
+const ethanolDaily = parseAmsReportText(fx("ethanol-daily-3617.txt"), report("3617"), "https://www.ams.usda.gov/mnreports/ams_3617.pdf");
+assert.equal(parseReportDate(fx("ethanol-daily-3617.txt")), "2026-10-06");
+assert.equal(ethanolDaily.length, 12, `AMS_3617 rows, got ${ethanolDaily.length}`);
+const ilCorn = ethanolDaily.find((row) => row.id === "grain.ams_3617.national.us_2_yellow_corn.illinois.bid.dlvd_t");
+assert.ok(ilCorn, "Illinois ethanol corn bid");
+assert.equal(ilCorn.price, 4.7868);
+assert.equal(ilCorn.lo, 4.6725);
+assert.equal(ilCorn.hi, 4.8925);
+assert.equal(ilCorn.unit, "$/bu");
+assert.equal(ilCorn.group, "grain");
+assert.equal(ilCorn.asOf, "2026-10-06");
+assert.match(ilCorn.classGrade, /-30\.00Z to -8\.00Z/);
+assert.equal(ethanolDaily.find((row) => row.id === "grain.ams_3617.national.us_2_yellow_corn.iowa_west.bid.dlvd_t")?.price, 4.7101);
+assert.ok(!ethanolDaily.some((row) => row.price === 497.25 || row.price === 3.2462), "futures stay off the daily ethanol corn bids");
+assert.ok(ethanolDaily.every((row) => row.source.includes("AMS_3617") && row.sourceUrl.endsWith("ams_3617.pdf")));
+const intermountain = parseAmsReportText(fx("production-cost-3883.txt"), report("3883"), "https://www.ams.usda.gov/mnreports/ams_3883.pdf");
+assert.equal(parseReportDate(fx("production-cost-3883.txt")), "2026-10-02");
+assert.equal(intermountain.length, 7, `AMS_3883 rows, got ${intermountain.length}`);
+const urea = intermountain.find((row) => row.id === "inputs.ams_3883.intermountain_west.synthetic.distributor.urea_46_0_0.ask.fob.ton");
+assert.ok(urea, "urea");
+assert.equal(urea.price, 888.75);
+assert.equal(urea.unit, "$/ton");
+assert.equal(urea.lo, 780);
+assert.equal(urea.hi, 1000);
+const diesel = intermountain.find((row) => row.id === "inputs.ams_3883.intermountain_west.fuel.fuel_distributor.no_2_diesel_farm.ask.dlvd.gal");
+assert.ok(diesel, "diesel");
+assert.equal(diesel.price, 5.75);
+assert.equal(diesel.unit, "$/gal");
+assert.equal(diesel.lo, 5.55);
+assert.equal(diesel.hi, 5.83);
+const map = intermountain.find((row) => row.commodity.includes("Phosphate 11-52-0"));
+assert.ok(map, "wrapped MAP row");
+assert.equal(map.price, 1196);
+assert.ok(intermountain.every((row) => row.group === "inputs" && row.asOf === "2026-10-02" && row.source.includes("AMS_3883") && row.sourceUrl.endsWith("ams_3883.pdf")));
+assert.ok(!intermountain.some((row) => /interest|fsa/i.test(row.commodity)), "FSA interest link is not a tick");
+const processorFeed = parseAmsReportText(fx("feed-3511.txt"), report("3511"), "https://www.ams.usda.gov/mnreports/ams_3511.pdf");
+assert.equal(parseReportDate(fx("feed-3511.txt")), "2026-10-02");
+assert.equal(processorFeed.length, 56, `AMS_3511 rows, got ${processorFeed.length}`);
+assert.equal(processorFeed.find((row) => row.id === "grain.ams_3511.national.canola_meal_36.ca_san_joaquin_valley.ask.fob_t_r")?.price, 352.5);
+assert.equal(processorFeed.find((row) => row.id === "grain.ams_3511.national.corn_distillers_dried_grain_10.illinois.ask.fob_t")?.price, 202.5);
+const soyOil = processorFeed.find((row) => row.id === "grain.ams_3511.national.soybean_oil.illinois.ask.fob_t_r");
+assert.ok(soyOil, "soybean oil");
+assert.equal(soyOil.price, 69.72);
+assert.equal(soyOil.unit, "cents/lb");
+assert.equal(soyOil.lo, 66.47);
+assert.equal(soyOil.hi, 72.97);
+assert.ok(processorFeed.every((row) => row.group === "grain" && row.asOf === "2026-10-02" && row.source.includes("AMS_3511") && row.sourceUrl.endsWith("ams_3511.pdf")));
+assert.ok(!processorFeed.some((row) => row.price === 195 && row.id.includes("canola_meal")), "year-ago canola stays off");
+const nonGmo = parseAmsReportText(fx("nongmo-2920.txt"), report("2920"), "https://www.ams.usda.gov/mnreports/ams_2920.pdf");
+assert.equal(parseReportDate(fx("nongmo-2920.txt")), "2026-10-02");
+assert.equal(nonGmo.length, 5, `AMS_2920 rows, got ${nonGmo.length}`);
+assert.equal(nonGmo.find((row) => row.id === "grain.ams_2920.national.us_2_yellow_corn_feed_grade.west.bid.dlvd_t")?.price, 4.7275);
+assert.equal(nonGmo.find((row) => row.id === "grain.ams_2920.national.us_2_yellow_corn_food_grade.west.bid.dlvd_t")?.price, 5.4775);
+assert.equal(nonGmo.find((row) => row.id === "grain.ams_2920.national.us_1_soybeans_food_grade.east.bid.dlvd_t")?.price, 15.5825);
+const whiteCorn = nonGmo.find((row) => row.id === "grain.ams_2920.national.us_2_white_corn_food_grade.west.bid.dlvd_t");
+assert.ok(whiteCorn, "white corn");
+assert.equal(whiteCorn.price, 5.8275);
+assert.equal(whiteCorn.unit, "$/bu");
+assert.match(whiteCorn.classGrade, /70\.00Z to 100\.00Z/);
+assert.ok(!nonGmo.some((row) => row.price === 497.75 || row.price === 1278.25), "CBOT settlements stay off");
+assert.ok(nonGmo.every((row) => row.group === "grain" && row.asOf === "2026-10-02" && row.source.includes("AMS_2920") && row.sourceUrl.endsWith("ams_2920.pdf")));
+const eggProducts = parseAmsReportText(fx("egg-products-2842.txt"), report("2842"), "https://www.ams.usda.gov/mnreports/ams_2842.pdf");
+assert.equal(parseReportDate(fx("egg-products-2842.txt")), "2026-10-03");
+assert.equal(eggProducts.length, 3, `AMS_2842 rows, got ${eggProducts.length}`);
+const liquidWhole = eggProducts.find((row) => row.id === "dairy.ams_2842.liquid.caged.liquid_whole");
+assert.ok(liquidWhole, "caged liquid whole");
+assert.equal(liquidWhole.price, 10.57);
+assert.equal(liquidWhole.lo, 8);
+assert.equal(liquidWhole.hi, 12);
+assert.equal(liquidWhole.unit, "cents/lb");
+assert.equal(liquidWhole.group, "dairy");
+assert.equal(liquidWhole.asOf, "2026-10-03");
+assert.equal(eggProducts.find((row) => row.id === "dairy.ams_2842.liquid.caged.liquid_yolk")?.price, 64.29);
+assert.equal(eggProducts.find((row) => row.id === "dairy.ams_2842.liquid.cage_free.liquid_whites")?.price, 15);
+assert.ok(!eggProducts.some((row) => row.price === 12.71), "last-reported caged whites reprint is not a tick");
+assert.ok(eggProducts.every((row) => row.source.includes("AMS_2842") && row.sourceUrl.endsWith("ams_2842.pdf")));
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2842")?.group, "dairy");
+const rice = parseAmsReportText(fx("rice-1655.txt"), report("1655"), "https://www.ams.usda.gov/mnreports/ams_1655.pdf");
+assert.equal(parseReportDate(fx("rice-1655.txt")), "2026-10-06");
+assert.equal(rice.length, 23, `AMS_1655 rows, got ${rice.length}`);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.milled.long_white.texas")?.price, 34);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.milled.long_white.texas")?.unit, "$/cwt");
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.milled.long_white.arkansas")?.price, 34.5);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.milled.medium_white.california")?.price, 37);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.milled.medium_white.california")?.lo, 36);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.milled.medium_white.california")?.hi, 38);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.byproduct.bran.arkansas")?.price, 100);
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.byproduct.bran.arkansas")?.unit, "$/ton");
+assert.equal(rice.find((row) => row.id === "grain.ams_1655.byproduct.hulls_whole.california")?.price, 7.5);
+assert.ok(!rice.some((row) => row.id === "grain.ams_1655.milled.long_white.california"), "blank California long white stays off");
+assert.ok(!rice.some((row) => row.price === 16.235 || row.price === 29), "CME rough rice and year-ago Arkansas long white stay off");
+assert.ok(rice.every((row) => row.group === "grain" && row.asOf === "2026-10-06" && row.source.includes("AMS_1655") && row.sourceUrl.endsWith("ams_1655.pdf")));
+const fatRowCount = ethanolWeekly.length + ethanolDaily.length + intermountain.length + processorFeed.length + nonGmo.length + eggProducts.length + rice.length;
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
 const shopIndex = readFileSync(join(repoRoot, "SHOP-INDEX.md"), "utf8");
 const openapi = JSON.parse(readFileSync(join(repoRoot, "openapi.json"), "utf8"));
@@ -429,5 +542,13 @@ console.log(JSON.stringify({
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
     torrington2101: torrington.length,
+    ethanolWeekly3616: ethanolWeekly.length,
+    ethanolDaily3617: ethanolDaily.length,
+    productionCost3883: intermountain.length,
+    processorFeed3511: processorFeed.length,
+    nonGmo2920: nonGmo.length,
+    eggProducts2842: eggProducts.length,
+    rice1655: rice.length,
+    fatRowCount,
 }));
 //# sourceMappingURL=ticks-ams.test.js.map
