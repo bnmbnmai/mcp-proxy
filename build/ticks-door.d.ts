@@ -7,6 +7,8 @@
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
  * GET /mariners/manifest.json — free count + official source (no notice body)
+ * GET /warning-letters — unlisted FDA warning-letter bodies ($0.05). Not a public SKU.
+ * GET /warning-letters/manifest.json — unlisted free count + source (no letter body)
  *
  * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
  * resurrect the Apollo Intelligence catalog. No keys in the repo.
@@ -21,9 +23,10 @@ export declare const MANIFEST_PATH = "/manifest.json";
 export declare const CATALOG_PATH = "/catalog.json";
 export declare const WELL_KNOWN_PATH = "/.well-known/x402";
 export declare const OPENAPI_PATH = "/openapi.json";
+export declare const LLMS_PATH = "/llms.txt";
 export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const PRODUCT_NAME = "Idaho + PNW Market Ticks";
-export declare const PRODUCT_VERSION = "1.1.0";
+export declare const PRODUCT_VERSION = "1.2.0";
 export type TickStatus = "ok" | "empty" | "stale";
 export type TicksPayload = {
     ok: true;
@@ -40,7 +43,7 @@ export type TicksPayload = {
         series: unknown[];
     };
 };
-export type DoorSku = "ticks" | "import-alerts" | "mariners";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "warning-letters";
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export declare function bazaarExtension(sku: DoorSku): Record<string, unknown>;
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
@@ -55,6 +58,8 @@ export declare function loadTicks(): TicksPayload;
 export declare function buildTicksManifest(resourceUrl?: string): Record<string, unknown>;
 export declare function paymentRequiredBody(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
 export declare function paymentRequiredV2(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
+export declare function cdpEnvStatus(): "set" | "CDP env not set";
+export declare function llmsTxt(): string;
 export declare function wellKnownX402(req: IncomingMessage, port: number): Record<string, unknown>;
 export declare function buildOpenApi(req: IncomingMessage, port: number): Record<string, unknown>;
 export declare function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): Promise<void>;
