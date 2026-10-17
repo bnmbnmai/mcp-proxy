@@ -119,6 +119,13 @@ export type LnmSpec = {
   userAgent: string;
 };
 
+/**
+ * NavCEN has returned HTTP 403 for non-browser User-Agents since 2026-10-15.
+ * The weekly listing and PDFs are public; this is the UA that gets HTTP 200.
+ */
+export const LNM_BROWSER_UA =
+  "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+
 export const D13_SPEC: LnmSpec = {
   productId: PRODUCT_ID,
   productName: PRODUCT_NAME,
@@ -132,7 +139,7 @@ export const D13_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_TTL_MS",
   listingPathEnv: "MARINERS_LISTING_PATH",
   pdfPathEnv: "MARINERS_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D13 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: LNM_BROWSER_UA,
 };
 
 export const D11_SPEC: LnmSpec = {
@@ -148,7 +155,7 @@ export const D11_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_D11_TTL_MS",
   listingPathEnv: "MARINERS_D11_LISTING_PATH",
   pdfPathEnv: "MARINERS_D11_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D11 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: LNM_BROWSER_UA,
 };
 
 export const D7_SPEC: LnmSpec = {
@@ -164,7 +171,7 @@ export const D7_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_D7_TTL_MS",
   listingPathEnv: "MARINERS_D7_LISTING_PATH",
   pdfPathEnv: "MARINERS_D7_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D7 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: LNM_BROWSER_UA,
 };
 
 export const D8_SPEC: LnmSpec = {
@@ -181,7 +188,7 @@ export const D8_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_D8_TTL_MS",
   listingPathEnv: "MARINERS_D8_LISTING_PATH",
   pdfPathEnv: "MARINERS_D8_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D8 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: LNM_BROWSER_UA,
 };
 
 function leftoverSpec(opts: {
@@ -208,7 +215,7 @@ function leftoverSpec(opts: {
     ttlEnv: `${opts.envKey}_TTL_MS`,
     listingPathEnv: `${opts.envKey}_LISTING_PATH`,
     pdfPathEnv: `${opts.envKey}_PDF_PATH`,
-    userAgent: `bnm-data-shop/1.0 (USCG D${opts.district} LNM public PDF; +https://www.navcen.uscg.gov/)`,
+    userAgent: LNM_BROWSER_UA,
   };
 }
 

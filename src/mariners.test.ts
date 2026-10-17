@@ -21,6 +21,7 @@ import {
   D17_LNM_LISTING_URL,
   D17_SPEC,
   LEFTOVER_LNM_SPECS,
+  LNM_BROWSER_UA,
   LNM_LISTING_URL,
   NOTICE_FIELDS,
   MarinersSnapshot,
@@ -56,6 +57,13 @@ function readD8(name: string): string {
 }
 
 function main(): void {
+  assert.equal(ALL_LNM_SPECS.length, 9);
+  for (const spec of ALL_LNM_SPECS) {
+    assert.equal(spec.userAgent, LNM_BROWSER_UA, spec.cacheDir);
+  }
+  assert.match(LNM_BROWSER_UA, /^Mozilla\/5\.0 /);
+  assert.equal(LNM_BROWSER_UA.includes("bnm-data-shop"), false);
+
   const editions = parseListingHtml(readFx("listing-excerpt.html"));
   assert.deepEqual(
     editions.map((e) => e.edition),
