@@ -32,6 +32,12 @@
  * year-ago fluff, quality charts, and weather narrative are not ticks.
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
+ * AMS_3616 weekly ethanol ($/gal on inputs; distillers oil and grains on grain),
+ * AMS_3617 daily ethanol-plant corn bids, AMS_3511 processor feedstuff,
+ * AMS_2920 non-GMO/GE grain, AMS_1655 milled rice, and AMS_2842 liquid egg
+ * products fatten this same $0.05 bag. AMS_3883 Inter-Mountain West production
+ * cost uses the inputs group (inputs.ams_3883.*). CBOT/NYMEX/CME settlements
+ * in those PDFs are not ticks. marsapi stays keyed 403.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
@@ -54,7 +60,7 @@ export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const ESMIS_HOST = "https://esmis.nal.usda.gov";
 export declare const MNREPORTS_PDF: (slug: string) => string;
 export declare const VIEW_REPORT: (slug: string) => string;
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs";
 export type AmsReport = {
     slug: string;
     group: AmsGroup;
@@ -159,13 +165,13 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks";
 }, {
     readonly id: "poultry-eggs";
-    readonly why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows";
+    readonly why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_2842 Weekly National Egg Products, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows";
 }, {
     readonly id: "ams-3725-egg-overview";
-    readonly why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757";
+    readonly why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; liquid egg products are AMS_2842; retail egg ads are AMS_2757";
 }, {
     readonly id: "cotton-rice";
-    readonly why: "official AMS rice PDFs leftover. Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) is already on /ticks grain rows";
+    readonly why: "Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) and Weekly National Rice Summary (AMS_1655) are already on /ticks grain rows. CME rough rice futures inside AMS_1655 are not ticks";
 }, {
     readonly id: "remaining-fv-terminals";
     readonly why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice. Grocery produce ads are AMS_3324 / fvwretail";
@@ -267,6 +273,46 @@ export declare function parseOrganicGrainReport(text: string, report: AmsReport,
 export declare function parseProduceTerminal(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 /** Official AMS_3024 / CNWWCMR weekly — current-week cents/lb prints only. */
 export declare function parseWeeklyCottonReview(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_3510 / AMS_3512 sibling and AMS_3511 processor feedstuff. Current-week
+ * Average only — year-ago reprints are not ticks. Optional basis stays in
+ * classGrade. Alfalfa meals/pellets land on hay; the rest stay on grain.
+ */
+export declare function parseNationalFeedstuffReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * Official AMS production-cost PDFs (fuels / synthetic fertilizer / organic
+ * fertilizer). Current Delivery Period Ask averages only. Change, narrative,
+ * weather, and the FSA interest-rate link are not ticks.
+ */
+export declare function parseProductionCostReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_3616 National Weekly Ethanol. Ethanol $/gal lands on inputs. Distillers
+ * corn oil (cents/lb) and distillers grains ($/ton) land on grain. Ethanol
+ * Plant rows only — the "Ethanol Plant" banner is not the Ethanol section.
+ * Export Point and CBOT/NYMEX settlements stay off.
+ */
+export declare function parseWeeklyEthanolReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_3617 National Daily Ethanol — US #2 Yellow Corn bulk bids at ethanol
+ * plants, $/bu. Average is the tick. Basis stays in classGrade. Futures off.
+ */
+export declare function parseDailyEthanolCornReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_2920 Non-GMO/GE corn and soybean country-elevator bids. Price is the
+ * printed Average in $/bu. Basis (¢/bu) stays in classGrade. CBOT settlements off.
+ */
+export declare function parseNonGmoGrainReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_2842 Weekly National Egg Products. Current-week weighted averages on the
+ * dairy table next to AMS_2843 shell eggs. Cents/lb stays cents/lb. Dried
+ * dollars/lb stay $/lb. "Too few" and last-reported reprints are not ticks.
+ */
+export declare function parseWeeklyEggProducts(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_1655 Weekly National Rice Summary. Current-week milled rice is $/cwt.
+ * Bran and hulls are $/short ton. Year-ago columns and CME rough rice stay off.
+ */
+export declare function parseWeeklyRiceSummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function pdfToText(pdfPath: string): string;
 export declare function officialPdfCandidates(report: AmsReport): Promise<string[]>;
