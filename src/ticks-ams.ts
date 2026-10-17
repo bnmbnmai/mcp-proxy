@@ -58,8 +58,12 @@
  * (Delivery Period Current). $/ton and $/gal stay off hay/cattle $/cwt ids.
  * US federal AMS text is public domain (17 USC 105). Official body is the
  * ugly mnreports PDF — do not wrap marsapi (403 without a key). AMS_3776
- * Maryland Production Cost is discontinued. AMS_3883 Inter-Mountain West and
- * AMS_3798 Oklahoma Retail Feed stay off this card.
+ * Maryland Production Cost is discontinued. AMS_3798 Oklahoma Retail Feed stays
+ * off this card. AMS_3883 Inter-Mountain West uses the same production-cost
+ * parser (inputs.ams_3883.*). AMS_3616 weekly ethanol, AMS_3617 daily ethanol
+ * corn bids, AMS_3511 processor feedstuff, AMS_2920 non-GMO/GE grain, AMS_1655
+ * milled rice, and AMS_2842 liquid egg products fatten this same $0.05 bag.
+ * CBOT/NYMEX/CME settlements in those PDFs are not ticks.
  * AMS_2811 National Grass Fed Beef is the official quarterly LPGMN DTC print
  * (mnreports/lsmngfbeef.pdf — ams_2811.pdf is 404 HTML). Rows land on the
  * existing dairy/protein table as dairy.ams_2811.grassfed.*. The tick is the
@@ -278,6 +282,12 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3512", group: "grain", region: "national", title: "National Mill-Feeds and Miscellaneous Feedstuff", esmisPublication: "" },
   { slug: "3024", group: "grain", region: "national", title: "Weekly Cotton Market Review", esmisPublication: "weekly-cotton-market-review", pdfNames: ["cnwwcmr"] },
   { slug: "2805", group: "grain", region: "national", title: "National Weekly Ag Energy Round-Up", esmisPublication: "national-weekly-ag-energy-roundup", pdfNames: ["lswagenergy"] },
+  { slug: "3511", group: "grain", region: "national", title: "National Grain and Oilseed Processor Feedstuff", esmisPublication: "" },
+  { slug: "3616", group: "grain", region: "national", title: "National Weekly Ethanol", esmisPublication: "" },
+  { slug: "3617", group: "grain", region: "national", title: "National Daily Ethanol", esmisPublication: "" },
+  { slug: "2920", group: "grain", region: "national", title: "National Weekly Non-GMO/GE Grain", esmisPublication: "" },
+  { slug: "1655", group: "grain", region: "national", title: "Weekly National Rice Summary", esmisPublication: "" },
+  { slug: "3883", group: "inputs", region: "intermountain_west", title: "Inter-Mountain West Production Cost", esmisPublication: "" },
   { slug: "2911", group: "wool", region: "national", title: "National Wool Review", esmisPublication: "national-wool-review-fri" },
   { slug: "2998", group: "dairy", region: "national", title: "Dairy Market News Weekly Report", esmisPublication: "dairy-market-news-weekly-report", pdfNames: ["dywweeklyreport"] },
   { slug: "2993", group: "dairy", region: "national", title: "National Dairy Products Sales Report", esmisPublication: "", pdfNames: ["dywdairyproductssales"] },
@@ -300,6 +310,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1102", group: "dairy", region: "west", title: "Fluid Milk and Cream West", esmisPublication: "" },
   { slug: "2997", group: "dairy", region: "national_organic", title: "Organic Dairy Market News", esmisPublication: "", pdfNames: ["dybdairyorganic"] },
   { slug: "2843", group: "dairy", region: "national", title: "Daily National Shell Egg Index", esmisPublication: "" },
+  { slug: "2842", group: "dairy", region: "national", title: "Weekly National Egg Products", esmisPublication: "" },
   { slug: "1095", group: "dairy", region: "national", title: "National Weekly Cold Storage", esmisPublication: "weekly-cold-storage-holdings", pdfNames: ["md_da953"] },
   { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
   { slug: "3647", group: "dairy", region: "national", title: "Weekly National Turkey", esmisPublication: "" },
@@ -363,14 +374,13 @@ export const SKIPPED_SOURCES = [
   { id: "dairy-waf-empty", why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes" },
   { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
   { id: "sheep-goats", why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, and Billings PAY sheep/goat AMS_1772 are on /ticks. Grocery lamb/veal AMS_3229/3796 stay. SA_LS855.txt stays off" },
-  { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, AMS_3647 Weekly National Turkey, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
-  { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757. Official turkey weekly is AMS_3647, not 3725" },
-  { id: "cotton-rice", why: "official AMS rice PDFs leftover. Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) is already on /ticks grain rows" },
+  { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_2842 Weekly National Egg Products, AMS_3646 Weekly National Chicken, AMS_3647 Weekly National Turkey, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
+  { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; liquid egg products are AMS_2842; retail egg ads are AMS_2757. Official turkey weekly is AMS_3647, not 3725" },
+  { id: "cotton-rice", why: "Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) and Weekly National Rice Summary (AMS_1655) are already on /ticks grain rows. CME rough rice futures inside AMS_1655 are not ticks" },
   { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice. Grocery produce ads are AMS_3324 / fvwretail" },
   { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
   { id: "if_fv130_already", why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list" },
   { id: "ams_3776_maryland_production_cost", why: "AMS_3776 Maryland Production Cost is discontinued — do not add" },
-  { id: "ams_3883_intermountain", why: "AMS_3883 Inter-Mountain West stays off this card — not one of the seven production-cost PDFs" },
   { id: "ams_3798_oklahoma_retail_feed", why: "AMS_3798 Oklahoma Retail Feed stays off this card — not a production-cost fuel or fertilizer print" },
 ] as const;
 
@@ -495,6 +505,8 @@ export function parseReportDate(text: string): string | null {
   if (hayAuction) return parseMdY(hayAuction[1]);
   const organicThru = text.match(/Report for\s+\d{1,2}\/\d{1,2}\/\d{4}\s*-\s*(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (organicThru) return parseMdY(organicThru[1]);
+  const reportForColon = text.match(/Report for:\s+\d{1,2}\/\d{1,2}\/\d{4}\s*[-–]\s*(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  if (reportForColon) return parseMdY(reportForColon[1]);
   const periodThru = text.match(/Information for the period\s+[A-Za-z]+\s+\d{1,2}\s*[-–]\s*(\d{1,2}),\s+(\d{4})/i);
   if (periodThru) {
     const named = text.match(
@@ -3910,12 +3922,14 @@ export function parseGrassFedBeef(text: string, report: AmsReport, sourceUrl: st
 }
 
 const FEED_NUM = String.raw`\d{1,3}(?:,\d{3})*\.\d{2}`;
+const FEED_CHANGE = String.raw`No Comp|UNCH(?:-(?:DN|UP)\s+${FEED_NUM})?|(?:DN|UP)\s+${FEED_NUM}(?:-(?:UNCH|(?:DN|UP)\s+${FEED_NUM}))?`;
+const FEED_BASIS = String.raw`-?\d+\.\d{2}[A-Z](?: to -?\d+\.\d{2}[A-Z])?`;
 const FEED_ROW_RE = new RegExp(
-  `^(.+?)\\s+(Trade|Ask|Bid)\\s+(${FEED_NUM}(?:-${FEED_NUM})?)\\s+(No Comp|UNCH(?:-(?:DN|UP)\\s+${FEED_NUM})?|(?:DN|UP)\\s+${FEED_NUM}(?:-(?:UNCH|(?:DN|UP)\\s+${FEED_NUM}))?)\\s+(${FEED_NUM})(?:\\s+(${FEED_NUM}))?\\s+((?:FOB|DLVD)[A-Z0-9/-]*)$`,
+  `^(.+?)\\s+(Bid/Ask/Trade|Trade|Ask|Bid)\\s+(?:(${FEED_BASIS})\\s+(${FEED_CHANGE})\\s+)?(${FEED_NUM}(?:-${FEED_NUM})?)\\s+(${FEED_CHANGE})\\s+(${FEED_NUM})(?:\\s+(${FEED_NUM}))?\\s+((?:FOB|DLVD)[A-Z0-9/-]*)$`,
   "i",
 );
 const FEED_CATEGORY_RE =
-  /^(Animal By-Products|Grain By-Products|Rice By-Products|Hay \(Processed\)|Mast)$/i;
+  /^(Animal By-Products|Grain By-Products|Oil Seed By-Products|Rice By-Products|Hay \(Processed\)|Mast)$/i;
 
 function feedMoney(raw: string): number {
   return Number(raw.replace(/,/g, ""));
@@ -3934,7 +3948,7 @@ function feedBoilerplate(line: string): boolean {
     /^(source:|email us|general inquir|https?:\/\/|www\.ams\.usda\.gov)/i.test(line) ||
     /Livestock, Poultry/i.test(line) ||
     /Dept\. of Ag Market News/i.test(line) ||
-    /National (Animal By-Product|Mill-Feeds)/i.test(line) ||
+    /National (Animal By-Product|Mill-Feeds|Grain and Oilseed)/i.test(line) ||
     /^Report for\b/i.test(line) ||
     /^Explanatory Notes/i.test(line) ||
     /^Price & Basis/i.test(line) ||
@@ -3950,10 +3964,11 @@ function feedBoilerplate(line: string): boolean {
 }
 
 /**
- * AMS_3510 animal by-products and AMS_3512 mill-feeds. Current-week Average
- * column only — year-ago reprints are not ticks. Alfalfa meals/pellets land
- * on hay; the rest stay on grain. Official mnreports PDFs.
+ * AMS_3510 / AMS_3512 sibling and AMS_3511 processor feedstuff. Current-week
+ * Average only — year-ago reprints are not ticks. Optional basis stays in
+ * classGrade. Alfalfa meals/pellets land on hay; the rest stay on grain.
  */
+
 export function parseNationalFeedstuffReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
@@ -3983,11 +3998,12 @@ export function parseNationalFeedstuffReport(text: string, report: AmsReport, so
     if (row && commodity && unit) {
       const region = row[1].trim();
       const sale = row[2];
-      const range = row[3].split("-").map(feedMoney);
+      const basis = row[3] ?? "";
+      const range = (row[5] ?? "").split("-").map(feedMoney);
       const lo = range[0];
       const hi = range[1] ?? lo;
-      const price = feedMoney(row[5]);
-      const freight = row[7].toUpperCase();
+      const price = feedMoney(row[7] ?? "");
+      const freight = (row[9] ?? "").toUpperCase();
       const hiBound = unit === "cents/lb" ? 250 : 5000;
       const loBound = unit === "cents/lb" ? 5 : 20;
       if (
@@ -4017,7 +4033,7 @@ export function parseNationalFeedstuffReport(text: string, report: AmsReport, so
         commodity,
         label: `${report.title} ${commodity} ${region} ${freight}`,
         market: `${report.title} — ${region}`,
-        classGrade: `${commodity}, ${sale}, ${lo}-${hi}, ${freight}, ${unit}`,
+        classGrade: `${commodity}, ${sale}${basis ? `, basis ${basis}` : ""}, ${lo}-${hi}, ${freight}, ${unit}`,
         unit,
         price: roundMoney(price),
         lo: roundMoney(lo),
@@ -4356,6 +4372,354 @@ export function parseWeeklyAgEnergy(text: string, report: AmsReport, sourceUrl: 
   return dedupeTicks(out);
 }
 
+const PLANT_STATES =
+  "Iowa East|Iowa West|South Dakota|Illinois|Indiana|Iowa|Kansas|Michigan|Minnesota|Missouri|Nebraska|Ohio|Wisconsin";
+const QUOTE_CHANGE = String.raw`(?:UNCH|(?:UP|DN) \d+\.\d+)(?:-(?:UNCH|(?:UP|DN) \d+\.\d+))?`;
+const PLANT_NUM = String.raw`\d+\.\d{2,4}`;
+const WEEKLY_ETHANOL_ROW_RE = new RegExp(
+  `^(${PLANT_STATES})\\s+(Trade|Ask|Bid)\\s+(${PLANT_NUM}(?:-${PLANT_NUM})?)\\s+(?:(${QUOTE_CHANGE})\\s+)?(${PLANT_NUM})(?:\\s+(${PLANT_NUM}))?\\s+((?:FOB|DLVD) - [A-Z0-9/]+)\\s+Current$`,
+  "i",
+);
+const DAILY_CORN_BASIS = String.raw`-?\d+\.\d{2}[A-Z] to -?\d+\.\d{2}[A-Z]`;
+const DAILY_CORN_BCHG = String.raw`(?:UNCH|(?:UP|DN) \d+(?:\.\d+)?)(?:-(?:UNCH|(?:UP|DN) \d+(?:\.\d+)?))?`;
+const DAILY_CORN_ROW_RE = new RegExp(
+  `^(${PLANT_STATES})\\s+Bid\\s+(${DAILY_CORN_BASIS})\\s+(${DAILY_CORN_BCHG})\\s+(\\d+\\.\\d{4}-\\d+\\.\\d{4})\\s+((?:UNCH|(?:UP|DN) \\d+\\.\\d{4})(?:-(?:UNCH|(?:UP|DN) \\d+\\.\\d{4}))?)\\s+(\\d+\\.\\d{4})(?:\\s+(\\d+\\.\\d{4}))?\\s+((?:FOB|DLVD) - [A-Z0-9/]+)\\s+Current$`,
+  "i",
+);
+
+const ETHANOL_SECTIONS: readonly { re: RegExp; commodity: string; group: AmsGroup; unit: string }[] = [
+  { re: /^Ethanol$/i, commodity: "Ethanol", group: "inputs", unit: "$/gal" },
+  { re: /^Distillers Corn Oil Feed Grade$/i, commodity: "Distillers corn oil feed grade", group: "grain", unit: "cents/lb" },
+  { re: /^Distillers Grain Dried 10%$/i, commodity: "Distillers grain dried 10%", group: "grain", unit: "$/ton" },
+  { re: /^Distillers Grain Modified Wet 55-60%$/i, commodity: "Distillers grain modified wet 55-60%", group: "grain", unit: "$/ton" },
+  { re: /^Distillers Grain Wet 65-70%$/i, commodity: "Distillers grain wet 65-70%", group: "grain", unit: "$/ton" },
+];
+
+function ethanolPriceOk(unit: string, price: number): boolean {
+  if (unit === "$/gal") return price >= 0.5 && price <= 10;
+  if (unit === "cents/lb") return price >= 5 && price <= 250;
+  return price >= 10 && price <= 2000;
+}
+
+/**
+ * AMS_3616 National Weekly Ethanol. Ethanol $/gal lands on inputs. Distillers
+ * corn oil (cents/lb) and distillers grains ($/ton) land on grain. Ethanol
+ * Plant rows only — the "Ethanol Plant" banner is not the Ethanol section.
+ * Export Point and CBOT/NYMEX settlements stay off.
+ */
+export function parseWeeklyEthanolReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let section: (typeof ETHANOL_SECTIONS)[number] | null = null;
+  let plant = false;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const next = ETHANOL_SECTIONS.find((s) => s.re.test(line));
+    if (next) {
+      section = next;
+      plant = false;
+      continue;
+    }
+    if (/^Ethanol Plant$/i.test(line)) {
+      plant = true;
+      continue;
+    }
+    if (/^Export Point$/i.test(line)) {
+      plant = false;
+      continue;
+    }
+    if (!section || !plant) continue;
+    const row = line.match(WEEKLY_ETHANOL_ROW_RE);
+    if (!row) continue;
+    const state = row[1] ?? "";
+    const sale = row[2] ?? "";
+    const range = (row[3] ?? "").split("-").map(Number);
+    const lo = range[0];
+    const hi = range[1] ?? lo;
+    const price = Number(row[5]);
+    const freight = row[7] ?? "";
+    if (!ethanolPriceOk(section.unit, price) || !Number.isFinite(lo) || !Number.isFinite(hi)) continue;
+    const id = [
+      section.group,
+      `ams_${report.slug}`,
+      token(report.region),
+      token(section.commodity),
+      token(state),
+      token(sale),
+      token(freight),
+    ].join(".");
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: section.group,
+      commodity: section.commodity,
+      label: `${report.title} ${section.commodity} ${state} ${freight}`,
+      market: `${report.title} — ${state}`,
+      classGrade: `${section.commodity}, ${sale}, ${freight}, Current, ${section.unit}`,
+      unit: section.unit,
+      price: roundMoney(price),
+      lo: roundMoney(lo),
+      hi: roundMoney(hi),
+    });
+  }
+  return dedupeTicks(out);
+}
+
+/**
+ * AMS_3617 National Daily Ethanol — US #2 Yellow Corn bulk bids at ethanol
+ * plants, $/bu. Average is the tick. Basis stays in classGrade. Futures off.
+ */
+export function parseDailyEthanolCornReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let corn = false;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^US #2 Yellow Corn\b/i.test(line)) {
+      corn = true;
+      continue;
+    }
+    if (/^Future Settlements|^Explanatory Notes/i.test(line)) {
+      corn = false;
+      continue;
+    }
+    if (!corn) continue;
+    const row = line.match(DAILY_CORN_ROW_RE);
+    if (!row) continue;
+    const state = row[1] ?? "";
+    const basis = row[2] ?? "";
+    const range = (row[4] ?? "").split("-").map(Number);
+    const lo = range[0];
+    const hi = range[1] ?? lo;
+    const price = Number(row[6]);
+    const freight = row[8] ?? "";
+    if (!Number.isFinite(price) || price < 1 || price > 20 || !Number.isFinite(lo) || !Number.isFinite(hi)) continue;
+    const id = [
+      "grain",
+      `ams_${report.slug}`,
+      token(report.region),
+      "us_2_yellow_corn",
+      token(state),
+      "bid",
+      token(freight),
+    ].join(".");
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: "grain",
+      commodity: "US #2 Yellow Corn",
+      label: `${report.title} US #2 Yellow Corn ${state}`,
+      market: `${report.title} — ${state}`,
+      classGrade: `US #2 Yellow Corn, Bid, basis ${basis}, ${freight}, $/bu`,
+      unit: "$/bu",
+      price: roundMoney(price),
+      lo: roundMoney(lo),
+      hi: roundMoney(hi),
+    });
+  }
+  return dedupeTicks(out);
+}
+
+const NON_GMO_BASIS = String.raw`-?\d+\.\d{2}[A-Z](?: to -?\d+\.\d{2}[A-Z])?`;
+const NON_GMO_CHG = String.raw`(?:No Comp|UNCH|(?:UP|DN) \d+(?:\.\d+)?)(?:-(?:UNCH|(?:UP|DN) \d+(?:\.\d+)?))?`;
+const NON_GMO_ROW_RE = new RegExp(
+  `^([A-Za-z]+(?: [A-Za-z]+)?)\\s+(Bid|Ask|Trade)\\s+(${NON_GMO_BASIS})\\s+(${NON_GMO_CHG})\\s+(\\d+\\.\\d{4}(?:-\\d+\\.\\d{4})?)\\s+(${NON_GMO_CHG})\\s+(\\d+\\.\\d{4})(?:\\s+(\\d+\\.\\d{4}))?\\s+((?:FOB|DLVD|CIF)-[A-Z0-9/]+)\\s+Current$`,
+  "i",
+);
+
+/**
+ * AMS_2920 Non-GMO/GE corn and soybean country-elevator bids. Price is the
+ * printed Average in $/bu. Basis (¢/bu) stays in classGrade. CBOT settlements off.
+ */
+export function parseNonGmoGrainReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let commodity = "";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^Futures Settlements|^Explanatory Notes/i.test(line)) {
+      commodity = "";
+      continue;
+    }
+    const section = line.match(/^(US #\d.+?)(?:\s+\(Bulk\))?$/i);
+    if (section && /corn|soybean/i.test(section[1] ?? "")) {
+      commodity = (section[1] ?? "").replace(/\s+/g, " ").trim();
+      continue;
+    }
+    if (!commodity) continue;
+    const row = line.match(NON_GMO_ROW_RE);
+    if (!row) continue;
+    const place = row[1] ?? "";
+    const sale = row[2] ?? "";
+    const basis = row[3] ?? "";
+    const range = (row[5] ?? "").split("-").map(Number);
+    const lo = range[0];
+    const hi = range[1] ?? lo;
+    const price = Number(row[7]);
+    const freight = row[9] ?? "";
+    if (!Number.isFinite(price) || price < 1 || price > 40 || !Number.isFinite(lo) || !Number.isFinite(hi)) continue;
+    const id = [
+      "grain",
+      `ams_${report.slug}`,
+      token(report.region),
+      token(commodity),
+      token(place),
+      token(sale),
+      token(freight),
+    ].join(".");
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: "grain",
+      commodity,
+      label: `${report.title} ${commodity} ${place}`,
+      market: `${report.title} — ${place}`,
+      classGrade: `${commodity}, ${sale}, basis ${basis}, ${freight}, $/bu`,
+      unit: "$/bu",
+      price: roundMoney(price),
+      lo: roundMoney(lo),
+      hi: roundMoney(hi),
+    });
+  }
+  return dedupeTicks(out);
+}
+
+const EGG_PRODUCT_ROW_RE =
+  /^([A-Za-z][A-Za-z ]+?)\s+([\d,]{3,})\s+(\d+\.\d{2})\s*-\s*(\d+\.\d{2})\s+(\d+\.\d{2})\b/;
+
+/**
+ * AMS_2842 Weekly National Egg Products. Current-week weighted averages on the
+ * dairy table next to AMS_2843 shell eggs. Cents/lb stays cents/lb. Dried
+ * dollars/lb stay $/lb. "Too few" and last-reported reprints are not ticks.
+ */
+export function parseWeeklyEggProducts(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let form = "";
+  let housing = "";
+  let unit = "";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const banner = line.match(/^National (Liquid|Frozen|Dried) Eggs - (Caged|Cage-Free)\b/i);
+    if (banner) {
+      form = (banner[1] ?? "").toLowerCase();
+      housing = /cage-free/i.test(banner[2] ?? "") ? "cage_free" : "caged";
+      unit = "";
+      continue;
+    }
+    if (/cents per pound/i.test(line)) {
+      unit = "cents/lb";
+      continue;
+    }
+    if (/dollars per pound/i.test(line)) {
+      unit = "$/lb";
+      continue;
+    }
+    if (!form || !housing || !unit) continue;
+    const row = line.match(EGG_PRODUCT_ROW_RE);
+    if (!row) continue;
+    const klass = (row[1] ?? "").trim();
+    const volume = Number((row[2] ?? "").replace(/,/g, ""));
+    const lo = Number(row[3]);
+    const hi = Number(row[4]);
+    const price = Number(row[5]);
+    const cap = unit === "cents/lb" ? 400 : 40;
+    const floor = unit === "cents/lb" ? 1 : 0.2;
+    if (!Number.isFinite(price) || price < floor || price > cap || !Number.isFinite(lo) || !Number.isFinite(hi)) continue;
+    if (!Number.isFinite(volume) || volume < 1) continue;
+    const id = ["dairy", `ams_${report.slug}`, form, housing, token(klass)].join(".");
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: "dairy",
+      commodity: `${form} eggs`,
+      label: `${report.title} ${housing.replace("_", "-")} ${klass}`,
+      market: `${report.title} — ${form} ${housing.replace("_", " ")}`,
+      classGrade: `${klass}, ${housing.replace("_", " ")}, ${volume.toLocaleString("en-US")} current-week volume, ${unit}`,
+      unit,
+      price: roundMoney(price),
+      lo: roundMoney(lo),
+      hi: roundMoney(hi),
+    });
+  }
+  return dedupeTicks(out);
+}
+
+function riceStateAt(start: number): "arkansas" | "california" | "louisiana" | "texas" | null {
+  if (start >= 120) return null;
+  if (start < 70) return "arkansas";
+  if (start < 90) return "california";
+  if (start < 105) return "louisiana";
+  return "texas";
+}
+
+/**
+ * AMS_1655 Weekly National Rice Summary. Current-week milled rice is $/cwt.
+ * Bran and hulls are $/short ton. Year-ago columns and CME rough rice stay off.
+ */
+export function parseWeeklyRiceSummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let section: "milled" | "byproduct" | "" = "";
+  const priceRe = /\d+\.\d{2}(?:\s*-\s*\d+\.\d{2})?/g;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\f/g, "");
+    const trimmed = line.replace(/\s+/g, " ").trim();
+    if (!trimmed) continue;
+    if (/^Milled Rice\b/i.test(trimmed)) {
+      section = "milled";
+      continue;
+    }
+    if (/^Rice By-Products\b/i.test(trimmed)) {
+      section = "byproduct";
+      continue;
+    }
+    if (!section) continue;
+    if (/^(Explanatory|Source:|CME |Additional|Special Note|In the |Values quoted|\*\*)/i.test(trimmed)) continue;
+    const hits = [...line.matchAll(priceRe)].filter((m) => (m.index ?? 999) < 120);
+    if (hits.length === 0) continue;
+    const label = line
+      .slice(0, hits[0].index ?? 0)
+      .replace(/[^\x00-\x7F]/g, "")
+      .replace(/\s+/g, " ")
+      .trim();
+    if (!label || /rice/i.test(label)) continue;
+    const unit = section === "milled" ? "$/cwt" : "$/ton";
+    const seen = new Set<string>();
+    for (const hit of hits) {
+      const state = riceStateAt(hit.index ?? 0);
+      if (!state || seen.has(state)) continue;
+      seen.add(state);
+      const parts = hit[0].split(/\s*-\s*/).map(Number);
+      const lo = parts[0];
+      const hi = parts[1] ?? lo;
+      if (!Number.isFinite(lo) || !Number.isFinite(hi)) continue;
+      const price = (lo + hi) / 2;
+      if (section === "milled" && (price < 5 || price > 80)) continue;
+      if (section === "byproduct" && (price < 1 || price > 400)) continue;
+      const id = ["grain", `ams_${report.slug}`, section, token(label), state].join(".");
+      pushTick(out, report, sourceUrl, asOf, {
+        id,
+        group: "grain",
+        commodity: label,
+        label: `${report.title} ${label} ${state}`,
+        market: `${report.title} — ${state}`,
+        classGrade: `${label}, ${state}, current week, ${unit}`,
+        unit,
+        price: roundMoney(price),
+        lo: roundMoney(lo),
+        hi: roundMoney(hi),
+      });
+    }
+  }
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   if (report.slug === "2811" || (report.pdfNames ?? []).includes("lsmngfbeef")) {
     return parseGrassFedBeef(text, report, sourceUrl);
@@ -4375,6 +4739,7 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     if (report.slug === "1598") return parseDairyDrySummary(text, report, sourceUrl);
     if (report.slug === "2997") return parseDairyOrganicAds(text, report, sourceUrl);
     if (report.slug === "2843") return parseShellEggIndex(text, report, sourceUrl);
+    if (report.slug === "2842") return parseWeeklyEggProducts(text, report, sourceUrl);
     if (report.slug === "1095") return parseColdStorageWeekly(text, report, sourceUrl);
     if (report.slug === "3646") return parseWeeklyNationalChicken(text, report, sourceUrl);
     if (report.slug === "3647") return parseWeeklyNationalTurkey(text, report, sourceUrl);
@@ -4392,9 +4757,13 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     return parseProduceTerminal(text, report, sourceUrl);
   }
   if (report.group === "inputs") return parseProductionCostReport(text, report, sourceUrl);
-  if (report.slug === "3510" || report.slug === "3512") {
+  if (report.slug === "3510" || report.slug === "3511" || report.slug === "3512") {
     return parseNationalFeedstuffReport(text, report, sourceUrl);
   }
+  if (report.slug === "3616") return parseWeeklyEthanolReport(text, report, sourceUrl);
+  if (report.slug === "3617") return parseDailyEthanolCornReport(text, report, sourceUrl);
+  if (report.slug === "2920") return parseNonGmoGrainReport(text, report, sourceUrl);
+  if (report.slug === "1655") return parseWeeklyRiceSummary(text, report, sourceUrl);
   if (report.slug === "3802" || /organic grain/i.test(report.title)) {
     return parseOrganicGrainReport(text, report, sourceUrl);
   }
@@ -5307,7 +5676,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
           lastErr = "official PDF reported no trades / not established this week";
           break;
         }
-        lastErr = "official PDF had no parseable hay/cattle/sheep/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/grass-fed/production-cost/ag-energy print";
+        lastErr = "official PDF had no parseable hay/cattle/sheep/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/grass-fed/production-cost/ag-energy/feedstuff/ethanol/rice print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
