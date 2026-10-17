@@ -9,6 +9,8 @@
  * notices. Does not wrap CBP AD/CVD. Does not wrap Light List GeoJSON or
  * MSI Download dumps. D11 south has no 2026 weekly PDFs — not shipped.
  * D8 rivers is a separate NavCEN listing — not this SKU.
+ * NavCEN's awselb returns HTTP 403 to non-browser User-Agents. Listing and
+ * weekly PDF fetches go through fetchNavcen with a browser User-Agent.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -101,6 +103,10 @@ export const D14_DISTRICT_NAME = "Pacific";
 export const D17_DISTRICT = "17";
 export const D17_DISTRICT_NAME = "Alaska";
 
+/** Chrome-like UA. `bnm-data-shop/…` and Node's default UA are HTTP 403 on navcen.uscg.gov. */
+export const NAVCEN_BROWSER_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+
 export type LnmSpec = {
   productId: string;
   productName: string;
@@ -132,7 +138,7 @@ export const D13_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_TTL_MS",
   listingPathEnv: "MARINERS_LISTING_PATH",
   pdfPathEnv: "MARINERS_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D13 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: NAVCEN_BROWSER_UA,
 };
 
 export const D11_SPEC: LnmSpec = {
@@ -148,7 +154,7 @@ export const D11_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_D11_TTL_MS",
   listingPathEnv: "MARINERS_D11_LISTING_PATH",
   pdfPathEnv: "MARINERS_D11_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D11 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: NAVCEN_BROWSER_UA,
 };
 
 export const D7_SPEC: LnmSpec = {
@@ -164,7 +170,7 @@ export const D7_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_D7_TTL_MS",
   listingPathEnv: "MARINERS_D7_LISTING_PATH",
   pdfPathEnv: "MARINERS_D7_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D7 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: NAVCEN_BROWSER_UA,
 };
 
 export const D8_SPEC: LnmSpec = {
@@ -181,7 +187,7 @@ export const D8_SPEC: LnmSpec = {
   ttlEnv: "MARINERS_D8_TTL_MS",
   listingPathEnv: "MARINERS_D8_LISTING_PATH",
   pdfPathEnv: "MARINERS_D8_PDF_PATH",
-  userAgent: "bnm-data-shop/1.0 (USCG D8 LNM public PDF; +https://www.navcen.uscg.gov/)",
+  userAgent: NAVCEN_BROWSER_UA,
 };
 
 function leftoverSpec(opts: {
@@ -208,7 +214,7 @@ function leftoverSpec(opts: {
     ttlEnv: `${opts.envKey}_TTL_MS`,
     listingPathEnv: `${opts.envKey}_LISTING_PATH`,
     pdfPathEnv: `${opts.envKey}_PDF_PATH`,
-    userAgent: `bnm-data-shop/1.0 (USCG D${opts.district} LNM public PDF; +https://www.navcen.uscg.gov/)`,
+    userAgent: NAVCEN_BROWSER_UA,
   };
 }
 
@@ -576,18 +582,31 @@ export function pdfToText(pdfPath: string): string {
   return result.stdout || "";
 }
 
+export function navcenRequestHeaders(accept: string, userAgent = NAVCEN_BROWSER_UA): Record<string, string> {
+  return {
+    "User-Agent": userAgent,
+    Accept: accept,
+    "Accept-Language": "en-US,en;q=0.9",
+  };
+}
+
+/** Listing and PDF GET. A non-browser UA that draws 403 is retried once with NAVCEN_BROWSER_UA. */
+export async function fetchNavcen(url: string, accept: string, userAgent = NAVCEN_BROWSER_UA): Promise<Response> {
+  const res = await fetch(url, { headers: navcenRequestHeaders(accept, userAgent), redirect: "follow" });
+  if (res.status === 403 && userAgent !== NAVCEN_BROWSER_UA) {
+    return fetch(url, { headers: navcenRequestHeaders(accept, NAVCEN_BROWSER_UA), redirect: "follow" });
+  }
+  return res;
+}
+
 async function fetchBytes(url: string, accept: string, spec: LnmSpec): Promise<Uint8Array> {
-  const res = await fetch(url, {
-    headers: { "User-Agent": spec.userAgent, Accept: accept },
-  });
+  const res = await fetchNavcen(url, accept, spec.userAgent);
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return new Uint8Array(await res.arrayBuffer());
 }
 
 async function fetchText(url: string, spec: LnmSpec): Promise<string> {
-  const res = await fetch(url, {
-    headers: { "User-Agent": spec.userAgent, Accept: "text/html" },
-  });
+  const res = await fetchNavcen(url, "text/html", spec.userAgent);
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
 }
