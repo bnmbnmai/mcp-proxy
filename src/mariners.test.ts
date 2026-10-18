@@ -4,6 +4,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   ALL_LNM_SPECS,
+  fetchNavcen,
+  NAVCEN_BROWSER_UA,
   D1_LNM_LISTING_URL,
   D1_SPEC,
   D5_LNM_LISTING_URL,
@@ -55,7 +57,45 @@ function readD8(name: string): string {
   return readFileSync(join(d8Fixtures, name), "utf-8");
 }
 
-function main(): void {
+async function assertNavcen403RetriesWithBrowserUa(): Promise<void> {
+  const seen: string[] = [];
+  const original = globalThis.fetch;
+  globalThis.fetch = (async (_input: RequestInfo | URL, init?: RequestInit) => {
+    const ua = new Headers(init?.headers).get("user-agent") ?? "";
+    seen.push(ua);
+    if (!ua.includes("Mozilla/5.0")) {
+      return new Response("blocked", { status: 403 });
+    }
+    return new Response("ok-html", { status: 200, headers: { "content-type": "text/html" } });
+  }) as typeof fetch;
+  try {
+    const blocked = "bnm-data-shop/1.0 (USCG D13 LNM public PDF; +https://www.navcen.uscg.gov/)";
+    const rescued = await fetchNavcen(
+      "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n",
+      "text/html",
+      blocked,
+    );
+    assert.equal(rescued.status, 200);
+    assert.equal(await rescued.text(), "ok-html");
+    assert.deepEqual(seen, [blocked, NAVCEN_BROWSER_UA]);
+
+    seen.length = 0;
+    const direct = await fetchNavcen(
+      "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13412026.pdf",
+      "application/pdf",
+    );
+    assert.equal(direct.status, 200);
+    assert.deepEqual(seen, [NAVCEN_BROWSER_UA], "browser UA is sent once, with no 403 retry");
+
+    for (const spec of ALL_LNM_SPECS) {
+      assert.equal(spec.userAgent, NAVCEN_BROWSER_UA, `${spec.path} collect must use the browser User-Agent`);
+    }
+  } finally {
+    globalThis.fetch = original;
+  }
+}
+
+async function main(): Promise<void> {
   const editions = parseListingHtml(readFx("listing-excerpt.html"));
   assert.deepEqual(
     editions.map((e) => e.edition),
@@ -465,7 +505,8 @@ function main(): void {
     msi: /Coast Pilot|Cape Spencer/i,
   });
 
+  await assertNavcen403RetriesWithBrowserUa();
   console.log("mariners parser tests ok");
 }
 
-main();
+await main();

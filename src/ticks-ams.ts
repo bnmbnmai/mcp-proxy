@@ -80,10 +80,13 @@
  * OKC West AMS_1281, Oklahoma National AMS_1280,
  * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Ozarks West Plains
  * slaughter/replacement AMS_1651, Springfield feeder AMS_1255, Ada feeder
- * AMS_1830, Superior video AMS_2713, Western Video AMS_3242, Winter Dodge City
+ * AMS_1830, Ada slaughter/replacement AMS_1843, Woodward feeder AMS_1828,
+ * New Holland Thursday AMS_1909, Dickinson AMS_2099, and Valentine AMS_1856,
+ * Superior video AMS_2713, Western Video AMS_3242, Winter Dodge City
  * AMS_1889, and Farmers & Ranchers Salina KS AMS_1892 are rows on this same
  * table. Illinois weekly AMS_2041, Indiana weekly AMS_1976, and Pennsylvania
- * weekly AMS_1919 are the same table: printed cattle $/cwt only. Per-head,
+ * weekly AMS_1919 are the same table: printed cattle $/cwt only. AMS_1909
+ * New Holland Thursday uses that same cash parser. Per-head,
  * sheep, goats, and the Please Note block are not ticks on those weeklies.
  * AMS_2056 Arkansas weekly uses this same auction parser. Akamai 403s lowercase
  * ams_2041.pdf; the uppercase AMS_2041.pdf candidate is the official body.
@@ -224,6 +227,11 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1651", group: "cattle", region: "ozarks_west_plains", title: "Ozarks Regional Stockyards Slaughter/Replacement Cattle (West Plains)", esmisPublication: "" },
   { slug: "1255", group: "cattle", region: "springfield_mo", title: "Springfield Livestock Marketing Center Feeder Cattle", esmisPublication: "" },
   { slug: "1830", group: "cattle", region: "ada_ok", title: "Southern Oklahoma Livestock Auction Feeder Cattle (Ada)", esmisPublication: "" },
+  { slug: "1843", group: "cattle", region: "ada_ok_slaughter", title: "Southern Oklahoma Livestock Auction Slaughter/Replacement Cattle (Ada)", esmisPublication: "" },
+  { slug: "1828", group: "cattle", region: "woodward_ok", title: "Woodward Livestock Auction Feeder Cattle", esmisPublication: "" },
+  { slug: "1909", group: "cattle", region: "new_holland_pa_thu", title: "New Holland Livestock Cattle Auction (Thursday)", esmisPublication: "" },
+  { slug: "2099", group: "cattle", region: "dickinson_nd", title: "Stockmen's Livestock Exchange Cattle Auction (Dickinson)", esmisPublication: "" },
+  { slug: "1856", group: "cattle", region: "valentine_ne", title: "Valentine Livestock Auction", esmisPublication: "" },
   { slug: "2713", group: "cattle", region: "superior_video", title: "Superior Livestock Video Auction", esmisPublication: "" },
   { slug: "3242", group: "cattle", region: "western_video", title: "Western Video Market", esmisPublication: "" },
   { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
@@ -1356,8 +1364,8 @@ export function parseDirectFeederTrades(text: string, report: AmsReport, sourceU
   return dedupeTicks([...headlines, ...unique]);
 }
 
-/** State weeklies whose cash rows are the printed cattle $/cwt table, not feeder-only barns. */
-const WEEKLY_CATTLE_SUMMARY_SLUGS = new Set(["2041", "1976", "1919"]);
+/** Cash sheets whose rows are the printed cattle $/cwt table, not feeder-only barns. */
+const WEEKLY_CATTLE_SUMMARY_SLUGS = new Set(["2041", "1976", "1919", "1909"]);
 
 const WEEKLY_CATTLE_HDR =
   /^((?:BEEF\/DAIRY|DAIRY)\s+)?(STEERS|HEIFERS|COWS|BULLS)\s+-\s+(.+?)\s+\((Per Cwt|Per Unit)\s*\/\s*(?:Actual|Estimate)\s*Wt\)/i;
@@ -1420,7 +1428,8 @@ function weeklyPriceOk(section: Exclude<WeeklySection, "" | "skip">, avg: number
 }
 
 /**
- * IL AMS_2041 / IN AMS_1976 / PA AMS_1919 weekly summaries.
+ * IL AMS_2041 / IN AMS_1976 / PA AMS_1919 weekly summaries, and New Holland
+ * Thursday AMS_1909 (same slaughter grades and feeder dairy calves).
  * Cash cattle $/cwt in the feeder, slaughter, and feeder-dairy-calf sections.
  * Per Unit ($/head), sheep, goats, and the Please Note block stay empty.
  * Does not invent a Current FOB headline. A sheet with no cattle $/cwt stays empty.

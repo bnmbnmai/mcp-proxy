@@ -1407,6 +1407,54 @@ assert.ok(ada.every((row) => row.source.includes("AMS_1830") && row.sourceUrl.en
 assert.ok(!ada.some((row) => row.id.includes(".230lb") || row.id.includes(".240lb") || row.id.includes(".245lb")), "under-250 lb calves stay off");
 assert.equal(parseReportDate(fx("auction-1830.txt")), "2026-09-23");
 
+const adaSlaughter = parseAmsReportText(fx("auction-1843.txt"), report("1843"), "https://www.ams.usda.gov/mnreports/ams_1843.pdf");
+assert.equal(parseReportDate(fx("auction-1843.txt")), "2026-10-01");
+assert.equal(adaSlaughter.length, 26, `Ada slaughter/replacement rows, got ${adaSlaughter.length}`);
+assert.equal(adaSlaughter.find((row) => row.id === "cattle.ams_1843.ada_ok_slaughter.slaughter-cow.breaker.1562lb")?.price, 148.57);
+assert.equal(adaSlaughter.find((row) => row.id === "cattle.ams_1843.ada_ok_slaughter.slaughter-bull.12.1678lb")?.price, 182.45);
+assert.equal(adaSlaughter.find((row) => row.id === "cattle.ams_1843.ada_ok_slaughter.replacement-stock-cow.ml12.2_4.o.993lb")?.price, 235.62);
+assert.ok(adaSlaughter.every((row) => row.source.includes("AMS_1843") && row.sourceUrl.endsWith("ams_1843.pdf") && row.unit === "$/cwt" && row.asOf === "2026-10-01"));
+assert.ok(!adaSlaughter.some((row) => row.price === 2676.47 || row.price === 4000 || row.price === 2750), "per-unit bred cows, pairs, and bulls stay off");
+
+const woodward = parseAmsReportText(fx("auction-1828.txt"), report("1828"), "https://www.ams.usda.gov/mnreports/ams_1828.pdf");
+assert.equal(parseReportDate(fx("auction-1828.txt")), "2026-10-01");
+assert.equal(woodward.length, 38, `Woodward feeder rows, got ${woodward.length}`);
+assert.equal(woodward.find((row) => row.id === "cattle.ams_1828.woodward_ok.feeder-steer.ml1.341lb")?.price, 541.96);
+assert.equal(woodward.find((row) => row.id === "cattle.ams_1828.woodward_ok.feeder-steer.ml1.619lb.1")?.price, 341);
+assert.equal(woodward.find((row) => row.id === "cattle.ams_1828.woodward_ok.feeder-steer.ml1.619lb.unweaned")?.price, 344.53);
+assert.equal(woodward.find((row) => row.id === "cattle.ams_1828.woodward_ok.feeder-steer.ml1.600lb")?.price, 407);
+assert.ok(woodward.find((row) => row.id === "cattle.ams_1828.woodward_ok.feeder-steer.ml1.600lb")?.classGrade.includes("Fancy"));
+assert.ok(woodward.every((row) => row.source.includes("AMS_1828") && row.sourceUrl.endsWith("ams_1828.pdf") && row.asOf === "2026-10-01"));
+assert.ok(!woodward.some((row) => row.id.includes("bull")), "feeder bulls stay off this steer/heifer parse");
+
+const dickinson = parseAmsReportText(fx("auction-2099.txt"), report("2099"), "https://www.ams.usda.gov/mnreports/ams_2099.pdf");
+assert.equal(parseReportDate(fx("auction-2099.txt")), "2026-10-01");
+assert.equal(dickinson.length, 38, `Dickinson feeder rows, got ${dickinson.length}`);
+assert.equal(dickinson.find((row) => row.id === "cattle.ams_2099.dickinson_nd.feeder-steer.ml1.322lb")?.price, 596.26);
+assert.equal(dickinson.find((row) => row.id === "cattle.ams_2099.dickinson_nd.feeder-steer.l1.1066lb")?.price, 281);
+assert.equal(dickinson.find((row) => row.id === "cattle.ams_2099.dickinson_nd.feeder-heifer.l1.1122lb")?.price, 264.5);
+assert.ok(dickinson.every((row) => row.source.includes("AMS_2099") && row.sourceUrl.endsWith("ams_2099.pdf") && row.unit === "$/cwt" && row.asOf === "2026-10-01"));
+
+const valentine = parseAmsReportText(fx("auction-1856.txt"), report("1856"), "https://www.ams.usda.gov/mnreports/ams_1856.pdf");
+assert.equal(parseReportDate(fx("auction-1856.txt")), "2026-10-01");
+assert.equal(valentine.length, 27, `Valentine feeder rows, got ${valentine.length}`);
+assert.equal(valentine.find((row) => row.id === "cattle.ams_1856.valentine_ne.feeder-steer.ml1.368lb")?.price, 552.5);
+assert.equal(valentine.find((row) => row.id === "cattle.ams_1856.valentine_ne.feeder-steer.ml1.553lb")?.price, 473);
+assert.ok(valentine.find((row) => row.id === "cattle.ams_1856.valentine_ne.feeder-steer.ml1.553lb")?.classGrade.includes("Fancy"));
+assert.equal(valentine.find((row) => row.id === "cattle.ams_1856.valentine_ne.feeder-heifer.ml1.399lb")?.price, 465);
+assert.ok(valentine.every((row) => row.source.includes("AMS_1856") && row.sourceUrl.endsWith("ams_1856.pdf") && row.asOf === "2026-10-01"));
+
+const newHolland = parseAmsReportText(fx("auction-1909.txt"), report("1909"), "https://www.ams.usda.gov/mnreports/ams_1909.pdf");
+assert.equal(parseReportDate(fx("auction-1909.txt")), "2026-10-01");
+assert.equal(newHolland.length, 66, `New Holland Thursday cash rows, got ${newHolland.length}`);
+assert.equal(newHolland.find((row) => row.id === "cattle.ams_1909.new_holland_pa_thu.slaughter-steer.choice_2_3.1262lb")?.price, 220.92);
+assert.equal(newHolland.find((row) => row.id === "cattle.ams_1909.new_holland_pa_thu.slaughter-dairy-cow.breaker.1737lb")?.price, 130.72);
+assert.ok(!newHolland.some((row) => row.id.includes("slaughter-cow.boner.1737lb")), "dairy cows are not filed as beef boner");
+assert.equal(newHolland.find((row) => row.id === "cattle.ams_1909.new_holland_pa_thu.feeder-dairy-bull.number_1.102lb.beef_cross")?.price, 1321.35);
+assert.equal(newHolland.find((row) => row.id === "cattle.ams_1909.new_holland_pa_thu.feeder-dairy-bull.number_1.102lb.1")?.price, 940.73);
+assert.ok(newHolland.every((row) => row.source.includes("AMS_1909") && row.sourceUrl.endsWith("ams_1909.pdf") && row.unit === "$/cwt" && row.asOf === "2026-10-01" && row.price <= 2000));
+assert.ok(!newHolland.some((row) => row.id.includes("sheep") || row.id.includes("goat")));
+
 const western = parseAmsReportText(fx("auction-3242.txt"), report("3242"), "https://www.ams.usda.gov/mnreports/ams_3242.pdf");
 assert.ok(western.length > 40, `Western Video should fill, got ${western.length}`);
 const westCurrent = western.find((row) => row.id === "cattle.ams_3242.western_video.north_central.feeder-steer.ml1.current.415lb");
@@ -1656,13 +1704,18 @@ assert.equal(
 assert.ok(!pennsylvaniaWeekly.some((row) => row.price === 4510), "receipt count is not a tick");
 assert.ok(!pennsylvaniaWeekly.some((row) => /please note|basis|del\b/i.test(row.id)));
 
-for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "2713", "3242", "1889", "1892", "2041", "1976", "1919"]) {
+for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "1843", "1828", "1909", "2099", "1856", "2713", "3242", "1889", "1892", "2041", "1976", "1919"]) {
   assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2041")?.region, "illinois_weekly");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1976")?.region, "indiana_weekly");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1919")?.region, "pennsylvania_weekly");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2056")?.region, "arkansas_weekly");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1843")?.region, "ada_ok_slaughter");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1828")?.region, "woodward_ok");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1909")?.region, "new_holland_pa_thu");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2099")?.region, "dickinson_nd");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1856")?.region, "valentine_ne");
 assert.ok(!AMS_NATIONAL_REPORTS.some((r) => r.slug === "3798"), "AMS_3798 stays off this pass");
 
 const dir = mkdtempSync(join(tmpdir(), "ticks-ams-"));
