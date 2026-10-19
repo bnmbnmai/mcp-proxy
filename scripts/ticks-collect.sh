@@ -214,7 +214,35 @@ export SUPERFUND_PASS_DEADLINE_MS="${SUPERFUND_PASS_DEADLINE_MS:-2400000}"
 log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} superfundNew=${SUPERFUND_MAX_NEW_PER_PASS} dryRun=${DRY_RUN:-0}"
 
 ticks_snapshot() {
-  local p
+  local hay_plan="${TICKS_COLLECT_HAY_PLAN:-$HOME/logs/ticks-hay-plan.json}"
+  local origin="${TICKS_COLLECT_HAY_ORIGIN:-http://127.0.0.1:4020}"
+  local tmp="${hay_plan}.tmp"
+  local url p
+  local -a hay_urls=()
+  mkdir -p "$(dirname "$hay_plan")"
+  # Prefer the live hay catalog (tickCount + fetchedAt) so skip-fresh does
+  # not recrawl a healthy bag from the AMS-only snapshot. /ticks/manifest.json
+  # is the same JSON as /manifest.json. A 404 on the door path must not look
+  # like /ticks is down — try the next URL that returns tickCount.
+  if [[ "${TICKS_COLLECT_SKIP_LIVE_HAY:-}" != "1" ]] && command -v curl >/dev/null 2>&1; then
+    if [[ -n "${TICKS_COLLECT_HAY_MANIFEST_URL:-}" ]]; then
+      hay_urls+=("${TICKS_COLLECT_HAY_MANIFEST_URL}")
+    fi
+    hay_urls+=(
+      "${origin}/ticks/manifest.json"
+      "${origin}/manifest.json"
+    )
+    for url in "${hay_urls[@]}"; do
+      rm -f "$tmp"
+      if curl -sf --max-time 2 -H 'User-Agent: ticks-collect' "$url" -o "$tmp" 2>/dev/null && \
+         python3 -c "import json,sys; d=json.load(open(sys.argv[1])); assert isinstance(d.get('tickCount'), int) and d['tickCount']>0" "$tmp"; then
+        mv "$tmp" "$hay_plan"
+        printf '%s\n' "$hay_plan"
+        return 0
+      fi
+    done
+    rm -f "$tmp"
+  fi
   for p in \
     "${TICKS_DIR}/snapshot.json" \
     "${TICKS_DIR}/manifest.json"
@@ -224,24 +252,6 @@ ticks_snapshot() {
       return 0
     fi
   done
-  local hay_plan="${TICKS_COLLECT_HAY_PLAN:-$HOME/logs/ticks-hay-plan.json}"
-  mkdir -p "$(dirname "$hay_plan")"
-  # Prefer the live /ticks manifest (611 + AMS fetchedAt) so skip-fresh does
-  # not recrawl a healthy hay cache from the AMS-only 483-row snapshot.
-  if [[ "${TICKS_COLLECT_SKIP_LIVE_HAY:-}" != "1" ]]; then
-    local tmp="${hay_plan}.tmp"
-    if command -v curl >/dev/null 2>&1 && \
-       curl -sf --max-time 2 -H 'User-Agent: ticks-collect' \
-         "${TICKS_COLLECT_HAY_MANIFEST_URL:-http://127.0.0.1:4020/manifest.json}" \
-         -o "$tmp" 2>/dev/null; then
-      if python3 -c "import json,sys; d=json.load(open(sys.argv[1])); assert isinstance(d.get('tickCount'), int) and d['tickCount']>0" "$tmp"; then
-        mv "$tmp" "$hay_plan"
-        printf '%s\n' "$hay_plan"
-        return 0
-      fi
-    fi
-    rm -f "$tmp"
-  fi
   if python3 "$PLAN" --write-hay "$hay_plan" \
       "${TICKS_DIR}/board.json" \
       "${TICKS_AMS_DIR}/snapshot.json" \

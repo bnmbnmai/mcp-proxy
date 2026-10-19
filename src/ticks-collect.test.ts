@@ -3,7 +3,7 @@ import { chmodSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { listedCountFromHtml } from "./cfpb-orders.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -147,6 +147,100 @@ echo "stub-end $sku"
   });
   assert.equal(result.status, 0, result.stderr || result.stdout);
   return { log: `${result.stdout}\n${readFileSync(log, "utf-8")}`, mark: readFileSync(mark, "utf8"), root };
+}
+
+async function withHayOrigin(
+  routes: Record<string, { status: number; body?: unknown }>,
+  fn: (origin: string) => Promise<void>,
+): Promise<void> {
+  // A child process, not an in-process server: ticks-collect.sh is spawnSync,
+  // which would stall this process's event loop and make the hay curl time out.
+  const file = join(tmpdir(), `ticks-hay-server-${process.pid}-${Date.now()}.mjs`);
+  writeFileSync(
+    file,
+    `import { createServer } from "node:http";
+const routes = ${JSON.stringify(routes)};
+const server = createServer((req, res) => {
+  const path = (req.url || "/").split("?")[0];
+  const route = routes[path];
+  if (!route) {
+    res.writeHead(404);
+    res.end();
+    return;
+  }
+  const payload = route.body === undefined ? "" : JSON.stringify(route.body);
+  res.writeHead(route.status, { "Content-Type": "application/json" });
+  res.end(payload);
+});
+server.listen(0, "127.0.0.1", () => {
+  const addr = server.address();
+  process.stdout.write(String(addr && typeof addr === "object" ? addr.port : "") + "\\n");
+});
+`,
+  );
+  const child = spawn(process.execPath, [file], { stdio: ["ignore", "pipe", "inherit"] });
+  const port = await new Promise<string>((resolve, reject) => {
+    let buf = "";
+    child.stdout?.on("data", (chunk: Buffer) => {
+      buf += chunk.toString();
+      const line = buf.split("\n")[0]?.trim() ?? "";
+      if (/^\d+$/.test(line)) resolve(line);
+    });
+    child.once("error", reject);
+    child.once("exit", (code) => reject(new Error(`hay server exited ${code} before listening`)));
+  });
+  try {
+    await fn(`http://127.0.0.1:${port}`);
+  } finally {
+    child.kill();
+  }
+}
+
+function runHayProbe(origin: string): string {
+  const root = mkdtempSync(join(tmpdir(), "ticks-collect-hay-"));
+  const ticksDir = join(root, "data", "prices");
+  mkdirSync(ticksDir, { recursive: true });
+  writeFileSync(
+    join(ticksDir, "manifest.json"),
+    JSON.stringify({ tickCount: 3, fetchedAt: new Date().toISOString(), asOf: "2026-10-01" }),
+  );
+  const skuDir = join(root, "data", "cfpb-orders");
+  mkdirSync(skuDir, { recursive: true });
+  writeFileSync(
+    join(skuDir, "snapshot.json"),
+    JSON.stringify({ cardCount: 20, fetchedAt: new Date().toISOString(), asOf: "2026-10-16" }),
+  );
+  const wkPath = join(root, "well-known.json");
+  writeFileSync(
+    wkPath,
+    JSON.stringify({
+      version: 1,
+      resources: ["https://ticks.bnm.farm/ticks", "https://ticks.bnm.farm/cfpb-orders"],
+    }),
+  );
+  const log = join(root, "ticks-collect.log");
+  const env = { ...process.env };
+  delete env.TICKS_COLLECT_SKIP_LIVE_HAY;
+  delete env.TICKS_COLLECT_HAY_MANIFEST_URL;
+  const result = spawnSync("bash", [join(repoRoot, "scripts/ticks-collect.sh")], {
+    encoding: "utf8",
+    env: {
+      ...env,
+      TZ: "America/Boise",
+      TICKS_COLLECT_DRY_RUN: "1",
+      TICKS_COLLECT_SKIP_IMAGINE: "1",
+      MCP_PROXY_DIR: root,
+      TICKS_DIR: ticksDir,
+      TICKS_COLLECT_PLAN: join(repoRoot, "scripts/ticks-collect-plan.py"),
+      TICKS_COLLECT_WELL_KNOWN_FILE: wkPath,
+      TICKS_COLLECT_LOG: log,
+      TICKS_COLLECT_LOCK: join(root, "ticks-collect.lock"),
+      TICKS_COLLECT_HAY_PLAN: join(root, "hay-plan.json"),
+      TICKS_COLLECT_HAY_ORIGIN: origin,
+    },
+  });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  return `${result.stdout}\n${readFileSync(log, "utf-8")}`;
 }
 
 async function main(): Promise<void> {
@@ -436,6 +530,33 @@ async function main(): Promise<void> {
   assert.ok(
     listed !== null && listed > 5,
     "one existing official door listing exceeds 5, so grow+limit=24 would pass first-slice",
+  );
+
+  const freshHay = {
+    tickCount: 8692,
+    fetchedAt: new Date().toISOString(),
+    asOf: "2026-10-16",
+  };
+  await withHayOrigin(
+    {
+      "/ticks/manifest.json": { status: 404 },
+      "/manifest.json": { status: 200, body: freshHay },
+    },
+    async (origin) => {
+      const hayLog = runHayProbe(origin);
+      assert.match(hayLog, /\/ticks, 8692, 8692, fat/, "a 404 on /ticks/manifest.json falls through to /manifest.json");
+      assert.doesNotMatch(hayLog, /\/ticks, 3, 3/);
+    },
+  );
+  await withHayOrigin(
+    {
+      "/ticks/manifest.json": { status: 200, body: freshHay },
+      "/manifest.json": { status: 404 },
+    },
+    async (origin) => {
+      const hayLog = runHayProbe(origin);
+      assert.match(hayLog, /\/ticks, 8692, 8692, fat/, "hay check accepts /ticks/manifest.json");
+    },
   );
 
   console.log("ticks-collect skip-fresh-fat tests ok");

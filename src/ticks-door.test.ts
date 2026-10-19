@@ -574,6 +574,14 @@ async function main(): Promise<void> {
     assert.equal(ticksExtra?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
     assert.equal(ticksExtra?.firmCheckUrl, "https://ticks.bnm.farm/firm-check");
     assert.equal(ticksExtra?.sampleUrl, "https://ticks.bnm.farm/sample");
+    const rootManifest = await fetch(`${base}${MANIFEST_PATH}`);
+    const doorManifest = await fetch(`${base}/ticks/manifest.json`);
+    assert.equal(rootManifest.status, 200, "GET /manifest.json stays the free hay catalog");
+    assert.equal(doorManifest.status, 200, "GET /ticks/manifest.json is the same free hay catalog");
+    const rootManifestBody = await rootManifest.text();
+    const doorManifestBody = await doorManifest.text();
+    assert.equal(doorManifestBody, rootManifestBody, "/ticks/manifest.json matches /manifest.json");
+    assert.equal(typeof (JSON.parse(rootManifestBody) as { tickCount?: unknown }).tickCount, "number");
     assert.equal(Object.prototype.hasOwnProperty.call(ticksExtra ?? {}, "oneDocPath"), false);
     assert.equal(
       Object.prototype.hasOwnProperty.call(body.accepts[0] as object, "outputSchema"),
