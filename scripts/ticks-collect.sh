@@ -184,6 +184,11 @@ do
   set_grow "$prefix"
 done
 
+# FCC digest is one day per page. Four days stops before October EB orders.
+export FCC_EB_ORDERS_PAGES="${FCC_EB_ORDERS_PAGES:-45}"
+# FMC: probe recent docket pages, not only the four seed proceedings.
+export FMC_ORDERS_PROCEEDINGS="${FMC_ORDERS_PROCEEDINGS:-80}"
+
 export FORM_483_LIMIT="${FORM_483_LIMIT:-25}"
 export FORM_483_MAX_FETCH="${FORM_483_MAX_FETCH:-200}"
 export WARNING_LETTERS_LIMIT="${WARNING_LETTERS_LIMIT:-50}"
@@ -391,6 +396,20 @@ emit() {
   fi
 }
 
+snapshot_reason() {
+  python3 -c '
+import json, sys
+path = sys.argv[1]
+try:
+    data = json.load(open(path))
+except Exception:
+    print("")
+    raise SystemExit
+reason = data.get("reason") if isinstance(data, dict) else ""
+print(str(reason or "").replace("\n", " ")[:300])
+' "$1" 2>/dev/null || true
+}
+
 run_door() {
   local sku="$1"
   local door_log="${2:-}"
@@ -434,10 +453,18 @@ run_door() {
   plan_fields "$snap"
   local after="${_n}"
   local done="$reason"
+  local note=""
+  note="$(snapshot_reason "$snap")"
   if [[ "$action" == "skip" && "$after" -eq "$before" ]]; then
     done="current"
   elif [[ "$action" == "skip" ]]; then
     done="asof-moved"
+  elif [[ "$action" == "grow" && "$after" -gt "$before" ]]; then
+    done="grew"
+  elif [[ "$action" == "grow" && "$note" == *"Not a complete walk"* ]]; then
+    done="source-down"
+  elif [[ "$action" == "grow" && "$note" == *"no new "* ]]; then
+    done="current"
   elif [[ "$action" == "grow" && "$after" -le 5 ]]; then
     done="teaser-blocked"
   elif [[ "$action" == "grow" ]]; then
@@ -445,7 +472,11 @@ run_door() {
   elif [[ "$action" == "refresh" ]]; then
     done="refreshed"
   fi
-  emit "/${sku}, ${before}, ${after}, ${done}"
+  if [[ "$done" == "source-down" || ( "$done" == "current" && "$note" == *"no new "* ) ]]; then
+    emit "/${sku}, ${before}, ${after}, ${done} (${note})"
+  else
+    emit "/${sku}, ${before}, ${after}, ${done}"
+  fi
   return 0
 }
 

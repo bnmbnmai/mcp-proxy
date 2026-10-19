@@ -31,6 +31,9 @@ import {
   bureauFromWindow,
   collectFccEbOrders,
   discoverDigestUrls,
+  FCC_BROWSER_UA,
+  fccCaughtUp,
+  fccListingFailure,
   filterFccEbOrdersManifest,
   isDigestIndex,
   isEbBureau,
@@ -236,6 +239,10 @@ async function main(): Promise<void> {
   assert.ok(filterFccEbOrdersManifest(manifest, "belthrough").cardCount);
   assert.ok(filterFccEbOrdersManifest(manifest, JP_ID).cardCount);
   assert.ok(parseFccEbOrderText(readFx("DA-26-1006.txt"), SEED_LISTINGS[0]).body.includes(BODY_NEEDLE_VZ));
+  assert.match(FCC_BROWSER_UA, /Chrome\/131/);
+  assert.match(fccListingFailure(403), /HTTP 403/);
+  assert.match(fccListingFailure(403), /Not a complete walk/);
+  assert.match(fccCaughtUp(12, 2), /no new DA orders/);
 }
 
 main().catch((err) => {

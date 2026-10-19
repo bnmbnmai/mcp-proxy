@@ -262,6 +262,10 @@ async function main(): Promise<void> {
   assert.match(script, /02:00-04:00 America\/Boise/);
   assert.match(script, /--list-official/);
   assert.match(script, /live well-known/);
+  assert.match(script, /FCC_EB_ORDERS_PAGES/);
+  assert.match(script, /FMC_ORDERS_PROCEEDINGS/);
+  assert.match(script, /source-down/);
+  assert.match(script, /Not a complete walk/);
   assert.match(script, /stranger-settle-alert/, "collect path refreshes Chief stranger-settle ping");
   assert.match(script, /live-door-loop-closer/, "collect path lists empty/stale LIVE doors");
   assert.match(script, /draft-only/, "loop-closer is draft notes only");
