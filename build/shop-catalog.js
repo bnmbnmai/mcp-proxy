@@ -11,6 +11,7 @@ export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK = "eip155:8453";
 export const TABLE_PATHS = new Set(["/ticks", "/import-alerts"]);
+/** Original week-LNM doors. Later districts match the `/mariners` prefix in `skuKind`. */
 export const MARINER_PATHS = new Set(["/mariners", "/mariners-d11", "/mariners-d7", "/mariners-d8"]);
 export const SEARCH_TOOL_NAME = "search";
 export const FIRM_CHECK_TOOL_NAME = "firm-check";
@@ -70,24 +71,33 @@ export function resourcePath(raw) {
         return null;
     }
 }
-export function skuKind(path) {
+export function openApiDeclaresId(path, openApi) {
+    const get = openApi?.paths?.[path]?.get;
+    const names = (get?.parameters ?? []).map((param) => param?.name);
+    if (names.includes("id"))
+        return true;
+    return (get?.description ?? "").includes("?id=");
+}
+export function skuKind(path, openApi) {
     if (TABLE_PATHS.has(path))
         return "table";
-    if (MARINER_PATHS.has(path))
+    if (MARINER_PATHS.has(path) || path.startsWith("/mariners"))
+        return "mariners";
+    if (openApi && !openApiDeclaresId(path, openApi))
         return "mariners";
     return "body";
 }
 export function skuPrice(kind) {
     return kind === "body" ? "$0.02 / $0.05" : "$0.05";
 }
-export function searchMarkdown(path) {
+export function searchMarkdown(path, kind = skuKind(path)) {
     if (path === "/ticks") {
         return `[manifest.json](${LIVE_ORIGIN}/manifest.json)`;
     }
     if (path === "/import-alerts") {
         return `[firm-check?q=](${LIVE_ORIGIN}/firm-check?q=) · [manifest.json](${LIVE_ORIGIN}${path}/manifest.json)`;
     }
-    if (skuKind(path) === "body") {
+    if (kind === "body") {
         return `[manifest.json?q=](${LIVE_ORIGIN}${path}/manifest.json?q=)`;
     }
     return `[manifest.json](${LIVE_ORIGIN}${path}/manifest.json)`;
@@ -96,11 +106,14 @@ export function bagForPath(path, openApi) {
     const known = BAG_BY_PATH[path];
     if (known)
         return known;
+    const kind = skuKind(path, openApi);
     const op = openApi?.paths?.[path]?.get;
     const summary = typeof op?.summary === "string" ? op.summary.trim() : "";
     if (summary) {
-        return skuKind(path) === "body" ? `${summary}. Newest 10 official texts` : summary;
+        return kind === "body" ? `${summary}. Newest 10 official texts` : summary;
     }
+    if (kind === "mariners")
+        return `This week's Local Notice to Mariners`;
     return `Official public-data GET ${path}`;
 }
 export function paidPathsFromWellKnown(wellKnown) {
@@ -120,14 +133,14 @@ export function paidPathsFromWellKnown(wellKnown) {
 }
 export function skusFromWellKnown(wellKnown, openApi) {
     return paidPathsFromWellKnown(wellKnown).map((path) => {
-        const kind = skuKind(path);
+        const kind = skuKind(path, openApi);
         return {
             path,
             name: path.replace(/^\//, ""),
             kind,
             price: skuPrice(kind),
             bag: bagForPath(path, openApi),
-            searchMd: searchMarkdown(path),
+            searchMd: searchMarkdown(path, kind),
         };
     });
 }
@@ -138,13 +151,18 @@ export function assertNoHardcodedDoorCount(text) {
     const banned = [
         /\b36 doors\b/i,
         /\b40 doors\b/i,
+        /\b62 paid\b/i,
+        /\b72 paid\b/i,
         /\bThirty-six paid\b/i,
         /\bForty paid GETs\b/i,
+        /\bSixty-two paid\b/i,
+        /\bSeventy-two paid\b/i,
         /\bthe 36 paid\b/i,
         /\bthe 40 paid\b/i,
         /\bsame forty paid\b/i,
         /\b36 official public-data\b/i,
         /\b40 official public-data\b/i,
+        /Snapshot below was/i,
     ];
     for (const re of banned) {
         if (re.test(text)) {
@@ -170,7 +188,7 @@ BNM Data Shop — official public-data x402 GETs at [ticks.bnm.farm](https://tic
 
 payTo \`${PAY_TO}\` · Base (\`${NETWORK}\`) · USDC \`${USDC}\`
 
-Unpaid GET on a paid path returns HTTP 402. After \`X-PAYMENT\`, the same URL returns JSON. Unpaid 402 \`accepts[].extra\` names \`searchUrl\`, \`oneDocPath\`, \`priceAtomic\`, \`pagePriceAtomic\`, \`pageDefault\`, \`tableWhole\`, \`firmCheckUrl\`, \`sampleUrl\`. \`extra.name\` stays USD Coin.
+Unpaid GET on a paid path returns HTTP 402 JSON with \`extensions.bazaar\` and \`accepts[]\`. After \`X-PAYMENT\`, the same URL returns JSON. Unpaid 402 \`accepts[].extra\` names \`searchUrl\`, \`oneDocPath\`, \`priceAtomic\`, \`pagePriceAtomic\`, \`pageDefault\`, \`tableWhole\`, \`firmCheckUrl\`, \`sampleUrl\`. \`extra.name\` stays USD Coin. CDP Bazaar is a separate catalog and can list fewer doors than this index. The paid list is [/.well-known/x402](${LIVE_ORIGIN}${WELL_KNOWN_PATH}).
 
 MCP at \`/mcp\` is generated from live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402) (one paid tool per paid resource) plus free \`search\` and \`firm-check\`. \`/sample\` is the free 3-row slice, not an MCP tool and not a SKU.
 
@@ -205,7 +223,7 @@ Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.
 - **Tables** (\`GET /ticks\`, \`GET /import-alerts\`) — **$0.05** = the entire current table.
 - **Body doors** (the other paid GETs) — free search \`GET https://ticks.bnm.farm/{door}/manifest.json?q=\` (HTTP 200) returns \`id\` and the \`?id=\` URL. Then pay \`GET ?id=\` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page \`?before=\`, another $0.05).
 
-Unpaid GET on a paid path returns HTTP 402 with \`PAYMENT-REQUIRED\`. No request body.
+Unpaid GET on a paid path returns HTTP 402 JSON with \`extensions.bazaar\` and \`accepts[]\`. No request body. CDP Bazaar is a separate catalog and can list fewer doors than well-known. The paid list is \`/.well-known/x402\`.
 
 ## Free (not SKUs)
 

@@ -6,6 +6,7 @@ export declare const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export declare const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export declare const NETWORK = "eip155:8453";
 export declare const TABLE_PATHS: Set<string>;
+/** Original week-LNM doors. Later districts match the `/mariners` prefix in `skuKind`. */
 export declare const MARINER_PATHS: Set<string>;
 export declare const SEARCH_TOOL_NAME = "search";
 export declare const FIRM_CHECK_TOOL_NAME = "firm-check";
@@ -26,6 +27,9 @@ export type OpenApiDoc = {
         get?: {
             summary?: string;
             description?: string;
+            parameters?: Array<{
+                name?: string;
+            }>;
         };
     }>;
 };
@@ -38,9 +42,10 @@ export type LivePaidSku = {
     searchMd: string;
 };
 export declare function resourcePath(raw: string): string | null;
-export declare function skuKind(path: string): LivePaidSku["kind"];
+export declare function openApiDeclaresId(path: string, openApi?: OpenApiDoc): boolean;
+export declare function skuKind(path: string, openApi?: OpenApiDoc): LivePaidSku["kind"];
 export declare function skuPrice(kind: LivePaidSku["kind"]): string;
-export declare function searchMarkdown(path: string): string;
+export declare function searchMarkdown(path: string, kind?: LivePaidSku["kind"]): string;
 export declare function bagForPath(path: string, openApi?: OpenApiDoc): string;
 export declare function paidPathsFromWellKnown(wellKnown: WellKnownDoc): string[];
 export declare function skusFromWellKnown(wellKnown: WellKnownDoc, openApi?: OpenApiDoc): LivePaidSku[];
