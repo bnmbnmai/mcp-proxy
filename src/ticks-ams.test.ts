@@ -603,6 +603,69 @@ assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2907")?.group, "sheep"
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1772")?.group, "sheep");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2907")?.esmisPublication, "national-direct-sheep-report");
 
+function pricedHead(rows: { classGrade: string }[]): number {
+  return rows.reduce((sum, row) => sum + Number(row.classGrade.match(/(\d+) head/)?.[1] ?? 0), 0);
+}
+
+const georgiaDaily = parseAmsReportText(
+  fx("auction-1928.txt"),
+  report("1928"),
+  "https://www.ams.usda.gov/mnreports/AMS_1928.pdf",
+);
+assert.equal(parseReportDate(fx("auction-1928.txt")), "2026-10-21");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1928")?.region, "georgia_daily");
+assert.equal(georgiaDaily.length, 115, "AMS_1928 priced lines, not the 1,693 receipt total");
+assert.equal(pricedHead(georgiaDaily), 1564);
+assert.ok(georgiaDaily.every((row) => row.group === "cattle" && row.id.startsWith("cattle.ams_1928.georgia_daily.") && row.asOf === "2026-10-21"));
+assert.equal(georgiaDaily.filter((row) => row.unit === "$/cwt").length, 99);
+assert.equal(georgiaDaily.filter((row) => row.unit === "$/head").length, 16);
+const gaSteer = georgiaDaily.find((row) => row.id === "cattle.ams_1928.georgia_daily.feeder-steer.ml1.416lb");
+assert.ok(gaSteer, "M&L1 steers 400-425 lb");
+assert.equal(gaSteer.price, 421.11);
+assert.equal(gaSteer.lo, 400);
+assert.equal(gaSteer.hi, 450);
+assert.equal(gaSteer.unit, "$/cwt");
+const gaBred = georgiaDaily.find((row) => row.id === "cattle.ams_1928.georgia_daily.bred-cow.ml12.head.2_8.t1.1088lb");
+assert.ok(gaBred, "bred cows $/head keep age and stage");
+assert.equal(gaBred.price, 1603.22);
+assert.equal(gaBred.unit, "$/head");
+assert.equal(gaBred.lo, 1400);
+assert.equal(gaBred.hi, 1800);
+const gaPair = georgiaDaily.find((row) => row.id === "cattle.ams_1928.georgia_daily.cow-calf-pair.ml12_calf_under_150.head.2_8.o.895lb");
+assert.ok(gaPair, "cow-calf pairs $/head");
+assert.equal(gaPair.price, 3150);
+assert.ok(!georgiaDaily.some((row) => row.price === 1693), "receipt total is not a tick");
+assert.equal(new Set(georgiaDaily.map((row) => row.id)).size, georgiaDaily.length);
+
+const missouriSheep = parseAmsReportText(
+  fx("auction-1833.txt"),
+  report("1833"),
+  "https://www.ams.usda.gov/mnreports/AMS_1833.pdf",
+);
+assert.equal(parseReportDate(fx("auction-1833.txt")), "2026-10-17");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1833")?.region, "missouri_sheep_goat");
+assert.equal(missouriSheep.length, 112, "AMS_1833 priced lines, including under-1 ages and $/head");
+assert.equal(pricedHead(missouriSheep), 1281);
+assert.ok(
+  missouriSheep.every(
+    (row) => row.group === "sheep" && row.id.startsWith("sheep.ams_1833.missouri_sheep_goat.") && row.asOf === "2026-10-17",
+  ),
+);
+assert.equal(missouriSheep.filter((row) => row.unit === "$/cwt").length, 106);
+assert.equal(missouriSheep.filter((row) => row.unit === "$/head").length, 6);
+const moHair = missouriSheep.find((row) => row.id === "sheep.ams_1833.missouri_sheep_goat.feeder-hair-lamb.sm12.36lb");
+assert.ok(moHair, "hair lambs 30-39 lb");
+assert.equal(moHair.price, 381.18);
+assert.equal(moHair.lo, 335);
+assert.equal(moHair.hi, 430);
+assert.equal(moHair.unit, "$/cwt");
+const moNanny = missouriSheep.find((row) => row.id === "sheep.ams_1833.missouri_sheep_goat.replacement-nanny.sel12.head.under_1.e.72lb");
+assert.ok(moNanny, "replacement nannies $/head with age <1");
+assert.equal(moNanny.price, 600);
+assert.equal(moNanny.unit, "$/head");
+assert.ok(!missouriSheep.some((row) => row.price === 1439), "receipt total is not a tick");
+assert.equal(new Set(missouriSheep.map((row) => row.id)).size, missouriSheep.length);
+
 const produceAds = parseAmsReportText(
   fx("retail-specialty-crops-3324.txt"),
   report("3324"),
@@ -1777,13 +1840,82 @@ assert.equal(emptyMerged.reason, null);
 
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
 assert.equal(new Set(slugs).size, slugs.length);
+{
+  const manifestRoot = mkdtempSync(join(tmpdir(), "ticks-ams-manifest-"));
+  const amsDir = join(manifestRoot, "ams");
+  const ticksDir = join(manifestRoot, "ticks");
+  mkdirSync(amsDir, { recursive: true });
+  mkdirSync(ticksDir, { recursive: true });
+  const catalogRows = [...georgiaDaily, ...missouriSheep];
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-10-22T12:00:00.000Z",
+      asOf: "2026-10-21",
+      tickCount: catalogRows.length,
+      rows: catalogRows,
+      failed: [],
+      sources: [georgiaDaily[0].source, missouriSheep[0].source],
+    },
+    amsDir,
+  );
+  writeFileSync(
+    join(ticksDir, "board.json"),
+    JSON.stringify({
+      ok: true,
+      fetchedAt: "2026-10-21T00:00:00.000Z",
+      rows: [
+        {
+          id: "hay-id-alfalfa",
+          group: "hay",
+          market: "Twin Falls",
+          price: 180,
+          asOf: "2026-10-01",
+          source: "Twin Falls",
+          sourceUrl: "https://example.invalid/hay",
+        },
+      ],
+    }),
+  );
+  const prevAms = process.env.TICKS_AMS_DIR;
+  const prevTicks = process.env.TICKS_DIR;
+  const prevPath = process.env.TICKS_PATH;
+  process.env.TICKS_AMS_DIR = amsDir;
+  process.env.TICKS_DIR = ticksDir;
+  delete process.env.TICKS_PATH;
+  const manifest = buildTicksManifest("https://ticks.bnm.farm/ticks") as {
+    tickCount?: number;
+    latestAsOfBySource?: Record<string, string>;
+    groups?: { id?: string; tickCount?: number; sources?: { name?: string; tickCount?: number; cadence?: string | null }[] }[];
+  };
+  if (prevAms === undefined) delete process.env.TICKS_AMS_DIR;
+  else process.env.TICKS_AMS_DIR = prevAms;
+  if (prevTicks === undefined) delete process.env.TICKS_DIR;
+  else process.env.TICKS_DIR = prevTicks;
+  if (prevPath === undefined) delete process.env.TICKS_PATH;
+  else process.env.TICKS_PATH = prevPath;
+  assert.equal(manifest.tickCount, 1 + georgiaDaily.length + missouriSheep.length);
+  assert.equal(manifest.latestAsOfBySource?.[georgiaDaily[0].source], "2026-10-21");
+  assert.equal(manifest.latestAsOfBySource?.[missouriSheep[0].source], "2026-10-17");
+  const cattleGroup = manifest.groups?.find((group) => group.id === "cattle");
+  const sheepGroup = manifest.groups?.find((group) => group.id === "sheep");
+  const gaSource = cattleGroup?.sources?.find((source) => source.name === georgiaDaily[0].source);
+  const moSource = sheepGroup?.sources?.find((source) => source.name === missouriSheep[0].source);
+  assert.equal(gaSource?.tickCount, 115);
+  assert.equal(gaSource?.cadence, "daily");
+  assert.equal(moSource?.tickCount, 112);
+  assert.equal(moSource?.cadence, "weekly");
+  assert.equal(cattleGroup?.tickCount, 115);
+  assert.equal(sheepGroup?.tickCount, 112);
+}
 assert.ok(slugs.length > 10, `expected leftover nationwide slice, got ${slugs.length}`);
 assert.ok(
   ["2904", "2707", "2885", "2935", "2710", "3097", "3098", "3148", "3046", "3223"].every((s) => slugs.includes(s)),
   "keep first nationwide slice",
 );
 assert.ok(
-  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3797", "2907", "1772", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655"].every((s) => slugs.includes(s)),
+  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3797", "2907", "1772", "1928", "1833", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655"].every((s) => slugs.includes(s)),
   "fat AMS slugs are on the nationwide /ticks walk",
 );
 assert.ok(
