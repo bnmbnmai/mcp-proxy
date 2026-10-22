@@ -532,6 +532,8 @@ async function main(): Promise<void> {
     assert.equal(optTicks.status, 204);
     assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /POST/);
     assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /HEAD/);
+    const ticksUnknownId = await fetch(`${base}${TICKS_PATH}?id=__nope__`);
+    assert.equal(ticksUnknownId.status, 402, "table doors do not treat ?id= as a catalog lookup");
     const headTicks = await fetch(`${base}${TICKS_PATH}`, { method: "HEAD" });
     assert.equal(headTicks.status, 402, "HEAD /ticks is the same unpaid wall as GET (uptime probes)");
     assert.ok(headTicks.headers.get("payment-required"), "HEAD 402 carries PAYMENT-REQUIRED");
@@ -2742,13 +2744,46 @@ async function main(): Promise<void> {
         /fda\.gov\/inspections-compliance-enforcement-and-criminal-investigations\/warning-letters\/citra100mg-722606-03042026/,
         "paid page may still attribute sourceUrl",
       );
-      const paidOne = await fetch(`${base}${WARNING_LETTERS_PATH}?id=citra100mg-722606-03042026`, {
+      const knownId = "citra100mg-722606-03042026";
+      const knownUnpaid = await fetch(`${base}${WARNING_LETTERS_PATH}?id=${knownId}`);
+      assert.equal(knownUnpaid.status, 402, "known ?id= stays unpaid 402");
+      assert.ok(knownUnpaid.headers.get("payment-required"));
+      const knownBody = (await knownUnpaid.json()) as { accepts?: unknown };
+      const knownResource = `${base}${WARNING_LETTERS_PATH}?id=${knownId}`;
+      assert.deepEqual(
+        knownBody.accepts,
+        paymentRequiredBody(knownResource, "warning-letters", SINGLE_DOC_AMOUNT_ATOMIC).accepts,
+      );
+      assert.equal(
+        knownUnpaid.headers.get("payment-required"),
+        Buffer.from(
+          JSON.stringify(paymentRequiredV2(knownResource, "warning-letters", SINGLE_DOC_AMOUNT_ATOMIC)),
+          "utf8",
+        ).toString("base64"),
+      );
+
+      const unknownId = await fetch(`${base}${WARNING_LETTERS_PATH}?id=__nope__`);
+      assert.equal(unknownId.status, 404, "unknown ?id= is a free 404 before 402");
+      assert.equal(unknownId.headers.get("payment-required"), null);
+      const unknownBody = (await unknownId.json()) as { error?: string; id?: string; manifest?: string; index?: string };
+      assert.equal(unknownBody.error, "not_found");
+      assert.equal(unknownBody.id, "__nope__");
+      assert.equal(unknownBody.manifest, "/warning-letters/manifest.json");
+      assert.equal(unknownBody.index, "/warning-letters/index?q=");
+      const unknownPaid = await fetch(`${base}${WARNING_LETTERS_PATH}?id=__nope__`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(unknownPaid.status, 404, "a payment header does not buy a missing id");
+      assert.equal(unknownPaid.headers.get("payment-required"), null);
+
+      const paidOne = await fetch(`${base}${WARNING_LETTERS_PATH}?id=${knownId}`, {
         headers: { "X-PAYMENT": "test" },
       });
       assert.equal(paidOne.status, 200);
       const paidOneBody = (await paidOne.json()) as { letters?: { sourceUrl?: string; id?: string }[] };
-      assert.equal(paidOneBody.letters?.[0]?.id, "citra100mg-722606-03042026");
+      assert.equal(paidOneBody.letters?.[0]?.id, knownId);
       assert.match(paidOneBody.letters?.[0]?.sourceUrl ?? "", /fda\.gov\/.*citra100mg-722606-03042026/);
+      assert.ok(paidOne.headers.get("etag"), "paid ?id= still sends ETag");
     },
   );
 
@@ -12268,7 +12303,7 @@ async function main(): Promise<void> {
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths?: Record<string, { get?: { parameters?: { name?: string }[]; responses?: Record<string, { description?: string } | unknown> } }>;
         info?: { "x-guidance"?: string };
-        "x-agentcash-guidance"?: { etag?: string };
+        "x-agentcash-guidance"?: { etag?: string; updateCadence?: string; http429?: string };
       };
       const wlParams = spec.paths?.[WARNING_LETTERS_PATH]?.get?.parameters?.map((p) => p.name) ?? [];
       assert.ok(wlParams.includes("since"));
@@ -12287,10 +12322,38 @@ async function main(): Promise<void> {
         "sample Table rebuy must not claim unpaid 402 exposes ETag",
       );
 
+      const buyerCadence =
+        "Refreshed twice daily, about 07:45 and 19:45 America/Boise. An unchanged official asOf means there is no new data.";
+      const opsLeaks = [
+        "Walk every live well-known paid door",
+        "Skip only the recrawl when official asOf is unchanged",
+        "Imagine window",
+        "Official collect may see upstream 429s",
+      ];
+      const shop = (await (await fetch(`${base}/`)).json()) as { note?: string };
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
+        instructions?: string;
         extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string; resourceCount?: number };
         resources?: string[];
       };
+      const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      const openApiText = JSON.stringify(spec);
+      for (const surface of [shop.note ?? "", llmsBody, JSON.stringify(wk), openApiText]) {
+        for (const leak of opsLeaks) {
+          assert.equal(surface.includes(leak), false, `buyer surface still has ops copy: ${leak}`);
+        }
+        assert.ok(surface.includes(buyerCadence), "buyer cadence line is on every public surface");
+      }
+      assert.equal(shop.note, wk.instructions?.slice(wk.instructions.indexOf("Extracted-body doors"))?.split(" Free 3-row")[0]);
+      assert.equal(wk.extra?.updateCadence, buyerCadence);
+      assert.equal(spec["x-agentcash-guidance"]?.updateCadence, buyerCadence);
+      assert.ok(shop.note?.includes("HTTP 429 is not a SKU"));
+      assert.ok(shop.note?.includes("honor Retry-After"));
+      assert.ok(shop.note?.includes("?id="));
+      assert.ok(shop.note?.includes("If-None-Match"));
+      assert.ok(wk.extra?.http429?.includes("HTTP 429 is not a SKU"));
+      assert.ok(wk.extra?.http429?.includes("honor Retry-After"));
+      assert.equal(wk.extra?.http429?.includes("Official collect"), false);
       assert.ok(wk.extra?.since?.includes("?since="));
       assert.ok(wk.extra?.etag?.includes("If-None-Match"));
       assert.ok(wk.extra?.updateCadence?.includes("America/Boise"));
@@ -12298,7 +12361,6 @@ async function main(): Promise<void> {
       assert.equal(wk.extra?.resourceCount, PUBLIC_BAZAAR_SKUS.length);
       assert.equal(wk.resources?.length, PUBLIC_BAZAAR_SKUS.length);
 
-      const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llmsBody.includes("?since="));
       assert.ok(llmsBody.includes("If-None-Match"));
       assert.ok(llmsBody.includes("## Table rebuy"), "llms.txt must teach /ticks ETag rebuy");

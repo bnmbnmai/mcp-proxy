@@ -765,6 +765,7 @@ import {
   decorateExtractedBodyManifest,
   stripOfficialDeepLinksFromFreeManifest,
   etagFromPaidEnvelope,
+  extractedIdMissing,
   HTTP_429_COPY,
   ifNoneMatchHits,
   isExtractedBodySku,
@@ -9075,6 +9076,18 @@ function amountAtomicForRequest(sku: DoorSku, opts?: PaidBodyOpts): string {
   return amountAtomicFor(sku);
 }
 
+/** Free 404 for an extracted-body ?id= that is not in the current catalog. No payment challenge. */
+function unknownCatalogIdBody(doorPath: string, id: string): Record<string, unknown> {
+  return {
+    error: "not_found",
+    id,
+    path: doorPath,
+    message: "That id is not in this door's current catalog. Find valid ids on the free manifest or index before paying.",
+    manifest: `${doorPath}/manifest.json`,
+    index: `${doorPath}/index?q=`,
+  };
+}
+
 async function servePaid(
   req: IncomingMessage,
   res: ServerResponse,
@@ -9140,6 +9153,19 @@ async function servePaid(
     }
     return false;
   };
+
+  if (isExtractedBodySku(sku) && opts?.id) {
+    try {
+      const peeked = await load(opts);
+      if (extractedIdMissing(peeked, opts.id)) {
+        logPaid(404);
+        sendJson(res, 404, unknownCatalogIdBody(copy.resourcePath, opts.id));
+        return;
+      }
+    } catch {
+      // Catalog peek failed. Leave the existing 402 / paid path in place.
+    }
+  }
 
   if (!payment) {
     if (wantsNotModified) {
