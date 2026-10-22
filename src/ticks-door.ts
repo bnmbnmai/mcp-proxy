@@ -1100,6 +1100,7 @@ const PUBLIC_SERIES_PREFIXES = [
   "dairy.ams_",
   "hogs.ams_",
   "produce.ams_",
+  "sheep.ams_",
   "inputs.ams_",
   "fiber.ams_",
   "ibc.id.grain.",
@@ -4833,6 +4834,7 @@ export function loadTicks(): TicksPayload {
 const GROUP_LABELS: { id: string; name: string }[] = [
   { id: "hay", name: "Hay" },
   { id: "cattle", name: "Cattle" },
+  { id: "sheep", name: "Sheep and goats" },
   { id: "produce", name: "Produce" },
   { id: "grain", name: "Grain" },
   { id: "dairy", name: "Dairy" },
@@ -4859,6 +4861,7 @@ function num(value: unknown): number | null {
 function inferCadence(source: string, market: string): string | null {
   const blob = `${source} ${market}`;
   if (/weekly/i.test(blob)) return "weekly";
+  if (/daily/i.test(blob)) return "daily";
   if (/wednesday/i.test(blob)) return "wednesday auction";
   return null;
 }
@@ -5012,7 +5015,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     schema: {
       tickFields: {
         id: "string — deterministic series id",
-        group: "hay | cattle | produce | grain | dairy | hogs | pulses | wool | inputs",
+        group: "hay | cattle | sheep | produce | grain | dairy | hogs | pulses | wool | inputs",
         commodity: "string",
         label: "string",
         market: "string — geography / barn / shipping point",

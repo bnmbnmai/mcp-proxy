@@ -39,7 +39,11 @@
  * AMS_2907 National Direct Sheep and AMS_1772 Billings sheep/goat auction land
  * on the same table as sheep.ams_* $/cwt rows. A live "no confirmed sales"
  * direct week stays empty — do not backfill an older ESMIS trade week.
- * Per-unit replacement sheep/goats are $/head and stay off. SA_LS855.txt is
+ * Per-unit replacement sheep/goats on those two sheets are $/head and stay off.
+ * AMS_1928 Georgia Daily Livestock Auction Summary and AMS_1833 Missouri Weekly
+ * Sheep/Goat Auction Summary are the same LPGMN weighted-average layout, public
+ * domain (17 USC 105). They keep every priced line, including $/head replacement
+ * stock. Official .txt/.csv are 404 and marsapi stays 403. SA_LS855.txt is
  * free plaintext and stays off. Other sheep/goat barns and LMR boxed lamb stay off.
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
@@ -241,6 +245,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1928", group: "cattle", region: "georgia_daily", title: "Georgia Daily Livestock Auction Summary", esmisPublication: "" },
   { slug: "2041", group: "cattle", region: "illinois_weekly", title: "Illinois Weekly Cattle Auction Summary", esmisPublication: "illinois-weekly-cattle-auction-summary" },
   { slug: "1976", group: "cattle", region: "indiana_weekly", title: "Indiana Weekly Auction Summary", esmisPublication: "indiana-weekly-cattle-auction-summary" },
   { slug: "1919", group: "cattle", region: "pennsylvania_weekly", title: "Pennsylvania Weekly Cattle Auction Summary", esmisPublication: "pennsylvania-weekly-livestock-auction-summary" },
@@ -319,6 +324,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2907", group: "sheep", region: "national", title: "National Direct Sheep", esmisPublication: "national-direct-sheep-report" },
   { slug: "1772", group: "sheep", region: "billings_pay", title: "Public Auction Yards Sheep and Goat Auction (Billings)", esmisPublication: "" },
+  { slug: "1833", group: "sheep", region: "missouri_sheep_goat", title: "Missouri Weekly Sheep/Goat Auction Summary", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
   { slug: "2315", group: "produce", region: "new_york", title: "New York Terminal Market Vegetables", esmisPublication: "", pdfNames: ["nx_fv020"] },
   { slug: "2290", group: "produce", region: "chicago", title: "Chicago Terminal Market Fruit", esmisPublication: "", pdfNames: ["hx_fv010"] },
@@ -357,7 +363,7 @@ export const SKIPPED_SOURCES = [
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
   { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
-  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. IL AMS_2041, IN AMS_1976, PA AMS_1919, and AR AMS_2056 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies stay off this pass" },
+  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. GA daily AMS_1928 is on /ticks beside weekly AMS_1933. IL AMS_2041, IN AMS_1976, PA AMS_1919, and AR AMS_2056 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies stay off this pass" },
   { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
   { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video and AMS_3242 Western Video Market are on /ticks" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
@@ -373,7 +379,7 @@ export const SKIPPED_SOURCES = [
   { id: "dairy-gdt-farmers-markets", why: "GDT 1604, farmers-market dairy, and international DMN PDFs are a leftover dairy slice; not this pass" },
   { id: "dairy-waf-empty", why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes" },
   { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
-  { id: "sheep-goats", why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, and Billings PAY sheep/goat AMS_1772 are on /ticks. Grocery lamb/veal AMS_3229/3796 stay. SA_LS855.txt stays off" },
+  { id: "sheep-goats", why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, Billings PAY sheep/goat AMS_1772, and Missouri weekly sheep/goat AMS_1833 are on /ticks. Grocery lamb/veal AMS_3229/3796 stay. SA_LS855.txt stays off" },
   { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_2842 Weekly National Egg Products, AMS_3646 Weekly National Chicken, AMS_3647 Weekly National Turkey, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
   { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; liquid egg products are AMS_2842; retail egg ads are AMS_2757. Official turkey weekly is AMS_3647, not 3725" },
   { id: "cotton-rice", why: "Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) and Weekly National Rice Summary (AMS_1655) are already on /ticks grain rows. CME rough rice futures inside AMS_1655 are not ticks" },
@@ -4720,7 +4726,230 @@ export function parseWeeklyRiceSummary(text: string, report: AmsReport, sourceUr
   return dedupeTicks(out);
 }
 
+/**
+ * LPGMN "Livestock Weighted Average Report" summaries. Public domain (17 USC 105).
+ * Every priced line, including Age/Stage rows and $/head replacement stock.
+ * Scoped to AMS_1928 and AMS_1833 so barn sheets keep their own parsers.
+ */
+const LPGMN_WAVG_SLUGS = new Set(["1928", "1833"]);
+const LPGMN_SECTION_RE = /^[A-Z][A-Z /&]+$/;
+const LPGMN_CLASS_RE = /^(.+?) \((Per (?:Cwt|Unit|Head|Family)[^)]*)\)$/;
+const LPGMN_AGE_RE = /^(<\d+|>\d+|\d+-\d+)\b/;
+const LPGMN_STAGE_RE = /^(T\d(?:-\d)?|O|E|B|FALL|WIN|SPR|SUM)\b/;
+const LPGMN_ROW_RE = /^(\d+)\s+(\d+(?:-\d+)?)\s+(\d+)\s+([\d.]+(?:-[\d.]+)?)\s+([\d.]+)(?:\s+(.*))?$/;
+
+function lpgmnBase(klass: string): { tok: string; commodity: string } {
+  switch (klass) {
+    case "STEERS":
+      return { tok: "steer", commodity: "steers" };
+    case "HEIFERS":
+      return { tok: "heifer", commodity: "heifers" };
+    case "BULLS":
+      return { tok: "bull", commodity: "bulls" };
+    case "COWS":
+      return { tok: "cow", commodity: "cows" };
+    case "LAMBS":
+      return { tok: "lamb", commodity: "lambs" };
+    case "HAIR LAMBS":
+      return { tok: "hair-lamb", commodity: "hair lambs" };
+    case "HAIR BREEDS":
+      return { tok: "hair-breed", commodity: "hair breeds" };
+    case "WOOLED & SHORN":
+      return { tok: "wooled", commodity: "wooled lambs" };
+    case "EWES":
+      return { tok: "ewe", commodity: "ewes" };
+    case "HAIR EWES":
+      return { tok: "hair-ewe", commodity: "hair ewes" };
+    case "RAMS":
+      return { tok: "ram", commodity: "rams" };
+    case "HAIR RAMS":
+      return { tok: "hair-ram", commodity: "hair rams" };
+    case "KIDS":
+      return { tok: "kid", commodity: "kids" };
+    case "WETHER KIDS":
+      return { tok: "wether-kid", commodity: "wether kids" };
+    case "NANNIES/DOES":
+      return { tok: "nanny", commodity: "nannies" };
+    case "BUCKS/BILLIES":
+      return { tok: "buck", commodity: "bucks" };
+    case "WETHERS":
+      return { tok: "wether", commodity: "wethers" };
+    default:
+      return { tok: token(klass), commodity: klass.toLowerCase() };
+  }
+}
+
+function lpgmnKind(section: string, klass: string): { tok: string; commodity: string } {
+  const named: Record<string, { tok: string; commodity: string }> = {
+    "BRED COWS": { tok: "bred-cow", commodity: "Bred cows" },
+    "COW-CALF PAIRS": { tok: "cow-calf-pair", commodity: "Cow-calf pairs" },
+    "STOCK COWS": { tok: "stock-cow", commodity: "Stock cows" },
+    "OPEN HEIFERS": { tok: "open-heifer", commodity: "Open heifers" },
+  };
+  if (named[klass]) return named[klass];
+  const role = /replacement/i.test(section) ? "replacement" : /feeder/i.test(section) ? "feeder" : "slaughter";
+  const base = lpgmnBase(klass);
+  const roleWord = role === "feeder" ? "Feeder" : role === "replacement" ? "Replacement" : "Slaughter";
+  return { tok: `${role}-${base.tok}`, commodity: `${roleWord} ${base.commodity}` };
+}
+
+function lpgmnGradeTok(grade: string): string {
+  const g = grade.trim().toLowerCase();
+  const calf = g.match(/w\/\s*(<\s*150|150-300|>\s*300)\s*lbs calf/);
+  let calfTok = "";
+  if (calf) {
+    const raw = calf[1].replace(/\s+/g, "");
+    calfTok = raw.startsWith("<") ? "_calf_under_150" : raw.startsWith(">") ? "_calf_over_300" : "_calf_150_300";
+  }
+  const base = g.replace(/\s*w\/.*$/, "").trim();
+  let tok = "";
+  if (/breaker/.test(base)) tok = "breaker";
+  else if (/boner/.test(base)) tok = "boner";
+  else if (/lean/.test(base)) tok = "lean";
+  else if (/choice and prime 1-3/.test(base)) tok = "cp13";
+  else if (/choice and prime 1-2/.test(base)) tok = "cp12";
+  else if (/choice and prime 1\b/.test(base)) tok = "cp1";
+  else if (/choice and prime 2-3/.test(base)) tok = "cp23";
+  else if (/choice 1-3/.test(base)) tok = "c13";
+  else if (/small and medium 1-2/.test(base)) tok = "sm12";
+  else if (/medium and large 1-2/.test(base)) tok = "ml12";
+  else if (/medium and large 2-3/.test(base)) tok = "ml23";
+  else if (/medium and large 3/.test(base)) tok = "ml3";
+  else if (/medium and large 2/.test(base)) tok = "ml2";
+  else if (/medium and large 1/.test(base)) tok = "ml1";
+  else if (/small 2-3/.test(base)) tok = "s23";
+  else if (/small 1-2/.test(base)) tok = "s12";
+  else if (/selection 1-2/.test(base)) tok = "sel12";
+  else if (/selection 1-3/.test(base)) tok = "sel13";
+  else if (/selection 1/.test(base)) tok = "sel1";
+  else if (/selection 2/.test(base)) tok = "sel2";
+  else if (/selection 3/.test(base)) tok = "sel3";
+  else if (/utility and good 1-3/.test(base)) tok = "ug13";
+  else if (/utility and good 2/.test(base)) tok = "ug2";
+  else if (/cull and utility 1-2/.test(base)) tok = "cu12";
+  else if (/good 2-3/.test(base)) tok = "good23";
+  else if (/good 1-2/.test(base)) tok = "good12";
+  else if (/^1-2$/.test(base)) tok = "12";
+  else if (/^1$/.test(base)) tok = "1";
+  else tok = token(base);
+  return `${tok}${calfTok}`;
+}
+
+function lpgmnAgeTok(age: string): string {
+  return token(age.replace(/^</, "under ").replace(/^>/, "over "));
+}
+
+function lpgmnBounds(group: AmsGroup, perHead: boolean, avg: number, wt: number): boolean {
+  if (!Number.isFinite(avg) || !Number.isFinite(wt)) return false;
+  if (group === "sheep") {
+    if (wt < 10 || wt > 450) return false;
+    return perHead ? avg >= 40 && avg <= 5000 : avg >= 20 && avg <= 900;
+  }
+  if (wt < 150 || wt > 2500) return false;
+  return perHead ? avg >= 200 && avg <= 8000 : avg >= 20 && avg <= 900;
+}
+
+/** Priced rows from an LPGMN livestock weighted-average PDF. Receipts that are not priced stay off. */
+export function parseLpgmnWeightedAverage(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+  const out: AmsTick[] = [];
+  let section = "";
+  let klass = "";
+  let grade = "";
+  let perHead = false;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (LPGMN_SECTION_RE.test(line) && line.length < 40 && line !== "LIVESTOCK SUMMARY") {
+      section = line;
+      klass = "";
+      grade = "";
+      perHead = false;
+      continue;
+    }
+    const hdr = line.match(LPGMN_CLASS_RE);
+    if (hdr) {
+      const full = hdr[1].replace(/\s+/g, " ").trim();
+      const dash = full.indexOf(" - ");
+      klass = dash >= 0 ? full.slice(0, dash) : full;
+      grade = dash >= 0 ? full.slice(dash + 3) : full;
+      perHead = /unit|head|family/i.test(hdr[2]);
+      continue;
+    }
+    if (!section || !klass) continue;
+    let body = line;
+    let age: string | null = null;
+    let stage: string | null = null;
+    const ageHit = body.match(LPGMN_AGE_RE);
+    if (ageHit) {
+      let rest = body.slice(ageHit[0].length).trim();
+      const stageHit = rest.match(LPGMN_STAGE_RE);
+      if (stageHit) rest = rest.slice(stageHit[0].length).trim();
+      if (LPGMN_ROW_RE.test(rest)) {
+        age = ageHit[1];
+        stage = stageHit ? stageHit[1] : null;
+        body = rest;
+      }
+    }
+    const row = body.match(LPGMN_ROW_RE);
+    if (!row) continue;
+    const head = Number(row[1]);
+    const wt = Number(row[3]);
+    const prices = row[4].split("-").map(Number);
+    const lo = prices[0];
+    const hi = prices[prices.length - 1];
+    const avg = Number(row[5]);
+    const note = (row[6] ?? "").replace(/\s+/g, " ").trim();
+    if (!Number.isFinite(head) || head < 1) continue;
+    if (!lpgmnBounds(report.group, perHead, avg, wt)) continue;
+    if (!Number.isFinite(lo) || !Number.isFinite(hi)) continue;
+    const kind = lpgmnKind(section, klass);
+    const gradeTok = lpgmnGradeTok(grade);
+    const id = [
+      report.group,
+      `ams_${report.slug}`,
+      token(report.region),
+      kind.tok,
+      gradeTok,
+      ...(perHead ? ["head"] : []),
+      ...(age ? [lpgmnAgeTok(age)] : []),
+      ...(stage ? [token(stage)] : []),
+      `${wt}lb`,
+      ...(note ? [token(note)] : []),
+    ].join(".");
+    const bits = [
+      `USDA ${grade}`,
+      `${wt} lb`,
+      `${head} head`,
+      ...(age ? [`age ${age}`] : []),
+      ...(stage ? [`stage ${stage}`] : []),
+      ...(note ? [note] : []),
+    ];
+    out.push({
+      id,
+      group: report.group,
+      commodity: kind.commodity,
+      label: `${report.title} ${klass} ${grade} ${wt} lb`,
+      market: report.title,
+      classGrade: bits.join(", "),
+      unit: perHead ? "$/head" : "$/cwt",
+      price: roundMoney(avg),
+      lo: roundMoney(lo),
+      hi: roundMoney(hi),
+      asOf,
+      source,
+      sourceUrl,
+      reportDate: asOf,
+      series: id,
+    });
+  }
+  return dedupeTicks(assignUniqueIds(out));
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  if (LPGMN_WAVG_SLUGS.has(report.slug)) return parseLpgmnWeightedAverage(text, report, sourceUrl);
   if (report.slug === "2811" || (report.pdfNames ?? []).includes("lsmngfbeef")) {
     return parseGrassFedBeef(text, report, sourceUrl);
   }
