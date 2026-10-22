@@ -33,6 +33,9 @@ import {
   collectFmcOrders,
   discoverProceedingUrls,
   filterFmcOrdersManifest,
+  fmcCaughtUp,
+  fmcListingFailure,
+  recentProceedingDockets,
   isFederalRegisterHtml,
   isFrMirrorBody,
   isPhmsaTsvKill,
@@ -196,6 +199,17 @@ async function main(): Promise<void> {
   assert.ok(filterFmcOrdersManifest(manifest, "adenariwo").cardCount);
   assert.ok(filterFmcOrdersManifest(manifest, "23-08").cardCount);
   assert.ok(parseFmcOrderText(readFx("23-08-131865.txt"), SEED_LISTINGS[0]).body.includes(BODY_NEEDLE_NOR));
+  const dockets = recentProceedingDockets(new Date("2026-10-18T00:00:00Z"));
+  assert.equal(dockets[0], "26-30");
+  assert.ok(dockets.includes("26-11"));
+  assert.ok(dockets.includes("2042(I)"));
+  assert.ok(dockets.includes("25-25"));
+  assert.ok(dockets.includes("25-27"));
+  assert.ok(dockets.indexOf("2042(I)") < dockets.indexOf("25-25"));
+  assert.match(fmcListingFailure(502), /HTTP 502/);
+  assert.match(fmcListingFailure(502), /Not a complete walk/);
+  assert.match(fmcListingFailure(502), /2026-10-16/);
+  assert.match(fmcCaughtUp(12, 5), /no new Initial Decision/);
 }
 
 main().catch((err) => {

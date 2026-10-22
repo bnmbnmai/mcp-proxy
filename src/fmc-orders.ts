@@ -119,7 +119,26 @@ export type FmcSnapshot = {
   cards: FmcCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (FMC Reading Room orders; +https://www2.fmc.gov/ReadingRoom/)";
+/** Chrome-like UA. The Azure gateway 403s the shop UA; a browser UA still 502s while the Oct 16 outage is up. */
+export const FMC_BROWSER_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+
+const HTTP_UA = FMC_BROWSER_UA;
+
+export function fmcListingFailure(status: number): string {
+  const code = status > 0 ? `HTTP ${status}` : "failed";
+  return `FMC Reading Room listing ${code}; kept seed catalog. www.fmc.gov notice 2026-10-16: web applications intermittently down. Not a complete walk.`;
+}
+
+export function fmcCaughtUp(pages: number, cardCount: number): string {
+  return `Official FMC Reading Room walk (${pages} proceedings) had no new Initial Decision or Commission Order beyond the cached ${cardCount}.`;
+}
+
+function statusFromFetchError(err: unknown): number {
+  const msg = err instanceof Error ? err.message : String(err);
+  const hit = msg.match(/HTTP (\d{3})/);
+  return hit ? Number(hit[1]) : 0;
+}
 const OFFICIAL_HOSTS = new Set(["www2.fmc.gov", "fmc.gov", "www.fmc.gov"]);
 
 export const SEED_LISTINGS: FmcListing[] = [
@@ -378,6 +397,17 @@ export function proceedingUrl(docket: string): string {
   return `${READING_ROOM_ORIGIN}/readingroom/proceeding/${docket}/`;
 }
 
+/** Newest-first docket ids the four seed proceedings never link to. */
+export function recentProceedingDockets(today = new Date()): string[] {
+  const year = today.getUTCFullYear() % 100;
+  const out: string[] = [];
+  for (let n = 30; n >= 1; n -= 1) out.push(`${String(year).padStart(2, "0")}-${String(n).padStart(2, "0")}`);
+  for (let n = 2060; n >= 2034; n -= 1) out.push(`${n}(I)`);
+  const prev = year - 1;
+  for (let n = 30; n >= 1; n -= 1) out.push(`${String(prev).padStart(2, "0")}-${String(n).padStart(2, "0")}`);
+  return out;
+}
+
 export function parseHeading(raw: string): { docket: string; institution: string } {
   const text = stripTags(raw).replace(/\s+/g, " ").trim();
   if (/^Last Updated:/i.test(text)) return { docket: "", institution: "" };
@@ -558,6 +588,7 @@ export async function fetchFmcText(url: string): Promise<string> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/json" },
     redirect: "follow",
+    signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
@@ -568,6 +599,7 @@ export async function fetchFmcBytes(url: string): Promise<{ bytes: Uint8Array; f
   const res = await fetch(official, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
     redirect: "follow",
+    signal: AbortSignal.timeout(20000),
   });
   if (!res.ok) throw new Error(`${official} HTTP ${res.status}`);
   const bytes = new Uint8Array(await res.arrayBuffer());
@@ -606,8 +638,8 @@ function maxFetchLimit(): number {
 }
 
 function maxProceedingPages(): number {
-  const n = Number(env("FMC_ORDERS_PROCEEDINGS", "6"));
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 6;
+  const n = Number(env("FMC_ORDERS_PROCEEDINGS", "80"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 80;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -634,44 +666,78 @@ function mergeListings(listed: FmcListing[]): FmcListing[] {
   return out;
 }
 
-export async function walkOfficialFmcOrders(): Promise<{ listed: FmcListing[]; listedCount: number }> {
-  const queue = SEED_PROCEEDINGS.map((d) => proceedingUrl(d));
+export async function walkOfficialFmcOrders(): Promise<{
+  listed: FmcListing[];
+  listedCount: number;
+  listingError: string | null;
+  pagesFetched: number;
+}> {
+  const queue = [
+    ...recentProceedingDockets().map((docket) => proceedingUrl(docket)),
+    LISTING_URL,
+    PROCEEDING_SEARCH_URL,
+    ...SEED_PROCEEDINGS.map((docket) => proceedingUrl(docket)),
+  ];
   const seenPages = new Set<string>();
   const listed: FmcListing[] = [];
   const cap = maxProceedingPages();
+  let pagesFetched = 0;
+  let lastStatus = 0;
   while (queue.length && seenPages.size < cap) {
     const page = queue.shift();
     if (!page || seenPages.has(page)) continue;
     seenPages.add(page);
     try {
       const html = await fetchFmcText(page);
+      pagesFetched += 1;
       const docket = decodeURIComponent(page.match(PROCEEDING_PATH_RE)?.[1] ?? "");
       listed.push(...parseProceedingHtml(html, docket));
       for (const next of discoverProceedingUrls(html, page)) {
-        if (!seenPages.has(next) && queue.length + seenPages.size < cap) queue.push(next);
+        if (!seenPages.has(next) && queue.length + seenPages.size < cap + 8) queue.push(next);
       }
-    } catch {
-      /* keep walking */
+    } catch (err) {
+      const status = statusFromFetchError(err);
+      if (status) lastStatus = status;
     }
   }
   const merged = mergeListings(listed);
-  return { listed: merged, listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length) };
+  return {
+    listed: merged,
+    listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length),
+    listingError: pagesFetched === 0 ? fmcListingFailure(lastStatus) : null,
+    pagesFetched,
+  };
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: FmcListing[]; listedCount: number }> {
+async function loadOfficialListings(dir: string): Promise<{
+  listed: FmcListing[];
+  listedCount: number;
+  listingError: string | null;
+  pagesFetched: number;
+}> {
   if (dir) {
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseProceedingHtml(html) : [];
     const merged = mergeListings(listed);
-    return { listed: merged, listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length) };
+    return {
+      listed: merged,
+      listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length),
+      listingError: null,
+      pagesFetched: 0,
+    };
   }
   try {
     const walked = await walkOfficialFmcOrders();
-    if (walked.listed.length > 0) return walked;
-  } catch {
-    /* keep seeds */
+    if (walked.listed.length > 0 || walked.listingError) return walked;
+  } catch (err) {
+    return {
+      listed: [...SEED_LISTINGS],
+      listedCount: SEED_LISTINGS.length,
+      listingError: fmcListingFailure(statusFromFetchError(err)),
+      pagesFetched: 0,
+    };
   }
-  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length, listingError: null, pagesFetched: 0 };
 }
 
 export async function collectFmcOrders(opts?: {
@@ -680,7 +746,7 @@ export async function collectFmcOrders(opts?: {
   maxFetch?: number;
 }): Promise<FmcSnapshot> {
   const dir = opts?.htmlDir ?? listingDir();
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const { listed: allListed, listedCount, listingError, pagesFetched } = await loadOfficialListings(dir);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = fmcOrdersDir();
@@ -757,8 +823,17 @@ export async function collectFmcOrders(opts?: {
   for (const [id, card] of prior) {
     if (!seen.has(id)) cards.push(card);
   }
+  const unseen = allListed.filter((row) => !prior.has(row.id));
+  const assembled = assembleFmcOrdersSnapshot(cards);
+  let reason = listingError;
+  if (!reason && !dir && pagesFetched > 0 && unseen.length === 0 && addedThisRun === 0) {
+    reason = fmcCaughtUp(pagesFetched, assembled.cards.length);
+  } else if (!reason && unseen.length > 0 && addedThisRun === 0) {
+    reason = `FMC Reading Room listed ${unseen.length} new orders but none were saved. Not a complete walk.`;
+  }
   const snap = {
-    ...assembleFmcOrdersSnapshot(cards),
+    ...assembled,
+    reason: reason || assembled.reason,
     listedCount,
     fetchedPdfs,
     skippedNoText,

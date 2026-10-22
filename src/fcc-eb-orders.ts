@@ -113,7 +113,26 @@ export type FccEbSnapshot = {
   cards: FccEbCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (FCC Enforcement Bureau orders; +https://www.fcc.gov/edocs/daily-digest)";
+/** Chrome-like UA. www.fcc.gov Akamai returns HTTP 403 to bnm-data-shop and Node's default UA. */
+export const FCC_BROWSER_UA =
+  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36";
+
+const HTTP_UA = FCC_BROWSER_UA;
+
+export function fccListingFailure(status: number): string {
+  const code = status > 0 ? `HTTP ${status}` : "failed";
+  return `FCC daily digest listing ${code}; kept seed catalog. Not a complete walk.`;
+}
+
+export function fccCaughtUp(days: number, cardCount: number): string {
+  return `Official FCC Enforcement Bureau digest (${days} days) had no new DA orders beyond the cached ${cardCount}.`;
+}
+
+function statusFromFetchError(err: unknown): number {
+  const msg = err instanceof Error ? err.message : String(err);
+  const hit = msg.match(/HTTP (\d{3})/);
+  return hit ? Number(hit[1]) : 0;
+}
 
 export const SEED_LISTINGS: FccEbListing[] = [
   {
@@ -639,8 +658,8 @@ function maxFetchLimit(): number {
 }
 
 function maxListingPages(): number {
-  const n = Number(env("FCC_EB_ORDERS_PAGES", "4"));
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 4;
+  const n = Number(env("FCC_EB_ORDERS_PAGES", "45"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 45;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -666,12 +685,19 @@ function mergeListings(listed: FccEbListing[]): FccEbListing[] {
   return out;
 }
 
-export async function walkOfficialFccEbOrders(): Promise<{ listed: FccEbListing[]; listedCount: number }> {
+export async function walkOfficialFccEbOrders(): Promise<{
+  listed: FccEbListing[];
+  listedCount: number;
+  listingError: string | null;
+  pagesFetched: number;
+}> {
   const listed: FccEbListing[] = [];
   let pages: string[] = [];
+  let lastStatus = 0;
   try {
     pages = discoverDigestUrls(await fetchFccText(LISTING_URL), LISTING_URL);
-  } catch {
+  } catch (err) {
+    lastStatus = statusFromFetchError(err);
     pages = [];
   }
   if (pages.length === 0) pages = recentDigestUrls(Math.max(maxListingPages() * 4, 16));
@@ -687,28 +713,50 @@ export async function walkOfficialFccEbOrders(): Promise<{ listed: FccEbListing[
       const rows = parseFccEbDigest(html, page);
       listed.push(...rows);
       got += 1;
-    } catch {
+    } catch (err) {
+      const status = statusFromFetchError(err);
+      if (status) lastStatus = status;
       /* unpublished days and Akamai 403s are skipped; keep walking newer-first */
     }
   }
   const merged = mergeListings(listed);
-  return { listed: merged, listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length) };
+  return {
+    listed: merged,
+    listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length),
+    listingError: got === 0 ? fccListingFailure(lastStatus) : null,
+    pagesFetched: got,
+  };
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: FccEbListing[]; listedCount: number }> {
+async function loadOfficialListings(dir: string): Promise<{
+  listed: FccEbListing[];
+  listedCount: number;
+  listingError: string | null;
+  pagesFetched: number;
+}> {
   if (dir) {
     const raw = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = raw ? parseFccEbDigest(raw) : [];
     const merged = mergeListings(listed);
-    return { listed: merged, listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length) };
+    return {
+      listed: merged,
+      listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length),
+      listingError: null,
+      pagesFetched: 0,
+    };
   }
   try {
     const walked = await walkOfficialFccEbOrders();
-    if (walked.listed.length > 0) return walked;
-  } catch {
-    /* keep seeds */
+    if (walked.listed.length > 0 || walked.listingError) return walked;
+  } catch (err) {
+    return {
+      listed: [...SEED_LISTINGS],
+      listedCount: SEED_LISTINGS.length,
+      listingError: fccListingFailure(statusFromFetchError(err)),
+      pagesFetched: 0,
+    };
   }
-  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length, listingError: null, pagesFetched: 0 };
 }
 
 export async function collectFccEbOrders(opts?: {
@@ -717,7 +765,7 @@ export async function collectFccEbOrders(opts?: {
   maxFetch?: number;
 }): Promise<FccEbSnapshot> {
   const dir = opts?.htmlDir ?? listingDir();
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const { listed: allListed, listedCount, listingError, pagesFetched } = await loadOfficialListings(dir);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = fccEbOrdersDir();
@@ -782,8 +830,17 @@ export async function collectFccEbOrders(opts?: {
   for (const [id, card] of prior) {
     if (!seen.has(id)) cards.push(card);
   }
+  const unseen = allListed.filter((row) => !prior.has(row.id));
+  const assembled = assembleFccEbOrdersSnapshot(cards);
+  let reason = listingError;
+  if (!reason && !dir && pagesFetched > 0 && unseen.length === 0 && addedThisRun === 0) {
+    reason = fccCaughtUp(pagesFetched, assembled.cards.length);
+  } else if (!reason && unseen.length > 0 && addedThisRun === 0) {
+    reason = `FCC digest listed ${unseen.length} new DA orders but none were saved. Not a complete walk.`;
+  }
   const snap = {
-    ...assembleFccEbOrdersSnapshot(cards),
+    ...assembled,
+    reason: reason || assembled.reason,
     listedCount,
     fetchedPdfs,
     skippedNoText,
