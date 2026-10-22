@@ -52,6 +52,9 @@ import {
   paidBodyOptsFromSearch,
   paidBodyQueryPath,
   paidBodyWindow,
+  COLLECT_CADENCE,
+  extractedIdMissing,
+  HTTP_429_COPY,
   ifNoneMatchHits,
   newerSinceCopy,
   slicePaidCatalog,
@@ -1734,6 +1737,46 @@ async function main(): Promise<void> {
   assert.equal(ifNoneMatchHits("*", etagA), true);
   assert.equal(tableUnchangedSince({ fetchedAt: "2026-08-25T12:00:00.000Z", asOf: "2026-08-21" }, "2026-08-25T12:00:00.000Z"), true);
   assert.equal(tableUnchangedSince({ fetchedAt: "2026-08-26T00:00:00.000Z", asOf: "2026-08-21" }, "2026-08-25T12:00:00.000Z"), false);
+
+  const buyerCadence =
+    "Refreshed twice daily, about 07:45 and 19:45 America/Boise. An unchanged official asOf means there is no new data.";
+  assert.equal(COLLECT_CADENCE, buyerCadence);
+  assert.equal(HTTP_429_COPY.includes("HTTP 429 is not a SKU"), true);
+  assert.equal(HTTP_429_COPY.includes("honor Retry-After"), true);
+  assert.equal(HTTP_429_COPY.includes("Official collect may see upstream 429s"), false);
+  assert.equal(COLLECT_CADENCE.includes("Imagine window"), false);
+  assert.equal(COLLECT_CADENCE.includes("Walk every live well-known paid door"), false);
+  const knownOne = paidWarningLettersBody(
+    {
+      letters: [
+        {
+          id: "citra100mg-722606-03042026",
+          firm: "Citra100mg",
+          issuedOn: "2026-03-04",
+          body: "WARNING LETTER",
+          sourceUrl: "https://www.fda.gov/example",
+        },
+      ],
+    },
+    { id: "citra100mg-722606-03042026" },
+  );
+  assert.equal(extractedIdMissing(knownOne, "citra100mg-722606-03042026"), false);
+  const missingOne = paidWarningLettersBody(
+    {
+      letters: [
+        {
+          id: "citra100mg-722606-03042026",
+          firm: "Citra100mg",
+          issuedOn: "2026-03-04",
+          body: "WARNING LETTER",
+          sourceUrl: "https://www.fda.gov/example",
+        },
+      ],
+    },
+    { id: "__nope__" },
+  );
+  assert.equal(extractedIdMissing(missingOne, "__nope__"), true);
+  assert.equal(extractedIdMissing(knownOne, "__nope__"), false, "a different id on a hit window fails open");
 
   console.log("paid-records normalize tests ok");
 }

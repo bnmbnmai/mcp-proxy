@@ -1460,11 +1460,30 @@ export function paidImportAlertsBody<
 
 export const RECORD_FIELDS = ["id", "date", "firm", "url", "type"] as const;
 
+/** Buyer-facing refresh line. Shared by GET /, /llms.txt, /.well-known/x402, and /openapi.json. */
 export const COLLECT_CADENCE =
-  "Two daily America/Boise collects (07:45 and 19:45). Walk every live well-known paid door. Skip only the recrawl when official asOf is unchanged. Skip 02:00-04:00 Imagine window.";
+  "Refreshed twice daily, about 07:45 and 19:45 America/Boise. An unchanged official asOf means there is no new data.";
 
+/** Buyer-facing 429 line. Upstream collect throttling stays off this copy. */
 export const HTTP_429_COPY =
-  "HTTP 429 is not a SKU and is not a subscription. Official collect may see upstream 429s; those are not sold. If this host returns 429, honor Retry-After and poll with ?since= or If-None-Match.";
+  "HTTP 429 is not a SKU and is not a subscription. If this host returns 429, honor Retry-After and poll with ?since= or If-None-Match.";
+
+/**
+ * Paid ?id= window whose id is not in the sold catalog.
+ * Fail open unless this body is the id-scoped window for that exact id.
+ */
+export function extractedIdMissing(body: unknown, id: string): boolean {
+  if (!id || !body || typeof body !== "object") return false;
+  const row = body as { id?: unknown; ids?: unknown; records?: unknown };
+  if (row.id !== id) return false;
+  const ids = Array.isArray(row.ids) ? row.ids : [];
+  if (ids.some((value) => String(value) === id)) return false;
+  const records = Array.isArray(row.records) ? row.records : [];
+  return !records.some((item) => {
+    if (!item || typeof item !== "object") return false;
+    return String((item as { id?: unknown }).id ?? "") === id;
+  });
+}
 
 export function snapshotEtag(parts: {
   sku: string;
