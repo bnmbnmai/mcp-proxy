@@ -38,6 +38,8 @@ import { loadOfgemEnforcementManifest } from "./ofgem-enforcement.js";
 import { loadOfwatEnforcementManifest } from "./ofwat-enforcement.js";
 import {
   attachPaidPageCursors,
+  firstTrustedDate,
+  newestTrustedDate,
   PAGE_PRICE_USDC,
   paidOneUrl,
   SINGLE_DOC_PRICE_USDC,
@@ -211,10 +213,14 @@ function cacheStamp(index: Record<string, unknown> | null | undefined): {
   fetchedAt: string | null;
   asOf: string | null;
 } {
-  return {
-    fetchedAt: str(index?.fetchedAt) || null,
-    asOf: str(index?.asOf) || null,
-  };
+  const fetchedAt = str(index?.fetchedAt) || null;
+  const rawAsOf = str(index?.asOf);
+  let asOf = rawAsOf && firstTrustedDate(fetchedAt, rawAsOf) ? rawAsOf : null;
+  if (!asOf && index) {
+    const list = Array.isArray(index.letters) ? index.letters : Array.isArray(index.cards) ? index.cards : [];
+    asOf = newestTrustedDate(list.filter((row): row is Record<string, unknown> => Boolean(row) && typeof row === "object"), fetchedAt);
+  }
+  return { fetchedAt, asOf };
 }
 
 function rowPage(row: Record<string, unknown>): number | null {
@@ -304,7 +310,7 @@ function searchBodyIndex(door: string, manifest: Record<string, unknown>, needle
   const listKey = Array.isArray(manifest.letters) ? "letters" : Array.isArray(manifest.cards) ? "cards" : null;
   if (!listKey) return [];
   const stamp = cacheStamp(manifest);
-  return attachPaidPageCursors(asList(manifest[listKey]))
+  return attachPaidPageCursors(asList(manifest[listKey]), undefined, manifest.fetchedAt)
     .filter((row) => matchesNeedle(row, needle))
     .map((row) => bodyMatch(door, row, stamp));
 }
