@@ -40,6 +40,7 @@ import {
   eisSearchCoveredByBag,
   eisSearchFingerprint,
   eisSearchUnchanged,
+  stampCheckedEisSnapshot,
   selectEisReportCard,
   solveAltchaPow,
 } from "./eis-reports.js";
@@ -85,6 +86,40 @@ async function main(): Promise<void> {
     true,
     "unchanged CDX search keeps the prior bag and does not launch Chrome",
   );
+  const eisCache = mkdtempSync(join(tmpdir(), "eis-reports-stamp-"));
+  const prevEisDir = process.env.EIS_REPORTS_DIR;
+  process.env.EIS_REPORTS_DIR = eisCache;
+  try {
+    const stamped = stampCheckedEisSnapshot(
+      {
+        ok: true,
+        product: PRODUCT_ID,
+        status: "ok",
+        reason: null,
+        fetchedAt: "2026-10-22T02:21:43.063Z",
+        asOf: "2026-10-16",
+        license: LICENSE,
+        attribution: ATTRIBUTION,
+        searchFingerprint: searchFp,
+        sources: { search: "", lastWeek: LAST_WEEK_URL, last30: "", details: "" },
+        cards: [
+          {
+            ...SEED_LISTINGS[0],
+            kind: "Final",
+            body: readFx("20260036.txt"),
+          },
+        ],
+      },
+      "Official EIS search unchanged; no newer reports.",
+    );
+    assert.equal(stamped.asOf, "2026-10-16");
+    assert.notEqual(stamped.fetchedAt, "2026-10-22T02:21:43.063Z");
+    assert.match(stamped.reason ?? "", /unchanged/);
+    assert.equal(stamped.cards.length, 1);
+  } finally {
+    if (prevEisDir === undefined) delete process.env.EIS_REPORTS_DIR;
+    else process.env.EIS_REPORTS_DIR = prevEisDir;
+  }
   assert.equal(
     eisSearchUnchanged(
       {

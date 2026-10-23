@@ -226,6 +226,76 @@ async function main(): Promise<void> {
   assert.ok(!f483A.letters.some((row) => row.id === "empty-body"));
   assert.equal(f483A.source.includes("oii-foia-electronic-reading-room"), true);
 
+  const futureFetch = "2026-10-23T03:19:28.779Z";
+  const futureBody = "This document lists observations.\nOBSERVATION 1\n" + "x".repeat(220);
+  const futureLetters = [
+    {
+      id: "corerx-inc-195629",
+      mediaId: "195629",
+      firm: "CoreRX Inc.",
+      fei: "3007209985",
+      recordDate: "2025-03-20",
+      publishedOn: "2026-10-20",
+      issuedOn: "2028-03-20",
+      sourceUrl: "https://www.fda.gov/media/195629/download",
+      body: futureBody,
+    },
+    {
+      id: "victory-medical-center-pharmacy-195803",
+      firm: "Victory Medical Center Pharmacy",
+      recordDate: "2026-09-10",
+      publishedOn: "2026-10-21",
+      issuedOn: "2026-09-10",
+      sourceUrl: "https://www.fda.gov/media/195803/download",
+      body: futureBody,
+    },
+  ];
+  const futureManifest = decorateExtractedBodyManifest({
+    fetchedAt: futureFetch,
+    asOf: "2028-03-20",
+    letters: futureLetters,
+  });
+  assert.equal(futureManifest.asOf, "2026-10-21", "future asOf falls back to the newest trusted field");
+  assert.ok(String(futureManifest.asOf) <= futureFetch.slice(0, 10));
+  const futureRows = futureManifest.letters as Array<Record<string, unknown>>;
+  const corerx = futureRows.find((row) => row.id === "corerx-inc-195629");
+  assert.equal(corerx?.issuedOn, "2028-03-20", "raw DATE ISSUED stays on issuedOn");
+  assert.equal(corerx?.date, "2026-10-20", "trusted date skips 2028 and uses publishedOn");
+  assert.equal(corerx?.publishedAt, "2026-10-20");
+  assert.equal(corerx?.recordDate, "2025-03-20");
+  assert.notEqual(futureRows[0]?.date, "2028-03-20");
+  const futurePaid = paidForm483Body(
+    { fetchedAt: futureFetch, asOf: "2028-03-20", letters: futureLetters },
+    { since: "2028-03-20" },
+  );
+  assert.equal(futurePaid.asOf, "2026-10-21");
+  assert.equal(futurePaid.since, null, "a 2028 since= watermark is not applied");
+  assert.equal(futurePaid.recordCount, 2, "records newer than a bogus 2028 watermark are still sold");
+  assert.equal(futurePaid.records.find((row) => row.id === "corerx-inc-195629")?.date, "2026-10-20");
+  assert.ok(!futurePaid.records.some((row) => row.date === "2028-03-20"));
+  const caughtUp = paidForm483Body(
+    { fetchedAt: futureFetch, asOf: "2026-10-21", letters: futureLetters },
+    { since: "2026-12-31" },
+  );
+  assert.equal(caughtUp.since, "2026-12-31", "a same-year future since= stays a caught-up cursor");
+  assert.equal(caughtUp.recordCount, 0, "nothing newer than 2026-12-31 is an empty delta, not the newest page");
+  const futureCard = paidPhmsaOrdersBody({
+    fetchedAt: futureFetch,
+    asOf: "2026-09-28",
+    cards: [
+      {
+        id: "32026030NOPV-pco",
+        institution: "BRIDGER PIPELINE LLC",
+        date: "2028-03-20",
+        publishedOn: "2026-09-28",
+        body: "x".repeat(40),
+        sourceUrl: "https://primis.phmsa.dot.gov/enforcement-documents/32026030NOPV/order.pdf",
+      },
+    ],
+  });
+  assert.equal(futureCard.records[0]?.date, "2026-09-28", "card doors skip a future date for the next sane field");
+  assert.equal(futureCard.asOf, "2026-09-28");
+
   const wlLetters = letters.map((row, i) => ({
     ...row,
     cms: String(700000 + i),
@@ -256,7 +326,11 @@ async function main(): Promise<void> {
   assert.equal(wlA.paidWindow, DEFAULT_PAID_BODY_WINDOW);
   assert.equal(wlA.asOf, "2026-08-12");
   assert.equal(wlA.records[0]?.type, WARNING_LETTER_TYPE);
-  assert.equal(wlA.records.find((r) => r.id.startsWith("firm-7-"))?.date, null, "WL issuedOn 2825 is dropped");
+  assert.equal(
+    wlA.records.find((r) => r.id.startsWith("firm-7-"))?.date,
+    "2026-02-03",
+    "WL issuedOn 2825 is not the sold date; publishedOn is",
+  );
   assert.equal(wlA.source.includes("warning-letters"), true);
 
   const shuffled = paidForm483Body({

@@ -1122,6 +1122,18 @@ async function loadOfficialListings(
   return { listed, listedCount: listed.length, searchFingerprint };
 }
 
+/** Search was read and nothing new is listed. Stamp fetchedAt; leave asOf and the bag. Does not launch Chrome. */
+export function stampCheckedEisSnapshot(prior: EisReportsSnapshot, reason: string): EisReportsSnapshot {
+  const snap: EisReportsSnapshot = {
+    ...prior,
+    fetchedAt: new Date().toISOString(),
+    asOf: prior.asOf,
+    reason,
+  };
+  writeEisReportsSnapshot(snap);
+  return snap;
+}
+
 export async function collectEisReports(opts?: {
   pauseMs?: number;
   htmlDir?: string;
@@ -1138,7 +1150,9 @@ export async function collectEisReports(opts?: {
       const html = await fetchOfficialSearchHtml(jar);
       const rows = parseSearchRows(html);
       const fingerprint = eisSearchFingerprint(rows);
-      if (eisSearchUnchanged(priorSnap, fingerprint) || eisSearchCoveredByBag(priorSnap, rows)) return priorSnap!;
+      if (priorSnap && (eisSearchUnchanged(priorSnap, fingerprint) || eisSearchCoveredByBag(priorSnap, rows))) {
+        return stampCheckedEisSnapshot(priorSnap, "Official EIS search unchanged; no newer reports.");
+      }
       prefetched = { html, jar };
     } catch {
       /* cheap CDX search missed; the listing load below still runs */

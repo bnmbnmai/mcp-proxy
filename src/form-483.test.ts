@@ -91,6 +91,13 @@ async function main(): Promise<void> {
   const poisoned = assembleSnapshot([{ ...cascade, issuedOn: "2825-01-21" }]);
   assert.equal(poisoned.asOf, "2026-07-31");
   assert.notEqual(poisoned.asOf, "2825-01-21");
+  const futureIssued = assembleSnapshot(
+    [{ ...cascade, issuedOn: "2028-03-20", recordDate: "2025-03-20", publishedOn: "2026-10-20" }],
+    "2026-10-23T03:19:28.779Z",
+  );
+  assert.equal(futureIssued.letters[0]?.issuedOn, "2028-03-20", "PDF DATE ISSUED stays on the letter");
+  assert.equal(futureIssued.asOf, "2026-10-20", "asOf does not follow a date after the fetch");
+  assert.ok(String(futureIssued.asOf) <= "2026-10-23");
   const issuedTypo = parse483Text("DATE ISSUED 1/21/2825\nThis document lists observations made by FDA.\nOBSERVATION 1\n" + "x".repeat(220), {
     sourceUrl: "https://www.fda.gov/media/191183/download",
     firm: "Lupin Limited",
