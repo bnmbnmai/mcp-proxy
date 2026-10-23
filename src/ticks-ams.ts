@@ -43,8 +43,11 @@
  * AMS_1928 Georgia Daily Livestock Auction Summary and AMS_1833 Missouri Weekly
  * Sheep/Goat Auction Summary are the same LPGMN weighted-average layout, public
  * domain (17 USC 105). They keep every priced line, including $/head replacement
- * stock. Official .txt/.csv are 404 and marsapi stays 403. SA_LS855.txt is
- * free plaintext and stays off. Other sheep/goat barns and LMR boxed lamb stay off.
+ * stock. The same parser, unchanged, also reads AMS_2014 San Angelo sheep/goat,
+ * AMS_3918 Mount Hope sheep, and AMS_1872 Buckhannon (cattle plus a few
+ * sheep/goat lines). Row group follows the section. Official .txt/.csv are 404
+ * and marsapi stays 403. SA_LS855.txt is free plaintext and stays off. Other
+ * sheep/goat barns and LMR boxed lamb stay off.
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
  * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
@@ -246,6 +249,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "1928", group: "cattle", region: "georgia_daily", title: "Georgia Daily Livestock Auction Summary", esmisPublication: "" },
+  { slug: "1872", group: "cattle", region: "buckhannon_wv", title: "Buckhannon Stockyards Livestock Auction (Buckhannon)", esmisPublication: "" },
   { slug: "2041", group: "cattle", region: "illinois_weekly", title: "Illinois Weekly Cattle Auction Summary", esmisPublication: "illinois-weekly-cattle-auction-summary" },
   { slug: "1976", group: "cattle", region: "indiana_weekly", title: "Indiana Weekly Auction Summary", esmisPublication: "indiana-weekly-cattle-auction-summary" },
   { slug: "1919", group: "cattle", region: "pennsylvania_weekly", title: "Pennsylvania Weekly Cattle Auction Summary", esmisPublication: "pennsylvania-weekly-livestock-auction-summary" },
@@ -325,6 +329,8 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2907", group: "sheep", region: "national", title: "National Direct Sheep", esmisPublication: "national-direct-sheep-report" },
   { slug: "1772", group: "sheep", region: "billings_pay", title: "Public Auction Yards Sheep and Goat Auction (Billings)", esmisPublication: "" },
   { slug: "1833", group: "sheep", region: "missouri_sheep_goat", title: "Missouri Weekly Sheep/Goat Auction Summary", esmisPublication: "" },
+  { slug: "2014", group: "sheep", region: "san_angelo_tx", title: "Producers Livestock Sheep and Goat Auction (San Angelo)", esmisPublication: "" },
+  { slug: "3918", group: "sheep", region: "mount_hope_oh", title: "Mount Hope Sheep Auction (Mount Hope)", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
   { slug: "2315", group: "produce", region: "new_york", title: "New York Terminal Market Vegetables", esmisPublication: "", pdfNames: ["nx_fv020"] },
   { slug: "2290", group: "produce", region: "chicago", title: "Chicago Terminal Market Fruit", esmisPublication: "", pdfNames: ["hx_fv010"] },
@@ -363,7 +369,7 @@ export const SKIPPED_SOURCES = [
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
   { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
-  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. GA daily AMS_1928 is on /ticks beside weekly AMS_1933. IL AMS_2041, IN AMS_1976, PA AMS_1919, and AR AMS_2056 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies stay off this pass" },
+  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. GA daily AMS_1928 is on /ticks beside weekly AMS_1933. IL AMS_2041, IN AMS_1976, PA AMS_1919, and AR AMS_2056 weeklies are on /ticks. Buckhannon barn AMS_1872 is on /ticks. Leftover WV/NY/MO regional weeklies stay off this pass" },
   { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
   { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video and AMS_3242 Western Video Market are on /ticks" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
@@ -379,7 +385,7 @@ export const SKIPPED_SOURCES = [
   { id: "dairy-gdt-farmers-markets", why: "GDT 1604, farmers-market dairy, and international DMN PDFs are a leftover dairy slice; not this pass" },
   { id: "dairy-waf-empty", why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes" },
   { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
-  { id: "sheep-goats", why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, Billings PAY sheep/goat AMS_1772, and Missouri weekly sheep/goat AMS_1833 are on /ticks. Grocery lamb/veal AMS_3229/3796 stay. SA_LS855.txt stays off" },
+  { id: "sheep-goats", why: "remaining official AMS sheep/lamb/goat sale barns and LMR boxed-lamb LM_XL* stay leftover. Grocery goat AMS_3797, National Direct Sheep AMS_2907, Billings PAY sheep/goat AMS_1772, Missouri weekly sheep/goat AMS_1833, San Angelo AMS_2014, and Mount Hope AMS_3918 are on /ticks. Grocery lamb/veal AMS_3229/3796 stay. SA_LS855.txt stays off" },
   { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_2842 Weekly National Egg Products, AMS_3646 Weekly National Chicken, AMS_3647 Weekly National Turkey, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
   { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; liquid egg products are AMS_2842; retail egg ads are AMS_2757. Official turkey weekly is AMS_3647, not 3725" },
   { id: "cotton-rice", why: "Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) and Weekly National Rice Summary (AMS_1655) are already on /ticks grain rows. CME rough rice futures inside AMS_1655 are not ticks" },
@@ -4729,9 +4735,11 @@ export function parseWeeklyRiceSummary(text: string, report: AmsReport, sourceUr
 /**
  * LPGMN "Livestock Weighted Average Report" summaries. Public domain (17 USC 105).
  * Every priced line, including Age/Stage rows and $/head replacement stock.
- * Scoped to AMS_1928 and AMS_1833 so barn sheets keep their own parsers.
+ * Scoped so Billings (AMS_1772) and the cattle-auction parsers keep their own
+ * rules. Row group follows the section: a mixed barn keeps cattle and
+ * sheep/goat lines. Single-species sheets stay on the same ids.
  */
-const LPGMN_WAVG_SLUGS = new Set(["1928", "1833"]);
+const LPGMN_WAVG_SLUGS = new Set(["1928", "1833", "2014", "3918", "1872"]);
 const LPGMN_SECTION_RE = /^[A-Z][A-Z /&]+$/;
 const LPGMN_CLASS_RE = /^(.+?) \((Per (?:Cwt|Unit|Head|Family)[^)]*)\)$/;
 const LPGMN_AGE_RE = /^(<\d+|>\d+|\d+-\d+)\b/;
@@ -4849,6 +4857,13 @@ function lpgmnBounds(group: AmsGroup, perHead: boolean, avg: number, wt: number)
   return perHead ? avg >= 200 && avg <= 8000 : avg >= 20 && avg <= 900;
 }
 
+/** Cattle sections stay cattle. Sheep and goat sections stay sheep. Anything else keeps the report group. */
+function lpgmnRowGroup(section: string, fallback: AmsGroup): AmsGroup {
+  if (/sheep|lamb|goat/i.test(section)) return "sheep";
+  if (/cattle/i.test(section)) return "cattle";
+  return fallback;
+}
+
 /** Priced rows from an LPGMN livestock weighted-average PDF. Receipts that are not priced stay off. */
 export function parseLpgmnWeightedAverage(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
@@ -4903,12 +4918,13 @@ export function parseLpgmnWeightedAverage(text: string, report: AmsReport, sourc
     const avg = Number(row[5]);
     const note = (row[6] ?? "").replace(/\s+/g, " ").trim();
     if (!Number.isFinite(head) || head < 1) continue;
-    if (!lpgmnBounds(report.group, perHead, avg, wt)) continue;
+    const rowGroup = lpgmnRowGroup(section, report.group);
+    if (!lpgmnBounds(rowGroup, perHead, avg, wt)) continue;
     if (!Number.isFinite(lo) || !Number.isFinite(hi)) continue;
     const kind = lpgmnKind(section, klass);
     const gradeTok = lpgmnGradeTok(grade);
     const id = [
-      report.group,
+      rowGroup,
       `ams_${report.slug}`,
       token(report.region),
       kind.tok,
@@ -4929,7 +4945,7 @@ export function parseLpgmnWeightedAverage(text: string, report: AmsReport, sourc
     ];
     out.push({
       id,
-      group: report.group,
+      group: rowGroup,
       commodity: kind.commodity,
       label: `${report.title} ${klass} ${grade} ${wt} lb`,
       market: report.title,
