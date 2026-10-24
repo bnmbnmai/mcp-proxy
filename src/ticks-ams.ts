@@ -3967,7 +3967,7 @@ const PRODUCER_BARNS: Record<ProducerBarnId, { title: string; market: string }> 
 };
 
 export function producerLatestPosts(html: string): { barn: ProducerBarnId; postUrl: string }[] {
-  const parts = html.split(/<h3>/i);
+  const parts = html.split(/<h3[^>]*>/i);
   const out: { barn: ProducerBarnId; postUrl: string }[] = [];
   for (const part of parts) {
     const title = part.match(/^([^<]+)/)?.[1]?.replace(/\s+/g, " ").trim();
@@ -3976,6 +3976,22 @@ export function producerLatestPosts(html: string): { barn: ProducerBarnId; postU
     const link = part.match(/href="(https:\/\/www\.producerslivestock\.com\/20\d\d\/[^"]+)"/i);
     if (!link || /historical|hay/i.test(link[1])) continue;
     out.push({ barn, postUrl: link[1] });
+  }
+  return out;
+}
+
+/** Locations the market-reports index did not yield. collectProducers records these so a parse miss is not silent. */
+export function producerMissingPostFailures(posts: readonly { barn: ProducerBarnId }[]): AmsFailed[] {
+  const found = new Set(posts.map((post) => post.barn));
+  const out: AmsFailed[] = [];
+  for (const barn of Object.keys(PRODUCER_BARNS) as ProducerBarnId[]) {
+    if (found.has(barn)) continue;
+    out.push({
+      id: `private_producers_${barn}`,
+      source: PRODUCER_BARNS[barn].market,
+      sourceUrl: PRODUCERS_INDEX,
+      reason: `no latest post for ${PRODUCER_BARNS[barn].title}`,
+    });
   }
   return out;
 }
@@ -4197,6 +4213,7 @@ async function collectProducers(
     });
     return;
   }
+  failed.push(...producerMissingPostFailures(posts));
   for (const post of posts) {
     const market = PRODUCER_BARNS[post.barn].market;
     try {

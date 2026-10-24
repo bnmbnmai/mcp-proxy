@@ -10,6 +10,7 @@ import {
   parseProducersLivestockReport,
   parseReportDate,
   producerLatestPosts,
+  producerMissingPostFailures,
   producerPdfUrl,
 } from "./ticks-ams.js";
 import {
@@ -560,6 +561,33 @@ const producerHtml = `<h3>Jerome, ID</h3><a href="https://www.producerslivestock
 const producerPosts = producerLatestPosts(producerHtml);
 assert.deepEqual(producerPosts.map((p) => p.barn), ["jerome", "vale"]);
 assert.equal(producerPdfUrl(`<a href="https://www.producerslivestock.com/wp-content/uploads/2026/09/VALE9-23-26.pdf">pdf</a>`), "https://www.producerslivestock.com/wp-content/uploads/2026/09/VALE9-23-26.pdf");
+
+const producerWpPosts = producerLatestPosts(fx("producers-market-reports.html"));
+assert.deepEqual(producerWpPosts, [
+  { barn: "jerome", postUrl: "https://www.producerslivestock.com/2026/10/20/10-20-26-2/" },
+  { barn: "vale", postUrl: "https://www.producerslivestock.com/2026/10/21/10-21-26/" },
+]);
+assert.deepEqual(producerMissingPostFailures(producerWpPosts), []);
+assert.deepEqual(
+  producerMissingPostFailures(producerWpPosts.filter((post) => post.barn === "jerome")).map((row) => row.id),
+  ["private_producers_vale"],
+);
+const producerSpacedHtml = `<h3 class="wp-block-heading" id="jerome">\n  Jerome, ID\n</h3><a href="https://www.producerslivestock.com/2026/10/20/10-20-26-2/">10-20-26</a><h3 data-loc="vale" class="wp-block-heading">Vale, OR </h3><a href="https://www.producerslivestock.com/2026/10/21/10-21-26/">10-21-26</a>`;
+assert.deepEqual(producerLatestPosts(producerSpacedHtml).map((p) => p.barn), ["jerome", "vale"]);
+assert.deepEqual(producerMissingPostFailures([]), [
+  {
+    id: "private_producers_jerome",
+    source: "Producers Livestock Jerome",
+    sourceUrl: "https://www.producerslivestock.com/market-reports/",
+    reason: "no latest post for Jerome, ID",
+  },
+  {
+    id: "private_producers_vale",
+    source: "Producers Livestock Vale",
+    sourceUrl: "https://www.producerslivestock.com/market-reports/",
+    reason: "no latest post for Vale, OR",
+  },
+]);
 
 for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
   assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
