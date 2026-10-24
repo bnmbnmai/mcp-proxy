@@ -3904,7 +3904,7 @@ const PRODUCER_BARNS = {
     vale: { title: "Vale, OR", market: "Producers Livestock Vale" },
 };
 export function producerLatestPosts(html) {
-    const parts = html.split(/<h3>/i);
+    const parts = html.split(/<h3[^>]*>/i);
     const out = [];
     for (const part of parts) {
         const title = part.match(/^([^<]+)/)?.[1]?.replace(/\s+/g, " ").trim();
@@ -3915,6 +3915,22 @@ export function producerLatestPosts(html) {
         if (!link || /historical|hay/i.test(link[1]))
             continue;
         out.push({ barn, postUrl: link[1] });
+    }
+    return out;
+}
+/** Locations the market-reports index did not yield. collectProducers records these so a parse miss is not silent. */
+export function producerMissingPostFailures(posts) {
+    const found = new Set(posts.map((post) => post.barn));
+    const out = [];
+    for (const barn of Object.keys(PRODUCER_BARNS)) {
+        if (found.has(barn))
+            continue;
+        out.push({
+            id: `private_producers_${barn}`,
+            source: PRODUCER_BARNS[barn].market,
+            sourceUrl: PRODUCERS_INDEX,
+            reason: `no latest post for ${PRODUCER_BARNS[barn].title}`,
+        });
     }
     return out;
 }
@@ -4121,6 +4137,7 @@ async function collectProducers(rows, failed, sources, tmpDir) {
         });
         return;
     }
+    failed.push(...producerMissingPostFailures(posts));
     for (const post of posts) {
         const market = PRODUCER_BARNS[post.barn].market;
         try {

@@ -343,6 +343,10 @@ export declare function producerLatestPosts(html: string): {
     barn: ProducerBarnId;
     postUrl: string;
 }[];
+/** Locations the market-reports index did not yield. collectProducers records these so a parse miss is not silent. */
+export declare function producerMissingPostFailures(posts: readonly {
+    barn: ProducerBarnId;
+}[]): AmsFailed[];
 export declare function producerPdfUrl(html: string): string | null;
 /** Jerome (avg + range) and Vale (bulk + top) weekly sheets. $/head rows stay off the $/cwt series. */
 export declare function parseProducersLivestockReport(text: string, barn: ProducerBarnId, sourceUrl: string): AmsTick[];
