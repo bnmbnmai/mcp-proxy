@@ -667,6 +667,107 @@ assert.equal(moNanny.unit, "$/head");
 assert.ok(!missouriSheep.some((row) => row.price === 1439), "receipt total is not a tick");
 assert.equal(new Set(missouriSheep.map((row) => row.id)).size, missouriSheep.length);
 
+const sanAngelo = parseAmsReportText(
+  fx("auction-2014.txt"),
+  report("2014"),
+  "https://www.ams.usda.gov/mnreports/ams_2014.pdf",
+);
+assert.equal(parseReportDate(fx("auction-2014.txt")), "2026-10-20");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2014")?.group, "sheep");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2014")?.region, "san_angelo_tx");
+assert.equal(sanAngelo.length, 77, "AMS_2014 priced lines, not the 5,866 receipt total");
+assert.equal(pricedHead(sanAngelo), 4513);
+assert.ok(
+  sanAngelo.every(
+    (row) => row.group === "sheep" && row.unit === "$/cwt" && row.id.startsWith("sheep.ams_2014.san_angelo_tx.") && row.asOf === "2026-10-20",
+  ),
+);
+const sanAngeloFeederKids = sanAngelo.filter((row) => row.id.includes(".feeder-kid."));
+assert.equal(sanAngeloFeederKids.length, 8);
+assert.equal(pricedHead(sanAngeloFeederKids), 717, "feeder goat head equals the feeder-goat receipt");
+const sanAngeloWooled = sanAngelo.find((row) => row.id === "sheep.ams_2014.san_angelo_tx.slaughter-wooled.cp13.56lb.average");
+assert.ok(sanAngeloWooled, "wooled Choice and Prime 1-3 56 lb");
+assert.equal(sanAngeloWooled.price, 380);
+assert.equal(sanAngeloWooled.unit, "$/cwt");
+const sanAngeloWether = sanAngelo.find((row) => row.id === "sheep.ams_2014.san_angelo_tx.slaughter-wether.sel1.122lb.average");
+assert.ok(sanAngeloWether, "selection 1 wethers 104-144 lb");
+assert.equal(sanAngeloWether.price, 306.07);
+assert.equal(sanAngeloWether.lo, 290);
+assert.equal(sanAngeloWether.hi, 340);
+assert.ok(!sanAngelo.some((row) => row.price === 5866), "receipt total is not a tick");
+assert.equal(new Set(sanAngelo.map((row) => row.id)).size, sanAngelo.length);
+
+const mountHope = parseAmsReportText(
+  fx("auction-3918.txt"),
+  report("3918"),
+  "https://www.ams.usda.gov/mnreports/ams_3918.pdf",
+);
+assert.equal(parseReportDate(fx("auction-3918.txt")), "2026-10-21");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3918")?.group, "sheep");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3918")?.region, "mount_hope_oh");
+assert.equal(mountHope.length, 77, "AMS_3918 priced lines, not the 2,300 receipt total");
+assert.equal(pricedHead(mountHope), 2085);
+assert.ok(
+  mountHope.every(
+    (row) => row.group === "sheep" && row.unit === "$/cwt" && row.id.startsWith("sheep.ams_3918.mount_hope_oh.") && row.asOf === "2026-10-21",
+  ),
+);
+const mountHopeLamb = mountHope.find((row) => row.id === "sheep.ams_3918.mount_hope_oh.slaughter-wooled.cp13.46lb.average");
+assert.ok(mountHopeLamb, "wooled lambs 41-49 lb");
+assert.equal(mountHopeLamb.price, 441.78);
+assert.equal(mountHopeLamb.lo, 410);
+assert.equal(mountHopeLamb.hi, 470);
+assert.equal(mountHopeLamb.unit, "$/cwt");
+const mountHopeFancy = mountHope.find((row) => row.id === "sheep.ams_3918.mount_hope_oh.slaughter-wooled.cp13.43lb.average_fancy");
+assert.ok(mountHopeFancy, "Average Fancy wooled lambs");
+assert.equal(mountHopeFancy.price, 510);
+assert.ok(!mountHope.some((row) => row.price === 2300), "receipt total is not a tick");
+assert.equal(new Set(mountHope.map((row) => row.id)).size, mountHope.length);
+
+const buckhannon = parseAmsReportText(
+  fx("auction-1872.txt"),
+  report("1872"),
+  "https://www.ams.usda.gov/mnreports/ams_1872.pdf",
+);
+assert.equal(parseReportDate(fx("auction-1872.txt")), "2026-10-21");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1872")?.group, "cattle");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1872")?.region, "buckhannon_wv");
+assert.equal(buckhannon.length, 32, "AMS_1872 priced lines, not the 105 receipt total");
+assert.equal(pricedHead(buckhannon), 90);
+assert.equal(buckhannon.filter((row) => row.group === "cattle").length, 29);
+assert.equal(buckhannon.filter((row) => row.group === "sheep").length, 3);
+assert.equal(buckhannon.filter((row) => row.unit === "$/cwt").length, 26);
+assert.equal(buckhannon.filter((row) => row.unit === "$/head").length, 6);
+assert.ok(
+  buckhannon.every(
+    (row) =>
+      row.id.startsWith(`${row.group}.ams_1872.buckhannon_wv.`) &&
+      row.asOf === "2026-10-21" &&
+      (row.group === "cattle" || row.group === "sheep"),
+  ),
+);
+const buckhannonFeeder = buckhannon.filter((row) => row.id.includes(".feeder-"));
+assert.equal(buckhannonFeeder.length, 18);
+assert.equal(pricedHead(buckhannonFeeder), 50, "priced feeder head, not the 64-head receipt");
+const buckhannonSteer = buckhannon.find((row) => row.id === "cattle.ams_1872.buckhannon_wv.feeder-steer.ml1.475lb");
+assert.ok(buckhannonSteer, "feeder steers 470-480 lb");
+assert.equal(buckhannonSteer.price, 390);
+assert.equal(buckhannonSteer.unit, "$/cwt");
+const buckhannonPair = buckhannon.find((row) => row.id === "cattle.ams_1872.buckhannon_wv.cow-calf-pair.ml12_calf_150_300.head.5_8.o.1070lb");
+assert.ok(buckhannonPair, "cow-calf pairs stay $/head");
+assert.equal(buckhannonPair.price, 1870);
+assert.equal(buckhannonPair.unit, "$/head");
+const buckhannonRam = buckhannon.find((row) => row.id === "sheep.ams_1872.buckhannon_wv.slaughter-ram.12.215lb.average");
+assert.ok(buckhannonRam, "the one slaughter ram stays on the sheep group");
+assert.equal(buckhannonRam.price, 135);
+assert.equal(buckhannonRam.group, "sheep");
+const buckhannonKid = buckhannon.find((row) => row.id === "sheep.ams_1872.buckhannon_wv.slaughter-buck.sel2.head.60lb.average");
+assert.ok(buckhannonKid, "60 lb slaughter buck stays $/head");
+assert.equal(buckhannonKid.price, 155);
+assert.equal(buckhannonKid.unit, "$/head");
+assert.ok(!buckhannon.some((row) => row.price === 105 || row.price === 205 || row.price === 240), "receipt total and narrative heiferettes are not ticks");
+assert.equal(new Set(buckhannon.map((row) => row.id)).size, buckhannon.length);
+
 const produceAds = parseAmsReportText(
   fx("retail-specialty-crops-3324.txt"),
   report("3324"),
@@ -1796,7 +1897,7 @@ assert.equal(
 assert.ok(!pennsylvaniaWeekly.some((row) => row.price === 4510), "receipt count is not a tick");
 assert.ok(!pennsylvaniaWeekly.some((row) => /please note|basis|del\b/i.test(row.id)));
 
-for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "1843", "1828", "1909", "2099", "1856", "2713", "3242", "1889", "1892", "2041", "1976", "1919"]) {
+for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "1843", "1828", "1909", "2099", "1856", "2713", "3242", "1889", "1892", "2041", "1976", "1919", "1872"]) {
   assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2041")?.region, "illinois_weekly");
@@ -1944,7 +2045,7 @@ assert.ok(
   "keep first nationwide slice",
 );
 assert.ok(
-  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3797", "2907", "1772", "1928", "1833", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655"].every((s) => slugs.includes(s)),
+  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3797", "2907", "1772", "1928", "1833", "2014", "3918", "1872", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655"].every((s) => slugs.includes(s)),
   "fat AMS slugs are on the nationwide /ticks walk",
 );
 assert.ok(
