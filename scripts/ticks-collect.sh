@@ -127,6 +127,7 @@ export OFGEM_ENFORCEMENT_DIR="${OFGEM_ENFORCEMENT_DIR:-$MCP/data/ofgem-enforceme
 export GAIN_DIR="${GAIN_DIR:-$MCP/data/gain}"
 export ORR_ENFORCEMENT_DIR="${ORR_ENFORCEMENT_DIR:-$MCP/data/orr-enforcement}"
 export PHMSA_ORDERS_DIR="${PHMSA_ORDERS_DIR:-$MCP/data/phmsa-orders}"
+export EIS_REPORTS_DIR="${EIS_REPORTS_DIR:-$MCP/data/eis-reports}"
 export AAIB_REPORTS_DIR="${AAIB_REPORTS_DIR:-$MCP/data/aaib-reports}"
 export CSB_REPORTS_DIR="${CSB_REPORTS_DIR:-$MCP/data/csb-reports}"
 export HHS_OIG_REPORTS_DIR="${HHS_OIG_REPORTS_DIR:-$MCP/data/hhs-oig-reports}"
@@ -455,24 +456,26 @@ run_door() {
     emit "/${sku}, ${before}, ${before}, ${reason}"
     return 0
   fi
-  local extra
+  local extra rc=0
   extra="$(door_argv "$sku")"
-  if ! "$NODE_BIN" "$js" ${extra:+$extra} >>"$node_log" 2>&1; then
-    emit "$sku collect failed"
-  fi
+  # `if ! cmd; then rc=$?` records 0 (the if succeeded). Capture the walker status directly.
+  "$NODE_BIN" "$js" ${extra:+$extra} >>"$node_log" 2>&1 || rc=$?
   plan_fields "$snap"
   local after="${_n}"
   local done="$reason"
   local note=""
   note="$(snapshot_reason "$snap")"
-  if [[ "$action" == "skip" && "$after" -eq "$before" ]]; then
+  if [[ "$rc" -ne 0 ]]; then
+    done="failed"
+    note="collect failed (exit ${rc})"
+  elif [[ "$note" == *"Not a complete walk"* ]]; then
+    done="source-down"
+  elif [[ "$action" == "skip" && "$after" -eq "$before" ]]; then
     done="current"
   elif [[ "$action" == "skip" ]]; then
     done="asof-moved"
   elif [[ "$action" == "grow" && "$after" -gt "$before" ]]; then
     done="grew"
-  elif [[ "$action" == "grow" && "$note" == *"Not a complete walk"* ]]; then
-    done="source-down"
   elif [[ "$action" == "grow" && "$note" == *"no new "* ]]; then
     done="current"
   elif [[ "$action" == "grow" && "$after" -le 5 ]]; then
@@ -482,7 +485,7 @@ run_door() {
   elif [[ "$action" == "refresh" ]]; then
     done="refreshed"
   fi
-  if [[ "$done" == "source-down" || ( "$done" == "current" && "$note" == *"no new "* ) ]]; then
+  if [[ "$done" == "failed" || "$done" == "source-down" || "$note" == *"no new "* || "$note" == *"unchanged"* || "$note" == *"no newer"* ]]; then
     emit "/${sku}, ${before}, ${after}, ${done} (${note})"
   else
     emit "/${sku}, ${before}, ${after}, ${done}"

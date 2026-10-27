@@ -104,6 +104,8 @@ export type PaidBodyOpts = {
   page?: number;
   /** Official catalog id. That one official text ($0.02). Wins over since/before/page. */
   id?: string;
+  /** Snapshot fetch time. Not a buyer query. A since= day after this (+ tolerance) is not a watermark. */
+  fetchedAt?: string | null;
 };
 
 export function isExtractedBodySku(sku: string): sku is ExtractedBodySku {
@@ -381,6 +383,54 @@ function firstPlausibleDate(...values: unknown[]): string | null {
   return null;
 }
 
+/** Date-only fields may land a day or two after a UTC fetch (timezone / same-day post). */
+export const FUTURE_DATE_TOLERANCE_MS = 2 * 24 * 60 * 60 * 1000;
+
+/**
+ * A since= day this far past the fetch is a poisoned asOf (year-2028), not a
+ * caught-up cursor. Same-year dates after the bag (since=2026-12-31) stay an empty 304.
+ */
+const POISONED_SINCE_GAP_MS = 366 * 24 * 60 * 60 * 1000;
+
+const RECORD_DATE_KEYS = ["date", "issuedOn", "publishedOn", "inspectedOn", "recordDate"] as const;
+
+/** YYYY-MM-DD ceiling. A missing fetch time uses now, so a year-2028 typo is still not trusted. */
+export function recordDateCeilingDay(fetchedAt: unknown, now = Date.now()): string {
+  const parsed = typeof fetchedAt === "string" ? Date.parse(fetchedAt) : Number.NaN;
+  const base = Number.isFinite(parsed) ? parsed : now;
+  return new Date(base + FUTURE_DATE_TOLERANCE_MS).toISOString().slice(0, 10);
+}
+
+/**
+ * First plausible YYYY-MM-DD that is not after the fetch time (+ tolerance).
+ * Later values are skipped so the next sane field can win. Never invents a date.
+ */
+export function firstTrustedDate(fetchedAt: unknown, ...values: unknown[]): string | null {
+  const ceiling = recordDateCeilingDay(fetchedAt);
+  for (const value of values) {
+    const day = str(value).slice(0, 10);
+    if (!isPlausibleDate(day) || day > ceiling) continue;
+    return day;
+  }
+  return null;
+}
+
+export function trustedRowDate(row: Record<string, unknown>, fetchedAt: unknown): string | null {
+  return firstTrustedDate(fetchedAt, ...RECORD_DATE_KEYS.map((key) => row[key]));
+}
+
+/** Newest trusted day across the usual date fields. Ignores a future raw value. */
+export function newestTrustedDate(rows: Record<string, unknown>[], fetchedAt: unknown): string | null {
+  let best: string | null = null;
+  for (const row of rows) {
+    for (const key of [...RECORD_DATE_KEYS, "publishedAt"] as const) {
+      const day = firstTrustedDate(fetchedAt, row[key]);
+      if (day && (!best || day > best)) best = day;
+    }
+  }
+  return best;
+}
+
 /** cms_ia datePublished is MM/DD/YYYY. Map that; do not invent a date. */
 export function isoFromOfficialDate(raw: unknown): string | null {
   const iso = firstPlausibleDate(raw);
@@ -483,7 +533,19 @@ export function slicePaidCatalog(
     };
   }
   const rawSince = str(opts?.since);
-  if (rawSince) {
+  const sinceDay = rawSince.slice(0, 10);
+  // A watermark a year past the fetch was copied from an untrusted record date.
+  // Ignore it so that buyer still sees the current page. A nearer future day
+  // (since=2026-12-31 against a September bag) stays an empty delta.
+  const ceilingMs = Date.parse(`${recordDateCeilingDay(opts?.fetchedAt)}T00:00:00.000Z`);
+  const sinceMs = Date.parse(`${sinceDay}T00:00:00.000Z`);
+  const poisonedWatermark =
+    Boolean(rawSince) &&
+    isPlausibleDate(sinceDay) &&
+    Number.isFinite(ceilingMs) &&
+    Number.isFinite(sinceMs) &&
+    sinceMs - ceilingMs > POISONED_SINCE_GAP_MS;
+  if (rawSince && !poisonedWatermark) {
     const newer = isTimeCursor(rawSince)
       ? catalog.filter((row) => recordNewerThanWatermark(row, rawSince))
       : (() => {
@@ -527,11 +589,12 @@ export function slicePaidCatalog(
 export function attachPaidPageCursors(
   rows: Record<string, unknown>[],
   window = paidBodyWindow(),
+  fetchedAt?: unknown,
 ): Record<string, unknown>[] {
   const dated = rows.map((row) => ({
     row,
     id: officialItemId(row),
-    date: firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate),
+    date: trustedRowDate(row, fetchedAt),
   }));
   const sorted = [...dated].sort((a, b) => {
     const dateCmp = (b.date ?? "").localeCompare(a.date ?? "");
@@ -548,10 +611,9 @@ export function attachPaidPageCursors(
   return rows.map((row) => {
     const id = officialItemId(row);
     const cursor = byId.get(id) ?? { page: 1, before: null };
-    const date =
-      firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
-      (str(row.date) || null);
-    const publishedAt = str(row.publishedAt) || date;
+    const date = trustedRowDate(row, fetchedAt);
+    const publishedRaw = str(row.publishedAt);
+    const publishedAt = firstTrustedDate(fetchedAt, publishedRaw) ? publishedRaw : (date ?? "");
     return { ...row, date, ...(publishedAt ? { publishedAt } : {}), page: cursor.page, before: cursor.before };
   });
 }
@@ -563,11 +625,8 @@ export type CatalogSearchQuery = {
   paidPath?: string | null;
 };
 
-function catalogRowDate(row: Record<string, unknown>): string {
-  return (
-    firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
-    str(row.date)
-  );
+function catalogRowDate(row: Record<string, unknown>, fetchedAt?: unknown): string {
+  return trustedRowDate(row, fetchedAt) ?? "";
 }
 
 export function searchCatalogRows(rows: Record<string, unknown>[], q: string): Record<string, unknown>[] {
@@ -586,9 +645,12 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
 export const UNKNOWN_CATALOG_ID_BEFORE_HINT =
   "Unknown catalog id. before= takes a catalog id (rows after that id, newest first) or an ISO date (YYYY-MM-DD or a full timestamp).";
 
-function sortCatalogRowsNewestFirst(rows: Record<string, unknown>[]): Record<string, unknown>[] {
+function sortCatalogRowsNewestFirst(
+  rows: Record<string, unknown>[],
+  fetchedAt?: unknown,
+): Record<string, unknown>[] {
   return [...rows].sort((a, b) => {
-    const dateCmp = catalogRowDate(b).localeCompare(catalogRowDate(a));
+    const dateCmp = catalogRowDate(b, fetchedAt).localeCompare(catalogRowDate(a, fetchedAt));
     if (dateCmp !== 0) return dateCmp;
     return officialItemId(a).localeCompare(officialItemId(b));
   });
@@ -602,15 +664,16 @@ function sortCatalogRowsNewestFirst(rows: Record<string, unknown>[]): Record<str
 export function applyCatalogBefore(
   rows: Record<string, unknown>[],
   before: string,
+  fetchedAt?: unknown,
 ): { rows: Record<string, unknown>[]; beforeHint: string | null } {
   if (isTimeCursor(before)) {
     const day = before.slice(0, 10);
     return {
-      rows: rows.filter((row) => (catalogRowDate(row) || "") < day),
+      rows: rows.filter((row) => (catalogRowDate(row, fetchedAt) || "") < day),
       beforeHint: null,
     };
   }
-  const sorted = sortCatalogRowsNewestFirst(rows);
+  const sorted = sortCatalogRowsNewestFirst(rows, fetchedAt);
   const idx = sorted.findIndex((row) => officialItemId(row) === before);
   if (idx < 0) return { rows: [], beforeHint: UNKNOWN_CATALOG_ID_BEFORE_HINT };
   return { rows: sorted.slice(idx + 1), beforeHint: null };
@@ -620,17 +683,18 @@ export function applyCatalogBefore(
 export function filterCatalogRows(
   rows: Record<string, unknown>[],
   query: CatalogSearchQuery = {},
+  fetchedAt?: unknown,
 ): { rows: Record<string, unknown>[]; beforeHint: string | null } {
   let out = rows;
   const q = str(query.q);
   if (q) out = searchCatalogRows(out, q);
   const date = str(query.date);
   if (date) {
-    out = out.filter((row) => catalogRowDate(row).startsWith(date));
+    out = out.filter((row) => catalogRowDate(row, fetchedAt).startsWith(date));
   }
   const before = str(query.before);
   if (!before) return { rows: out, beforeHint: null };
-  return applyCatalogBefore(out, before);
+  return applyCatalogBefore(out, before, fetchedAt);
 }
 
 export function catalogSearchQueryString(query: CatalogSearchQuery = {}): string {
@@ -742,7 +806,11 @@ export function decorateExtractedBodyManifest(
   const listKey = Array.isArray(manifest.cards) ? "cards" : Array.isArray(manifest.letters) ? "letters" : null;
   if (!listKey) return stripOfficialDeepLinksFromFreeManifest(manifest);
   const paidPath = str(query.paidPath);
-  const selected = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query);
+  const fetchedAt = manifest.fetchedAt;
+  const attached = attachPaidPageCursors(asList(manifest[listKey]), paidBodyWindow(), fetchedAt);
+  const selected = filterCatalogRows(attached, query, fetchedAt);
+  const rawAsOf = str(manifest.asOf);
+  const asOf = rawAsOf && !firstTrustedDate(fetchedAt, rawAsOf) ? newestTrustedDate(attached, fetchedAt) : manifest.asOf;
   const rows = selected.rows.map((row) => {
     const id = officialItemId(row);
     return paidPath && id ? { ...row, paidUrl: paidOneUrl(paidPath, id) } : row;
@@ -753,6 +821,7 @@ export function decorateExtractedBodyManifest(
   const searching = Boolean(q || before || date);
   return stripOfficialDeepLinksFromFreeManifest({
     ...manifest,
+    asOf,
     [listKey]: rows,
     search: q || null,
     before: before || null,
@@ -767,23 +836,29 @@ function officialItemId(row: Record<string, unknown>): string {
 }
 
 /** Keep only the windowed official bodies, newest-first to match records[]. */
-function withPublishedAt(row: Record<string, unknown>): Record<string, unknown> {
-  if (str(row.publishedAt)) return row;
-  const date =
-    firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
-    (str(row.date) || null);
-  return date ? { ...row, publishedAt: date } : row;
+function withPublishedAt(row: Record<string, unknown>, fetchedAt?: unknown): Record<string, unknown> {
+  const publishedRaw = str(row.publishedAt);
+  if (publishedRaw && firstTrustedDate(fetchedAt, publishedRaw)) return row;
+  const date = trustedRowDate(row, fetchedAt);
+  if (!date) {
+    if (!publishedRaw) return row;
+    const rest = { ...row };
+    delete rest.publishedAt;
+    return rest;
+  }
+  return { ...row, publishedAt: date };
 }
 
 function windowOfficialItems(
   items: Record<string, unknown>[],
   records: PaidRecord[],
+  fetchedAt?: unknown,
 ): Record<string, unknown>[] {
   const order = new Map(records.map((row, i) => [row.id, i]));
   return items
     .filter((row) => order.has(officialItemId(row)))
     .sort((a, b) => (order.get(officialItemId(a)) ?? 0) - (order.get(officialItemId(b)) ?? 0))
-    .map(withPublishedAt);
+    .map((row) => withPublishedAt(row, fetchedAt));
 }
 
 export function normalizeTicksRecords(payload: { ticks?: unknown[] }): PaidRecord[] {
@@ -802,7 +877,7 @@ export function normalizeTicksRecords(payload: { ticks?: unknown[] }): PaidRecor
   return sortRecords(dedupeById(out));
 }
 
-export function normalizeForm483Records(payload: { letters?: unknown[] }): PaidRecord[] {
+export function normalizeForm483Records(payload: { letters?: unknown[]; fetchedAt?: unknown }): PaidRecord[] {
   const out: PaidRecord[] = [];
   for (const row of asList(payload.letters)) {
     const body = str(row.body);
@@ -811,7 +886,7 @@ export function normalizeForm483Records(payload: { letters?: unknown[] }): PaidR
     if (!id) continue;
     out.push({
       id,
-      date: firstPlausibleDate(row.publishedOn, row.recordDate, row.issuedOn),
+      date: firstTrustedDate(payload.fetchedAt, row.publishedOn, row.recordDate, row.issuedOn),
       firm: str(row.firm) || id,
       url: str(row.sourceUrl),
       type: FORM_483_TYPE,
@@ -820,7 +895,7 @@ export function normalizeForm483Records(payload: { letters?: unknown[] }): PaidR
   return sortRecords(dedupeById(out));
 }
 
-export function normalizeWarningLetterRecords(payload: { letters?: unknown[] }): PaidRecord[] {
+export function normalizeWarningLetterRecords(payload: { letters?: unknown[]; fetchedAt?: unknown }): PaidRecord[] {
   const out: PaidRecord[] = [];
   for (const row of asList(payload.letters)) {
     if (!str(row.body)) continue;
@@ -828,7 +903,7 @@ export function normalizeWarningLetterRecords(payload: { letters?: unknown[] }):
     if (!id) continue;
     out.push({
       id,
-      date: firstPlausibleDate(row.issuedOn),
+      date: firstTrustedDate(payload.fetchedAt, row.issuedOn, row.publishedOn, row.recordDate),
       firm: str(row.firm) || id,
       url: str(row.sourceUrl),
       type: WARNING_LETTER_TYPE,
@@ -856,7 +931,7 @@ function listingSource(payload: { sources?: unknown }, fallback: string): string
  * Empty-body cards stay in the official cache and are not sold as records[].
  */
 export function normalizeCardRecords(
-  payload: { cards?: unknown[] },
+  payload: { cards?: unknown[]; fetchedAt?: unknown },
   type: string,
 ): PaidRecord[] {
   const out: PaidRecord[] = [];
@@ -866,7 +941,7 @@ export function normalizeCardRecords(
     if (!id) continue;
     out.push({
       id,
-      date: firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn),
+      date: firstTrustedDate(payload.fetchedAt, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate),
       firm:
         str(row.firm) ||
         str(row.institution) ||
@@ -943,11 +1018,12 @@ function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?:
 ): T & PaidBodyWindowEnvelope {
   const catalog = normalizeCardRecords(payload, type);
   const limit = paidBodyWindow(opts?.window);
-  const sliced = slicePaidCatalog(catalog, limit, opts);
+  const fetchedAt = typeof payload.fetchedAt === "string" ? payload.fetchedAt : null;
+  const sliced = slicePaidCatalog(catalog, limit, { ...opts, fetchedAt });
   const records = sliced.records;
   return {
     ...payload,
-    cards: windowOfficialItems(asList(payload.cards), records),
+    cards: windowOfficialItems(asList(payload.cards), records, fetchedAt),
     source: listingSource(payload, fallbackSource),
     records,
     ...windowEnvelope(catalog, sliced, limit, payload.fetchedAt),
@@ -974,11 +1050,12 @@ export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unk
 ): T & PaidBodyWindowEnvelope {
   const catalog = normalizeForm483Records(payload);
   const limit = paidBodyWindow(opts?.window);
-  const sliced = slicePaidCatalog(catalog, limit, opts);
+  const fetchedAt = typeof payload.fetchedAt === "string" ? payload.fetchedAt : null;
+  const sliced = slicePaidCatalog(catalog, limit, { ...opts, fetchedAt });
   const records = sliced.records;
   return {
     ...payload,
-    letters: windowOfficialItems(asList(payload.letters), records),
+    letters: windowOfficialItems(asList(payload.letters), records, fetchedAt),
     source: listingSource(
       payload,
       "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
@@ -993,11 +1070,12 @@ export function paidWarningLettersBody<
 >(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   const catalog = normalizeWarningLetterRecords(payload);
   const limit = paidBodyWindow(opts?.window);
-  const sliced = slicePaidCatalog(catalog, limit, opts);
+  const fetchedAt = typeof payload.fetchedAt === "string" ? payload.fetchedAt : null;
+  const sliced = slicePaidCatalog(catalog, limit, { ...opts, fetchedAt });
   const records = sliced.records;
   return {
     ...payload,
-    letters: windowOfficialItems(asList(payload.letters), records),
+    letters: windowOfficialItems(asList(payload.letters), records, fetchedAt),
     source: listingSource(
       payload,
       "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",

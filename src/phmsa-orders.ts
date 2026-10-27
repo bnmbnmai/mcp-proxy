@@ -546,6 +546,18 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+/** Listing was read and the row count did not move. Stamp fetchedAt; leave asOf and the bag. */
+export function stampCheckedPhmsaSnapshot(prior: PhmsaOrdersSnapshot, reason: string): PhmsaOrdersSnapshot {
+  const snap: PhmsaOrdersSnapshot = {
+    ...prior,
+    fetchedAt: new Date().toISOString(),
+    asOf: prior.asOf,
+    reason,
+  };
+  writePhmsaOrdersSnapshot(snap);
+  return snap;
+}
+
 export async function collectPhmsaOrders(opts?: {
   pauseMs?: number;
   tsvDir?: string;
@@ -556,8 +568,14 @@ export async function collectPhmsaOrders(opts?: {
   const priorSnap = readPhmsaOrdersSnapshot();
   const { listed: allListed, listedCount, tsvOk } = await loadOfficialListings(dir);
   const forceWalk = env("PHMSA_ORDERS_FORCE_WALK") === "1";
-  if (!dir && !tsvOk && phmsaBagHealthy(priorSnap)) return priorSnap!;
-  if (phmsaSkipTsvWalk(priorSnap, listedCount, forceWalk)) return priorSnap!;
+  if (!dir && !tsvOk && phmsaBagHealthy(priorSnap)) {
+    throw new Error(
+      `PHMSA listing download failed (${TSV_URL}). Not a complete walk. Kept the last bag; fetchedAt was not advanced.`,
+    );
+  }
+  if (priorSnap && phmsaSkipTsvWalk(priorSnap, listedCount, forceWalk)) {
+    return stampCheckedPhmsaSnapshot(priorSnap, "Official PHMSA listing count unchanged; no newer orders.");
+  }
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = phmsaOrdersDir();

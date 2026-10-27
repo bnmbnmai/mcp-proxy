@@ -243,6 +243,60 @@ function runHayProbe(origin: string): string {
   return `${result.stdout}\n${readFileSync(log, "utf-8")}`;
 }
 
+function runFailedDoorProbe(): string {
+  const root = mkdtempSync(join(tmpdir(), "ticks-collect-fail-"));
+  const stub = join(root, "stub-node.sh");
+  writeFileSync(stub, "#!/bin/bash\necho 'navcen down' >&2\nexit 1\n");
+  chmodSync(stub, 0o755);
+  mkdirSync(join(root, "build"), { recursive: true });
+  writeFileSync(join(root, "build", "mariners.js"), "// probe\n");
+  const skuDir = join(root, "data", "mariners");
+  mkdirSync(skuDir, { recursive: true });
+  writeFileSync(
+    join(skuDir, "snapshot.json"),
+    JSON.stringify({
+      noticeCount: 40,
+      notices: Array.from({ length: 40 }, (_, i) => ({ id: `n${i}` })),
+      fetchedAt: new Date(Date.now() - 60 * 60 * 1000).toISOString(),
+      asOf: "2026-10-21",
+    }),
+  );
+  const ticksDir = join(root, "data", "prices");
+  mkdirSync(ticksDir, { recursive: true });
+  writeFileSync(
+    join(ticksDir, "manifest.json"),
+    JSON.stringify({ tickCount: 611, fetchedAt: new Date().toISOString(), asOf: "2026-10-21" }),
+  );
+  const wkPath = join(root, "well-known.json");
+  writeFileSync(
+    wkPath,
+    JSON.stringify({
+      version: 1,
+      resources: ["ticks", "mariners"].map((sku) => `https://ticks.bnm.farm/${sku}`),
+    }),
+  );
+  const log = join(root, "ticks-collect.log");
+  const result = spawnSync("bash", [join(repoRoot, "scripts/ticks-collect.sh")], {
+    encoding: "utf8",
+    env: {
+      ...process.env,
+      TZ: "America/Boise",
+      SKIP_HAY: "1",
+      TICKS_COLLECT_SKIP_IMAGINE: "1",
+      TICKS_COLLECT_SKIP_LIVE_HAY: "1",
+      MCP_PROXY_DIR: root,
+      TICKS_DIR: ticksDir,
+      NODE_BIN: stub,
+      TICKS_COLLECT_PLAN: join(repoRoot, "scripts/ticks-collect-plan.py"),
+      TICKS_COLLECT_WELL_KNOWN_FILE: wkPath,
+      TICKS_COLLECT_LOG: log,
+      TICKS_COLLECT_LOCK: join(root, "ticks-collect.lock"),
+    },
+  });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  return `${result.stdout}\n${readFileSync(log, "utf-8")}`;
+}
+
 async function main(): Promise<void> {
   const listed = listedCountFromHtml(readFx("listing-excerpt.html"));
   assert.ok((listed ?? 0) > 5, "existing CFPB official listing has more than 5 rows");
@@ -360,6 +414,8 @@ async function main(): Promise<void> {
   assert.match(script, /FMC_ORDERS_PROCEEDINGS/);
   assert.match(script, /source-down/);
   assert.match(script, /Not a complete walk/);
+  assert.match(script, /done="failed"/);
+  assert.match(script, /collect failed \(exit/);
   assert.match(script, /stranger-settle-alert/, "collect path refreshes Chief stranger-settle ping");
   assert.match(script, /live-door-loop-closer/, "collect path lists empty/stale LIVE doors");
   assert.match(script, /draft-only/, "loop-closer is draft notes only");
@@ -530,6 +586,10 @@ async function main(): Promise<void> {
   assert.ok(cfpb.end <= earliestStart, "doors before the group finish first");
   assert.ok(latestStart < earliestEnd, "superfund, phmsa, and eis overlap");
   assert.ok(gmp.start >= latestEnd, "a door listed between them waits until the group finishes");
+
+  const failedDoor = runFailedDoorProbe();
+  assert.match(failedDoor, /\/mariners, 40, 40, failed \(collect failed \(exit 1\)\)/);
+  assert.doesNotMatch(failedDoor, /\/mariners, 40, 40, current/);
 
   assert.ok(
     listed !== null && listed > 5,

@@ -590,11 +590,21 @@ export function navcenRequestHeaders(accept: string, userAgent = NAVCEN_BROWSER_
   };
 }
 
+function navcenFetchMs(): number {
+  const n = Number(env("NAVCEN_FETCH_MS", "45000"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 45000;
+}
+
 /** Listing and PDF GET. A non-browser UA that draws 403 is retried once with NAVCEN_BROWSER_UA. */
 export async function fetchNavcen(url: string, accept: string, userAgent = NAVCEN_BROWSER_UA): Promise<Response> {
-  const res = await fetch(url, { headers: navcenRequestHeaders(accept, userAgent), redirect: "follow" });
+  const init = (ua: string): RequestInit => ({
+    headers: navcenRequestHeaders(accept, ua),
+    redirect: "follow",
+    signal: AbortSignal.timeout(navcenFetchMs()),
+  });
+  const res = await fetch(url, init(userAgent));
   if (res.status === 403 && userAgent !== NAVCEN_BROWSER_UA) {
-    return fetch(url, { headers: navcenRequestHeaders(accept, NAVCEN_BROWSER_UA), redirect: "follow" });
+    return fetch(url, init(NAVCEN_BROWSER_UA));
   }
   return res;
 }

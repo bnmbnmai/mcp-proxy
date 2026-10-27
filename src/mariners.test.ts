@@ -90,6 +90,8 @@ async function assertNavcen403RetriesWithBrowserUa(): Promise<void> {
     for (const spec of ALL_LNM_SPECS) {
       assert.equal(spec.userAgent, NAVCEN_BROWSER_UA, `${spec.path} collect must use the browser User-Agent`);
     }
+    const src = readFileSync(join(dirname(fileURLToPath(import.meta.url)), "../src/mariners.ts"), "utf-8");
+    assert.match(src, /AbortSignal\.timeout\(navcenFetchMs\(\)\)/, "a dead NavCEN host must fail the district instead of hanging the collect");
   } finally {
     globalThis.fetch = original;
   }

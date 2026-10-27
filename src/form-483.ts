@@ -9,7 +9,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
-import { paidBodyCatalogNote } from "./paid-records.js";
+import { firstTrustedDate, paidBodyCatalogNote } from "./paid-records.js";
 
 export const FORM_483_PATH = "/form-483";
 export const FORM_483_MANIFEST_PATH = "/form-483/manifest.json";
@@ -370,7 +370,8 @@ export function assembleSnapshot(
   const asOf =
     withBody
       .flatMap((l) => [l.publishedOn, l.recordDate, l.issuedOn])
-      .filter(isPlausibleAsOf)
+      .map((day) => firstTrustedDate(fetchedAt, day))
+      .filter((day): day is string => Boolean(day))
       .sort()
       .at(-1) ?? null;
   return {

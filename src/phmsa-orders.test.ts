@@ -19,7 +19,9 @@ import {
   isRealPhmsaOrderBody,
   officialPdfUrl,
   phmsaSkipTsvWalk,
+  readPhmsaOrdersSnapshot,
   parseListingRows,
+  writePhmsaOrdersSnapshot,
   parseMdy,
   parseTsv,
 } from "./phmsa-orders.js";
@@ -108,12 +110,35 @@ async function main(): Promise<void> {
   assert.equal(phmsaSkipTsvWalk(snap, (snap.listedCount ?? 0) + 1), false);
   assert.equal(phmsaSkipTsvWalk(snap, snap.listedCount ?? 0, true), false, "FORCE_WALK rewalks");
   assert.equal(phmsaSkipTsvWalk(null, snap.listedCount ?? 0), false);
+  writePhmsaOrdersSnapshot({ ...snap, fetchedAt: "2026-10-03T02:48:43.918Z", asOf: snap.asOf, reason: null });
   const again = await collectPhmsaOrders({ tsvDir: fixtures, limit: 8, maxFetch: 0 });
   assert.deepEqual(
     again.cards.map((c) => c.id),
     snap.cards.map((c) => c.id),
-    "second collect does not rebuild when listedCount is unchanged",
+    "second collect does not rebuild cards when listedCount is unchanged",
   );
+  assert.equal(again.asOf, snap.asOf, "unchanged listing keeps the official asOf");
+  assert.notEqual(again.fetchedAt, "2026-10-03T02:48:43.918Z", "a checked listing still advances fetchedAt");
+  assert.match(again.reason ?? "", /unchanged/);
+  assert.match(again.reason ?? "", /no newer/);
+
+  const failedDir = mkdtempSync(join(tmpdir(), "phmsa-orders-fail-"));
+  process.env.PHMSA_ORDERS_DIR = failedDir;
+  writePhmsaOrdersSnapshot({ ...snap, fetchedAt: "2026-10-03T02:48:43.918Z" });
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = (async () => {
+    throw new Error("network down");
+  }) as typeof fetch;
+  try {
+    await assert.rejects(
+      () => collectPhmsaOrders({ tsvDir: "", limit: 1, maxFetch: 0 }),
+      /Not a complete walk/,
+    );
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+  const kept = readPhmsaOrdersSnapshot();
+  assert.equal(kept?.fetchedAt, "2026-10-03T02:48:43.918Z", "a failed TSV download does not pretend the bag was refreshed");
 
   const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/phmsa-orders.ts"), "utf-8");
   assert.match(src, /AbortSignal\.timeout\(fetchTimeoutMs\(\)\)/, "PHMSA text and PDF fetches must time out");
