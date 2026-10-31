@@ -14,6 +14,8 @@ payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · US
 
 Unpaid GET on a paid path returns HTTP 402. After `X-PAYMENT`, the same URL returns JSON. Unpaid 402 `accepts[].extra` names `searchUrl`, `oneDocPath`, `priceAtomic`, `pagePriceAtomic`, `pageDefault`, `tableWhole`, `firmCheckUrl`, `sampleUrl`. `extra.name` stays USD Coin.
 
+Missouri Dept of Agriculture Market News rows on GET /ticks (Missouri stocker) stay on this $0.05 table. The data made available here has been modified for use from its original source, which is the State of Missouri. THE STATE OF MISSOURI MAKES NO REPRESENTATIONS OR WARRANTY AS TO THE COMPLETENESS, ACCURACY, TIMELINESS, OR CONTENT OF ANY DATA MADE AVAILABLE THROUGH THIS SITE. THE STATE OF MISSOURI EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the Web feed is being used at one’s own risk.
+
 MCP at `/mcp` is generated from live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402) (one paid tool per paid resource) plus free `search` and `firm-check`. `/sample` is the free 3-row slice, not an MCP tool and not a SKU.
 
 ## Free (not paid)
@@ -29,7 +31,7 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 
 | Path | Bag | Price | Search |
 | --- | --- | --- | --- |
-| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, by-products, Missouri stocker). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table | $0.05 | [firm-check?q=](https://ticks.bnm.farm/firm-check?q=) · [manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. This week's LNM | $0.05 | [manifest.json?q=](https://ticks.bnm.farm/mariners/manifest.json?q=) |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. This week's LNM | $0.05 | [manifest.json?q=](https://ticks.bnm.farm/mariners-d11/manifest.json?q=) |

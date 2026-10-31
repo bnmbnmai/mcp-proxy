@@ -49,6 +49,15 @@
  * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
  * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
  * Salina UT stays AMS_2037. EIA stays off.
+ * By-product is a group on this same $0.05 table: AMS_2829 daily steer/cattle
+ * drop value, AMS_2834 weekly cow drop value, AMS_2835 weekly hog drop value,
+ * AMS_2838 weekly variety meats, and AMS_3641 weekly major packer hides.
+ * Official mnreports PDFs only. AMS_2830 hides stay parked. AMS_3458 prior-day
+ * hog stays killed (mpr datamart already returns free JSON). Missouri Dept of
+ * Agriculture stocker formula (weekday) and weekly direct slaughter are HTML
+ * on agmarketnews.mo.gov, not AMS. Every MDA row source carries the State of
+ * Missouri data-policy disclaimer. Free search matches user-visible fields
+ * only (not sourceUrl, not the paid price).
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -60,7 +69,7 @@ export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const ESMIS_HOST = "https://esmis.nal.usda.gov";
 export declare const MNREPORTS_PDF: (slug: string) => string;
 export declare const VIEW_REPORT: (slug: string) => string;
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs" | "byproduct";
 export type AmsReport = {
     slug: string;
     group: AmsGroup;
@@ -181,6 +190,12 @@ export declare const SKIPPED_SOURCES: readonly [{
 }, {
     readonly id: "if_fv130_already";
     readonly why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list";
+}, {
+    readonly id: "ams_2830_parked";
+    readonly why: "AMS_2830 Major Packer Hide Report (daily NW_LS448) stays parked — thin overlap with AMS_3641 cow hides and AMS_2829 steer hides";
+}, {
+    readonly id: "ams_3458_killed";
+    readonly why: "AMS_3458 Daily Direct Prior Day Hog (LM_HG218) is KILL — mpr datamart /reports/3458 returns free JSON. Do not wrap";
 }];
 export type AmsTick = {
     id: string;
@@ -200,6 +215,15 @@ export type AmsTick = {
     series: string;
     /** Private barn print. Paid JSON still includes source and sourceUrl. */
     internalSourceOnly?: boolean;
+    /** Paid row only. Not a free-search field. */
+    yieldLb?: number;
+    change?: number;
+    valuePerCwtLive?: number;
+    head?: number;
+    avgWt?: number;
+    loads?: number;
+    receipts?: number;
+    note?: string;
 };
 export type AmsFailed = {
     id: string;
@@ -213,6 +237,8 @@ export type AmsSnapshot = {
     fetchedAt: string;
     asOf: string | null;
     tickCount: number;
+    /** Unique tick.source values. Derived from rows so it cannot drift from the table. */
+    sourceCount: number;
     rows: AmsTick[];
     failed: AmsFailed[];
     sources: string[];
@@ -313,6 +339,48 @@ export declare function parseWeeklyEggProducts(text: string, report: AmsReport, 
  * Bran and hulls are $/short ton. Year-ago columns and CME rough rice stay off.
  */
 export declare function parseWeeklyRiceSummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_2829 / AMS_2834 / AMS_2835 by-product drop value (pdftotext -layout).
+ * Item price is the weighted average. Totals and dressed basis are their own rows.
+ * Page-break repeats of the same id are dropped. A layout with no section rows
+ * returns [] so collect fails closed instead of emitting a junk price.
+ */
+export declare function parseDropValueReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_2838 variety meats, and AMS_3641 hides when hides=true.
+ * Continuation lines (leading space) inherit the previous item. "No trade"
+ * lines never match the loads/range/avg tail, so they are not ticks.
+ * Duplicate ids throw — a layout collision must not emit two prices for one series.
+ */
+export declare function parseVarietyMeatReport(text: string, report: AmsReport, sourceUrl: string, hides?: boolean): AmsTick[];
+export declare const MDA_STOCKER_URL = "https://agmarketnews.mo.gov/missouri-stocker-formula";
+export declare const MDA_SLAUGHTER_URL = "https://agmarketnews.mo.gov/missouri-weekly-direct-slaughter-report";
+/**
+ * MDA Missouri Stocker Formula. Throws on format drift. Does not emit a row
+ * when the rolling-value sentence is missing or the steer/heifer change clause moved.
+ */
+export declare function parseMdaStocker(html: string): AmsTick[];
+/**
+ * MDA Weekly Direct Slaughter. "No Sales" / untested lines are skipped.
+ * A labeled sale line that is not a no-sale and does not match loads+price throws.
+ */
+export declare function parseMdaSlaughter(html: string): AmsTick[];
+/** User-visible tick fields. Free search must not see sourceUrl or the paid price. */
+export declare const FREE_TICK_SEARCH_FIELDS: readonly ["id", "group", "commodity", "label", "market", "classGrade", "unit", "asOf", "source"];
+export declare function freeTickSearchHaystack(row: AmsTick): string;
+export declare function freeTickSearchMatches(row: AmsTick, query: string): boolean;
+export type PublicTicksSource = {
+    name: string;
+    group: AmsGroup;
+    tickCount: number;
+    latestAsOf: string;
+};
+/** Free catalog counts from rows. Names and dates only — no price, no sourceUrl. */
+export declare function publicTicksCatalog(rows: readonly AmsTick[]): {
+    tickCount: number;
+    sourceCount: number;
+    sources: PublicTicksSource[];
+};
 export declare function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function pdfToText(pdfPath: string): string;
 export declare function officialPdfCandidates(report: AmsReport): Promise<string[]>;

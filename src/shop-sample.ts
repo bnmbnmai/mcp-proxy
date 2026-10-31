@@ -15,7 +15,17 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
-  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
+  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, by-products, Missouri stocker";
+
+/**
+ * mo.gov Data Policy text required on any app that uses State of Missouri data.
+ * Kept verbatim. One's uses U+2019, matching https://mo.gov/data-policy.
+ */
+export const MO_DATA_POLICY_DISCLAIMER =
+  "The data made available here has been modified for use from its original source, which is the State of Missouri. THE STATE OF MISSOURI MAKES NO REPRESENTATIONS OR WARRANTY AS TO THE COMPLETENESS, ACCURACY, TIMELINESS, OR CONTENT OF ANY DATA MADE AVAILABLE THROUGH THIS SITE. THE STATE OF MISSOURI EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the Web feed is being used at one\u2019s own risk.";
+
+export const MO_TICKS_ATTRIBUTION =
+  `Missouri Dept of Agriculture Market News rows on GET /ticks (Missouri stocker) stay on this $0.05 table. ${MO_DATA_POLICY_DISCLAIMER}`;
 
 /** OpenAPI GET /ticks description. Same bag. No path-split. */
 export const TICKS_OPENAPI_DESCRIPTION =

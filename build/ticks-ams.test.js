@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { AMS_NATIONAL_REPORTS, cattleReportIntentionalEmpty, officialPdfCandidateOrder, parseAmsReportText, parseProducersLivestockReport, parseReportDate, producerLatestPosts, producerPdfUrl, } from "./ticks-ams.js";
-import { PRODUCT_PUBLIC_ID, SAMPLE_TABLE_SKU, TICKS_402_DESCRIPTION, TICKS_BAG, TICKS_COMMODITY_SET, TICKS_LLMS_BULLET, TICKS_OPENAPI_DESCRIPTION, } from "./shop-sample.js";
+import { AMS_NATIONAL_REPORTS, cattleReportIntentionalEmpty, freeTickSearchMatches, MDA_SLAUGHTER_URL, MDA_STOCKER_URL, officialPdfCandidateOrder, parseAmsReportText, parseMdaSlaughter, parseMdaStocker, parseProducersLivestockReport, parseReportDate, producerLatestPosts, producerPdfUrl, publicTicksCatalog, SKIPPED_SOURCES, } from "./ticks-ams.js";
+import { MO_DATA_POLICY_DISCLAIMER, MO_TICKS_ATTRIBUTION, PRODUCT_PUBLIC_ID, SAMPLE_TABLE_SKU, TICKS_402_DESCRIPTION, TICKS_BAG, TICKS_COMMODITY_SET, TICKS_LLMS_BULLET, TICKS_OPENAPI_DESCRIPTION, } from "./shop-sample.js";
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = here.endsWith("/build") || here.endsWith("\\build") || here.endsWith("/src") || here.endsWith("\\src")
     ? dirname(here)
@@ -16,7 +16,7 @@ function report(slug) {
     assert.ok(found, slug);
     return found;
 }
-const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail"];
+const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail", "by-products", "Missouri stocker"];
 assert.equal(PRODUCT_PUBLIC_ID, "us-hay-cattle-grain-ticks", "do not rename the public product.id");
 assert.equal(SAMPLE_TABLE_SKU.ticks.length, 3, "free slice stays 3 rows");
 assert.ok(!SAMPLE_TABLE_SKU.asOf.startsWith("2026-01"), "sample is not the January 2026 can");
@@ -402,7 +402,11 @@ for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
     assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
-assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024", "3616", "3617", "3883", "3511", "2920", "2842", "1655", "2829", "2834", "2835", "2838", "3641"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+assert.ok(!slugs.includes("2830"), "AMS_2830 hides stay parked");
+assert.ok(!slugs.includes("3458"), "AMS_3458 stays killed");
+assert.ok(SKIPPED_SOURCES.some((row) => row.id === "ams_2830_parked"));
+assert.ok(SKIPPED_SOURCES.some((row) => row.id === "ams_3458_killed"));
 const ethanolWeekly = parseAmsReportText(fx("ethanol-weekly-3616.txt"), report("3616"), "https://www.ams.usda.gov/mnreports/ams_3616.pdf");
 assert.equal(parseReportDate(fx("ethanol-weekly-3616.txt")), "2026-10-02");
 assert.equal(ethanolWeekly.length, 51, `AMS_3616 rows, got ${ethanolWeekly.length}`);
@@ -516,10 +520,180 @@ assert.ok(!rice.some((row) => row.id === "grain.ams_1655.milled.long_white.calif
 assert.ok(!rice.some((row) => row.price === 16.235 || row.price === 29), "CME rough rice and year-ago Arkansas long white stay off");
 assert.ok(rice.every((row) => row.group === "grain" && row.asOf === "2026-10-06" && row.source.includes("AMS_1655") && row.sourceUrl.endsWith("ams_1655.pdf")));
 const fatRowCount = ethanolWeekly.length + ethanolDaily.length + intermountain.length + processorFeed.length + nonGmo.length + eggProducts.length + rice.length;
+const drop2829 = parseAmsReportText(fx("dropvalue-2829.txt"), report("2829"), "https://www.ams.usda.gov/mnreports/ams_2829.pdf");
+assert.equal(drop2829.length, 36, `AMS_2829 rows, got ${drop2829.length}`);
+assert.ok(drop2829.every((row) => row.group === "byproduct" && row.asOf === "2026-10-30" && row.source.includes("AMS_2829") && row.sourceUrl.endsWith("ams_2829.pdf")));
+const steerHide = drop2829.find((row) => row.id === "byproduct.ams_2829.steer.steer-hides-branded-butt");
+assert.ok(steerHide, "steer branded butt hide");
+assert.equal(steerHide.yieldLb, 4.87);
+assert.equal(steerHide.price, 24);
+assert.equal(steerHide.change, undefined);
+assert.equal(steerHide.valuePerCwtLive, 1.71);
+const steerTallow = drop2829.find((row) => row.id === "byproduct.ams_2829.steer.tallow");
+assert.ok(steerTallow, "footnote stripped from tallow");
+assert.equal(steerTallow.price, 66.69);
+assert.equal(steerTallow.yieldLb, 1.2);
+assert.equal(steerTallow.valuePerCwtLive, 0.8);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.meat-and-bone-meal-50-protein")?.price, 382.88);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.meat-and-bone-meal-50-protein")?.valuePerCwtLive, 0.71);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.blood-meal-85-protein")?.price, 1446.67);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.blood-meal-85-protein")?.yieldLb, 0.6);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.blood-meal-85-protein")?.valuePerCwtLive, 0.43);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.tripe-scalded-bleached")?.change, 0.25);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.cattle.cattle-hides")?.price, 19.49);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.cattle.cattle-hides")?.yieldLb, 4.87);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.cattle.cattle-hides")?.valuePerCwtLive, 1.46);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.total")?.price, 14.69);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.total")?.unit, "$/cwt live");
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.cattle.total")?.price, 14.44);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.dressed")?.price, 23.32);
+assert.match(drop2829.find((row) => row.id === "byproduct.ams_2829.steer.dressed")?.classGrade ?? "", /63\.0%/);
+assert.equal(drop2829.find((row) => row.id === "byproduct.ams_2829.cattle.dressed")?.price, 22.96);
+assert.match(drop2829.find((row) => row.id === "byproduct.ams_2829.cattle.dressed")?.classGrade ?? "", /62\.9%/);
+assert.equal(drop2829.filter((row) => row.id === "byproduct.ams_2829.cattle.livers-selected-2-box").length, 1, "page-break repeat is one row");
+const dropHand = parseAmsReportText(fx("dropvalue-2829-handcheck.txt"), report("2829"), "https://www.ams.usda.gov/mnreports/ams_2829.pdf");
+assert.equal(dropHand.find((row) => row.id.endsWith(".steer.tallow"))?.change, -0.66);
+assert.equal(dropHand.find((row) => row.id.endsWith(".steer.tallow"))?.valuePerCwtLive, 0.8);
+assert.equal(dropHand.find((row) => row.id.endsWith(".meat-and-bone-meal-50-protein"))?.change, -80.45);
+assert.equal(dropHand.find((row) => row.id.endsWith(".blood-meal-85-protein"))?.change, -52.33);
+assert.equal(dropHand.find((row) => row.id.endsWith(".blood-meal-85-protein"))?.price, 1446.67);
+assert.equal(dropHand.find((row) => row.id === "byproduct.ams_2829.steer.total")?.price, 14.69);
+assert.equal(dropHand.find((row) => row.id === "byproduct.ams_2829.cattle.total")?.price, 14.44);
+assert.equal(dropHand.find((row) => row.id === "byproduct.ams_2829.steer.dressed")?.price, 23.32);
+assert.equal(dropHand.find((row) => row.id === "byproduct.ams_2829.cattle.dressed")?.price, 22.96);
+assert.equal(dropHand[0]?.asOf, "2026-10-29");
+const drop2834 = parseAmsReportText(fx("dropvalue-2834.txt"), report("2834"), "https://www.ams.usda.gov/mnreports/ams_2834.pdf");
+assert.equal(drop2834.length, 17, `AMS_2834 rows, got ${drop2834.length}`);
+assert.equal(drop2834.find((row) => row.id === "byproduct.ams_2834.cow.total")?.price, 16);
+assert.equal(drop2834.find((row) => row.id === "byproduct.ams_2834.cow.dressed")?.price, 34.04);
+assert.equal(drop2834.find((row) => row.id === "byproduct.ams_2834.cow.meat-and-bone-meal-50-protein")?.change, -80.45);
+assert.equal(drop2834.find((row) => row.id === "byproduct.ams_2834.cow.cow-hides-branded")?.price, 4.88);
+assert.ok(drop2834.every((row) => row.group === "byproduct" && row.asOf === "2026-10-30" && row.source.includes("AMS_2834")));
+const drop2835 = parseAmsReportText(fx("dropvalue-2835.txt"), report("2835"), "https://www.ams.usda.gov/mnreports/ams_2835.pdf");
+assert.equal(drop2835.length, 19, `AMS_2835 rows, got ${drop2835.length}`);
+assert.equal(drop2835.find((row) => row.id === "byproduct.ams_2835.hog.total")?.price, 5.01);
+assert.equal(drop2835.find((row) => row.id === "byproduct.ams_2835.hog.dressed")?.price, 6.77);
+assert.equal(drop2835.find((row) => row.id === "byproduct.ams_2835.hog.choice-white-grease")?.change, -0.25);
+assert.equal(drop2835.find((row) => row.id === "byproduct.ams_2835.hog.choice-white-grease")?.price, 49.75);
+assert.ok(drop2835.every((row) => row.group === "byproduct" && row.asOf === "2026-10-30" && row.source.includes("AMS_2835")));
+assert.equal(parseAmsReportText("not a drop value report\n", report("2829"), "https://www.ams.usda.gov/mnreports/ams_2829.pdf").length, 0);
+const variety = parseAmsReportText(fx("variety-2838.txt"), report("2838"), "https://www.ams.usda.gov/mnreports/ams_2838.pdf");
+assert.equal(variety.length, 20, `AMS_2838 rows, got ${variety.length}`);
+assert.ok(variety.every((row) => row.group === "byproduct" && row.asOf === "2026-10-23" && row.unit === "$/cwt" && row.source.includes("AMS_2838")));
+const beefLips = variety.find((row) => row.id === "byproduct.ams_2838.beef.steers-heifers.lips.unscalded.export");
+assert.ok(beefLips, "steer/heifer export lips keep their class");
+assert.equal(beefLips.price, 430);
+assert.equal(beefLips.loads, 1);
+const beefLivers = variety.find((row) => row.id === "byproduct.ams_2838.beef.steers-heifers.livers.selected-2-box.domestic");
+assert.ok(beefLivers, "steer/heifer selected livers");
+assert.equal(beefLivers.price, 85);
+const cowKidneys = variety.find((row) => row.id === "byproduct.ams_2838.beef.cows.kidneys.std.export");
+assert.ok(cowKidneys, "cow export kidneys");
+assert.equal(cowKidneys.price, 51.33);
+assert.equal(cowKidneys.lo, 51);
+assert.equal(cowKidneys.hi, 52);
+assert.equal(variety.find((row) => row.id === "byproduct.ams_2838.beef.cows.cheek-meat.trimmed.domestic")?.price, 394.49);
+assert.equal(variety.find((row) => row.id === "byproduct.ams_2838.beef.cows.tripe.honeycomb-bleached.domestic")?.price, 596.97);
+const porkLine = parseAmsReportText("Mon Oct 26, 2026\nReport for 10-19-26 thru 10-23-26 - Final\nPORK Variety Meats (F.O.B. Frozen - $ Per CWT)\nBarrows & Gilts\nLivers                                   selected          2.00     40.00 - 42.00     41.00\n", report("2838"), "https://www.ams.usda.gov/mnreports/ams_2838.pdf");
+assert.equal(porkLine.length, 1);
+assert.equal(porkLine[0]?.id, "byproduct.ams_2838.pork.barrows-gilts.livers.selected.domestic");
+assert.equal(porkLine[0]?.price, 41);
+assert.throws(() => parseAmsReportText("Mon Oct 26, 2026\nReport for 10-19-26 thru 10-23-26 - Final\nBEEF Variety Meats (F.O.B. Frozen - $ Per CWT)\nCows\nLips                                   unscalded          1.00                430.00              430.00\nLips                                   unscalded          1.00                430.00              430.00\n", report("2838"), "https://www.ams.usda.gov/mnreports/ams_2838.pdf"), /duplicate by-product id/);
+const hides = parseAmsReportText(fx("hides-3641.txt"), report("3641"), "https://www.ams.usda.gov/mnreports/ams_3641.pdf");
+assert.equal(hides.length, 7, `AMS_3641 rows, got ${hides.length}`);
+assert.ok(hides.every((row) => row.group === "byproduct" && row.unit === "$/hide" && row.asOf === "2026-10-23" && row.source.includes("AMS_3641")));
+const buttHide = hides.find((row) => row.id === "byproduct.ams_3641.hides.steers.branded-butt.64-66-lbs.domestic");
+assert.ok(buttHide, "weekly steer branded butt hide");
+assert.equal(buttHide.price, 24);
+assert.equal(buttHide.loads, 2);
+assert.equal(buttHide.note, "F.O.B.");
+assert.equal(hides.find((row) => row.id === "byproduct.ams_3641.hides.cows.branded-northern.50-52-lbs.domestic")?.price, 2);
+assert.equal(hides.find((row) => row.id === "byproduct.ams_3641.hides.cows.dairy-southwest.50-52-lbs.domestic")?.price, 7.75);
+assert.equal(AMS_NATIONAL_REPORTS.find((row) => row.slug === "2829")?.group, "byproduct");
+assert.equal(AMS_NATIONAL_REPORTS.find((row) => row.slug === "3641")?.group, "byproduct");
+const stocker = parseMdaStocker(fx("mda-stocker.html"));
+assert.equal(stocker.length, 2);
+const stockerSteer = stocker.find((row) => row.id === "cattle.mda_mo.stocker_formula.steer.400-649lb");
+const stockerHeifer = stocker.find((row) => row.id === "cattle.mda_mo.stocker_formula.heifer.400-649lb");
+assert.ok(stockerSteer && stockerHeifer);
+assert.equal(stockerSteer.head, 5061);
+assert.equal(stockerSteer.avgWt, 548.1);
+assert.equal(stockerSteer.price, 419.46);
+assert.equal(stockerSteer.change, 1.1);
+assert.match(stockerSteer.classGrade, /548\.10 lb, 1\.10 higher/);
+assert.equal(stockerHeifer.head, 4361);
+assert.equal(stockerHeifer.avgWt, 536.35);
+assert.equal(stockerHeifer.price, 376.98);
+assert.equal(stockerHeifer.change, -0.21);
+assert.match(stockerHeifer.classGrade, /536\.35 lb, 0\.21 lower/);
+assert.equal(stockerSteer.asOf, "2026-10-30");
+assert.equal(stockerSteer.group, "cattle");
+assert.equal(stockerSteer.unit, "$/cwt");
+assert.equal(stockerSteer.sourceUrl, MDA_STOCKER_URL);
+assert.ok(stocker.every((row) => row.source.includes(MO_DATA_POLICY_DISCLAIMER) && row.source.includes("Missouri Stocker Formula")));
+const unchanged = parseMdaStocker(fx("mda-stocker-unchanged.html"));
+assert.equal(unchanged.find((row) => row.id.endsWith(".steer.400-649lb"))?.head, 4046);
+assert.equal(unchanged.find((row) => row.id.endsWith(".heifer.400-649lb"))?.head, 3554);
+assert.equal(unchanged.find((row) => row.id.endsWith(".steer.400-649lb"))?.avgWt, 406.58);
+assert.equal(unchanged.find((row) => row.id.endsWith(".heifer.400-649lb"))?.avgWt, 368.51);
+assert.equal(unchanged.find((row) => row.id.endsWith(".steer.400-649lb"))?.change, 0);
+assert.equal(unchanged.find((row) => row.id.endsWith(".heifer.400-649lb"))?.change, -0.4);
+assert.equal(unchanged[0]?.asOf, "2026-10-26");
+assert.match(unchanged[0]?.classGrade ?? "", /unchanged/);
+const sepDot = parseMdaStocker(fx("mda-stocker-sep-dot.html"));
+assert.equal(sepDot[0]?.asOf, "2026-09-22");
+assert.equal(sepDot.find((row) => row.id.endsWith(".steer.400-649lb"))?.price, 390.5);
+assert.equal(sepDot.find((row) => row.id.endsWith(".heifer.400-649lb"))?.change, -1.25);
+const septComma = parseMdaStocker(fx("mda-stocker-sept-comma.html"));
+assert.equal(septComma[0]?.asOf, "2026-09-18");
+assert.equal(septComma.find((row) => row.id.endsWith(".steer.400-649lb"))?.head, 5061);
+assert.equal(septComma.find((row) => row.id.endsWith(".steer.400-649lb"))?.price, 419.46);
+assert.throws(() => parseMdaStocker(fx("mda-stocker-drift.html")), /stocker: layout miss/);
+const slaughter = parseMdaSlaughter(fx("mda-slaughter.html"));
+assert.equal(slaughter.length, 2, "live No Sales is not a row");
+assert.ok(!slaughter.some((row) => row.id.endsWith(".live")));
+const flat = slaughter.find((row) => row.id === "cattle.mda_mo.direct_slaughter.dressed_flat");
+const grid = slaughter.find((row) => row.id === "cattle.mda_mo.direct_slaughter.dressed_grid");
+assert.ok(flat && grid);
+assert.equal(flat.price, 352);
+assert.equal(flat.loads, 3);
+assert.equal(flat.receipts, 200);
+assert.equal(grid.price, 355);
+assert.equal(grid.loads, 2);
+assert.equal(flat.asOf, "2026-10-30");
+assert.equal(flat.sourceUrl, MDA_SLAUGHTER_URL);
+assert.ok(slaughter.every((row) => row.source.includes(MO_DATA_POLICY_DISCLAIMER)));
+assert.ok(!slaughter.some((row) => row.price === 14.69 || row.price === 367.28 || row.price === 223 || row.price === 226), "narrative prices stay off");
+assert.throws(() => parseMdaSlaughter(fx("mda-slaughter-drift.html")), /slaughter: layout miss/);
+const addedRows = [...drop2829, ...drop2834, ...drop2835, ...variety, ...hides, ...stocker, ...slaughter];
+const addedCatalog = publicTicksCatalog(addedRows);
+assert.equal(addedCatalog.tickCount, addedRows.length);
+assert.equal(addedCatalog.sourceCount, 7);
+assert.equal(addedCatalog.tickCount, 103);
+const catalogBlob = JSON.stringify(addedCatalog);
+assert.ok(!catalogBlob.includes("419.46"));
+assert.ok(!catalogBlob.includes("14.69"));
+assert.ok(!catalogBlob.includes("agmarketnews.mo.gov"));
+assert.ok(!catalogBlob.includes("sourceUrl"));
+assert.ok(catalogBlob.includes("Missouri Stocker Formula"));
+assert.equal(freeTickSearchMatches(stockerSteer, "Missouri Stocker Formula"), true);
+assert.equal(freeTickSearchMatches(stockerSteer, "State of Missouri"), true);
+assert.equal(freeTickSearchMatches(stockerSteer, "419.46"), false);
+assert.equal(freeTickSearchMatches(stockerSteer, "agmarketnews.mo.gov"), false);
+assert.equal(freeTickSearchMatches(stockerSteer, MDA_STOCKER_URL), false);
+assert.equal(freeTickSearchMatches(steerHide, "24"), false);
+assert.equal(freeTickSearchMatches(steerHide, "Steer Hides, Branded (Butt)"), true);
+const sampleBlob = JSON.stringify(SAMPLE_TABLE_SKU);
+assert.ok(!sampleBlob.includes("419.46") && !sampleBlob.includes("14.69") && !sampleBlob.includes("agmarketnews.mo.gov"));
+assert.ok(TICKS_402_DESCRIPTION.includes("$0.05 = entire current table."));
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
 const shopIndex = readFileSync(join(repoRoot, "SHOP-INDEX.md"), "utf8");
 const openapi = JSON.parse(readFileSync(join(repoRoot, "openapi.json"), "utf8"));
 const openapiTicks = openapi.paths?.["/ticks"]?.get?.description ?? "";
+assert.ok(readme.includes(MO_TICKS_ATTRIBUTION));
+assert.ok(shopIndex.includes("modified for use from its original source, which is the State of Missouri"));
+assert.equal(openapi.paths?.["/ticks"]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+assert.equal(openapi.paths?.["/ticks"]?.get?.["x-payment-info"]?.protocols?.[0]?.x402?.amount, "50000");
 for (const needle of FAT_NEEDLES) {
     assert.ok(readme.includes(needle), `README names ${needle}`);
     assert.ok(shopIndex.includes(needle), `SHOP-INDEX names ${needle}`);
@@ -550,5 +724,14 @@ console.log(JSON.stringify({
     eggProducts2842: eggProducts.length,
     rice1655: rice.length,
     fatRowCount,
+    dropValue2829: drop2829.length,
+    dropValue2834: drop2834.length,
+    dropValue2835: drop2835.length,
+    variety2838: variety.length,
+    hides3641: hides.length,
+    mdaStocker: stocker.length,
+    mdaSlaughter: slaughter.length,
+    addedTickCount: addedCatalog.tickCount,
+    addedSourceCount: addedCatalog.sourceCount,
 }));
 //# sourceMappingURL=ticks-ams.test.js.map

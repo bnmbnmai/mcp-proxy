@@ -12,7 +12,13 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
  * Name them in free copy. Do not rename product.id.
  */
-export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
+export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, by-products, Missouri stocker";
+/**
+ * mo.gov Data Policy text required on any app that uses State of Missouri data.
+ * Kept verbatim. One's uses U+2019, matching https://mo.gov/data-policy.
+ */
+export const MO_DATA_POLICY_DISCLAIMER = "The data made available here has been modified for use from its original source, which is the State of Missouri. THE STATE OF MISSOURI MAKES NO REPRESENTATIONS OR WARRANTY AS TO THE COMPLETENESS, ACCURACY, TIMELINESS, OR CONTENT OF ANY DATA MADE AVAILABLE THROUGH THIS SITE. THE STATE OF MISSOURI EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the Web feed is being used at one\u2019s own risk.";
+export const MO_TICKS_ATTRIBUTION = `Missouri Dept of Agriculture Market News rows on GET /ticks (Missouri stocker) stay on this $0.05 table. ${MO_DATA_POLICY_DISCLAIMER}`;
 /** OpenAPI GET /ticks description. Same bag. No path-split. */
 export const TICKS_OPENAPI_DESCRIPTION = `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.`;
 /** Unpaid 402 resource + accepts[].description. Keep under CDP 500 chars. */
