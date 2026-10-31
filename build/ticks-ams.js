@@ -49,6 +49,15 @@
  * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
  * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
  * Salina UT stays AMS_2037. EIA stays off.
+ * By-product is a group on this same $0.05 table: AMS_2829 daily steer/cattle
+ * drop value, AMS_2834 weekly cow drop value, AMS_2835 weekly hog drop value,
+ * AMS_2838 weekly variety meats, and AMS_3641 weekly major packer hides.
+ * Official mnreports PDFs only. AMS_2830 hides stay parked. AMS_3458 prior-day
+ * hog stays killed (mpr datamart already returns free JSON). Missouri Dept of
+ * Agriculture stocker formula (weekday) and weekly direct slaughter are HTML
+ * on agmarketnews.mo.gov, not AMS. Every MDA row source carries the State of
+ * Missouri data-policy disclaimer. Free search matches user-visible fields
+ * only (not sourceUrl, not the paid price).
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -58,6 +67,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
+import { MO_DATA_POLICY_DISCLAIMER } from "./shop-sample.js";
 import { AMS_LEFTOVER_REPORTS, AMS_LEFTOVER_SLUGS } from "./ticks-ams-leftovers.js";
 export { AMS_LEFTOVER_REPORTS, AMS_LEFTOVER_SLUGS };
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -217,6 +227,11 @@ export const AMS_NATIONAL_REPORTS = [
     { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
     { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
     { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
+    { slug: "2829", group: "byproduct", region: "national", title: "By-Product Drop Value (Steers) (Cattle)", esmisPublication: "" },
+    { slug: "2834", group: "byproduct", region: "national", title: "By-Product Drop Value (Cow)", esmisPublication: "" },
+    { slug: "2835", group: "byproduct", region: "national", title: "By-Product Drop Value (Hogs)", esmisPublication: "" },
+    { slug: "2838", group: "byproduct", region: "national", title: "Weekly Pork and Beef Variety Meat", esmisPublication: "" },
+    { slug: "3641", group: "byproduct", region: "national", title: "Weekly Major Packer Hide", esmisPublication: "" },
     { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
     { slug: "2315", group: "produce", region: "new_york", title: "New York Terminal Market Vegetables", esmisPublication: "", pdfNames: ["nx_fv020"] },
     { slug: "2290", group: "produce", region: "chicago", title: "Chicago Terminal Market Fruit", esmisPublication: "", pdfNames: ["hx_fv010"] },
@@ -269,6 +284,8 @@ export const SKIPPED_SOURCES = [
     { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice. Grocery produce ads are AMS_3324 / fvwretail" },
     { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
     { id: "if_fv130_already", why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list" },
+    { id: "ams_2830_parked", why: "AMS_2830 Major Packer Hide Report (daily NW_LS448) stays parked — thin overlap with AMS_3641 cow hides and AMS_2829 steer hides" },
+    { id: "ams_3458_killed", why: "AMS_3458 Daily Direct Prior Day Hog (LM_HG218) is KILL — mpr datamart /reports/3458 returns free JSON. Do not wrap" },
 ];
 function env(name, fallback = "") {
     return (process.env[name] ?? fallback).trim();
@@ -3596,7 +3613,440 @@ export function parseWeeklyRiceSummary(text, report, sourceUrl) {
     }
     return dedupeTicks(out);
 }
+const DROP_NUM = String.raw `-?[\d,]+\.\d+`;
+const DROP_ROW_RE = new RegExp(`^(?<item>\\S.*?)\\s{2,}(?<y>${DROP_NUM})\\s+(?<p>${DROP_NUM})\\s+(?<c>UNCH|${DROP_NUM})\\s+(?<v>${DROP_NUM})\\s*$`);
+const VARIETY_NUM = String.raw `[\d,]+\.\d+`;
+const VARIETY_RIGHT_RE = new RegExp(String.raw `\s+(?<loads>${VARIETY_NUM})\s+(?<rng>${VARIETY_NUM}(?:\s*-\s*${VARIETY_NUM})?)\s+(?<avg>${VARIETY_NUM})\s*$`);
+const VARIETY_CLASSES = new Set([
+    "Cows",
+    "Barrows & Gilts",
+    "Steers",
+    "Heifers",
+    "Bulls",
+    "Native Cows",
+    "Branded Cows",
+    "Steers/Heifers",
+]);
+function hyphenSlug(raw) {
+    return raw
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+}
+function dropNumber(raw) {
+    return Number(raw.replace(/,/g, ""));
+}
+function mmddyy(raw) {
+    const [mm, dd, yy] = raw.split("-");
+    return `20${yy}-${mm}-${dd}`;
+}
+function stripFootnotes(item) {
+    return item.replace(/[\u00b9\u00b2\u00b3]/g, "").trim();
+}
+/**
+ * AMS_2829 / AMS_2834 / AMS_2835 by-product drop value (pdftotext -layout).
+ * Item price is the weighted average. Totals and dressed basis are their own rows.
+ * Page-break repeats of the same id are dropped. A layout with no section rows
+ * returns [] so collect fails closed instead of emitting a junk price.
+ */
+export function parseDropValueReport(text, report, sourceUrl) {
+    const period = text.match(/Report for (\d\d-\d\d-\d\d)(?: thru (\d\d-\d\d-\d\d))?\s*-\s*(\w+)/);
+    if (!period)
+        return [];
+    const asOf = mmddyy(period[2] || period[1]);
+    const out = [];
+    const seen = new Set();
+    let section = "";
+    for (const raw of text.split(/\r?\n/)) {
+        const line = raw.replace(/\f/g, "");
+        const sec = line.match(/By-Product Values \(\$\/CWT\) - (\w+)/);
+        if (sec) {
+            section = sec[1].toLowerCase();
+            continue;
+        }
+        if (!section)
+            continue;
+        const trimmed = line.trim();
+        const totals = trimmed.match(new RegExp(`^Totals:\\s+(${DROP_NUM})\\s+(${DROP_NUM})$`));
+        if (totals) {
+            const id = `byproduct.ams_${report.slug}.${section}.total`;
+            if (seen.has(id))
+                continue;
+            seen.add(id);
+            const commodity = `${section.charAt(0).toUpperCase()}${section.slice(1)} by-product drop value`;
+            pushTick(out, report, sourceUrl, asOf, {
+                id,
+                group: "byproduct",
+                commodity,
+                label: `${report.title} ${commodity}`,
+                market: report.title,
+                classGrade: "hide+offal, live basis",
+                unit: "$/cwt live",
+                price: dropNumber(totals[2]),
+                yieldLb: dropNumber(totals[1]),
+            });
+            continue;
+        }
+        const dressed = trimmed.match(new RegExp(`^Dressed Equivalent Basis \\(([\\d.]+)%\\):\\s+(${DROP_NUM})$`));
+        if (dressed) {
+            const id = `byproduct.ams_${report.slug}.${section}.dressed`;
+            if (seen.has(id))
+                continue;
+            seen.add(id);
+            const commodity = `${section.charAt(0).toUpperCase()}${section.slice(1)} by-product drop value`;
+            pushTick(out, report, sourceUrl, asOf, {
+                id,
+                group: "byproduct",
+                commodity,
+                label: `${report.title} ${commodity} dressed`,
+                market: report.title,
+                classGrade: `dressed equiv ${dressed[1]}%`,
+                unit: "$/cwt dressed",
+                price: dropNumber(dressed[2]),
+            });
+            continue;
+        }
+        const row = trimmed.match(DROP_ROW_RE);
+        if (!row?.groups || row.groups.item.startsWith("Item"))
+            continue;
+        const item = stripFootnotes(row.groups.item);
+        const id = `byproduct.ams_${report.slug}.${section}.${hyphenSlug(item)}`;
+        if (seen.has(id))
+            continue;
+        seen.add(id);
+        const change = row.groups.c === "UNCH" ? undefined : dropNumber(row.groups.c);
+        pushTick(out, report, sourceUrl, asOf, {
+            id,
+            group: "byproduct",
+            commodity: item,
+            label: `${report.title} ${section} ${item}`,
+            market: report.title,
+            classGrade: `${section} by-product`,
+            unit: "$/cwt (item)",
+            price: dropNumber(row.groups.p),
+            yieldLb: dropNumber(row.groups.y),
+            ...(change === undefined ? {} : { change }),
+            valuePerCwtLive: dropNumber(row.groups.v),
+        });
+    }
+    return out;
+}
+/**
+ * AMS_2838 variety meats, and AMS_3641 hides when hides=true.
+ * Continuation lines (leading space) inherit the previous item. "No trade"
+ * lines never match the loads/range/avg tail, so they are not ticks.
+ * Duplicate ids throw — a layout collision must not emit two prices for one series.
+ */
+export function parseVarietyMeatReport(text, report, sourceUrl, hides = false) {
+    const period = text.match(/Report for (\d\d-\d\d-\d\d) thru (\d\d-\d\d-\d\d)\s*-\s*(\w+)/);
+    if (!period)
+        return [];
+    const asOf = mmddyy(period[2]);
+    const out = [];
+    const seen = new Set();
+    let section = null;
+    let unit = "";
+    let klass = null;
+    let item = null;
+    for (const raw0 of text.split(/\r?\n/)) {
+        const raw = raw0.replace(/\f/g, "");
+        const line = raw.replace(/\s+$/g, "");
+        const trimmed = line.trim();
+        const sec = line.match(/(BEEF|PORK) Variety Meats \((.*?) - \$ Per CWT\)/) ||
+            line.match(/HIDES - (.*?) \(\$ Per Hide\)/);
+        if (sec) {
+            if (hides) {
+                section = "hides";
+                unit = "$/hide";
+            }
+            else if (sec[1] === "BEEF" || sec[1] === "PORK") {
+                section = sec[1].toLowerCase();
+                unit = "$/cwt";
+            }
+            else {
+                section = null;
+                unit = "";
+            }
+            klass = null;
+            item = null;
+            continue;
+        }
+        if (VARIETY_CLASSES.has(trimmed)) {
+            klass = trimmed;
+            item = null;
+            continue;
+        }
+        if (!section || /^(Item|Hide Description|Explanatory|Source:)/.test(trimmed))
+            continue;
+        let body = line;
+        let freight;
+        if (hides) {
+            const fm = body.match(/\s+(F\.O\.B\.|Delivered|Del\.?)\s*$/);
+            if (fm && fm.index != null) {
+                freight = fm[1];
+                body = body.slice(0, fm.index);
+            }
+        }
+        const right = body.match(VARIETY_RIGHT_RE);
+        if (!right?.groups || right.index == null)
+            continue;
+        let left = body.slice(0, right.index);
+        const exportLot = /\bExport\b/.test(left);
+        left = left.replace(/\bExport\b/g, "");
+        const parts = left
+            .trim()
+            .split(/\s{2,}/)
+            .map((part) => part.trim())
+            .filter(Boolean);
+        let desc;
+        if (!raw.startsWith(" ") && !raw.startsWith("\t") && parts.length > 0) {
+            item = parts[0];
+            desc = parts.slice(1).join(" ");
+        }
+        else {
+            desc = parts.join(" ");
+        }
+        if (!item)
+            continue;
+        const market = exportLot ? "export" : "domestic";
+        const descSlug = hyphenSlug(desc) || "std";
+        const id = [
+            "byproduct",
+            `ams_${report.slug}`,
+            section,
+            hyphenSlug(klass || "na"),
+            hyphenSlug(item),
+            descSlug,
+            market,
+        ].join(".");
+        if (seen.has(id))
+            throw new Error(`duplicate by-product id ${id}`);
+        seen.add(id);
+        const rng = right.groups.rng.split(/\s*-\s*/).map((part) => dropNumber(part));
+        const commodity = hides ? `Hide ${item}` : `${section.charAt(0).toUpperCase()}${section.slice(1)} ${item}`;
+        pushTick(out, report, sourceUrl, asOf, {
+            id,
+            group: "byproduct",
+            commodity,
+            label: `${report.title} ${commodity}`,
+            market: report.title,
+            classGrade: [klass, desc, market, freight].filter(Boolean).join("; "),
+            unit,
+            price: dropNumber(right.groups.avg),
+            lo: rng[0],
+            hi: rng[rng.length - 1],
+            loads: dropNumber(right.groups.loads),
+            ...(freight ? { note: freight } : {}),
+        });
+    }
+    return out;
+}
+export const MDA_STOCKER_URL = "https://agmarketnews.mo.gov/missouri-stocker-formula";
+export const MDA_SLAUGHTER_URL = "https://agmarketnews.mo.gov/missouri-weekly-direct-slaughter-report";
+function mdaText(html) {
+    const main = html.match(/<main[\s\S]*?<\/main>/i);
+    let text = main ? main[0] : html;
+    text = text.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, "");
+    text = text.replace(/<br\s*\/?>|<\/p>|<\/div>|<\/li>/gi, "\n");
+    text = text
+        .replace(/<[^>]+>/g, " ")
+        .replace(/&nbsp;/g, " ")
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&#39;|&apos;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&rsquo;|&#8217;/g, "\u2019");
+    return text.replace(/[ \t]+/g, " ").replace(/\u00a0/g, " ");
+}
+function mdaDate(raw) {
+    const cleaned = raw.replace(/\bSept\b/g, "Sep").replace(/\./g, "").replace(/\s+/g, " ").trim();
+    const named = cleaned.match(/^(?:[A-Za-z]+,?\s+)?([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})$/);
+    if (!named)
+        return null;
+    const mon = MONTHS[named[1].toLowerCase()];
+    if (!mon)
+        return null;
+    return `${named[3]}-${mon}-${named[2].padStart(2, "0")}`;
+}
+function mdaNumber(raw) {
+    return Number(raw.replace(/,/g, ""));
+}
+function mdaChange(raw) {
+    const text = raw.trim();
+    if (text.startsWith("unch"))
+        return 0;
+    const hit = text.match(/^([\d.]+)\s+(higher|lower)/);
+    if (!hit)
+        return null;
+    const magnitude = mdaNumber(hit[1]);
+    return hit[2] === "higher" ? magnitude : -magnitude;
+}
+function mdaSource(kind) {
+    return `Missouri Dept of Agriculture Market News — ${kind}. ${MO_DATA_POLICY_DISCLAIMER}`;
+}
+/**
+ * MDA Missouri Stocker Formula. Throws on format drift. Does not emit a row
+ * when the rolling-value sentence is missing or the steer/heifer change clause moved.
+ */
+export function parseMdaStocker(html) {
+    const text = mdaText(html);
+    const dated = text.match(/((?:Mon|Tues|Wednes|Thurs|Fri)day,?\s+[A-Z][a-z]+\.?\s+\d{1,2},\s+\d{4})/);
+    const asOf = dated ? mdaDate(dated[1]) : null;
+    const num = String.raw `([\d,]+(?:\.\d+)?)`;
+    const sentence = text.match(new RegExp(`consists of ${num}\\s*\\(${num}\\)\\s*head with a weighted average weight of ${num}\\s*\\(${num}\\)\\s*lbs\\.? and a price value of ${num}\\s*\\(${num}\\)\\s*,?\\s*([\\s\\S]*?)\\.\\s`));
+    if (!sentence || !asOf)
+        throw new Error("stocker: layout miss");
+    const change = sentence[7].match(/^((?:[\d.]+ (?:higher|lower))|unchanged)\s*\(((?:[\d.]+ (?:higher|lower))|unchanged)\)/);
+    if (!change)
+        throw new Error("stocker: layout miss");
+    const source = mdaSource("Missouri Stocker Formula");
+    const out = [];
+    for (const [offset, cls, commodity] of [
+        [0, "steer", "Feeder Steers"],
+        [1, "heifer", "Feeder Heifers"],
+    ]) {
+        const head = mdaNumber(sentence[1 + offset]);
+        const avgWt = mdaNumber(sentence[3 + offset]);
+        const price = mdaNumber(sentence[5 + offset]);
+        const chg = mdaChange(change[1 + offset]);
+        if (!Number.isFinite(head) || !Number.isFinite(avgWt) || !Number.isFinite(price) || chg == null) {
+            throw new Error("stocker: layout miss");
+        }
+        const id = `cattle.mda_mo.stocker_formula.${cls}.400-649lb`;
+        out.push({
+            id,
+            group: "cattle",
+            commodity,
+            label: `Missouri Stocker Formula ${commodity}`,
+            market: "Missouri Stocker Formula (MDA, rolling 7-day wtd)",
+            classGrade: `M&L 1 and 1-2, 400-649 lb, ${head} head, wtd avg ${sentence[3 + offset]} lb, ${change[1 + offset]}`,
+            unit: "$/cwt",
+            price,
+            asOf,
+            source,
+            sourceUrl: MDA_STOCKER_URL,
+            reportDate: asOf,
+            series: id,
+            head,
+            avgWt,
+            change: chg,
+        });
+    }
+    return out;
+}
+/**
+ * MDA Weekly Direct Slaughter. "No Sales" / untested lines are skipped.
+ * A labeled sale line that is not a no-sale and does not match loads+price throws.
+ */
+export function parseMdaSlaughter(html) {
+    const text = mdaText(html);
+    const dated = text.match(/Jefferson City, MO\s+([A-Z][a-z]+\.?\s+\d{1,2},\s+\d{4})/);
+    const asOf = dated ? mdaDate(dated[1]) : null;
+    const receipts = text.match(/Week:\s*([\d,]+(?:\.\d+)?)\s*Last Week:\s*([\d,]+(?:\.\d+)?)\s*Last Year:\s*([\d,]+(?:\.\d+)?)/);
+    if (!asOf || !receipts)
+        throw new Error("slaughter: layout miss");
+    const receiptN = Math.round(mdaNumber(receipts[1]));
+    const source = mdaSource("Weekly Direct Slaughter");
+    const out = [];
+    const labels = [
+        ["Live Sales", "live"],
+        ["Steers and Heifers \\(80 percent Choice\\)", "dressed_flat"],
+        ["Grid Dressed Sales", "dressed_grid"],
+    ];
+    let sawLabel = false;
+    for (const [label, key] of labels) {
+        const hit = text.match(new RegExp(`${label}[^\\n]*`));
+        if (!hit)
+            continue;
+        sawLabel = true;
+        const line = hit[0];
+        if (/No Sales|not tested|inactive/i.test(line))
+            continue;
+        const price = line.match(/(\d+)\s+loads?\s+(.*?)\s(?:at\s+)?([\d,]+(?:\.\d+)?)(?:\s*-\s*([\d,]+(?:\.\d+)?))?\s*\.?\s*$/);
+        if (!price)
+            throw new Error("slaughter: layout miss");
+        const lo = mdaNumber(price[3]);
+        const hi = price[4] ? mdaNumber(price[4]) : lo;
+        if (!Number.isFinite(lo) || !Number.isFinite(hi))
+            throw new Error("slaughter: layout miss");
+        const id = `cattle.mda_mo.direct_slaughter.${key}`;
+        const loads = Number(price[1]);
+        out.push({
+            id,
+            group: "cattle",
+            commodity: "Slaughter Steers & Heifers",
+            label: `Missouri Weekly Direct Slaughter ${key.replace(/_/g, " ")}`,
+            market: "Missouri Weekly Direct Slaughter Cattle (MDA)",
+            classGrade: `${key.replace(/_/g, " ")}, ${loads} loads, ${price[2].trim()}, receipts ${receiptN}`,
+            unit: "$/cwt",
+            price: Math.round(((lo + hi) / 2) * 100) / 100,
+            lo,
+            hi,
+            asOf,
+            source,
+            sourceUrl: MDA_SLAUGHTER_URL,
+            reportDate: asOf,
+            series: id,
+            loads,
+            receipts: receiptN,
+        });
+    }
+    if (!sawLabel)
+        throw new Error("slaughter: layout miss");
+    return out;
+}
+/** User-visible tick fields. Free search must not see sourceUrl or the paid price. */
+export const FREE_TICK_SEARCH_FIELDS = [
+    "id",
+    "group",
+    "commodity",
+    "label",
+    "market",
+    "classGrade",
+    "unit",
+    "asOf",
+    "source",
+];
+export function freeTickSearchHaystack(row) {
+    return FREE_TICK_SEARCH_FIELDS.map((key) => String(row[key] ?? ""))
+        .join("\n")
+        .toLowerCase();
+}
+export function freeTickSearchMatches(row, query) {
+    const needle = query.trim().toLowerCase();
+    if (!needle)
+        return false;
+    return freeTickSearchHaystack(row).includes(needle);
+}
+/** Free catalog counts from rows. Names and dates only — no price, no sourceUrl. */
+export function publicTicksCatalog(rows) {
+    const byName = new Map();
+    for (const row of rows) {
+        const prev = byName.get(row.source);
+        if (!prev) {
+            byName.set(row.source, { name: row.source, group: row.group, tickCount: 1, latestAsOf: row.asOf });
+            continue;
+        }
+        prev.tickCount += 1;
+        if (row.asOf > prev.latestAsOf)
+            prev.latestAsOf = row.asOf;
+    }
+    const sources = [...byName.values()];
+    return { tickCount: rows.length, sourceCount: sources.length, sources };
+}
+function finishSnapshot(snap) {
+    const catalog = publicTicksCatalog(snap.rows);
+    return { ...snap, tickCount: catalog.tickCount, sourceCount: catalog.sourceCount };
+}
 export function parseAmsReportText(text, report, sourceUrl) {
+    if (report.group === "byproduct") {
+        if (report.slug === "2838")
+            return parseVarietyMeatReport(text, report, sourceUrl, false);
+        if (report.slug === "3641")
+            return parseVarietyMeatReport(text, report, sourceUrl, true);
+        return parseDropValueReport(text, report, sourceUrl);
+    }
     if (report.group === "hay")
         return parseHayReport(text, report, sourceUrl);
     if (report.group === "cattle")
@@ -3809,15 +4259,27 @@ export function mergeAmsNationalTicks(payload, snap = readAmsSnapshot()) {
 }
 function reportSlugFromTickId(id) {
     const m = id.match(/\.ams_([a-z0-9_]+)\./i);
-    return m ? m[1] : null;
+    if (m)
+        return m[1];
+    if (id.includes(".mda_mo."))
+        return "mda_mo";
+    return null;
 }
 function reportSlugFromFailedId(id) {
     const m = id.match(/^ams_([a-z0-9_]+)$/i);
-    return m ? m[1] : null;
+    if (m)
+        return m[1];
+    if (id === "mda_mo" || id.startsWith("mda_mo_"))
+        return "mda_mo";
+    return null;
 }
 function reportSlugFromSourceLabel(label) {
     const m = label.match(/^AMS_([a-z0-9_]+)\b/i);
-    return m ? m[1] : null;
+    if (m)
+        return m[1];
+    if (/^MDA_MO\b/.test(label))
+        return "mda_mo";
+    return null;
 }
 export function collectReportFilter() {
     const leftoverOnly = /^(1|true|yes)$/i.test(env("TICKS_AMS_LEFTOVERS_ONLY"));
@@ -3856,16 +4318,15 @@ export function mergePartialAmsSnapshot(prev, next, slugs) {
         ...next.sources,
     ];
     const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? next.asOf ?? prev.asOf;
-    return {
+    return finishSnapshot({
         ok: true,
         product: prev.product || next.product,
         fetchedAt: next.fetchedAt,
         asOf,
-        tickCount: rows.length,
         rows,
         failed,
         sources,
-    };
+    });
 }
 /** Full-walk fail-closed: keep previous rows for slugs whose fetch failed this pass. */
 export function mergeFailedAmsSlugs(prev, next) {
@@ -3887,16 +4348,15 @@ export function mergeFailedAmsSlugs(prev, next) {
     const rows = [...keepRows, ...next.rows];
     const sources = [...keepSources.filter((label) => !next.sources.includes(label)), ...next.sources];
     const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? next.asOf ?? prev.asOf;
-    return {
+    return finishSnapshot({
         ok: true,
         product: next.product || prev.product,
         fetchedAt: next.fetchedAt,
         asOf,
-        tickCount: rows.length,
         rows,
         failed: next.failed,
         sources,
-    };
+    });
 }
 const PRODUCERS_INDEX = "https://www.producerslivestock.com/market-reports/";
 const PRODUCER_BARNS = {
@@ -4096,6 +4556,40 @@ export function parseProducersLivestockReport(text, barn, sourceUrl) {
     }
     return dedupeTicks(out);
 }
+function shouldCollectMda() {
+    const only = env("TICKS_AMS_ONLY_SLUGS")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    if (/^(1|true|yes)$/i.test(env("TICKS_AMS_LEFTOVERS_ONLY")) && only.length === 0)
+        return false;
+    if (only.length === 0)
+        return true;
+    return only.some((s) => s === "mda" || s === "mda_mo" || s === "stocker");
+}
+async function collectMda(rows, failed, sources) {
+    try {
+        const stockerHtml = await fetchText(MDA_STOCKER_URL);
+        const slaughterHtml = await fetchText(MDA_SLAUGHTER_URL);
+        const parsed = [...parseMdaStocker(stockerHtml), ...parseMdaSlaughter(slaughterHtml)];
+        if (parsed.length === 0)
+            throw new Error("MDA HTML had no parseable stocker or slaughter print");
+        if (parsed.some((row) => !row.source.includes(MO_DATA_POLICY_DISCLAIMER) || !row.sourceUrl)) {
+            throw new Error("refusing to emit an MDA row without the State of Missouri disclaimer");
+        }
+        rows.push(...parsed);
+        sources.push("MDA_MO Missouri Stocker Formula");
+        sources.push("MDA_MO Missouri Weekly Direct Slaughter");
+    }
+    catch (err) {
+        failed.push({
+            id: "mda_mo",
+            source: "MDA_MO Missouri Dept of Agriculture Market News",
+            sourceUrl: MDA_STOCKER_URL,
+            reason: err instanceof Error ? err.message : String(err),
+        });
+    }
+}
 function shouldCollectProducers() {
     const only = env("TICKS_AMS_ONLY_SLUGS")
         .split(",")
@@ -4187,7 +4681,7 @@ export async function collectAmsNational(opts) {
                     lastErr = "official PDF reported no trades / not established this week";
                     break;
                 }
-                lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/feedstuff/ethanol/rice/production-cost print";
+                lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/feedstuff/ethanol/rice/production-cost/by-product print";
             }
             catch (err) {
                 lastErr = err instanceof Error ? err.message : String(err);
@@ -4211,18 +4705,21 @@ export async function collectAmsNational(opts) {
     if (shouldCollectProducers()) {
         await collectProducers(rows, failed, sources, tmpDir);
     }
+    const collectMdaThisPass = shouldCollectMda();
+    if (collectMdaThisPass) {
+        await collectMda(rows, failed, sources);
+    }
     const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? null;
-    let snap = {
+    let snap = finishSnapshot({
         ok: true,
         product: PRODUCT_ID,
         fetchedAt: new Date().toISOString(),
         asOf,
-        tickCount: rows.length,
         rows,
         failed,
         sources,
-    };
-    const filteredSlugs = reports.map((r) => r.slug);
+    });
+    const filteredSlugs = [...reports.map((r) => r.slug), ...(collectMdaThisPass ? ["mda_mo"] : [])];
     const prev = readAmsSnapshot(dir);
     if (prev && prev.rows.length > 0) {
         if (reports.length < AMS_NATIONAL_REPORTS.length) {
@@ -4247,6 +4744,7 @@ if (isMain()) {
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
             tickCount: snap.tickCount,
+            sourceCount: snap.sourceCount,
             sources: snap.sources,
             failed: snap.failed,
             snapshot: amsSnapshotPath(),

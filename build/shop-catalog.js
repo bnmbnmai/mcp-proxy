@@ -2,7 +2,7 @@
  * Shop catalog derived from live /.well-known/x402.
  * Door count is whatever well-known lists today — never hardcoded.
  */
-import { TICKS_BAG } from "./shop-sample.js";
+import { MO_TICKS_ATTRIBUTION, TICKS_BAG } from "./shop-sample.js";
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
@@ -172,6 +172,8 @@ payTo \`${PAY_TO}\` · Base (\`${NETWORK}\`) · USDC \`${USDC}\`
 
 Unpaid GET on a paid path returns HTTP 402. After \`X-PAYMENT\`, the same URL returns JSON. Unpaid 402 \`accepts[].extra\` names \`searchUrl\`, \`oneDocPath\`, \`priceAtomic\`, \`pagePriceAtomic\`, \`pageDefault\`, \`tableWhole\`, \`firmCheckUrl\`, \`sampleUrl\`. \`extra.name\` stays USD Coin.
 
+${MO_TICKS_ATTRIBUTION}
+
 MCP at \`/mcp\` is generated from live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402) (one paid tool per paid resource) plus free \`search\` and \`firm-check\`. \`/sample\` is the free 3-row slice, not an MCP tool and not a SKU.
 
 ## Free (not paid)
@@ -206,6 +208,8 @@ Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.
 - **Body doors** (the other paid GETs) — free search \`GET https://ticks.bnm.farm/{door}/manifest.json?q=\` (HTTP 200) returns \`id\` and the \`?id=\` URL. Then pay \`GET ?id=\` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page \`?before=\`, another $0.05).
 
 Unpaid GET on a paid path returns HTTP 402 with \`PAYMENT-REQUIRED\`. No request body.
+
+${MO_TICKS_ATTRIBUTION}
 
 ## Free (not SKUs)
 

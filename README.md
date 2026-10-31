@@ -11,6 +11,8 @@ Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.
 
 Unpaid GET on a paid path returns HTTP 402 with `PAYMENT-REQUIRED`. No request body.
 
+Missouri Dept of Agriculture Market News rows on GET /ticks (Missouri stocker) stay on this $0.05 table. The data made available here has been modified for use from its original source, which is the State of Missouri. THE STATE OF MISSOURI MAKES NO REPRESENTATIONS OR WARRANTY AS TO THE COMPLETENESS, ACCURACY, TIMELINESS, OR CONTENT OF ANY DATA MADE AVAILABLE THROUGH THIS SITE. THE STATE OF MISSOURI EXPRESSLY DISCLAIMS ALL WARRANTIES, WHETHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. The data is subject to change as modifications and updates are complete. It is understood that the information contained in the Web feed is being used at one’s own risk.
+
 ## Free (not SKUs)
 
 - `GET /sample` — free 3-row /ticks slice. HTTP 200. Not the whole $0.05 table.
@@ -35,7 +37,7 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 
 | Path | Bag | Price |
 | --- | --- | --- |
-| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 |
+| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, by-products, Missouri stocker). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table | $0.05 |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. This week's LNM | $0.05 |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. This week's LNM | $0.05 |
