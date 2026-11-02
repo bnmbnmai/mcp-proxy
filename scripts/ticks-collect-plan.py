@@ -12,6 +12,7 @@ Grow/refresh reasons: thin | asof | stale. No secrets.
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 import time
@@ -23,11 +24,15 @@ from typing import Any
 DEFAULT_STALE_HOURS = 36
 DEFAULT_GROW_UNTIL = 20
 FAT_N = 200
-# Loopback well-known can stall while hay/Superfund is rewriting the bag.
-# 2s then 8s still fell back to PUBLIC_BAZAAR_SKUS (2026-09-17 morning,
-# 2026-09-18 evening). Retry live well-known before the frozen SKU list.
-WELL_KNOWN_TIMEOUT = 15
-WELL_KNOWN_RETRIES = 3
+# Loopback well-known stalls while the door sync-parses a rewritten hay bag
+# (2026-09-17, 2026-09-18, and ~11 minutes on 2026-11-01). Back off on the
+# configured URL, try the public mirror once, then PUBLIC_BAZAAR_SKUS.
+# The budget is bounded so a long wedge does not freeze the door walk.
+# Override in tests: TICKS_WELL_KNOWN_RETRIES, TICKS_WELL_KNOWN_TIMEOUT,
+# TICKS_WELL_KNOWN_BACKOFF, TICKS_WELL_KNOWN_SKIP_PUBLIC=1.
+WELL_KNOWN_ATTEMPT_TIMEOUTS = (5, 8, 12, 15)
+WELL_KNOWN_BACKOFF_S = (1.0, 2.0, 4.0)
+PUBLIC_MIRROR_TIMEOUT = 8.0
 PUBLIC_WELL_KNOWN_URL = "https://ticks.bnm.farm/.well-known/x402"
 
 
@@ -179,19 +184,56 @@ def official_doors_from_door_src(path: str) -> list[str]:
     return skus + [s for s in extra if s not in skus]
 
 
-def fetch_well_known(url: str) -> dict[str, Any] | None:
-    """GET one well-known URL. Retry timeouts/5xx so hay-load stalls do not freeze the door list."""
+def _env_float(name: str, default: float) -> float:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return float(raw)
+    except ValueError:
+        return default
+
+
+def _env_int(name: str, default: int) -> int:
+    raw = os.environ.get(name, "").strip()
+    if not raw:
+        return default
+    try:
+        return int(raw)
+    except ValueError:
+        return default
+
+
+def well_known_schedule() -> tuple[list[float], list[float]]:
+    """Timeouts per attempt, then sleeps between attempts. Bounded on purpose."""
+    if os.environ.get("TICKS_WELL_KNOWN_RETRIES", "").strip():
+        attempts = max(1, _env_int("TICKS_WELL_KNOWN_RETRIES", 4))
+        timeout = _env_float("TICKS_WELL_KNOWN_TIMEOUT", 5.0)
+        gap = _env_float("TICKS_WELL_KNOWN_BACKOFF", 0.0)
+        return [timeout] * attempts, [gap] * max(0, attempts - 1)
+    return list(WELL_KNOWN_ATTEMPT_TIMEOUTS), list(WELL_KNOWN_BACKOFF_S)
+
+
+def fetch_well_known(
+    url: str,
+    *,
+    timeouts: list[float] | None = None,
+    sleeps: list[float] | None = None,
+) -> dict[str, Any] | None:
+    """GET one well-known URL. Retry with backoff, then let the caller fall back."""
     from urllib.request import Request, urlopen
 
-    for attempt in range(1, WELL_KNOWN_RETRIES + 1):
+    if timeouts is None or sleeps is None:
+        timeouts, sleeps = well_known_schedule()
+    for index, timeout in enumerate(timeouts):
         try:
             req = Request(url, headers={"User-Agent": "ticks-collect"})
-            with urlopen(req, timeout=WELL_KNOWN_TIMEOUT) as resp:
+            with urlopen(req, timeout=timeout) as resp:
                 data = json.loads(resp.read().decode())
             return data if isinstance(data, dict) else None
         except Exception:
-            if attempt < WELL_KNOWN_RETRIES:
-                time.sleep(attempt)
+            if index < len(timeouts) - 1:
+                time.sleep(sleeps[index] if index < len(sleeps) else 0)
     return None
 
 
@@ -210,13 +252,26 @@ def list_official_doors(
             doors = official_doors_from_well_known(data)
             if doors:
                 return doors, "well-known-file"
-    urls: list[str] = []
+    skip_public = os.environ.get("TICKS_WELL_KNOWN_SKIP_PUBLIC", "").strip().lower() in {"1", "true", "yes"}
     if url:
-        urls.append(url)
-    if PUBLIC_WELL_KNOWN_URL not in urls:
-        urls.append(PUBLIC_WELL_KNOWN_URL)
-    for candidate in urls:
-        data = fetch_well_known(candidate)
+        data = fetch_well_known(url)
+        if isinstance(data, dict):
+            doors = official_doors_from_well_known(data)
+            if doors:
+                return doors, "well-known"
+    # The public host is the same node behind Caddy. After the loopback URL
+    # already used the backoff budget, try the mirror once. With no configured
+    # URL, the mirror is the only live source and gets the full budget.
+    if not skip_public and url.rstrip("/") != PUBLIC_WELL_KNOWN_URL.rstrip("/"):
+        if url:
+            mirror_timeout = (
+                _env_float("TICKS_WELL_KNOWN_TIMEOUT", PUBLIC_MIRROR_TIMEOUT)
+                if os.environ.get("TICKS_WELL_KNOWN_RETRIES", "").strip()
+                else PUBLIC_MIRROR_TIMEOUT
+            )
+            data = fetch_well_known(PUBLIC_WELL_KNOWN_URL, timeouts=[mirror_timeout], sleeps=[])
+        else:
+            data = fetch_well_known(PUBLIC_WELL_KNOWN_URL)
         if isinstance(data, dict):
             doors = official_doors_from_well_known(data)
             if doors:
