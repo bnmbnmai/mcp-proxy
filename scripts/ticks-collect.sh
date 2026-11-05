@@ -219,11 +219,35 @@ export SUPERFUND_PASS_DEADLINE_MS="${SUPERFUND_PASS_DEADLINE_MS:-2400000}"
 
 log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} superfundNew=${SUPERFUND_MAX_NEW_PER_PASS} dryRun=${DRY_RUN:-0}"
 
+ticks_disk_snapshot() {
+  local hay_plan="${TICKS_COLLECT_HAY_PLAN:-$HOME/logs/ticks-hay-plan.json}"
+  local p
+  mkdir -p "$(dirname "$hay_plan")"
+  for p in \
+    "${TICKS_DIR}/snapshot.json" \
+    "${TICKS_DIR}/manifest.json"
+  do
+    if [[ -f "$p" ]]; then
+      printf '%s\n' "$p"
+      return 0
+    fi
+  done
+  if python3 "$PLAN" --write-hay "$hay_plan" \
+      "${TICKS_DIR}/board.json" \
+      "${TICKS_AMS_DIR}/snapshot.json" \
+      "${TICKS_AMS_DIR}/manifest.json" \
+      "${MCP}/data/ticks-ams/snapshot.json"; then
+    printf '%s\n' "$hay_plan"
+    return 0
+  fi
+  printf '%s\n' "${TICKS_DIR}/snapshot.json"
+}
+
 ticks_snapshot() {
   local hay_plan="${TICKS_COLLECT_HAY_PLAN:-$HOME/logs/ticks-hay-plan.json}"
   local origin="${TICKS_COLLECT_HAY_ORIGIN:-http://127.0.0.1:4020}"
   local tmp="${hay_plan}.tmp"
-  local url p
+  local url
   local -a hay_urls=()
   mkdir -p "$(dirname "$hay_plan")"
   # Prefer the live hay catalog (tickCount + fetchedAt) so skip-fresh does
@@ -249,24 +273,7 @@ ticks_snapshot() {
     done
     rm -f "$tmp"
   fi
-  for p in \
-    "${TICKS_DIR}/snapshot.json" \
-    "${TICKS_DIR}/manifest.json"
-  do
-    if [[ -f "$p" ]]; then
-      printf '%s\n' "$p"
-      return 0
-    fi
-  done
-  if python3 "$PLAN" --write-hay "$hay_plan" \
-      "${TICKS_DIR}/board.json" \
-      "${TICKS_AMS_DIR}/snapshot.json" \
-      "${TICKS_AMS_DIR}/manifest.json" \
-      "${MCP}/data/ticks-ams/snapshot.json"; then
-    printf '%s\n' "$hay_plan"
-    return 0
-  fi
-  printf '%s\n' "${TICKS_DIR}/snapshot.json"
+  ticks_disk_snapshot
 }
 
 plan_fields() {
@@ -308,7 +315,10 @@ else
   else
     log "nationwide AMS collect skipped (missing $MCP/build/ticks-ams.js)"
   fi
-  plan_fields "$(ticks_snapshot)"
+  # Count the files just written. A live manifest hit here is what used to
+  # sync-parse the new bag on the door thread and time out well-known.
+  # The door serves the previous manifest until its background reload finishes.
+  plan_fields "$(ticks_disk_snapshot)"
   local_done="refreshed"
   if [[ "${_ticks_action}" == "grow" ]]; then
     local_done="grew"
@@ -316,6 +326,11 @@ else
     local_done="current"
   fi
   log "/ticks, ${_ticks_before}, ${_n}, ${local_done}"
+  if command -v curl >/dev/null 2>&1 && [[ "${TICKS_COLLECT_SKIP_LIVE_HAY:-}" != "1" ]]; then
+    curl -sf --max-time 2 -H 'User-Agent: ticks-collect' \
+      "${TICKS_COLLECT_HAY_ORIGIN:-http://127.0.0.1:4020}/ticks/manifest.json" \
+      -o /dev/null || true
+  fi
 fi
 
 if imagine_busy; then

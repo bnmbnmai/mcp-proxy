@@ -169,8 +169,14 @@
 
 import { createServer as createHttpServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
-import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import {
+  getTicksManifest,
+  getTicksPaid,
+  isCachedTicksPaid,
+  registerTicksBagSyncLoader,
+} from "./ticks-bag-cache.js";
+import { boardPath, DEFAULT_TICKS_DIR, historyPath, ticksDir } from "./ticks-bag-paths.js";
 import { fileURLToPath } from "node:url";
 import { generateJwt } from "@coinbase/cdp-sdk/auth";
 import {
@@ -851,6 +857,7 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
+export { DEFAULT_TICKS_DIR, ticksDir };
 export { PRODUCT_PUBLIC_ID, SAMPLE_PATH, TICKS_COMMODITY_SET } from "./shop-sample.js";
 export const PRODUCT_NAME = "USDA farm market prices";
 export const PRODUCT_VERSION = "1.5.0";
@@ -4652,34 +4659,6 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
   };
 }
 
-/** Media-box default: farm-plan collector writes board.json / history.json here. */
-export const DEFAULT_TICKS_DIR = join(homedir(), "projects/farm-plan/data/prices");
-
-export function ticksDir(): string {
-  if (Object.prototype.hasOwnProperty.call(process.env, "TICKS_DIR")) {
-    const explicit = env("TICKS_DIR");
-    if (explicit) return resolve(explicit);
-    if (env("FARM_DATA_DIR")) return resolve(env("FARM_DATA_DIR"), "prices");
-    return "";
-  }
-  if (env("FARM_DATA_DIR")) return resolve(env("FARM_DATA_DIR"), "prices");
-  return resolve(DEFAULT_TICKS_DIR);
-}
-
-function boardPath(): string {
-  const explicit = env("TICKS_PATH");
-  if (explicit) return resolve(explicit);
-  const dir = ticksDir();
-  return dir ? resolve(dir, "board.json") : "";
-}
-
-function historyPath(): string {
-  const dir = ticksDir();
-  if (dir) return resolve(dir, "history.json");
-  const board = boardPath();
-  return board ? resolve(board, "..", "history.json") : "";
-}
-
 /** Water District 1 rental-pool $/AF stays out of the national farm-market table. */
 export function isWaterTick(row: Record<string, unknown>): boolean {
   const id = String(row.id ?? row.series ?? "").toLowerCase();
@@ -4773,6 +4752,11 @@ export function latestTicksFromHistory(points: Record<string, unknown>[]): Recor
   });
 }
 
+/**
+ * Synchronous read of board.json, history.json, and the AMS snapshot.
+ * Request handlers use getTicksManifest / getTicksPaid so a large rewrite
+ * does not parse on the HTTP thread.
+ */
 export function loadTicks(): TicksPayload {
   const boardFile = boardPath();
   const histFile = historyPath();
@@ -5848,7 +5832,7 @@ function discoveryLinkHeader(): string {
   return `<${LLMS_PATH}>; rel="llms-txt"; type="text/plain", <${OPENAPI_PATH}>; rel="service-desc"; type="application/json"`;
 }
 
-function endMaybeEmpty(res: ServerResponse, payload: string | Buffer): void {
+function endMaybeEmpty(res: ServerResponse, payload: string | Uint8Array): void {
   res.end(headResponses.has(res) ? undefined : payload);
 }
 
@@ -5862,6 +5846,24 @@ function sendJson(res: ServerResponse, status: number, body: unknown, extraHeade
     // The ETag header itself is set only on paid 200 / 304, not on 402.
     "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
     "Content-Length": String(Buffer.byteLength(payload)),
+    ...extraHeaders,
+  });
+  endMaybeEmpty(res, payload);
+}
+
+function sendRawJson(
+  res: ServerResponse,
+  status: number,
+  payload: Uint8Array | string,
+  extraHeaders: Record<string, string> = {},
+): void {
+  const length = typeof payload === "string" ? Buffer.byteLength(payload) : payload.byteLength;
+  res.writeHead(status, {
+    "Content-Type": "application/json; charset=utf-8",
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+    "Content-Length": String(length),
     ...extraHeaders,
   });
   endMaybeEmpty(res, payload);
@@ -9132,7 +9134,7 @@ async function servePaid(
 
   const maybeNotModified = (body: unknown): boolean => {
     const envelope = paidEnvelope(body);
-    const etag = etagFromPaidEnvelope(sku, envelope);
+    const etag = isCachedTicksPaid(body) ? body.etag : etagFromPaidEnvelope(sku, envelope);
     const noneMatch = ifNoneMatchHits(req.headers["if-none-match"], etag);
     const emptySince =
       Boolean(opts?.since) && !opts?.id && isExtractedBodySku(sku) && Number(envelope.recordCount ?? 0) === 0;
@@ -9180,6 +9182,11 @@ async function servePaid(
   const serve = async (receipt: Record<string, string> = {}) => {
     const body = await load(opts);
     if (maybeNotModified(body)) return;
+    if (isCachedTicksPaid(body)) {
+      logPaid(200);
+      sendRawJson(res, 200, body.ticksRaw, { ETag: body.etag, ...receipt });
+      return;
+    }
     const etag = etagFromPaidEnvelope(sku, paidEnvelope(body));
     logPaid(200);
     sendJson(res, 200, body, { ETag: etag, ...receipt });
@@ -9359,6 +9366,22 @@ async function drainRequestBody(req: IncomingMessage): Promise<void> {
     req.on("error", reject);
   });
 }
+
+registerTicksBagSyncLoader({
+  manifest(resourceUrl: string): Uint8Array {
+    return Buffer.from(JSON.stringify(buildTicksManifest(resourceUrl)));
+  },
+  paid() {
+    const body = paidTicksBody(loadTicks());
+    return {
+      ticksRaw: Buffer.from(JSON.stringify(body)),
+      etag: etagFromPaidEnvelope("ticks", body),
+      fetchedAt: typeof body.fetchedAt === "string" ? body.fetchedAt : null,
+      asOf: typeof body.asOf === "string" ? body.asOf : null,
+      recordCount: typeof body.recordCount === "number" ? body.recordCount : 0,
+    };
+  },
+});
 
 export async function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): Promise<void> {
   const url = new URL(req.url || "/", `http://${req.headers.host || "127.0.0.1"}`);
@@ -10054,7 +10077,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === MANIFEST_PATH || path === TICKS_MANIFEST_PATH || path === CATALOG_PATH) {
-    sendJson(res, 200, buildTicksManifest(resourceUrl(req, port, TICKS_PATH)));
+    sendRawJson(res, 200, await getTicksManifest(resourceUrl(req, port, TICKS_PATH)));
     return;
   }
 
@@ -10913,7 +10936,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === TICKS_PATH) {
-    await servePaid(req, res, port, "ticks", () => paidTicksBody(loadTicks()));
+    await servePaid(req, res, port, "ticks", () => getTicksPaid());
     return;
   }
 
