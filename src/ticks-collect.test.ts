@@ -297,6 +297,70 @@ function runFailedDoorProbe(): string {
   return `${result.stdout}\n${readFileSync(log, "utf-8")}`;
 }
 
+function runListOfficial(origin: string, env: Record<string, string>, doorSrc?: string): string {
+  const result = spawnSync(
+    "python3",
+    [
+      join(repoRoot, "scripts/ticks-collect-plan.py"),
+      "--list-official",
+      "--url",
+      `${origin}/.well-known/x402`,
+      ...(doorSrc ? ["--door-src", doorSrc] : []),
+    ],
+    {
+      encoding: "utf8",
+      env: { ...process.env, ...env },
+    },
+  );
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  return result.stdout;
+}
+
+async function withWellKnownServer(
+  mode: "retry" | "never",
+  fn: (origin: string) => Promise<void>,
+): Promise<void> {
+  // Child process: runListOfficial is spawnSync, which would stall this
+  // process and make the well-known stub unable to answer.
+  const file = join(tmpdir(), `ticks-well-known-${process.pid}-${Date.now()}.mjs`);
+  writeFileSync(
+    file,
+    `import { createServer } from "node:http";
+let hits = 0;
+const mode = ${JSON.stringify(mode)};
+const server = createServer((req, res) => {
+  hits += 1;
+  if (!(mode === "retry" && hits >= 2)) return;
+  const body = JSON.stringify({
+    resources: ["https://ticks.bnm.farm/ticks", "https://ticks.bnm.farm/cfpb-orders"],
+  });
+  res.writeHead(200, { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(body) });
+  res.end(body);
+});
+server.listen(0, "127.0.0.1", () => {
+  const addr = server.address();
+  process.stdout.write(String(addr && typeof addr === "object" ? addr.port : "") + "\\n");
+});
+`,
+  );
+  const child = spawn(process.execPath, [file], { stdio: ["ignore", "pipe", "inherit"] });
+  const port = await new Promise<string>((resolve, reject) => {
+    let buf = "";
+    child.stdout?.on("data", (chunk: Buffer) => {
+      buf += chunk.toString();
+      const line = buf.split("\n")[0]?.trim() ?? "";
+      if (/^\d+$/.test(line)) resolve(line);
+    });
+    child.once("error", reject);
+    child.once("exit", (code) => reject(new Error(`well-known stub exited ${code} before listening`)));
+  });
+  try {
+    await fn(`http://127.0.0.1:${port}`);
+  } finally {
+    child.kill();
+  }
+}
+
 async function main(): Promise<void> {
   const listed = listedCountFromHtml(readFx("listing-excerpt.html"));
   assert.ok((listed ?? 0) > 5, "existing CFPB official listing has more than 5 rows");
@@ -424,14 +488,19 @@ async function main(): Promise<void> {
   assert.match(hayBlock, /collect-prices\.py/);
   assert.match(hayBlock, /ticks-ams\.js/);
   assert.ok(hayBlock.indexOf("collect-prices.py") < hayBlock.indexOf("ticks-ams.js"), "Idaho hay stays first");
+  assert.ok(
+    hayBlock.indexOf("ticks-ams.js") < hayBlock.indexOf("ticks_disk_snapshot"),
+    "post-refresh tick count comes from the files just written, not a live manifest parse",
+  );
   assert.doesNotMatch(script, /No NPDES/);
   const listBlock = script.slice(script.indexOf("list_official_doors"), script.indexOf("door_snap"));
   assert.match(listBlock, /well-known/);
   assert.match(listBlock, /retry live well-known/);
   assert.doesNotMatch(listBlock, /ticks-ams/);
   const planSrc = readFileSync(join(repoRoot, "scripts/ticks-collect-plan.py"), "utf-8");
-  assert.match(planSrc, /WELL_KNOWN_RETRIES = 3/);
-  assert.match(planSrc, /WELL_KNOWN_TIMEOUT = 15/);
+  assert.match(planSrc, /WELL_KNOWN_ATTEMPT_TIMEOUTS = \(5, 8, 12, 15\)/);
+  assert.match(planSrc, /WELL_KNOWN_BACKOFF_S = \(1\.0, 2\.0, 4\.0\)/);
+  assert.match(planSrc, /TICKS_WELL_KNOWN_SKIP_PUBLIC/);
   assert.match(planSrc, /def fetch_well_known/);
 
   const dry = runDryCollect({
@@ -594,6 +663,41 @@ async function main(): Promise<void> {
   assert.ok(
     listed !== null && listed > 5,
     "one existing official door listing exceeds 5, so grow+limit=24 would pass first-slice",
+  );
+
+  const doorSrc = join(repoRoot, "src/ticks-door.ts");
+  await withWellKnownServer("retry", async (origin) => {
+    const started = Date.now();
+    const listedDoors = runListOfficial(origin, {
+      TICKS_WELL_KNOWN_RETRIES: "3",
+      TICKS_WELL_KNOWN_TIMEOUT: "0.3",
+      TICKS_WELL_KNOWN_BACKOFF: "0.05",
+      TICKS_WELL_KNOWN_SKIP_PUBLIC: "1",
+    });
+    assert.ok(Date.now() - started < 4000, "retry budget stays bounded");
+    assert.match(listedDoors, /^well-known\n/);
+    assert.match(listedDoors, /^cfpb-orders$/m);
+    assert.doesNotMatch(listedDoors, /public-bazaar-skus/);
+  });
+  await withWellKnownServer("never", async (origin) => {
+      const started = Date.now();
+      const listedDoors = runListOfficial(
+        origin,
+        {
+          TICKS_WELL_KNOWN_RETRIES: "2",
+          TICKS_WELL_KNOWN_TIMEOUT: "0.2",
+          TICKS_WELL_KNOWN_BACKOFF: "0.05",
+          TICKS_WELL_KNOWN_SKIP_PUBLIC: "1",
+        },
+        doorSrc,
+      );
+      const elapsed = Date.now() - started;
+      assert.ok(elapsed < 3000, `fallback must not freeze the walk (${elapsed}ms)`);
+      assert.match(listedDoors, /^public-bazaar-skus\n/);
+      assert.match(listedDoors, /^cfpb-orders$/m);
+      assert.match(listedDoors, /^superfund-rods$/m);
+      assert.match(listedDoors, /^ftc-wl$/m);
+    },
   );
 
   const freshHay = {

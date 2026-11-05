@@ -74,6 +74,9 @@ build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
+build/ticks-bag-cache.*
+build/ticks-bag-paths.*
+build/ticks-bag-worker.*
 build/ticks-mb-cattle.*
 build/paid-records.*
 build/shop-sample.*
