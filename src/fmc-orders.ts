@@ -134,6 +134,35 @@ export function fmcCaughtUp(pages: number, cardCount: number): string {
   return `Official FMC Reading Room walk (${pages} proceedings) had no new Initial Decision or Commission Order beyond the cached ${cardCount}.`;
 }
 
+/** New Reading Room rows whose PDFs are Federal Register notices or other non-orders. Not a failed walk. */
+export function fmcNonOrderSkip(unseen: number, cardCount: number): string {
+  const n = unseen === 1 ? "1 new document" : `${unseen} new documents`;
+  return `FMC Reading Room listed ${n} but none were an Initial Decision or Commission Order (Federal Register or other non-order). Cached ${cardCount}.`;
+}
+
+export function fmcWalkReason(input: {
+  listingError: string | null;
+  usingFixtureDir: boolean;
+  pagesFetched: number;
+  unseen: number;
+  addedThisRun: number;
+  rejectedNonOrder: number;
+  fetchFailed: number;
+  cardCount: number;
+}): string | null {
+  if (input.listingError) return input.listingError;
+  if (!input.usingFixtureDir && input.pagesFetched > 0 && input.unseen === 0 && input.addedThisRun === 0) {
+    return fmcCaughtUp(input.pagesFetched, input.cardCount);
+  }
+  if (input.unseen > 0 && input.addedThisRun === 0) {
+    if (input.fetchFailed === 0 && input.rejectedNonOrder >= input.unseen) {
+      return fmcNonOrderSkip(input.unseen, input.cardCount);
+    }
+    return `FMC Reading Room listed ${input.unseen} new orders but none were saved. Not a complete walk.`;
+  }
+  return null;
+}
+
 function statusFromFetchError(err: unknown): number {
   const msg = err instanceof Error ? err.message : String(err);
   const hit = msg.match(/HTTP (\d{3})/);
@@ -761,6 +790,8 @@ export async function collectFmcOrders(opts?: {
   let skippedNoText = 0;
   let reused = 0;
   let addedThisRun = 0;
+  let rejectedNonOrder = 0;
+  let fetchFailed = 0;
   for (const row of allListed) {
     if (target > 0 && addedThisRun >= target) break;
     if (!keepListing(row)) {
@@ -806,11 +837,13 @@ export async function collectFmcOrders(opts?: {
         isProceedingHtmlOnly(text)
       ) {
         skippedNoText += 1;
+        if (!prior.has(row.id)) rejectedNonOrder += 1;
         continue;
       }
       const parsed = parseFmcOrderText(text, { ...row, sourceUrl });
       if (!isRealFmcOrderBody(parsed.body) || !keepListing(parsed)) {
         skippedNoText += 1;
+        if (!prior.has(row.id)) rejectedNonOrder += 1;
         continue;
       }
       cards.push(parsed);
@@ -818,6 +851,7 @@ export async function collectFmcOrders(opts?: {
       addedThisRun += 1;
     } catch {
       skippedNoText += 1;
+      if (!prior.has(row.id)) fetchFailed += 1;
     }
   }
   for (const [id, card] of prior) {
@@ -825,12 +859,16 @@ export async function collectFmcOrders(opts?: {
   }
   const unseen = allListed.filter((row) => !prior.has(row.id));
   const assembled = assembleFmcOrdersSnapshot(cards);
-  let reason = listingError;
-  if (!reason && !dir && pagesFetched > 0 && unseen.length === 0 && addedThisRun === 0) {
-    reason = fmcCaughtUp(pagesFetched, assembled.cards.length);
-  } else if (!reason && unseen.length > 0 && addedThisRun === 0) {
-    reason = `FMC Reading Room listed ${unseen.length} new orders but none were saved. Not a complete walk.`;
-  }
+  const reason = fmcWalkReason({
+    listingError,
+    usingFixtureDir: Boolean(dir),
+    pagesFetched,
+    unseen: unseen.length,
+    addedThisRun,
+    rejectedNonOrder,
+    fetchFailed,
+    cardCount: assembled.cards.length,
+  });
   const snap = {
     ...assembled,
     reason: reason || assembled.reason,

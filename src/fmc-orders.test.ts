@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -35,6 +35,8 @@ import {
   filterFmcOrdersManifest,
   fmcCaughtUp,
   fmcListingFailure,
+  fmcNonOrderSkip,
+  fmcWalkReason,
   recentProceedingDockets,
   isFederalRegisterHtml,
   isFrMirrorBody,
@@ -210,6 +212,53 @@ async function main(): Promise<void> {
   assert.match(fmcListingFailure(502), /Not a complete walk/);
   assert.match(fmcListingFailure(502), /2026-10-16/);
   assert.match(fmcCaughtUp(12, 5), /no new Initial Decision/);
+
+  // Docket 25-27 document 130786 is a Reading Room row titled like an order whose
+  // PDF is a Federal Register notice (AGENCY/ACTION/SUMMARY). Reject the body.
+  // Do not call the walk incomplete when that is the only new document.
+  const frBody = [
+    "Federal Register / Vol. 90, No. 233 / Notices",
+    "FEDERAL MARITIME COMMISSION",
+    "Performance Review Board",
+    "AGENCY: Federal Maritime Commission.",
+    "ACTION: Notice.",
+    "SUMMARY: The Commission publishes the names of its performance review board.",
+    "Docket No. 25-27.",
+    "IT IS ORDERED that this notice be published.",
+    "x".repeat(900),
+  ].join("\n");
+  assert.equal(isFrMirrorBody(frBody), true);
+  assert.equal(isRealFmcOrderBody(frBody), false);
+  const frDir = mkdtempSync(join(tmpdir(), "fmc-fr-"));
+  const frHtml = `<h4><a href="/readingroom/proceeding/25-27/">25-27 - Example Institution</a></h4><table>
+<tr><td>1</td><td>12/08/2025</td><td><strong>Served Initial Decision</strong></td><td style="display:none;">Served Initial Decision.pdf</td><td><a href="../../documents/130786">pdf</a></td><td style="display:none;">130786</td></tr>
+</table>`;
+  writeFileSync(join(frDir, "listing.html"), frHtml);
+  writeFileSync(join(frDir, "25-27-130786.txt"), frBody);
+  const frCache = mkdtempSync(join(tmpdir(), "fmc-fr-cache-"));
+  const prevFmc = process.env.FMC_ORDERS_DIR;
+  process.env.FMC_ORDERS_DIR = frCache;
+  await collectFmcOrders({ htmlDir: fixtures, limit: 5, maxFetch: 0 });
+  const frSnap = await collectFmcOrders({ htmlDir: frDir, limit: 5, maxFetch: 0 });
+  if (prevFmc === undefined) delete process.env.FMC_ORDERS_DIR;
+  else process.env.FMC_ORDERS_DIR = prevFmc;
+  assert.equal(frSnap.addedThisRun, 0);
+  assert.ok(!frSnap.cards.some((c) => c.id === "25-27-130786"));
+  assert.equal(frSnap.reason, fmcNonOrderSkip(1, frSnap.cards.length));
+  assert.doesNotMatch(frSnap.reason ?? "", /Not a complete walk/);
+  assert.equal(
+    fmcWalkReason({
+      listingError: null,
+      usingFixtureDir: false,
+      pagesFetched: 4,
+      unseen: 1,
+      addedThisRun: 0,
+      rejectedNonOrder: 0,
+      fetchFailed: 1,
+      cardCount: 35,
+    }),
+    "FMC Reading Room listed 1 new orders but none were saved. Not a complete walk.",
+  );
 }
 
 main().catch((err) => {
