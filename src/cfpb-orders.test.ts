@@ -10,6 +10,10 @@ import {
   LICENSE,
   LISTING_URL,
   ACTION_BASE,
+  CFPB_ORDERS_AMOUNT_ATOMIC,
+  CFPB_ORDERS_PATH,
+  CFPB_TERMINATIONS,
+  applyCfpbOrderStatus,
   buildCfpbOrdersManifest,
   collectCfpbOrders,
   isPeopleOnlyFirm,
@@ -21,8 +25,10 @@ import {
   parseCfpbOrderText,
   parseListingHtml,
   pdfIdFromUrl,
+  readSnapshot,
   slugFromActionUrl,
 } from "./cfpb-orders.js";
+import { decorateExtractedBodyManifest, searchCatalogRows, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 
 const fixtures = join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures/cfpb-orders");
 
@@ -60,6 +66,21 @@ async function main(): Promise<void> {
     ),
     null,
     "stipulation is not the order body",
+  );
+  assert.equal(
+    officialCfpbPdfUrl(
+      "https://files.consumerfinance.gov/f/documents/cfpb_apple-inc-2024_termination-consent-order_2025-09.pdf",
+    ),
+    null,
+    "a termination order is not the paid consent-order body",
+  );
+  assert.equal(
+    parseActionOrderPdf(
+      `<a href="https://files.consumerfinance.gov/f/documents/cfpb_apple-inc-2024_termination-consent-order_2025-09.pdf">term</a>
+       <a href="https://files.consumerfinance.gov/f/documents/cfpb_apple-inc-consent-order_2024-10.pdf">order</a>`,
+    ),
+    "https://files.consumerfinance.gov/f/documents/cfpb_apple-inc-consent-order_2024-10.pdf",
+    "collect keeps the consent order when a termination PDF is also linked",
   );
   assert.equal(
     officialCfpbPdfUrl(
@@ -112,6 +133,10 @@ async function main(): Promise<void> {
   assert.equal(hondaText.date, "2025-01-17");
   assert.equal(hondaText.fileNo, "2025-CFPB-0003");
   assert.equal(hondaText.title, "Consent Order");
+  assert.equal(hondaText.status, "in_force");
+  assert.equal(hondaText.terminatedDate, null);
+  assert.equal(hondaText.terminationFileNo, null);
+  assert.equal(hondaText.terminationSourceUrl, null);
   assert.ok(isRealCfpbOrderBody(hondaText.body));
   assert.ok(hondaText.body.includes("nearly 35,000"));
   assert.ok(hondaText.body.includes("Appendix E"));
@@ -156,6 +181,7 @@ async function main(): Promise<void> {
   assert.ok(isRealCfpbOrderBody(wise.body));
   assert.equal(wise.fileNo, "2025-CFPB-0004");
   assert.equal(wise.title, "Amended Consent Order");
+  assert.equal(wise.status, "in_force", "Wise was amended in May 2025, not terminated");
   assert.ok(wise.body.includes("remittance transfer provider"));
 
   const teaser = parseCfpbOrderText(readFx("no-body.txt"), {
@@ -209,8 +235,14 @@ async function main(): Promise<void> {
   assert.ok(!("body" in ((manifest.cards as object[])[0] ?? {})));
   assert.ok(manBlob.includes("cfpb_american-honda-finance-corp-consent-order_2025-01"));
   assert.equal(manifest.priceUsdc, "0.05");
+  assert.equal(manifest.payTo, "0xf59621FC406D266e18f314Ae18eF0a33b8401004");
+  assert.equal(manifest.network, "base");
+  assert.equal(CFPB_ORDERS_AMOUNT_ATOMIC, "50000");
+  assert.equal(CFPB_ORDERS_PATH, "/cfpb-orders");
+  assert.equal(SINGLE_DOC_AMOUNT_ATOMIC, "20000");
   assert.equal(manifest.license, "17 USC 105");
   assert.equal(manifest.attribution, "CFPB");
+  assert.equal((manifest.cards as { status: string }[])[0]?.status, "in_force");
   assert.ok(!manBlob.includes("complaint_what_happened"));
   assert.ok(!manBlob.includes("vtron-lasers"));
 
@@ -278,6 +310,146 @@ async function main(): Promise<void> {
   } finally {
     if (prevDir === undefined) delete process.env.CFPB_ORDERS_DIR;
     else process.env.CFPB_ORDERS_DIR = prevDir;
+  }
+
+  function flagged(id: string, date: string, firm: string, fileNo: string | null = null) {
+    return parseCfpbOrderText(hondaText.body, {
+      sourceUrl: hondaText.sourceUrl,
+      firm,
+      date,
+      actionUrl: `${ACTION_BASE}${id}/`,
+      pdfId: hondaText.pdfId,
+      id,
+      fileNo,
+    });
+  }
+
+  const apple = flagged("apple-inc", "2024-10-23", "Apple Inc.", "2024-CFPB-0012");
+  assert.equal(apple.status, "terminated");
+  assert.equal(apple.terminatedDate, "2025-09-22");
+  assert.equal(apple.terminationFileNo, "2024-CFPB-0012");
+  assert.equal(
+    apple.terminationSourceUrl,
+    "https://files.consumerfinance.gov/f/documents/cfpb_apple-inc-2024_termination-consent-order_2025-09.pdf",
+  );
+  assert.ok(isRealCfpbOrderBody(apple.body), "terminated cards stay in the bag");
+  assert.equal(flagged("apple-inc", "2024-10-22", "Apple Inc.").status, "in_force", "date must match the termination PDF");
+  assert.equal(flagged("wise-us-inc", "2025-01-30", "Wise US Inc.", "2025-CFPB-0004").status, "in_force");
+  assert.equal(flagged("goldman-sachs-bank-usa", "2024-10-23", "Goldman Sachs Bank USA").status, "in_force");
+  assert.equal(flagged("fay-servicing-llc", "2017-06-07", "Fay Servicing, LLC", "2017-CFPB-0014").status, "in_force");
+  assert.equal(flagged("fay-servicing-llc-2024", "2024-08-21", "Fay Servicing, LLC", "2024-CFPB-0007").status, "terminated");
+  assert.equal(flagged("toyota-motor-credit-corporation", "2016-02-02", "Toyota Motor Credit Corporation").status, "in_force");
+  assert.equal(flagged("us-bank", "2014-09-25", "U.S. Bank National Association", "2014-CFPB-0013").status, "in_force");
+  const regions = flagged("regions-bank", "2022-09-28", "Regions Bank", "2015-CFPB-0009");
+  assert.equal(regions.status, "terminated");
+  assert.equal(regions.terminationFileNo, "2022-CFPB-0008");
+  assert.equal(regions.fileNo, "2015-CFPB-0009", "a bad stored fileNo does not block a verified id+date match");
+
+  assert.equal(CFPB_TERMINATIONS.length, 17);
+  assert.ok(
+    CFPB_TERMINATIONS.every((row) => {
+      const url = new URL(row.terminationSourceUrl);
+      return url.hostname === "files.consumerfinance.gov" && url.pathname.startsWith("/f/documents/") && url.pathname.endsWith(".pdf");
+    }),
+  );
+  const liveIds = new Set([
+    "apple-inc",
+    "vystar-credit-union",
+    "fay-servicing-llc-2024",
+    "navy-federal-credit-union-overdraft-2024",
+    "toyota-motor-credit-corporation-2023",
+    "citibank-n-a",
+    "transunion-trans-union-llc-and-transunion-interactive-inc",
+    "us-bank-national-association-prepaid-cards-2023",
+    "washington-federal-na",
+    "enova-international-inc-2023",
+    "planet-home-lending-llc",
+    "carrington-mortgage-services-llc",
+    "regions-bank",
+    "us-bank-national-association",
+    "bank-of-america-na-hmda-data-2023",
+    "synchrony-bank-fka-ge-capital-retail-bank",
+    "washington-federal",
+  ]);
+  assert.deepEqual(CFPB_TERMINATIONS.map((row) => row.id).sort(), [...liveIds].sort());
+
+  const paired = buildCfpbOrdersManifest({
+    ok: true,
+    product: "cfpb-consent-order-bodies",
+    status: "ok",
+    reason: null,
+    fetchedAt: "2026-11-16T00:00:00.000Z",
+    asOf: "2025-01-30",
+    license: LICENSE,
+    attribution: ATTRIBUTION,
+    sources: {
+      listing: LISTING_URL,
+      actionBase: ACTION_BASE,
+      pdfHost: "https://files.consumerfinance.gov/",
+    },
+    cards: [apple, hondaText],
+  });
+  assert.equal(paired.cardCount, 2, "terminated cards stay in the catalog count");
+  assert.equal(paired.terminatedCount, 1);
+  assert.equal(paired.inForceCount, 1);
+  const pairedBlob = JSON.stringify(paired);
+  assert.ok(!pairedBlob.includes("nearly 35,000"), "free manifest still hides the order body");
+  const free = decorateExtractedBodyManifest(paired, { paidPath: "/cfpb-orders" });
+  const freeCards = free.cards as {
+    id: string;
+    status: string;
+    terminatedDate: string | null;
+    terminationSourceUrl?: string;
+    sourceUrl?: string;
+    body?: string;
+  }[];
+  const freeTerminated = freeCards.find((c) => c.id === "apple-inc");
+  const freeInForce = freeCards.find((c) => c.id === "american-honda-finance-corporation-2025");
+  assert.equal(freeTerminated?.status, "terminated");
+  assert.equal(freeTerminated?.terminatedDate, "2025-09-22");
+  assert.ok(freeTerminated?.terminationSourceUrl?.includes("cfpb_apple-inc-2024_termination-consent-order_2025-09.pdf"));
+  assert.equal(freeTerminated?.sourceUrl, undefined, "consent-order PDF URL stays off the free card");
+  assert.equal(freeTerminated?.body, undefined);
+  assert.equal(freeInForce?.status, "in_force");
+  assert.equal(freeInForce?.sourceUrl, undefined);
+  const found = searchCatalogRows(paired.cards as Record<string, unknown>[], "terminated");
+  assert.deepEqual(found.map((row) => row.id), ["apple-inc"]);
+  const inForceHits = searchCatalogRows(paired.cards as Record<string, unknown>[], "in_force");
+  assert.deepEqual(inForceHits.map((row) => row.id), ["american-honda-finance-corporation-2025"]);
+  assert.equal(
+    searchCatalogRows(paired.cards as Record<string, unknown>[], "cfpb_apple-inc-2024_termination-consent-order_2025-09").length,
+    0,
+    "free search does not match the termination PDF URL",
+  );
+  const searched = decorateExtractedBodyManifest(paired, { q: "terminated", paidPath: "/cfpb-orders" });
+  assert.equal(searched.matchCount, 1);
+  assert.equal((searched.cards as { id: string }[])[0]?.id, "apple-inc");
+  assert.ok(!JSON.stringify(searched).includes("nearly 35,000"));
+
+  const bare = applyCfpbOrderStatus({ id: "navy-federal-credit-union-overdraft-2024", date: "2024-11-07" });
+  assert.equal(bare.status, "terminated");
+  assert.equal(bare.terminationFileNo, "2024-CFPB-0014");
+  const prevReadDir = process.env.CFPB_ORDERS_DIR;
+  process.env.CFPB_ORDERS_DIR = cache;
+  try {
+    writeFileSync(
+      join(cache, "snapshot.json"),
+      JSON.stringify({
+        ok: true,
+        product: "cfpb-consent-order-bodies",
+        status: "ok",
+        cards: [{ id: "vystar-credit-union", date: "2024-10-31", firm: "VyStar Credit Union", body: hondaText.body }],
+      }),
+    );
+    const patched = readSnapshot();
+    assert.equal(patched?.cards.length, 1);
+    assert.equal(patched?.cards[0]?.status, "terminated");
+    assert.equal(patched?.cards[0]?.terminatedDate, "2025-07-21");
+    assert.equal(patched?.status, "ok", "snapshot health status stays separate from card status");
+    assert.ok(patched?.cards[0]?.body.includes("nearly 35,000"), "patch keeps the consent-order text");
+  } finally {
+    if (prevReadDir === undefined) delete process.env.CFPB_ORDERS_DIR;
+    else process.env.CFPB_ORDERS_DIR = prevReadDir;
   }
 
   console.log("cfpb-orders parser tests ok");

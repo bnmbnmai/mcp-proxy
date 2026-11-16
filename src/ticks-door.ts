@@ -40,7 +40,7 @@
  * GET /ftc-wl — FTC BCP warning-letter PDF text ($0.05)
  * GET /ftc-wl/manifest.json — free count + firm/date/subject (no letter body)
  * GET /cfpb-orders — CFPB consent-order / administrative-order PDF text ($0.05)
- * GET /cfpb-orders/manifest.json — free count + firm/date/title/fileNo (no order body)
+ * GET /cfpb-orders/manifest.json — free count + firm/date/title/fileNo/status (no order body)
  * GET /occ-cd — OCC institution C&D / consent-order PDF text ($0.05)
  * GET /occ-cd/manifest.json — free count + bank/docket/date (no order body)
  * GET /fdic-orders — FDIC institution consent-order / C&D PDF text ($0.05)
@@ -6048,7 +6048,7 @@ export function llmsTxt(): string {
     "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA (full catalog + page cursor; ?q= is free search; not the evaluation text)",
     "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId (full catalog + page cursor; ?q= is free search; not the evaluation text)",
     "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/status in_force|terminated (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",

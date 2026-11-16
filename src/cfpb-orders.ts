@@ -39,10 +39,16 @@ export const CARD_FIELDS = [
   "firm",
   "date",
   "title",
+  "status",
+  "terminatedDate",
+  "terminationFileNo",
+  "terminationSourceUrl",
   "sourceUrl",
   "actionUrl",
   "body",
 ] as const;
+
+export type CfpbOrderStatus = "in_force" | "terminated";
 
 export type CfpbOrderListing = {
   id: string;
@@ -58,10 +64,187 @@ export type CfpbOrderCard = {
   firm: string;
   date: string | null;
   title: string;
+  status: CfpbOrderStatus;
+  terminatedDate: string | null;
+  terminationFileNo: string | null;
+  terminationSourceUrl: string | null;
   sourceUrl: string;
   actionUrl: string;
   body: string;
 };
+
+/** Official order that terminates one consent order already in this bag. */
+export type CfpbTermination = {
+  id: string;
+  consentDate: string;
+  terminatedDate: string;
+  terminationFileNo: string;
+  terminationSourceUrl: string;
+};
+
+const CFPB_PDF = "https://files.consumerfinance.gov/f/documents/";
+
+/**
+ * CFPB "Order Terminating the Consent Order" PDFs that match a card in this bag.
+ * Match key is the enforcement-action id plus the consent-order date printed on the
+ * termination PDF. terminatedDate is that PDF's docket "Filed" date. Snapshot fileNo
+ * is not the key (Regions stores a bad parse, 2015-CFPB-0009; the termination is
+ * 2022-CFPB-0008). News is not a source. Wise's May 2025 file is an amended consent
+ * order, still in force. Synapse is a court complaint and is not this door.
+ */
+export const CFPB_TERMINATIONS: readonly CfpbTermination[] = [
+  {
+    id: "apple-inc",
+    consentDate: "2024-10-23",
+    terminatedDate: "2025-09-22",
+    terminationFileNo: "2024-CFPB-0012",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_apple-inc-2024_termination-consent-order_2025-09.pdf`,
+  },
+  {
+    id: "vystar-credit-union",
+    consentDate: "2024-10-31",
+    terminatedDate: "2025-07-21",
+    terminationFileNo: "2024-CFPB-0013",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_vystar-credit-union_termination-of-consent-order_2025-07.pdf`,
+  },
+  {
+    id: "fay-servicing-llc-2024",
+    consentDate: "2024-08-21",
+    terminatedDate: "2025-07-01",
+    terminationFileNo: "2024-CFPB-0007",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_fay-servicing-termination-consent-order_2025-07.pdf`,
+  },
+  {
+    id: "navy-federal-credit-union-overdraft-2024",
+    consentDate: "2024-11-07",
+    terminatedDate: "2025-07-01",
+    terminationFileNo: "2024-CFPB-0014",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_navy-federal-credit-union_termination-of-consent-order_2025-07.pdf`,
+  },
+  {
+    id: "toyota-motor-credit-corporation-2023",
+    consentDate: "2023-11-20",
+    terminatedDate: "2025-05-12",
+    terminationFileNo: "2023-CFPB-0015",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_toyota-motor-credit-corp_order-terminating-consent-order_2025-05.pdf`,
+  },
+  {
+    id: "citibank-n-a",
+    consentDate: "2023-11-08",
+    terminatedDate: "2025-10-16",
+    terminationFileNo: "2023-CFPB-0013",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_citibank-n-a_termination-consent-order_2025-10.pdf`,
+  },
+  {
+    id: "transunion-trans-union-llc-and-transunion-interactive-inc",
+    consentDate: "2023-10-12",
+    terminatedDate: "2025-11-03",
+    terminationFileNo: "2023-CFPB-0011",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_transunion-2023_termination-consent-order_2025-11.pdf`,
+  },
+  {
+    id: "us-bank-national-association-prepaid-cards-2023",
+    consentDate: "2023-12-19",
+    terminatedDate: "2025-09-22",
+    terminationFileNo: "2023-CFPB-0019",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_us-bank-national-association-2023_termination-consent-order_2025-09.pdf`,
+  },
+  {
+    id: "washington-federal-na",
+    consentDate: "2020-10-27",
+    terminatedDate: "2025-09-22",
+    terminationFileNo: "2020-BCFP-0019",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_washington-fed-bank-na-2020_termination-consent-order_2025-09.pdf`,
+  },
+  {
+    id: "enova-international-inc-2023",
+    consentDate: "2023-11-15",
+    terminatedDate: "2025-09-02",
+    terminationFileNo: "2023-CFPB-0014",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_enova-international-2023_termination-consent-order_2025-09.pdf`,
+  },
+  {
+    id: "planet-home-lending-llc",
+    consentDate: "2017-01-31",
+    terminatedDate: "2025-09-22",
+    terminationFileNo: "2017-CFPB-0007",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_planet-home-lending-2017_termination-consent-order_2025-09.pdf`,
+  },
+  {
+    id: "carrington-mortgage-services-llc",
+    consentDate: "2022-11-17",
+    terminatedDate: "2025-07-21",
+    terminationFileNo: "2022-CFPB-0010",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_carrington-mortgage-services_termination-of-consent-order_2025-07.pdf`,
+  },
+  {
+    id: "regions-bank",
+    consentDate: "2022-09-28",
+    terminatedDate: "2025-07-21",
+    terminationFileNo: "2022-CFPB-0008",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_regions-bank_termination-of-consent-order_2025-07.pdf`,
+  },
+  {
+    id: "us-bank-national-association",
+    consentDate: "2022-07-28",
+    terminatedDate: "2025-08-21",
+    terminationFileNo: "2022-CFPB-0006",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_us-bank-natl-assc_order-terminating-consent-order_2025-08.pdf`,
+  },
+  {
+    id: "bank-of-america-na-hmda-data-2023",
+    consentDate: "2023-11-28",
+    terminatedDate: "2025-06-05",
+    terminationFileNo: "2023-CFPB-0016",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_bank-of-america-na_termination-consent-order_2025-06.pdf`,
+  },
+  {
+    id: "synchrony-bank-fka-ge-capital-retail-bank",
+    consentDate: "2014-06-19",
+    terminatedDate: "2025-05-12",
+    terminationFileNo: "2014-CFPB-0007",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_synchrony_order-terminating-consent-order_2025-05.pdf`,
+  },
+  {
+    id: "washington-federal",
+    consentDate: "2013-10-09",
+    terminatedDate: "2025-09-22",
+    terminationFileNo: "2013-CFPB-0005",
+    terminationSourceUrl: `${CFPB_PDF}cfpb_washington-fed-2013_termination-consent-order_2025-09.pdf`,
+  },
+];
+
+const terminationByKey = new Map(
+  CFPB_TERMINATIONS.map((row) => [`${row.id}|${row.consentDate}`, row]),
+);
+
+/** Registry is the source of truth. A stale snapshot status does not stick. */
+export function applyCfpbOrderStatus<T extends { id?: string; date?: string | null }>(
+  card: T,
+): T & {
+  status: CfpbOrderStatus;
+  terminatedDate: string | null;
+  terminationFileNo: string | null;
+  terminationSourceUrl: string | null;
+} {
+  const hit = terminationByKey.get(`${card.id ?? ""}|${card.date ?? ""}`);
+  if (!hit) {
+    return {
+      ...card,
+      status: "in_force",
+      terminatedDate: null,
+      terminationFileNo: null,
+      terminationSourceUrl: null,
+    };
+  }
+  return {
+    ...card,
+    status: "terminated",
+    terminatedDate: hit.terminatedDate,
+    terminationFileNo: hit.terminationFileNo,
+    terminationSourceUrl: hit.terminationSourceUrl,
+  };
+}
 
 export type CfpbOrderSnapshot = {
   ok: true;
@@ -141,7 +324,8 @@ export function pdfIdFromUrl(url: string): string | null {
 
 export function isOrderPdfName(name: string): boolean {
   const n = name.toLowerCase();
-  if (/\bstipulation\b/.test(n)) return false;
+  if (/(^|[^a-z])stipulation([^a-z]|$)/.test(n)) return false;
+  if (/(^|[^a-z])(termination|terminating|vacat\w*|set-aside|setaside)([^a-z]|$)/.test(n)) return false;
   if (/\bcomplaint\b/.test(n) && !/consent-order|administrative-order/.test(n)) return false;
   if (/\bpress\b/.test(n)) return false;
   return /consent-order|administrative-order/.test(n);
@@ -343,7 +527,7 @@ export function parseCfpbOrderText(
     : "";
   const id = meta.id || slugFromActionUrl(actionUrl) || pdfId;
   const date = meta.date ?? isoDate(body.slice(0, 900));
-  return {
+  return applyCfpbOrderStatus({
     id,
     fileNo: meta.fileNo ?? parseFileNo(body),
     pdfId,
@@ -353,7 +537,7 @@ export function parseCfpbOrderText(
     sourceUrl,
     actionUrl: actionUrl || `${ACTION_BASE}${id}/`,
     body,
-  };
+  });
 }
 
 export function emptySnapshot(reason: string): CfpbOrderSnapshot {
@@ -380,6 +564,7 @@ export function assembleSnapshot(
   fetchedAt = new Date().toISOString(),
 ): CfpbOrderSnapshot {
   const withBody = cards
+    .map((c) => applyCfpbOrderStatus(c))
     .filter((c) => isRealCfpbOrderBody(c.body))
     .sort((a, b) => cardDateKey(b).localeCompare(cardDateKey(a)));
   const asOf =
@@ -409,7 +594,10 @@ function parseSnapshotFile(raw: unknown): CfpbOrderSnapshot | null {
   if (!raw || typeof raw !== "object") return null;
   const snap = raw as CfpbOrderSnapshot;
   if (snap.product !== PRODUCT_ID || !Array.isArray(snap.cards)) return null;
-  return snap;
+  return {
+    ...snap,
+    cards: snap.cards.map((card) => applyCfpbOrderStatus(card)),
+  };
 }
 
 export function readSnapshot(): CfpbOrderSnapshot | null {
@@ -744,12 +932,17 @@ export async function loadCfpbOrders(): Promise<CfpbOrderSnapshot> {
 }
 
 export function buildCfpbOrdersManifest(snap: CfpbOrderSnapshot | null): Record<string, unknown> {
-  const cards = (snap?.cards ?? []).filter((c) => isRealCfpbOrderBody(c.body));
+  const cards = (snap?.cards ?? [])
+    .filter((c) => isRealCfpbOrderBody(c.body))
+    .map((c) => applyCfpbOrderStatus(c));
   return {
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/cfpb-orders", 'Full catalog: count + firm + date + title + fileNo. Not the enforcement index'),
+    note: paidBodyCatalogNote(
+      "/cfpb-orders",
+      "Full catalog: count + firm + date + title + fileNo + status (in_force or terminated). Not the enforcement index",
+    ),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
@@ -760,15 +953,34 @@ export function buildCfpbOrdersManifest(snap: CfpbOrderSnapshot | null): Record<
     fetchedAt: snap?.fetchedAt ?? null,
     asOf: snap?.asOf ?? null,
     cardCount: cards.length,
+    terminatedCount: cards.filter((c) => c.status === "terminated").length,
+    inForceCount: cards.filter((c) => c.status === "in_force").length,
     cards: cards.map((c) => ({
       id: c.id,
       firm: c.firm,
       date: c.date,
       title: c.title,
       fileNo: c.fileNo,
+      status: c.status,
+      terminatedDate: c.terminatedDate,
+      terminationFileNo: c.terminationFileNo,
+      terminationSourceUrl: c.terminationSourceUrl,
       sourceUrl: c.sourceUrl,
     })),
-    schema: { fields: ["id", "firm", "date", "title", "fileNo", "sourceUrl"] },
+    schema: {
+      fields: [
+        "id",
+        "firm",
+        "date",
+        "title",
+        "fileNo",
+        "status",
+        "terminatedDate",
+        "terminationFileNo",
+        "terminationSourceUrl",
+        "sourceUrl",
+      ],
+    },
     sources: snap?.sources ?? { listing: LISTING_URL, actionBase: ACTION_BASE, pdfHost: `https://${PDF_HOST}/` },
   };
 }
@@ -794,6 +1006,8 @@ if (isMain()) {
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
             cardCount: snap.cards.filter((c) => isRealCfpbOrderBody(c.body)).length,
+            terminatedCount: snap.cards.filter((c) => c.status === "terminated").length,
+            inForceCount: snap.cards.filter((c) => c.status === "in_force").length,
             listedCount: snap.listedCount ?? snap.cards.length,
             fetchedPdfs: snap.fetchedPdfs ?? 0,
             skippedNoText: snap.skippedNoText ?? 0,
@@ -806,6 +1020,9 @@ if (isMain()) {
               firm: c.firm,
               date: c.date,
               title: c.title,
+              status: c.status,
+              terminatedDate: c.terminatedDate,
+              terminationFileNo: c.terminationFileNo,
               bodyChars: c.body.length,
               sourceUrl: c.sourceUrl,
             })),
