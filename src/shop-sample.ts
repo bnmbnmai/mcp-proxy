@@ -12,10 +12,11 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
  * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
+ * Actual slaughter (AMS_3658) is livestock.ams_3658.* on this same table.
  * Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
-  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, by-products, Missouri stocker";
+  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, by-products, Missouri stocker, actual slaughter";
 
 /**
  * mo.gov Data Policy text required on any app that uses State of Missouri data.

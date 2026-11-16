@@ -58,6 +58,12 @@
  * on agmarketnews.mo.gov, not AMS. Every MDA row source carries the State of
  * Missouri data-policy disclaimer. Free search matches user-visible fields
  * only (not sourceUrl, not the paid price).
+ * AMS_3658 Actual Slaughter Under Federal Inspection is the official weekly
+ * LPGMN PDF (mnreports/ams_3658.pdf). Head, percent, live/dressed weight, meat
+ * production, and regional thousand-head rows land on this same $0.05 table
+ * as livestock.ams_3658.*. A dash is withheld, not zero. AMS_3208 daily
+ * estimated slaughter, the NASS monthly Livestock Slaughter bulletin, stale
+ * sj_ls711.txt, and viewReport/3658 are not this body.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -82,7 +88,7 @@ export const VIEW_REPORT = (slug: string) =>
 
 const HTTP_UA = "bnm-data-shop/1.0 (USDA AMS public market-report PDFs; +https://www.ams.usda.gov/market-news/hay-reports)";
 
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs" | "byproduct";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs" | "byproduct" | "livestock";
 
 export type AmsReport = {
   slug: string;
@@ -246,6 +252,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
+  { slug: "3658", group: "livestock", region: "national", title: "Actual Slaughter Under Federal Inspection", esmisPublication: "" },
   { slug: "2829", group: "byproduct", region: "national", title: "By-Product Drop Value (Steers) (Cattle)", esmisPublication: "" },
   { slug: "2834", group: "byproduct", region: "national", title: "By-Product Drop Value (Cow)", esmisPublication: "" },
   { slug: "2835", group: "byproduct", region: "national", title: "By-Product Drop Value (Hogs)", esmisPublication: "" },
@@ -306,6 +313,10 @@ export const SKIPPED_SOURCES = [
   { id: "if_fv130_already", why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list" },
   { id: "ams_2830_parked", why: "AMS_2830 Major Packer Hide Report (daily NW_LS448) stays parked — thin overlap with AMS_3641 cow hides and AMS_2829 steer hides" },
   { id: "ams_3458_killed", why: "AMS_3458 Daily Direct Prior Day Hog (LM_HG218) is KILL — mpr datamart /reports/3458 returns free JSON. Do not wrap" },
+  { id: "ams_3208_estimated_slaughter", why: "AMS_3208 is the daily estimated slaughter print, not the weekly actual AMS_3658 body" },
+  { id: "nass-monthly-livestock-slaughter", why: "NASS monthly Livestock Slaughter bulletin is not the AMS_3658 weekly daily-by-day actual slaughter PDF" },
+  { id: "sj_ls711_stale", why: "sj_ls711.txt is a stale week ending Nov 12 2022, not the current AMS_3658 body" },
+  { id: "viewreport_3658", why: "mymarketnews viewReport/3658 timed out with 0 bytes and did not return an Excel or CSV twin — parse the official mnreports PDF only" },
 ] as const;
 
 export type AmsTick = {
@@ -4134,7 +4145,478 @@ function finishSnapshot(snap: Omit<AmsSnapshot, "tickCount" | "sourceCount">): A
   return { ...snap, tickCount: catalog.tickCount, sourceCount: catalog.sourceCount };
 }
 
+const FI_SPECIES = [
+  { key: "cattle", commodity: "Cattle", label: "US cattle" },
+  { key: "calves", commodity: "Calves", label: "US calves" },
+  { key: "hogs", commodity: "Hogs", label: "US hogs" },
+  { key: "sheep", commodity: "Sheep", label: "US sheep" },
+  { key: "goats", commodity: "Goats", label: "US goats" },
+  { key: "bison", commodity: "Bison", label: "US bison" },
+] as const;
+
+const FI_CATTLE_DAY = [
+  { key: "steers", kind: "head", commodity: "Cattle", label: "US cattle steers" },
+  { key: "heifers", kind: "head", commodity: "Cattle", label: "US cattle heifers" },
+  { key: "steer_heifer_pct", kind: "pct", commodity: "Cattle", label: "US cattle steers and heifers share" },
+  { key: "dairy_cows", kind: "head", commodity: "Cattle", label: "US dairy cows" },
+  { key: "other_cows", kind: "head", commodity: "Cattle", label: "US other cows" },
+  { key: "dairy_other_pct", kind: "pct", commodity: "Cattle", label: "US dairy and other cow share" },
+] as const;
+
+const FI_MEAT_COLUMNS: Record<string, readonly { key: string; label: string }[]> = {
+  beef: [
+    { key: "cattle", label: "Cattle" },
+    { key: "steers", label: "Steers" },
+    { key: "heifers", label: "Heifers" },
+    { key: "cows", label: "Cows" },
+    { key: "bulls", label: "Bulls" },
+  ],
+  veal: [{ key: "calves", label: "Calves" }],
+  pork: [
+    { key: "hogs", label: "Hogs" },
+    { key: "barrows_gilts", label: "Barrows/Gilts" },
+    { key: "sows", label: "Sows" },
+    { key: "boars", label: "Boars" },
+  ],
+  lamb: [
+    { key: "sheep", label: "Sheep" },
+    { key: "mature_sheep", label: "Mature Sheep" },
+    { key: "lambs_yearlings", label: "Lambs/Yearlings" },
+  ],
+};
+
+const FI_REGION_COLUMNS: Record<string, readonly { key: string; label: string }[]> = {
+  cattle: [
+    { key: "total", label: "Total" },
+    { key: "steers", label: "Steers" },
+    { key: "heifers", label: "Heifers" },
+    { key: "dairy_cows", label: "Dairy Cows" },
+    { key: "other_cows", label: "Other Cows" },
+    { key: "bulls", label: "Bulls" },
+  ],
+  calves: [{ key: "total", label: "Total" }],
+  hogs: [
+    { key: "total", label: "Total" },
+    { key: "barrows_gilts", label: "Barrows/Gilts" },
+    { key: "sows", label: "Sows" },
+    { key: "boars", label: "Boars" },
+  ],
+  sheep: [
+    { key: "total", label: "Total" },
+    { key: "mature_sheep", label: "Mature Sheep" },
+    { key: "lambs_yearlings", label: "Lambs/Yearlings" },
+  ],
+};
+
+const FI_REGION_STATES: Record<string, string> = {
+  "1": "CT, ME, NH, VT, MA, RI",
+  "2": "NY, NJ",
+  "3": "DE, MD, PA, WV, VA",
+  "4": "AL, FL, GA, KY, MS, NC, SC, TN",
+  "5": "IL, IN, MI, MN, OH, WI",
+  "6": "AR, LA, NM, OK, TX",
+  "7": "IA, KS, MO, NE",
+  "8": "CO, MT, ND, SD, UT, WY",
+  "9": "AZ, CA, HI, NV",
+  "10": "AK, ID, OR, WA",
+  us: "United States",
+};
+
+const FI_CLASS_ROW =
+  /^(Steers|Heifers|Dairy Cows|Other Cows|Bulls|Calves\/Veal|Barrows & Gilts|Sows|Boars|Mature Sheep|Lambs & Yearlings|Total)\s{2,}([\d,]+)(?:\s{2,}(\d+(?:\.\d+)?)%)?\s*$/;
+
+const FI_CLASS_KEY: Record<string, string> = {
+  Steers: "steers",
+  Heifers: "heifers",
+  "Dairy Cows": "dairy_cows",
+  "Other Cows": "other_cows",
+  Bulls: "bulls",
+  "Calves/Veal": "calves",
+  "Barrows & Gilts": "barrows_gilts",
+  Sows: "sows",
+  Boars: "boars",
+  "Mature Sheep": "mature_sheep",
+  "Lambs & Yearlings": "lambs_yearlings",
+  Total: "total",
+};
+
+function parseFiWeek(text: string): { start: string; end: string; status: string } | null {
+  const m = text.match(
+    /Report for\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\s+thru\s+([A-Za-z]+)\s+(\d{1,2}),\s+(\d{4})\s*[-–]\s*(Final|Preliminary)/i,
+  );
+  if (!m) return null;
+  const startMon = MONTHS[m[1].toLowerCase()];
+  const endMon = MONTHS[m[4].toLowerCase()];
+  if (!startMon || !endMon) return null;
+  return {
+    start: `${m[3]}-${startMon}-${m[2].padStart(2, "0")}`,
+    end: `${m[6]}-${endMon}-${m[5].padStart(2, "0")}`,
+    status: /^final$/i.test(m[7]) ? "Final" : "Preliminary",
+  };
+}
+
+function parsePrintedNumber(raw: string): number | null {
+  const t = raw.trim();
+  if (!t || t === "-" || t === "–" || t === "—") return null;
+  const n = Number(t.replace(/[% ,]/g, ""));
+  return Number.isFinite(n) ? n : null;
+}
+
+function isFiChrome(line: string): boolean {
+  const t = line.replace(/\s+/g, " ").trim();
+  if (!t) return true;
+  if (/^actual slaughter under federal inspection$/i.test(t)) return true;
+  if (/^agricultural marketing service$/i.test(t)) return true;
+  if (/^livestock, poultry, and grain market news\b/i.test(t)) return true;
+  if (/^email us with accessibility/i.test(t)) return true;
+  if (/^source:/i.test(t)) return true;
+  if (/^washington, dc\b/i.test(t)) return true;
+  if (/^https?:\/\//i.test(t)) return true;
+  if (/^page \d+ of \d+$/i.test(t)) return true;
+  if (/^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)[a-z]*\s+[A-Z][a-z]+\s+\d{1,2},\s+\d{4}$/.test(t)) return true;
+  return false;
+}
+
+function fiColumnStarts(header: string, labels: readonly { key: string; label: string }[]): { key: string; at: number }[] {
+  const cols: { key: string; at: number }[] = [];
+  let from = 0;
+  for (const lab of labels) {
+    const at = header.indexOf(lab.label, from);
+    if (at < 0) return [];
+    cols.push({ key: lab.key, at });
+    from = at + lab.label.length;
+  }
+  return cols;
+}
+
+function fiValuesByColumn(
+  header: string,
+  labels: readonly { key: string; label: string }[],
+  dataLine: string,
+): Map<string, number> {
+  const cols = fiColumnStarts(header, labels);
+  const out = new Map<string, number>();
+  if (cols.length === 0) return out;
+  const minAt = cols[0].at - 2;
+  for (const m of dataLine.matchAll(/\d[\d,]*(?:\.\d+)?%?/g)) {
+    const at = m.index ?? 0;
+    if (at < minAt) continue;
+    let best: { key: string; at: number } | null = null;
+    for (const col of cols) {
+      if (col.at <= at + 2 && (!best || col.at >= best.at)) best = col;
+    }
+    if (!best) continue;
+    const n = parsePrintedNumber(m[0]);
+    if (n == null) continue;
+    out.set(best.key, n);
+  }
+  return out;
+}
+
+/**
+ * Official AMS_3658 weekly actual slaughter under federal inspection.
+ * Current-week tables only. A printed dash is withheld and is not a zero.
+ * Head counts stay on price/head; free-search text does not repeat them.
+ */
+export function parseActualSlaughterReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const week = parseFiWeek(text);
+  if (!week) return [];
+  const out: AmsTick[] = [];
+  const market = `${report.title} — U.S.`;
+  const pushFi = (row: {
+    id: string;
+    asOf: string;
+    commodity: string;
+    label: string;
+    market?: string;
+    detail: string;
+    unit: string;
+    price: number;
+    head?: number;
+  }): void => {
+    if (!Number.isFinite(row.price)) return;
+    pushTick(out, report, sourceUrl, row.asOf, {
+      id: row.id,
+      group: "livestock",
+      commodity: row.commodity,
+      label: row.label,
+      market: row.market ?? market,
+      classGrade: `${row.detail}, week ${week.start} through ${week.end}, ${week.status}`,
+      unit: row.unit,
+      price: roundMoney(row.price),
+      lo: roundMoney(row.price),
+      hi: roundMoney(row.price),
+      ...(row.head != null ? { head: row.head } : {}),
+    });
+  };
+  const slug = `ams_${report.slug}`;
+  let section: "" | "species" | "cattle_day" | "meat" | "class" | "region" | "done" = "";
+  let meatBlock = "";
+  let meatHeader = "";
+  let classSpecies = "";
+  let regionSpecies = "";
+  let regionHeader = "";
+
+  for (const rawLine of text.replace(/\f/g, "\n").split(/\r?\n/)) {
+    const line = rawLine.replace(/\f/g, "").replace(/\s+$/g, "");
+    const flat = line.replace(/\s+/g, " ").trim();
+    if (/Slaughter by Species and Day/i.test(flat)) {
+      section = "species";
+      continue;
+    }
+    if (/Slaughter Cattle by Class and Day/i.test(flat)) {
+      section = "cattle_day";
+      continue;
+    }
+    if (/Meat Production, Live Weight/i.test(flat)) {
+      section = "meat";
+      meatBlock = "";
+      meatHeader = "";
+      continue;
+    }
+    if (/Head\s*&\s*Percentage by Class/i.test(flat)) {
+      section = "class";
+      classSpecies = "";
+      continue;
+    }
+    if (/Slaughter by Region/i.test(flat)) {
+      section = "region";
+      regionSpecies = "";
+      regionHeader = "";
+      continue;
+    }
+    if (/^Explanatory Notes\b/i.test(flat)) {
+      section = "done";
+      continue;
+    }
+    if (section === "done" || isFiChrome(line)) continue;
+
+    if (section === "species" || section === "cattle_day") {
+      const day = line.match(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday),\s+(\d{1,2}\/\d{1,2}\/\d{4})\s{2,}(.+)$/i);
+      const total = line.match(/^\s*Total\s{2,}(.+)$/);
+      const cells = (day?.[3] ?? total?.[1] ?? "").trim().split(/\s{2,}/).filter(Boolean);
+      const expect = section === "species" ? FI_SPECIES.length : FI_CATTLE_DAY.length;
+      if (!day && !total) continue;
+      if (cells.length !== expect) continue;
+      const asOf = day ? parseMdY(day[2]) : week.end;
+      const scope = day ? day[1].toLowerCase() : "week";
+      if (!asOf) continue;
+      if (section === "species") {
+        FI_SPECIES.forEach((species, i) => {
+          const price = parsePrintedNumber(cells[i] ?? "");
+          if (price == null || price < 0) return;
+          const bisonNote = species.key === "bison" ? ", killed in federally inspected plants, not a required inspection" : "";
+          pushFi({
+            id: ["livestock", slug, "head", species.key, scope].join("."),
+            asOf,
+            commodity: species.commodity,
+            label: `${species.label}, federally inspected slaughter, ${scope === "week" ? "week" : day?.[1]}`,
+            detail: `Federally inspected head${scope === "week" ? ", week total" : `, ${day?.[1]}`}${bisonNote}`,
+            unit: "head",
+            price,
+            head: price,
+          });
+        });
+      } else {
+        FI_CATTLE_DAY.forEach((col, i) => {
+          const price = parsePrintedNumber(cells[i] ?? "");
+          if (price == null || price < 0) return;
+          const pct = col.kind === "pct";
+          const key = col.key.replace(/_pct$/, "");
+          pushFi({
+            id: ["livestock", slug, pct ? "pct" : "head", "cattle", key, scope].join("."),
+            asOf,
+            commodity: col.commodity,
+            label: `${col.label}, federally inspected slaughter, ${scope === "week" ? "week" : day?.[1]}`,
+            detail: pct ? `Share of that day's cattle, ${scope === "week" ? "week total" : day?.[1]}` : `Federally inspected head, ${scope === "week" ? "week total" : day?.[1]}`,
+            unit: pct ? "%" : "head",
+            price,
+            ...(pct ? {} : { head: price }),
+          });
+        });
+      }
+      continue;
+    }
+
+    if (section === "meat") {
+      if (/^Beef$/.test(flat)) {
+        meatBlock = "beef";
+        meatHeader = "";
+        continue;
+      }
+      if (/^Calves\/Veal$/.test(flat)) {
+        meatBlock = "veal";
+        meatHeader = "";
+        continue;
+      }
+      if (/^Pork$/.test(flat)) {
+        meatBlock = "pork";
+        meatHeader = "";
+        continue;
+      }
+      if (/^Lamb\/Mutton$/.test(flat)) {
+        meatBlock = "lamb";
+        meatHeader = "";
+        continue;
+      }
+      if (/^Total Meat Production\b/i.test(flat)) {
+        const price = parsePrintedNumber(flat.replace(/^Total Meat Production/i, ""));
+        if (price != null && price > 0) {
+          pushFi({
+            id: ["livestock", slug, "meat_million_lb", "total"].join("."),
+            asOf: week.end,
+            commodity: "Total meat",
+            label: "US total meat production, federally inspected slaughter",
+            detail: "Federally inspected meat production, million pounds, week total",
+            unit: "million lb",
+            price,
+          });
+        }
+        continue;
+      }
+      const columns = FI_MEAT_COLUMNS[meatBlock];
+      if (!columns) continue;
+      if (!meatHeader) {
+        const headerOk =
+          (meatBlock === "beef" && /\bSteers\b/.test(line)) ||
+          (meatBlock === "veal" && /^Calves$/.test(flat)) ||
+          (meatBlock === "pork" && /Barrows\/Gilts/.test(line)) ||
+          (meatBlock === "lamb" && /Lambs\/Yearlings/.test(line));
+        if (headerOk) meatHeader = line;
+        continue;
+      }
+      let measure = "";
+      let unit = "";
+      if (/^Live Weight\b/i.test(flat)) {
+        measure = "live_lb";
+        unit = "lb";
+      } else if (/^Dressed Weight\b/i.test(flat)) {
+        measure = "dressed_lb";
+        unit = "lb";
+      } else if (/^Meat Production\b/i.test(flat)) {
+        measure = "meat_million_lb";
+        unit = "million lb";
+      } else {
+        continue;
+      }
+      const values = fiValuesByColumn(meatHeader, columns, line);
+      const blockCommodity = meatBlock === "beef" ? "Beef" : meatBlock === "veal" ? "Veal" : meatBlock === "pork" ? "Pork" : "Lamb and mutton";
+      for (const [key, price] of values) {
+        if (price < 0) continue;
+        const detail =
+          measure === "live_lb"
+            ? "Average live weight, pounds"
+            : measure === "dressed_lb"
+              ? "Average dressed weight, pounds"
+              : "Federally inspected meat production, million pounds";
+        pushFi({
+          id: ["livestock", slug, measure, meatBlock, key].join("."),
+          asOf: week.end,
+          commodity: blockCommodity,
+          label: `US ${meatBlock} ${key.replace(/_/g, " ")}, ${measure === "meat_million_lb" ? "meat production" : measure === "live_lb" ? "live weight" : "dressed weight"}`,
+          detail,
+          unit,
+          price,
+        });
+      }
+      continue;
+    }
+
+    if (section === "class") {
+      if (/^(Cattle|Calves|Hogs|Sheep)$/.test(flat)) {
+        classSpecies = flat.toLowerCase();
+        continue;
+      }
+      const row = line.trim().match(FI_CLASS_ROW);
+      if (!row || !classSpecies) continue;
+      const key = FI_CLASS_KEY[row[1]] ?? "";
+      if (!key) continue;
+      const head = parsePrintedNumber(row[2]);
+      if (head == null || head < 0) continue;
+      const species = classSpecies === "calves" ? "calves" : classSpecies;
+      const sameAsSpeciesTotal = key === "total" || (species === "calves" && key === "calves");
+      const idKey = sameAsSpeciesTotal ? species : `${species}.${key}`;
+      const commodity = species === "cattle" ? "Cattle" : species === "calves" ? "Calves" : species === "hogs" ? "Hogs" : "Sheep";
+      pushFi({
+        id: ["livestock", slug, "head", idKey, "week"].join("."),
+        asOf: week.end,
+        commodity,
+        label: `US ${commodity.toLowerCase()} ${sameAsSpeciesTotal ? "total" : key.replace(/_/g, " ")}, federally inspected slaughter, week`,
+        detail: "Federally inspected head, class total",
+        unit: "head",
+        price: head,
+        head,
+      });
+      if (row[3]) {
+        const pct = parsePrintedNumber(row[3]);
+        if (pct != null && pct >= 0 && !sameAsSpeciesTotal) {
+          pushFi({
+            id: ["livestock", slug, "pct", species, key, "week"].join("."),
+            asOf: week.end,
+            commodity,
+            label: `US ${commodity.toLowerCase()} ${key.replace(/_/g, " ")} share, federally inspected slaughter, week`,
+            detail: "Share of that species, class total",
+            unit: "%",
+            price: pct,
+          });
+        }
+      }
+      continue;
+    }
+
+    if (section === "region") {
+      if (/^(Cattle|Calves|Hogs|Sheep)$/.test(flat)) {
+        regionSpecies = flat.toLowerCase();
+        regionHeader = "";
+        continue;
+      }
+      if (/^Standard Federal Regions\b/i.test(flat)) {
+        regionHeader = line;
+        continue;
+      }
+      const columns = FI_REGION_COLUMNS[regionSpecies];
+      if (!regionHeader || !columns) continue;
+      const where = line.match(/^(\s*)(\d{1,2}|U\.S\.\s*Total)\b/);
+      if (!where) continue;
+      const regionKey = /^\d/.test(where[2]) ? where[2] : "us";
+      const values = fiValuesByColumn(regionHeader, columns, line);
+      const place = FI_REGION_STATES[regionKey] ?? "";
+      const marketName = regionKey === "us" ? `${report.title} — U.S. total` : `${report.title} — Region ${regionKey}`;
+      const commodity = regionSpecies === "cattle" ? "Cattle" : regionSpecies === "calves" ? "Calves" : regionSpecies === "hogs" ? "Hogs" : "Sheep";
+      for (const [key, price] of values) {
+        if (price < 0) continue;
+        pushFi({
+          id: ["livestock", slug, "thousand_head", regionSpecies, regionKey === "us" ? "us" : `r${regionKey}`, key].join("."),
+          asOf: week.end,
+          commodity,
+          label: `US ${commodity.toLowerCase()} ${key.replace(/_/g, " ")}, federally inspected slaughter, ${regionKey === "us" ? "U.S. total" : `region ${regionKey}`}`,
+          market: marketName,
+          detail: `Federally inspected slaughter, thousand head, rounded${place ? `, ${place}` : ""}. A withheld region cell is not a row`,
+          unit: "thousand head",
+          price,
+        });
+      }
+    }
+  }
+
+  const ids = new Set(out.map((row) => row.id));
+  const required = [
+    `livestock.${slug}.head.cattle.week`,
+    `livestock.${slug}.head.calves.week`,
+    `livestock.${slug}.head.hogs.week`,
+    `livestock.${slug}.head.sheep.week`,
+    `livestock.${slug}.head.goats.week`,
+    `livestock.${slug}.head.bison.week`,
+    `livestock.${slug}.head.cattle.steers.week`,
+    `livestock.${slug}.meat_million_lb.total`,
+  ];
+  if (!required.every((id) => ids.has(id))) return [];
+  if (![...ids].some((id) => id.includes(".thousand_head.cattle.r") && id.endsWith(".total"))) return [];
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  if (report.slug === "3658") return parseActualSlaughterReport(text, report, sourceUrl);
   if (report.group === "byproduct") {
     if (report.slug === "2838") return parseVarietyMeatReport(text, report, sourceUrl, false);
     if (report.slug === "3641") return parseVarietyMeatReport(text, report, sourceUrl, true);
@@ -4776,7 +5258,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
           lastErr = "official PDF reported no trades / not established this week";
           break;
         }
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/feedstuff/ethanol/rice/production-cost/by-product print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/feedstuff/ethanol/rice/production-cost/by-product/actual-slaughter print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }

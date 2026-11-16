@@ -16,7 +16,7 @@ function report(slug) {
     assert.ok(found, slug);
     return found;
 }
-const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail", "by-products", "Missouri stocker"];
+const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail", "by-products", "Missouri stocker", "actual slaughter"];
 assert.equal(PRODUCT_PUBLIC_ID, "us-hay-cattle-grain-ticks", "do not rename the public product.id");
 assert.equal(SAMPLE_TABLE_SKU.ticks.length, 3, "free slice stays 3 rows");
 assert.ok(!SAMPLE_TABLE_SKU.asOf.startsWith("2026-01"), "sample is not the January 2026 can");
@@ -665,6 +665,79 @@ assert.equal(flat.sourceUrl, MDA_SLAUGHTER_URL);
 assert.ok(slaughter.every((row) => row.source.includes(MO_DATA_POLICY_DISCLAIMER)));
 assert.ok(!slaughter.some((row) => row.price === 14.69 || row.price === 367.28 || row.price === 223 || row.price === 226), "narrative prices stay off");
 assert.throws(() => parseMdaSlaughter(fx("mda-slaughter-drift.html")), /slaughter: layout miss/);
+const slaughter3658 = parseAmsReportText(fx("actual-slaughter-3658.txt"), report("3658"), "https://www.ams.usda.gov/mnreports/ams_3658.pdf");
+assert.equal(report("3658").group, "livestock");
+assert.equal(report("3658").title, "Actual Slaughter Under Federal Inspection");
+assert.ok(slaughter3658.length > 40, `expected the weekly actual-slaughter tables, got ${slaughter3658.length}`);
+assert.ok(slaughter3658.every((row) => row.group === "livestock" && row.id.startsWith("livestock.ams_3658.")));
+assert.ok(slaughter3658.every((row) => row.source.includes("AMS_3658") && row.sourceUrl.endsWith("/ams_3658.pdf")));
+assert.ok(slaughter3658.every((row) => row.price !== 0), "a withheld dash is not a zero");
+const fi = (id) => slaughter3658.find((row) => row.id === id);
+const fiCattle = fi("livestock.ams_3658.head.cattle.week");
+const fiMonday = fi("livestock.ams_3658.head.cattle.monday");
+const fiCalves = fi("livestock.ams_3658.head.calves.week");
+const fiHogs = fi("livestock.ams_3658.head.hogs.week");
+const fiSheep = fi("livestock.ams_3658.head.sheep.week");
+const fiGoats = fi("livestock.ams_3658.head.goats.week");
+const fiBison = fi("livestock.ams_3658.head.bison.week");
+const fiMeat = fi("livestock.ams_3658.meat_million_lb.total");
+assert.ok(fiCattle && fiMonday && fiCalves && fiHogs && fiSheep && fiGoats && fiBison && fiMeat);
+assert.equal(fiCattle.asOf, "2026-10-31");
+assert.equal(fiCattle.price, 546558);
+assert.equal(fiCattle.head, 546558);
+assert.equal(fiCattle.unit, "head");
+assert.match(fiCattle.classGrade, /2026-10-25 through 2026-10-31, Final/);
+assert.equal(fiMonday.asOf, "2026-10-26");
+assert.equal(fiMonday.price, 105636);
+assert.equal(fiCalves.price, 1716);
+assert.equal(fiHogs.price, 2610866);
+assert.equal(fiSheep.price, 36173);
+assert.equal(fiGoats.price, 11131);
+assert.equal(fiBison.price, 853);
+assert.match(fiBison.classGrade, /not a required inspection/);
+assert.equal(fiMeat.price, 1062.6);
+assert.equal(fiMeat.unit, "million lb");
+assert.equal(fi("livestock.ams_3658.meat_million_lb.beef.cattle")?.price, 491.8);
+assert.equal(fi("livestock.ams_3658.meat_million_lb.pork.hogs")?.price, 568.3);
+assert.equal(fi("livestock.ams_3658.meat_million_lb.lamb.sheep")?.price, 2.1);
+assert.equal(fi("livestock.ams_3658.meat_million_lb.veal.calves")?.price, 0.4);
+assert.equal(fi("livestock.ams_3658.live_lb.beef.cattle")?.price, 1474);
+assert.equal(fi("livestock.ams_3658.dressed_lb.beef.steers")?.price, 995);
+assert.equal(fi("livestock.ams_3658.head.cattle.steers.week")?.price, 276662);
+assert.equal(fi("livestock.ams_3658.pct.cattle.steers.week")?.price, 50.6);
+assert.equal(fi("livestock.ams_3658.pct.cattle.steer_heifer.monday")?.price, 82.8);
+assert.equal(fi("livestock.ams_3658.head.cattle.dairy_cows.week")?.price, 51880);
+assert.equal(fi("livestock.ams_3658.thousand_head.cattle.r7.total")?.price, 253.9);
+assert.equal(fi("livestock.ams_3658.thousand_head.cattle.r7.steers")?.price, 145.4);
+assert.equal(fi("livestock.ams_3658.thousand_head.hogs.us.total")?.price, 2610.9);
+assert.equal(fi("livestock.ams_3658.thousand_head.sheep.r10.total")?.price, 1.2);
+assert.equal(fi("livestock.ams_3658.head.bison.monday"), undefined, "Monday bison is withheld");
+assert.equal(fi("livestock.ams_3658.head.calves.saturday"), undefined, "Saturday calves are withheld");
+assert.equal(fi("livestock.ams_3658.thousand_head.cattle.r1.bulls"), undefined, "Region 1 bulls are withheld");
+assert.equal(fi("livestock.ams_3658.thousand_head.cattle.us.total")?.unit, "thousand head");
+assert.ok(!slaughter3658.some((row) => /546,558|105,636|1,062\.6/.test(`${row.label} ${row.classGrade} ${row.id}`)));
+assert.equal(parseAmsReportText("no week header", report("3658"), "https://www.ams.usda.gov/mnreports/ams_3658.pdf").length, 0);
+const fiCatalog = publicTicksCatalog(slaughter3658);
+assert.equal(fiCatalog.tickCount, slaughter3658.length);
+assert.equal(fiCatalog.sourceCount, 1);
+assert.equal(fiCatalog.sources[0]?.latestAsOf, "2026-10-31");
+assert.match(fiCatalog.sources[0]?.name ?? "", /AMS_3658/);
+assert.equal(fiCatalog.sources[0]?.group, "livestock");
+const fiCatalogBlob = JSON.stringify(fiCatalog);
+assert.ok(!fiCatalogBlob.includes("546558"));
+assert.ok(!fiCatalogBlob.includes("1062.6"));
+assert.ok(!fiCatalogBlob.includes("sourceUrl"));
+assert.ok(!fiCatalogBlob.includes("mnreports"));
+assert.equal(freeTickSearchMatches(fiCattle, "Actual Slaughter"), true);
+assert.equal(freeTickSearchMatches(fiCattle, "AMS_3658"), true);
+assert.equal(freeTickSearchMatches(fiCattle, "546558"), false);
+assert.equal(freeTickSearchMatches(fiCattle, "105636"), false);
+assert.equal(freeTickSearchMatches(fiMonday, "105,636"), false);
+assert.equal(freeTickSearchMatches(fiCattle, "https://www.ams.usda.gov/mnreports/ams_3658.pdf"), false);
+assert.ok(SKIPPED_SOURCES.some((row) => row.id === "ams_3208_estimated_slaughter"));
+assert.ok(SKIPPED_SOURCES.some((row) => row.id === "nass-monthly-livestock-slaughter"));
+assert.ok(SKIPPED_SOURCES.some((row) => row.id === "sj_ls711_stale"));
+assert.ok(SKIPPED_SOURCES.some((row) => row.id === "viewreport_3658"));
 const addedRows = [...drop2829, ...drop2834, ...drop2835, ...variety, ...hides, ...stocker, ...slaughter];
 const addedCatalog = publicTicksCatalog(addedRows);
 assert.equal(addedCatalog.tickCount, addedRows.length);
@@ -731,6 +804,7 @@ console.log(JSON.stringify({
     hides3641: hides.length,
     mdaStocker: stocker.length,
     mdaSlaughter: slaughter.length,
+    actualSlaughter3658: slaughter3658.length,
     addedTickCount: addedCatalog.tickCount,
     addedSourceCount: addedCatalog.sourceCount,
 }));
