@@ -1,17 +1,17 @@
 # NCUA institution consent C&D text — x402 door
 
-Official NCUA-authored **institution consent Cease-and-Desist TEXT** extracted from per-order HTML body pages or official `/files/administrative-orders/AO*.pdf` on `ncua.gov`. Does not invent order text. Not the official administrative-orders CSV (docket/name/URL only). Not Drupal `?_format=json` (406). Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not terminations. Not FRB `/frb-orders`. Not FDIC `/fdic-orders`. Not OCC `/occ-cd`. Not CFPB `/cfpb-orders`. Not FTC `/ftc-wl`.
+Official NCUA-authored **institution consent Cease-and-Desist TEXT** extracted from per-order HTML body pages or official `/files/administrative-orders/AO*.pdf` on `ncua.gov`, plus two official **C&D termination** HTML orders. Does not invent order text. Not the official administrative-orders CSV (docket/name/URL only). Not Drupal `?_format=json` (406). Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not prohibition orders. Not the other administrative-order terminations. Not FRB `/frb-orders`. Not FDIC `/fdic-orders`. Not OCC `/occ-cd`. Not CFPB `/cfpb-orders`. Not FTC `/ftc-wl`.
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /ncua-orders` is HTTP 402.
 
-v1 seeds **5** official institution C&D body pages. Required seed is Live Life Federal Credit Union (`21-0105-ER`, 2021). Family: Phi Beta Sigma `19-1061-ER`, Defense Logistics `19-0187-ER`. Recent institution cards are often CMP/termination — harvest stays on C&D body pages. Leftover grow follows official `/files/administrative-orders/AO*.pdf` and leftover `{docket}.pdf` stems when the Drupal page is a teaser. 2011–2017 leftover C&D teasers (Montgomery County Teachers `12-0027-R2`, White Rock `14-0057-R2`, Borinquen `11-0022-R2`, Bagumbayan `13-0039-R4`, Garden Savings `07-0502-II`, leftover stem `17-0020-R1`) are official image-only scans — `pdftotext` empty, do not invent OCR. Leftover people/IAP (Rhonda Hitt `11-0028-R4`) stay out.
+v1 seeds **5** official institution C&D body pages. Required seed is Live Life Federal Credit Union (`21-0105-ER`, 2021). Family: Phi Beta Sigma `19-1061-ER`, Defense Logistics `19-0187-ER`. Recent institution rows are often CMP or other terminations — those stay out. The two C&D terminations below are the exception. Leftover grow follows official `/files/administrative-orders/AO*.pdf` and leftover `{docket}.pdf` stems when the Drupal page is a teaser. 2011–2017 leftover C&D teasers (Montgomery County Teachers `12-0027-R2`, White Rock `14-0057-R2`, Borinquen `11-0022-R2`, Bagumbayan `13-0039-R4`, Garden Savings `07-0502-II`, leftover stem `17-0020-R1`) are official image-only scans — `pdftotext` empty, do not invent OCR. Leftover people/IAP (Rhonda Hitt `11-0028-R4`) stay out.
 
 ## Paths
 
 | Path | Auth | Price |
 |---|---|---|
 | `GET /ncua-orders` | unpaid → **HTTP 402** | **$0.05** USDC on Base (`50000` atomic) |
-| `GET /ncua-orders/manifest.json` | free | HTTP 200 credit union / docket / date / official HTML or PDF URL (no order body) |
+| `GET /ncua-orders/manifest.json` | free | HTTP 200 credit union / docket / date / status `in_force` or `terminated` (no order body; `sourceUrl` stripped) |
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
@@ -24,13 +24,33 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: Live Life Federal Credit Union, Fraser — `21-0105-ER` — dated 22 Feb 2021 — https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union
 - License: **17 USC 105**. Attribute NCUA.
 
-Paid body fields: `id`, `docket`, `creditUnion`, `location`, `date`, `title`, `sourceUrl`, `body`. `body` is official HTML- or PDF-extracted order TEXT. `sourceUrl` is the ncua.gov administrative-order page or the official AO PDF.
+Paid body fields: `id`, `docket`, `creditUnion`, `location`, `date`, `title`, `sourceUrl`, `body`, `orderKind`, `endsDocket`, `status`, `terminatedDate`, `terminationFileNo`, `terminationSourceUrl`. `body` is official HTML- or PDF-extracted order TEXT. `sourceUrl` is the ncua.gov administrative-order page or the official AO PDF.
+
+## C&D terminations
+
+Two official termination orders are cards. The termination HTML is the paid body, same $0.02 `?id=` / $0.05 page as the consent cards. Prices, payTo, network, and path are unchanged.
+
+| Docket | Credit union | Signed | Ends |
+|---|---|---|---|
+| `23-0107-ER` | Live Life Federal Credit Union | 2023-03-17 | `21-0105-ER` |
+| `25-0025-ER` | Phi Beta Sigma Federal Credit Union | 2025-05-27 | `19-1061-ER` |
+
+Sources (ncua.gov HTML, no separate PDF on the page):
+
+- https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union
+- https://ncua.gov/news/enforcement-actions/administrative-orders/2025/administrative-order-matter-phi-beta-sigma-federal-credit-union
+
+Official CSV row (metadata only): https://ncua.gov/sites/default/files/list_csv/administrative-orders.csv
+
+Consent cards those orders end are `status: "terminated"` with `terminatedDate`, `terminationFileNo`, and `terminationSourceUrl`. They stay in the bag. Other consent cards in this bag stay `in_force` (Yonkers `22-0122-ER` included). A termination card has `orderKind: "termination"`, `endsDocket` set to the consent it ends, and `status: null`. `asOf` is the newest included order date, `2025-05-27`. Reading the snapshot applies the flags and fills a missing termination card from the bundled official HTML, so the live 12-card file does not need a hand edit.
+
+Free `?q=` matches `in_force` and `terminated`. It does not match `terminationSourceUrl`.
 
 Leak-tests already passed on the live NCUA hosts: official CSV is metadata; Drupal `?_format=json` → 406; sibling `.json` / `.txt` 404; Federal Register API 0 on `21-0105-ER`.
 
-`data/ncua-orders/` is gitignored. Official extractable institution C&D text on ncua.gov tops out at **12** (5 HTML seeds + 7 leftover AO PDFs). Leftover walk of 2011–2017 teaser PDFs plus leftover `{docket}.pdf` stems and 1998–2010 text-layer leftovers found CMP, people/IAP, termination, or image-only scans. Do not pad. Do not OCR.
+`data/ncua-orders/` is gitignored. Extractable institution C&D text on ncua.gov in this bag is **12** consent cards plus **2** official C&D termination cards (**14**). Leftover walk of 2011–2017 teaser PDFs plus leftover `{docket}.pdf` stems and 1998–2010 text-layer leftovers found CMP, people/IAP, other terminations, or image-only scans. Do not pad. Do not OCR. Do not add the rest of the 1,445 administrative orders here.
 
-Free `GET /ncua-orders/manifest.json` is credit union / docket / date / sourceUrl only. Needles such as `Marijuana-Related`, `METRC`, and `BSA Expectations` stay out of unpaid responses.
+Free `GET /ncua-orders/manifest.json` is credit union / docket / date / title / orderKind / status. `sourceUrl` is stripped. Needles such as `Marijuana-Related`, `METRC`, and `BSA Expectations` stay out of unpaid responses.
 
 ## Env
 

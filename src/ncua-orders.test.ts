@@ -4,21 +4,27 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFileSync as readFs } from "node:fs";
+import { decorateExtractedBodyManifest, searchCatalogRows, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   ATTRIBUTION,
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  NCUA_ORDERS_AMOUNT_ATOMIC,
   OFFICIAL_WALK_LISTINGS,
   SEED_LISTINGS,
+  TERMINATION_ORDERS,
   buildNcuaOrdersManifest,
   collectNcuaOrders,
   extractOfficialPdfUrl,
   isCmpRow,
   isInstitutionOrderRow,
+  isKnownTerminationDocket,
   isLuaRow,
   isPeopleRow,
   isRealNcuaOrderBody,
+  isRealNcuaTerminationBody,
+  isSellableNcuaOrderBody,
   isTerminationRow,
   officialNcuaOrderUrl,
   officialNcuaPdfUrl,
@@ -53,7 +59,7 @@ async function main(): Promise<void> {
   assert.ok(listed.some((r) => r.id === "22-0122-ER"));
   assert.ok(listed.some((r) => r.id === "14-0247-R2"));
   assert.ok(!listed.some((r) => r.id === "26-0031-WR"), "skip 2026 people/IAP");
-  assert.ok(!listed.some((r) => r.id === "23-0107-ER"), "skip termination");
+  assert.ok(!listed.some((r) => r.id === "23-0107-ER"), "generic listing still skips termination rows");
   assert.ok(!listed.some((r) => r.id === "25-0004-SR"), "skip late-filer CMP");
   assert.ok(!listed.some((r) => r.id === "18-0001-ER"), "skip LUA");
   assert.ok(listed.every((r) => officialNcuaOrderUrl(r.sourceUrl)));
@@ -79,6 +85,17 @@ async function main(): Promise<void> {
     "https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf",
   );
   assert.ok(LISTING_URL.includes("ncua.gov"));
+  assert.equal(NCUA_ORDERS_AMOUNT_ATOMIC, "50000");
+  assert.equal(SINGLE_DOC_AMOUNT_ATOMIC, "20000");
+  assert.equal(TERMINATION_ORDERS.length, 2);
+  assert.equal(TERMINATION_ORDERS[0]?.docket, "23-0107-ER");
+  assert.equal(TERMINATION_ORDERS[0]?.consentDocket, "21-0105-ER");
+  assert.equal(TERMINATION_ORDERS[0]?.date, "2023-03-17");
+  assert.equal(TERMINATION_ORDERS[1]?.docket, "25-0025-ER");
+  assert.equal(TERMINATION_ORDERS[1]?.consentDocket, "19-1061-ER");
+  assert.equal(TERMINATION_ORDERS[1]?.date, "2025-05-27");
+  assert.equal(isKnownTerminationDocket("23-0107-ER"), true);
+  assert.equal(isKnownTerminationDocket("22-0122-ER"), false);
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "21-0105-ER"));
   assert.ok(OFFICIAL_WALK_LISTINGS.length >= 7, "official PDF walk lists leftover institution C&D bodies");
@@ -140,6 +157,14 @@ async function main(): Promise<void> {
   assert.ok(csvListed.some((r) => r.id === "22-0122-ER"));
   assert.ok(csvListed.some((r) => r.id === "14-0247-R2"), "CSV walk keeps R2 institution C&D");
   assert.ok(!csvListed.some((r) => r.id === "26-0041-WR"), "CSV walk skips people");
+  const termCsv = [
+    '"Docket Number","Year","First Name","Last Name","Institution","Relationship","City","State","URL"',
+    '"23-0107-ER","2023","Live Life Federal Credit Union","N/A","Live Life Federal Credit Union","Live Life Federal Credit Union","Fraser","MI","https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union"',
+    '"25-0025-ER","2025","Phi Beta Sigma Federal Credit Union","N/A","Phi Beta Sigma Federal Credit Union","Phi Beta Sigma Federal Credit Union","Washington","DC","https://ncua.gov/news/enforcement-actions/administrative-orders/2025/administrative-order-matter-phi-beta-sigma-federal-credit-union"',
+  ].join("\n");
+  const termCsvListed = parseNcuaCsv(termCsv);
+  assert.ok(!termCsvListed.some((r) => r.id === "23-0107-ER"), "known termination stays off the generic CSV walk");
+  assert.ok(!termCsvListed.some((r) => r.id === "25-0025-ER"), "known termination stays off the generic CSV walk");
   assert.ok(csvListed.every((r) => officialNcuaOrderUrl(r.sourceUrl)));
 
   const people = rows.find((r) => (r.docket ?? "") === "26-0031-WR");
@@ -179,6 +204,11 @@ async function main(): Promise<void> {
   assert.match(liveText.creditUnion, /Live Life Federal Credit Union/i);
   assert.equal(liveText.date, "2021-02-22");
   assert.equal(liveText.title, "Stipulation and Consent to Cease and Desist Order");
+  assert.equal(liveText.orderKind, "consent");
+  assert.equal(liveText.status, "terminated");
+  assert.equal(liveText.terminatedDate, "2023-03-17");
+  assert.equal(liveText.terminationFileNo, "23-0107-ER");
+  assert.match(liveText.terminationSourceUrl ?? "", /\/2023\/administrative-order-matter-live-life-federal-credit-union$/);
   assert.ok(isRealNcuaOrderBody(liveText.body));
   assert.ok(liveText.body.includes("Marijuana-Related"));
   assert.ok(liveText.body.includes("METRC"));
@@ -218,6 +248,10 @@ async function main(): Promise<void> {
     docket: "22-0122-ER",
   });
   assert.ok(isRealNcuaOrderBody(yonkers.body));
+  assert.equal(yonkers.status, "in_force");
+  assert.equal(yonkers.terminatedDate, null);
+  assert.equal(yonkers.terminationFileNo, null);
+  assert.equal(yonkers.terminationSourceUrl, null);
 
   const bethel = parseNcuaOrderHtml(readFx("14-0247-R2.txt"), {
     sourceUrl: "https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf",
@@ -276,7 +310,43 @@ async function main(): Promise<void> {
     sourceUrl: "https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union",
     creditUnion: "Live Life Federal Credit Union",
   });
-  assert.equal(isRealNcuaOrderBody(termBody.body), false, "termination is not the C&D body");
+  assert.equal(isRealNcuaOrderBody(termBody.body), false, "stub termination is not the C&D body");
+  assert.equal(isRealNcuaTerminationBody(termBody.body, "23-0107-ER"), false, "stub termination is not an official order");
+  assert.equal(isSellableNcuaOrderBody(termBody.body, "23-0107-ER"), false);
+
+  const liveTerm = parseNcuaOrderHtml(readFx("23-0107-ER.html"), {
+    sourceUrl: TERMINATION_ORDERS[0].sourceUrl,
+    creditUnion: TERMINATION_ORDERS[0].creditUnion,
+    location: TERMINATION_ORDERS[0].location,
+    date: TERMINATION_ORDERS[0].date,
+    docket: "23-0107-ER",
+    title: TERMINATION_ORDERS[0].title,
+  });
+  assert.equal(liveTerm.docket, "23-0107-ER");
+  assert.equal(liveTerm.date, "2023-03-17");
+  assert.equal(liveTerm.orderKind, "termination");
+  assert.equal(liveTerm.endsDocket, "21-0105-ER");
+  assert.equal(liveTerm.status, null);
+  assert.equal(isRealNcuaOrderBody(liveTerm.body), false, "termination text is not a consent C&D");
+  assert.equal(isRealNcuaTerminationBody(liveTerm.body, liveTerm.docket), true);
+  assert.ok(liveTerm.body.includes("21-0105-ER"));
+  assert.ok(liveTerm.body.includes("February 22, 2021"));
+  assert.ok(liveTerm.body.includes("3/17/2023"));
+
+  const phiTerm = parseNcuaOrderHtml(readFx("25-0025-ER.html"), {
+    sourceUrl: TERMINATION_ORDERS[1].sourceUrl,
+    creditUnion: TERMINATION_ORDERS[1].creditUnion,
+    location: TERMINATION_ORDERS[1].location,
+    date: TERMINATION_ORDERS[1].date,
+    docket: "25-0025-ER",
+    title: TERMINATION_ORDERS[1].title,
+  });
+  assert.equal(phiTerm.docket, "25-0025-ER");
+  assert.equal(phiTerm.date, "2025-05-27");
+  assert.equal(phiTerm.endsDocket, "19-1061-ER");
+  assert.equal(isRealNcuaTerminationBody(phiTerm.body, phiTerm.docket), true);
+  assert.ok(phiTerm.body.includes("August 19, 2019"));
+  assert.ok(phiTerm.body.includes("5/27/2025"));
 
   const drupal = parseNcuaOrderHtml(readFx("drupal-json.txt"), {
     sourceUrl:
@@ -335,6 +405,8 @@ async function main(): Promise<void> {
   assert.equal(manifest.cardCount, 1);
   assert.match((manifest.cards as { creditUnion: string }[])[0]?.creditUnion ?? "", /Live Life/i);
   assert.equal((manifest.cards as { docket: string }[])[0]?.docket, "21-0105-ER");
+  assert.equal((manifest.cards as { status: string }[])[0]?.status, "terminated");
+  assert.equal((manifest.cards as { terminationFileNo: string }[])[0]?.terminationFileNo, "23-0107-ER");
   assert.ok(!manBlob.includes("Marijuana-Related"), "free manifest must not dump order body");
   assert.ok(!manBlob.includes("METRC"));
   assert.ok(!manBlob.includes("BSA Expectations"));
@@ -356,9 +428,74 @@ async function main(): Promise<void> {
     assert.ok(snap.cards.some((c) => c.docket === "22-0112-ER" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "22-0122-ER" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "14-0247-R2" && isRealNcuaOrderBody(c.body)));
-    assert.ok(snap.cards.every((c) => isRealNcuaOrderBody(c.body)));
+    assert.ok(snap.cards.every((c) => isSellableNcuaOrderBody(c.body, c.docket)));
     assert.ok(!snap.cards.some((c) => c.id === "26-0031-WR"), "skip IAP");
-    assert.ok(!snap.cards.some((c) => c.id === "23-0107-ER"), "skip termination");
+    const liveEnded = snap.cards.find((c) => c.id === "21-0105-ER");
+    const phiEnded = snap.cards.find((c) => c.id === "19-1061-ER");
+    const yonkersCard = snap.cards.find((c) => c.id === "22-0122-ER");
+    const liveTermination = snap.cards.find((c) => c.id === "23-0107-ER");
+    const phiTermination = snap.cards.find((c) => c.id === "25-0025-ER");
+    assert.equal(liveEnded?.status, "terminated");
+    assert.equal(liveEnded?.terminatedDate, "2023-03-17");
+    assert.equal(liveEnded?.terminationFileNo, "23-0107-ER");
+    assert.equal(phiEnded?.status, "terminated");
+    assert.equal(phiEnded?.terminationFileNo, "25-0025-ER");
+    assert.equal(yonkersCard?.status, "in_force");
+    assert.equal(yonkersCard?.terminatedDate, null);
+    assert.equal(liveTermination?.orderKind, "termination");
+    assert.equal(liveTermination?.endsDocket, "21-0105-ER");
+    assert.ok(isRealNcuaTerminationBody(liveTermination?.body ?? "", "23-0107-ER"));
+    assert.equal(phiTermination?.orderKind, "termination");
+    assert.equal(phiTermination?.date, "2025-05-27");
+    assert.equal(snap.asOf, "2025-05-27");
+    assert.ok((snap.asOf ?? "") > "2022-11-29");
+    const collectedManifest = buildNcuaOrdersManifest(snap);
+    assert.equal(collectedManifest.cardCount, snap.cards.length);
+    assert.ok((collectedManifest.cardCount as number) >= 8);
+    assert.equal(collectedManifest.terminatedCount, 2);
+    assert.ok((collectedManifest.inForceCount as number) >= 1);
+    assert.equal(collectedManifest.terminationCount, 2);
+    assert.equal(collectedManifest.priceUsdc, "0.05");
+    assert.equal(collectedManifest.amountAtomic, "50000");
+    assert.equal(collectedManifest.payTo, "0xf59621FC406D266e18f314Ae18eF0a33b8401004");
+    const free = decorateExtractedBodyManifest(collectedManifest, { paidPath: "/ncua-orders" });
+    const freeCards = free.cards as {
+      id: string;
+      status: string | null;
+      sourceUrl?: string;
+      terminationSourceUrl?: string | null;
+      body?: string;
+    }[];
+    assert.equal(freeCards.find((c) => c.id === "21-0105-ER")?.status, "terminated");
+    assert.equal(freeCards.find((c) => c.id === "22-0122-ER")?.status, "in_force");
+    assert.ok(freeCards.some((c) => c.id === "23-0107-ER"));
+    assert.ok(freeCards.some((c) => c.id === "25-0025-ER"));
+    assert.ok(freeCards.every((c) => !c.sourceUrl), "free cards hide sourceUrl");
+    assert.ok(freeCards.every((c) => !c.body));
+    assert.equal(free.asOf, "2025-05-27");
+    const terminatedHits = searchCatalogRows(collectedManifest.cards as Record<string, unknown>[], "terminated");
+    assert.ok(terminatedHits.some((row) => row.id === "21-0105-ER"));
+    assert.ok(!terminatedHits.some((row) => row.id === "22-0122-ER"));
+    const inForceHits = searchCatalogRows(collectedManifest.cards as Record<string, unknown>[], "in_force");
+    assert.ok(inForceHits.some((row) => row.id === "22-0122-ER"));
+    assert.ok(!inForceHits.some((row) => row.id === "21-0105-ER"));
+    assert.equal(
+      searchCatalogRows(
+        [
+          {
+            id: "21-0105-ER",
+            status: "terminated",
+            sourceUrl:
+              "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union",
+            terminationSourceUrl:
+              "https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union",
+          },
+        ],
+        "2023/administrative-order-matter-live-life",
+      ).length,
+      0,
+      "free search must not match terminationSourceUrl",
+    );
     assert.ok(!snap.cards.some((c) => c.id === "12-0027-R2"), "skip leftover image-only Montgomery County Teachers");
     assert.ok(!snap.cards.some((c) => c.id === "07-0502-II"), "skip leftover image-only Garden Savings");
     assert.ok(!snap.cards.some((c) => c.id === "11-0028-R4"), "skip leftover people/IAP");

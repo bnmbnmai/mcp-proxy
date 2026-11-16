@@ -7,8 +7,10 @@
  * missed. 2011–2017 leftover C&D teasers are image-only scans (pdftotext
  * empty). Does not invent OCR. Official CSV is docket/name/URL metadata only.
  * Drupal ?_format=json is 406. Sibling .json/.txt 404.
- * Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not terminations.
- * Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd.
+ * Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not prohibition orders.
+ * Two official C&D terminations are cards: 23-0107-ER (Live Life) and 25-0025-ER
+ * (Phi Beta Sigma). Other terminations stay out. Not FRB /frb-orders.
+ * Not FDIC /fdic-orders. Not OCC /occ-cd.
  * Not CFPB /cfpb-orders. Not FTC /ftc-wl.
  */
 
@@ -49,7 +51,17 @@ export const CARD_FIELDS = [
   "title",
   "sourceUrl",
   "body",
+  "orderKind",
+  "endsDocket",
+  "status",
+  "terminatedDate",
+  "terminationFileNo",
+  "terminationSourceUrl",
 ] as const;
+
+export type NcuaOrderKind = "consent" | "termination";
+/** Consent C&Ds are in_force or terminated. A termination card is not a consent, so status is null. */
+export type NcuaOrderStatus = "in_force" | "terminated";
 
 export type NcuaListingRow = {
   creditUnion?: string;
@@ -86,6 +98,12 @@ export type NcuaOrderCard = {
   title: string;
   sourceUrl: string;
   body: string;
+  orderKind: NcuaOrderKind;
+  endsDocket: string | null;
+  status: NcuaOrderStatus | null;
+  terminatedDate: string | null;
+  terminationFileNo: string | null;
+  terminationSourceUrl: string | null;
 };
 
 export type NcuaOrdersSnapshot = {
@@ -233,6 +251,61 @@ export const OFFICIAL_WALK_LISTINGS: NcuaOrderListing[] = [
     sourceUrl: "https://ncua.gov/files/administrative-orders/AO1998-0601-1.pdf",
   },
 ];
+
+/**
+ * Official NCUA C&D termination orders. HTML body pages on ncua.gov (no PDF).
+ * Each one ends the consent docket it names. Proven from the order text, not inferred.
+ * 23-0107-ER signed 3/17/2023 ends 21-0105-ER. 25-0025-ER signed 5/27/2025 ends 19-1061-ER.
+ * Not a walk of the other administrative orders.
+ */
+export const TERMINATION_ORDERS = [
+  {
+    id: "23-0107-ER",
+    docket: "23-0107-ER",
+    creditUnion: "Live Life Federal Credit Union",
+    location: "Fraser, Michigan",
+    date: "2023-03-17",
+    title: "Termination of Consent Cease and Desist Order",
+    sourceUrl:
+      "https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union",
+    consentDocket: "21-0105-ER",
+  },
+  {
+    id: "25-0025-ER",
+    docket: "25-0025-ER",
+    creditUnion: "Phi Beta Sigma Federal Credit Union",
+    location: "Washington, District of Columbia",
+    date: "2025-05-27",
+    title: "Termination of Consent Cease and Desist Order",
+    sourceUrl:
+      "https://ncua.gov/news/enforcement-actions/administrative-orders/2025/administrative-order-matter-phi-beta-sigma-federal-credit-union",
+    consentDocket: "19-1061-ER",
+  },
+] as const;
+
+const terminationByDocket = new Map<string, (typeof TERMINATION_ORDERS)[number]>(
+  TERMINATION_ORDERS.map((row) => [row.docket, row]),
+);
+const terminationByConsent = new Map<string, (typeof TERMINATION_ORDERS)[number]>(
+  TERMINATION_ORDERS.map((row) => [row.consentDocket, row]),
+);
+
+export function isKnownTerminationDocket(docket: string | null | undefined): boolean {
+  const id = normalizeDocket(docket);
+  return Boolean(id && terminationByDocket.has(id));
+}
+
+export function terminationListings(): NcuaOrderListing[] {
+  return TERMINATION_ORDERS.map((row) => ({
+    id: row.id,
+    docket: row.docket,
+    creditUnion: row.creditUnion,
+    location: row.location,
+    date: row.date,
+    title: row.title,
+    sourceUrl: row.sourceUrl,
+  }));
+}
 
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
@@ -489,6 +562,8 @@ export function parseNcuaCsv(text: string): NcuaOrderListing[] {
   const rows: NcuaListingRow[] = [];
   for (const line of lines.slice(1)) {
     const cells = splitCsvLine(line);
+    const docketRaw = cells[iDocket] ?? "";
+    if (isKnownTerminationDocket(docketRaw)) continue;
     const last = (cells[iLast] ?? "").trim();
     const first = (cells[iFirst] ?? "").trim();
     const institution = (cells[iInst] ?? "").trim() || first;
@@ -627,6 +702,81 @@ export function isRealNcuaOrderBody(text: string): boolean {
   return ncua && order && docket && institution && findings;
 }
 
+/**
+ * Official short C&D termination. The two allowlisted orders are a few hundred
+ * characters. A consent C&D, the stub fixture, CMP, people, and LUA text stay out.
+ */
+export function isRealNcuaTerminationBody(text: string, docket?: string | null): boolean {
+  const compact = text.replace(/\s+/g, " ").trim();
+  if (/this termination card is not/i.test(compact)) return false;
+  if (compact.length < 250 || compact.length > 2500) return false;
+  if (!/National Credit Union Administration/i.test(compact)) return false;
+  if (!/TERMINATION OF\s+CONSENT CEASE AND DESIST ORDER/i.test(compact)) return false;
+  if (!/hereby terminates the Stipulation and Consent to Cease and Desist Order/i.test(compact)) return false;
+  if (!/12 U\.S\.C\.\s*§\s*1786\(e\)\(2\)/i.test(compact)) return false;
+  if (/consents to the issuance/i.test(compact)) return false;
+  if (/civil money penalty|ORDER OF PROHIBITION|Letter of Understanding and Agreement/i.test(compact)) return false;
+  const id = normalizeDocket(docket);
+  if (id && terminationByDocket.has(id)) {
+    return compact.includes(terminationByDocket.get(id)!.consentDocket);
+  }
+  const cited = TERMINATION_ORDERS.filter((row) => compact.includes(row.consentDocket));
+  return cited.length === 1;
+}
+
+export function isSellableNcuaOrderBody(text: string, docket?: string | null): boolean {
+  return isRealNcuaOrderBody(text) || isRealNcuaTerminationBody(text, docket);
+}
+
+/** Registry is the source of truth. A stale snapshot status does not stick. */
+export function applyNcuaOrderStatus<
+  T extends { id?: string; docket?: string; body?: string },
+>(
+  card: T,
+): T & {
+  orderKind: NcuaOrderKind;
+  endsDocket: string | null;
+  status: NcuaOrderStatus | null;
+  terminatedDate: string | null;
+  terminationFileNo: string | null;
+  terminationSourceUrl: string | null;
+} {
+  const docket = normalizeDocket(card.docket) || normalizeDocket(card.id);
+  const termination = docket ? terminationByDocket.get(docket) : undefined;
+  if (termination) {
+    return {
+      ...card,
+      orderKind: "termination",
+      endsDocket: termination.consentDocket,
+      status: null,
+      terminatedDate: null,
+      terminationFileNo: null,
+      terminationSourceUrl: null,
+    };
+  }
+  const ended = docket ? terminationByConsent.get(docket) : undefined;
+  if (ended) {
+    return {
+      ...card,
+      orderKind: "consent",
+      endsDocket: null,
+      status: "terminated",
+      terminatedDate: ended.date,
+      terminationFileNo: ended.docket,
+      terminationSourceUrl: ended.sourceUrl,
+    };
+  }
+  return {
+    ...card,
+    orderKind: "consent",
+    endsDocket: null,
+    status: "in_force",
+    terminatedDate: null,
+    terminationFileNo: null,
+    terminationSourceUrl: null,
+  };
+}
+
 export function extractOrderHtml(html: string): string {
   const article = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i);
   const chunk = article ? article[1] : html;
@@ -686,7 +836,7 @@ export function parseNcuaOrderHtml(
   const state = extractField(html, "field_state");
   const loc = [city ?? "", state ?? ""].map((s) => s.trim()).filter(Boolean);
   const published = (html.match(/article:published_time"[^>]*content="([^"]+)"/i) || [])[1];
-  return {
+  return applyNcuaOrderStatus({
     id: meta.id || docket,
     docket,
     creditUnion,
@@ -695,7 +845,7 @@ export function parseNcuaOrderHtml(
     title: meta.title || parseOrderTitle(body),
     sourceUrl,
     body,
-  };
+  });
 }
 
 export function emptySnapshot(reason: string): NcuaOrdersSnapshot {
@@ -719,7 +869,8 @@ function cardDateKey(card: Pick<NcuaOrderCard, "date" | "docket">): string {
 
 export function assembleSnapshot(cards: NcuaOrderCard[], fetchedAt = new Date().toISOString()): NcuaOrdersSnapshot {
   const withBody = cards
-    .filter((c) => isRealNcuaOrderBody(c.body))
+    .map((c) => applyNcuaOrderStatus(c))
+    .filter((c) => isSellableNcuaOrderBody(c.body, c.docket))
     .sort((a, b) => cardDateKey(b).localeCompare(cardDateKey(a)));
   const asOf =
     withBody
@@ -741,11 +892,62 @@ export function assembleSnapshot(cards: NcuaOrderCard[], fetchedAt = new Date().
   };
 }
 
+function fixtureHtml(docket: string): string | null {
+  const here = dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    join(here, "../src/fixtures/ncua-orders", `${docket}.html`),
+    join(here, "fixtures/ncua-orders", `${docket}.html`),
+  ];
+  const path = candidates.find((p) => existsSync(p));
+  return path ? readFileSync(path, "utf-8") : null;
+}
+
+function bundledTerminationCards(): NcuaOrderCard[] {
+  const cards: NcuaOrderCard[] = [];
+  for (const row of terminationListings()) {
+    const html = fixtureHtml(row.docket);
+    if (!html) continue;
+    const card = parseNcuaOrderHtml(html, row);
+    if (!isRealNcuaTerminationBody(card.body, card.docket)) continue;
+    cards.push(card);
+  }
+  return cards;
+}
+
+/** Reading a snapshot applies status and fills any missing official termination card. */
+export function withNcuaTerminationCards(snap: NcuaOrdersSnapshot): NcuaOrdersSnapshot {
+  const official = bundledTerminationCards();
+  const officialById = new Map(official.map((card) => [card.id, card]));
+  const cards: NcuaOrderCard[] = [];
+  const seen = new Set<string>();
+  for (const card of snap.cards) {
+    const cachedReal =
+      officialById.has(card.id) && isRealNcuaTerminationBody(card.body, card.docket);
+    const next = cachedReal ? card : (officialById.get(card.id) ?? card);
+    if (seen.has(next.id)) continue;
+    seen.add(next.id);
+    cards.push(next);
+  }
+  for (const extra of official) {
+    if (seen.has(extra.id)) continue;
+    seen.add(extra.id);
+    cards.push(extra);
+  }
+  const assembled = assembleSnapshot(cards, snap.fetchedAt);
+  return {
+    ...snap,
+    status: assembled.cards.length > 0 ? (snap.status === "empty" ? "ok" : snap.status) : assembled.status,
+    reason: assembled.cards.length > 0 ? null : assembled.reason,
+    asOf: assembled.asOf,
+    cards: assembled.cards,
+  };
+}
+
 function parseSnapshotFile(raw: unknown): NcuaOrdersSnapshot | null {
   if (!raw || typeof raw !== "object") return null;
   const snap = raw as NcuaOrdersSnapshot;
   if (snap.product !== PRODUCT_ID || !Array.isArray(snap.cards)) return null;
-  return snap;
+  return withNcuaTerminationCards(snap);
 }
 
 export function readSnapshot(): NcuaOrdersSnapshot | null {
@@ -776,7 +978,7 @@ export function writeSnapshot(snap: NcuaOrdersSnapshot): void {
 
 export function hasCachedNcuaOrderBody(): boolean {
   const snap = readSnapshot();
-  return Boolean(snap && snap.cards.some((c) => isRealNcuaOrderBody(c.body)));
+  return Boolean(snap && snap.cards.some((c) => isSellableNcuaOrderBody(c.body, c.docket)));
 }
 
 function listingDir(): string {
@@ -845,6 +1047,10 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function withTerminationListings(listed: NcuaOrderListing[], seeds: NcuaOrderListing[] = []): NcuaOrderListing[] {
+  return mergeOfficialListings(listed, [...seeds, ...terminationListings()]);
+}
+
 function mergeOfficialListings(listed: NcuaOrderListing[], seeds: NcuaOrderListing[]): NcuaOrderListing[] {
   const seen = new Set<string>();
   const out: NcuaOrderListing[] = [];
@@ -868,40 +1074,40 @@ async function loadOfficialListings(dir: string): Promise<{ listed: NcuaOrderLis
       if (Array.isArray(rows)) listed.push(...parseListingRows(rows));
     }
     if (listed.length > 0) {
-      const merged = mergeOfficialListings(listed, []);
+      const merged = withTerminationListings(listed);
       return { listed: merged, listedCount: merged.length };
     }
     const csv = readNamedFile(dir, ["csv-metadata.csv", "administrative-orders.csv"]);
     if (csv) {
-      const fromCsv = parseNcuaCsv(csv);
+      const fromCsv = withTerminationListings(parseNcuaCsv(csv));
       return { listed: fromCsv, listedCount: fromCsv.length };
     }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
-    const fromHtml = html ? parseListingHtml(html) : [];
+    const fromHtml = withTerminationListings(html ? parseListingHtml(html) : []);
     return { listed: fromHtml, listedCount: fromHtml.length };
   }
   try {
     const listed = parseNcuaCsv(await fetchNcuaHtml(CSV_URL));
-    const merged = mergeOfficialListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
+    const merged = withTerminationListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official CSV missed; try Drupal listing HTML */
   }
   try {
     const listed = parseListingHtml(await fetchNcuaHtml(LISTING_URL));
-    const merged = mergeOfficialListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
+    const merged = withTerminationListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official listing missed; walk official administrative-order PDFs */
   }
-  const walked = mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
+  const walked = withTerminationListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
   return { listed: walked, listedCount: walked.length };
 }
 
 function priorBodies(): Map<string, NcuaOrderCard> {
   const prior = new Map<string, NcuaOrderCard>();
   for (const card of readSnapshot()?.cards ?? []) {
-    if (isRealNcuaOrderBody(card.body)) prior.set(card.id, card);
+    if (isSellableNcuaOrderBody(card.body, card.docket)) prior.set(card.id, card);
   }
   return prior;
 }
@@ -1014,7 +1220,7 @@ export async function collectNcuaOrders(opts?: {
           });
         }
       }
-      if (!isRealNcuaOrderBody(parsed.body)) {
+      if (!isSellableNcuaOrderBody(parsed.body, parsed.docket)) {
         skippedNoText += 1;
         continue;
       }
@@ -1043,7 +1249,7 @@ export async function collectNcuaOrders(opts?: {
 
 export async function loadNcuaOrders(): Promise<NcuaOrdersSnapshot> {
   const cached = readSnapshot();
-  if (cached && cached.cards.some((c) => isRealNcuaOrderBody(c.body))) {
+  if (cached && cached.cards.some((c) => isSellableNcuaOrderBody(c.body, c.docket))) {
     return cached;
   }
   try {
@@ -1052,7 +1258,7 @@ export async function loadNcuaOrders(): Promise<NcuaOrdersSnapshot> {
     if (cached) {
       return {
         ...cached,
-        status: cached.cards.some((c) => isRealNcuaOrderBody(c.body)) ? "stale" : "empty",
+        status: cached.cards.some((c) => isSellableNcuaOrderBody(c.body, c.docket)) ? "stale" : "empty",
         reason: `Live NCUA institution C&D fetch failed; showing last cache. ${err instanceof Error ? err.message : String(err)}`,
       };
     }
@@ -1063,12 +1269,18 @@ export async function loadNcuaOrders(): Promise<NcuaOrdersSnapshot> {
 }
 
 export function buildNcuaOrdersManifest(snap: NcuaOrdersSnapshot | null): Record<string, unknown> {
-  const cards = (snap?.cards ?? []).filter((c) => isRealNcuaOrderBody(c.body));
+  const cards = (snap?.cards ?? [])
+    .filter((c) => isSellableNcuaOrderBody(c.body, c.docket))
+    .map((c) => applyNcuaOrderStatus(c));
+  const consents = cards.filter((c) => c.orderKind === "consent");
   return {
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/ncua-orders", 'Full catalog: count + credit union + docket + date. Not the official CSV'),
+    note: paidBodyCatalogNote(
+      "/ncua-orders",
+      "Full catalog: count + credit union + docket + date + status (in_force or terminated). Not the official CSV",
+    ),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
@@ -1079,14 +1291,39 @@ export function buildNcuaOrdersManifest(snap: NcuaOrdersSnapshot | null): Record
     fetchedAt: snap?.fetchedAt ?? null,
     asOf: snap?.asOf ?? null,
     cardCount: cards.length,
+    terminatedCount: consents.filter((c) => c.status === "terminated").length,
+    inForceCount: consents.filter((c) => c.status === "in_force").length,
+    terminationCount: cards.filter((c) => c.orderKind === "termination").length,
     cards: cards.map((c) => ({
       id: c.id,
       creditUnion: c.creditUnion,
       docket: c.docket,
       date: c.date,
+      title: c.title,
+      orderKind: c.orderKind,
+      endsDocket: c.endsDocket,
+      status: c.status,
+      terminatedDate: c.terminatedDate,
+      terminationFileNo: c.terminationFileNo,
+      terminationSourceUrl: c.terminationSourceUrl,
       sourceUrl: c.sourceUrl,
     })),
-    schema: { fields: ["id", "creditUnion", "docket", "date", "sourceUrl"] },
+    schema: {
+      fields: [
+        "id",
+        "creditUnion",
+        "docket",
+        "date",
+        "title",
+        "orderKind",
+        "endsDocket",
+        "status",
+        "terminatedDate",
+        "terminationFileNo",
+        "terminationSourceUrl",
+        "sourceUrl",
+      ],
+    },
     sources: snap?.sources ?? { listing: LISTING_URL, csv: CSV_URL, htmlHost: `https://${HTML_HOST}/` },
   };
 }
@@ -1111,7 +1348,10 @@ if (isMain()) {
             status: snap.status,
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
-            cardCount: snap.cards.filter((c) => isRealNcuaOrderBody(c.body)).length,
+            cardCount: snap.cards.filter((c) => isSellableNcuaOrderBody(c.body, c.docket)).length,
+            terminatedCount: snap.cards.filter((c) => c.orderKind === "consent" && c.status === "terminated").length,
+            inForceCount: snap.cards.filter((c) => c.orderKind === "consent" && c.status === "in_force").length,
+            terminationCount: snap.cards.filter((c) => c.orderKind === "termination").length,
             listedCount: snap.listedCount ?? snap.cards.length,
             fetchedPages: snap.fetchedPages ?? 0,
             fetchedPdfs: snap.fetchedPdfs ?? 0,
@@ -1124,6 +1364,11 @@ if (isMain()) {
               creditUnion: c.creditUnion,
               date: c.date,
               title: c.title,
+              orderKind: c.orderKind,
+              status: c.status,
+              terminatedDate: c.terminatedDate,
+              terminationFileNo: c.terminationFileNo,
+              endsDocket: c.endsDocket,
               bodyChars: c.body.length,
               sourceUrl: c.sourceUrl,
             })),
