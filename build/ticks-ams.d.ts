@@ -58,6 +58,12 @@
  * on agmarketnews.mo.gov, not AMS. Every MDA row source carries the State of
  * Missouri data-policy disclaimer. Free search matches user-visible fields
  * only (not sourceUrl, not the paid price).
+ * AMS_3658 Actual Slaughter Under Federal Inspection is the official weekly
+ * LPGMN PDF (mnreports/ams_3658.pdf). Head, percent, live/dressed weight, meat
+ * production, and regional thousand-head rows land on this same $0.05 table
+ * as livestock.ams_3658.*. A dash is withheld, not zero. AMS_3208 daily
+ * estimated slaughter, the NASS monthly Livestock Slaughter bulletin, stale
+ * sj_ls711.txt, and viewReport/3658 are not this body.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -69,7 +75,7 @@ export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const ESMIS_HOST = "https://esmis.nal.usda.gov";
 export declare const MNREPORTS_PDF: (slug: string) => string;
 export declare const VIEW_REPORT: (slug: string) => string;
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs" | "byproduct";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs" | "byproduct" | "livestock";
 export type AmsReport = {
     slug: string;
     group: AmsGroup;
@@ -196,6 +202,18 @@ export declare const SKIPPED_SOURCES: readonly [{
 }, {
     readonly id: "ams_3458_killed";
     readonly why: "AMS_3458 Daily Direct Prior Day Hog (LM_HG218) is KILL — mpr datamart /reports/3458 returns free JSON. Do not wrap";
+}, {
+    readonly id: "ams_3208_estimated_slaughter";
+    readonly why: "AMS_3208 is the daily estimated slaughter print, not the weekly actual AMS_3658 body";
+}, {
+    readonly id: "nass-monthly-livestock-slaughter";
+    readonly why: "NASS monthly Livestock Slaughter bulletin is not the AMS_3658 weekly daily-by-day actual slaughter PDF";
+}, {
+    readonly id: "sj_ls711_stale";
+    readonly why: "sj_ls711.txt is a stale week ending Nov 12 2022, not the current AMS_3658 body";
+}, {
+    readonly id: "viewreport_3658";
+    readonly why: "mymarketnews viewReport/3658 timed out with 0 bytes and did not return an Excel or CSV twin — parse the official mnreports PDF only";
 }];
 export type AmsTick = {
     id: string;
@@ -381,6 +399,12 @@ export declare function publicTicksCatalog(rows: readonly AmsTick[]): {
     sourceCount: number;
     sources: PublicTicksSource[];
 };
+/**
+ * Official AMS_3658 weekly actual slaughter under federal inspection.
+ * Current-week tables only. A printed dash is withheld and is not a zero.
+ * Head counts stay on price/head; free-search text does not repeat them.
+ */
+export declare function parseActualSlaughterReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function pdfToText(pdfPath: string): string;
 export declare function officialPdfCandidates(report: AmsReport): Promise<string[]>;
