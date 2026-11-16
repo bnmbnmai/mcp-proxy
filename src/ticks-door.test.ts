@@ -3883,6 +3883,25 @@ async function main(): Promise<void> {
             ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official Live Life C&D body used only to keep this door fixture above the real-order length floor.`),
           ].join("\n"),
         },
+        {
+          id: "22-0122-ER",
+          docket: "22-0122-ER",
+          creditUnion: "Yonkers Postal Employees Credit Union",
+          location: "Yonkers, New York",
+          date: "2022-11-29",
+          title: "Stipulation and Consent to Cease and Desist Order",
+          sourceUrl:
+            "https://ncua.gov/news/enforcement-actions/administrative-orders/2022/administrative-order-matter-yonkers-postal-employees-credit-union",
+          body: [
+            "NATIONAL CREDIT UNION ADMINISTRATION",
+            "Docket No. 22-0122-ER",
+            "YONKERS POSTAL EMPLOYEES CREDIT UNION",
+            "STIPULATION AND CONSENT TO CEASE AND DESIST ORDER",
+            "The Credit Union is an insured credit union. The Credit Union consents to the issuance by the NCUA of this Order.",
+            "WHEREFORE, in consideration of the foregoing",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered Yonkers article ${i + 21} from the official consent C&D body used only to keep this door fixture above the real-order length floor.`),
+          ].join("\n"),
+        },
       ],
     }),
   );
@@ -3904,7 +3923,19 @@ async function main(): Promise<void> {
       };
       assert.equal(body402.resource, NCUA_ORDERS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, NCUA_ORDERS_AMOUNT_ATOMIC);
+      assert.equal(NCUA_ORDERS_AMOUNT_ATOMIC, "50000");
       assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      assert.equal(body402.payTo, "0xf59621FC406D266e18f314Ae18eF0a33b8401004");
+
+      const idUnpaid = await fetch(`${base}${NCUA_ORDERS_PATH}?id=22-0122-ER`);
+      assert.equal(idUnpaid.status, 402, "unpaid GET /ncua-orders?id= must be 402");
+      const id402 = (await idUnpaid.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC);
+      assert.equal(SINGLE_DOC_AMOUNT_ATOMIC, "20000");
+      const termUnpaid = await fetch(`${base}${NCUA_ORDERS_PATH}?id=25-0025-ER`);
+      assert.equal(termUnpaid.status, 402, "unpaid termination ?id= must be 402");
+      const term402 = (await termUnpaid.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(term402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC);
       const ncuaPr = unpaid.headers.get("payment-required");
       assert.ok(ncuaPr, "v2 PAYMENT-REQUIRED header");
       const ncuaV2 = JSON.parse(Buffer.from(ncuaPr, "base64").toString("utf8")) as {
@@ -3932,16 +3963,44 @@ async function main(): Promise<void> {
       assert.equal(manifest.status, 200, "ncua-orders free manifest is free");
       const man = (await manifest.json()) as {
         cardCount?: number;
-        cards?: { creditUnion?: string; docket?: string; id?: string; body?: string }[];
+        asOf?: string;
+        terminatedCount?: number;
+        inForceCount?: number;
+        terminationCount?: number;
+        cards?: {
+          creditUnion?: string;
+          docket?: string;
+          id?: string;
+          body?: string;
+          status?: string | null;
+          orderKind?: string;
+          terminatedDate?: string | null;
+          terminationFileNo?: string | null;
+          sourceUrl?: string;
+        }[];
         openapi?: string;
         wellKnown?: string;
       };
-      assert.equal(man.cardCount, 1);
+      assert.equal(man.cardCount, 4);
+      assert.equal(man.asOf, "2025-05-27");
+      assert.ok((man.asOf ?? "") > "2022-11-29");
+      assert.equal(man.terminatedCount, 1);
+      assert.equal(man.inForceCount, 1);
+      assert.equal(man.terminationCount, 2);
       assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
       assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
-      assert.equal(man.cards?.[0]?.creditUnion, "Live Life Federal Credit Union");
-      assert.equal(man.cards?.[0]?.docket, "21-0105-ER");
-      assert.equal(man.cards?.[0]?.id, "21-0105-ER");
+      const liveFree = man.cards?.find((c) => c.id === "21-0105-ER");
+      const yonkersFree = man.cards?.find((c) => c.id === "22-0122-ER");
+      assert.equal(liveFree?.creditUnion, "Live Life Federal Credit Union");
+      assert.equal(liveFree?.docket, "21-0105-ER");
+      assert.equal(liveFree?.status, "terminated");
+      assert.equal(liveFree?.terminatedDate, "2023-03-17");
+      assert.equal(liveFree?.terminationFileNo, "23-0107-ER");
+      assert.equal(yonkersFree?.status, "in_force");
+      assert.equal(yonkersFree?.terminatedDate, null);
+      assert.equal(man.cards?.find((c) => c.id === "23-0107-ER")?.orderKind, "termination");
+      assert.equal(man.cards?.find((c) => c.id === "25-0025-ER")?.orderKind, "termination");
+      assert.ok(man.cards?.every((c) => !c.sourceUrl));
       const manBlob = JSON.stringify(man);
       assert.ok(!manBlob.includes("Marijuana-Related"));
       assert.ok(!manBlob.includes("METRC"));
@@ -3952,21 +4011,26 @@ async function main(): Promise<void> {
       assert.equal(paid.status, 200);
       const paidBody = (await paid.json()) as {
         product: string;
+        asOf?: string;
         cards: { creditUnion: string; date: string; docket: string; body: string }[];
         records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
         recordCount?: number;
       };
       assert.equal(paidBody.product, "ncua-institution-order-bodies");
-      assert.equal(paidBody.cards[0]?.creditUnion, "Live Life Federal Credit Union");
-      assert.equal(paidBody.cards[0]?.date, "2021-02-22");
-      assert.equal(paidBody.cards[0]?.docket, "21-0105-ER");
-      assert.ok(paidBody.cards[0]?.body.includes("Marijuana-Related"));
-      assert.ok(paidBody.cards[0]?.body.includes("METRC"));
-      assert.ok(paidBody.cards[0]?.body.includes("BSA Expectations"));
+      const livePaid = paidBody.cards.find((c) => c.docket === "21-0105-ER");
+      assert.equal(livePaid?.creditUnion, "Live Life Federal Credit Union");
+      assert.equal(livePaid?.date, "2021-02-22");
+      assert.ok(livePaid?.body.includes("Marijuana-Related"));
+      assert.ok(livePaid?.body.includes("METRC"));
+      assert.ok(livePaid?.body.includes("BSA Expectations"));
+      const termPaid = paidBody.cards.find((c) => c.docket === "25-0025-ER");
+      assert.ok(termPaid?.body.includes("TERMINATION OF"));
+      assert.ok(termPaid?.body.includes("19-1061-ER"));
+      assert.equal(paidBody.asOf, "2025-05-27");
       assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
-      assert.equal(paidBody.records?.[0]?.id, "21-0105-ER");
+      assert.equal(paidBody.records?.[0]?.id, "25-0025-ER");
       assert.equal(paidBody.records?.[0]?.type, "ncua-order");
-      assert.equal(paidBody.records?.[0]?.firm, "Live Life Federal Credit Union");
+      assert.equal(paidBody.records?.find((r) => r.id === "21-0105-ER")?.firm, "Live Life Federal Credit Union");
     },
   );
 

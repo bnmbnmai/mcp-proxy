@@ -634,7 +634,9 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
   if (!needle) return rows;
   return rows.filter((row) => {
     // kind, citation, caseNo, and documentId match firm-check. Letter/order bodies stay off this haystack.
-    const hay = [row.id, row.accession, row.docket, row.dockets, row.citation, row.caseNo, row.documentId, row.kind, row.orderKind, row.library, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.mine, row.operator, row.state, row.sector, row.classification, row.accidentDate, row.reportDate, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
+    // status (in_force | terminated) and orderKind are searchable. terminationSourceUrl is not:
+    // free ?q= must not start matching that hidden order URL.
+    const hay = [row.id, row.accession, row.docket, row.dockets, row.citation, row.caseNo, row.documentId, row.kind, row.orderKind, row.endsDocket, row.library, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.mine, row.operator, row.state, row.sector, row.classification, row.accidentDate, row.reportDate, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.status, row.sourceUrl]
       .map((value) => str(value).toLowerCase())
       .join(" ");
     return hay.includes(needle);

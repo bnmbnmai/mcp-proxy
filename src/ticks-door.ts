@@ -47,8 +47,8 @@
  * GET /fdic-orders/manifest.json — free count + bank/docket/date (no order body)
  * GET /frb-orders — FRB institution C&D / written-agreement / PCA PDF text ($0.05)
  * GET /frb-orders/manifest.json — free count + institution/docket/date (no order body)
- * GET /ncua-orders — NCUA institution consent C&D HTML text ($0.05)
- * GET /ncua-orders/manifest.json — free count + credit union/docket/date (no order body)
+ * GET /ncua-orders — NCUA institution consent C&D HTML text plus two C&D terminations ($0.05)
+ * GET /ncua-orders/manifest.json — free count + credit union/docket/date/status (no order body)
  * GET /fincen-orders — FinCEN institution consent-order PDF text ($0.05)
  * GET /fincen-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /ferc-orders — FERC institution stipulation-and-consent / show-cause / civil-penalty PDF text ($0.05)
@@ -1952,7 +1952,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "ncua-orders": {
     description:
-      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. " + PAID_WINDOW_COPY,
+      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov, plus the two official C&D termination orders 23-0107-ER and 25-0025-ER. Free cards say status in_force or terminated. Not the official CSV. Not late-filer CMP. Not LUAs. Not prohibition orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. " + PAID_WINDOW_COPY,
     resourcePath: NCUA_ORDERS_PATH,
   },
   "fincen-orders": {
@@ -2875,6 +2875,13 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2021-02-22",
         sourceUrl:
           "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union",
+        orderKind: "consent",
+        endsDocket: null,
+        status: "terminated",
+        terminatedDate: "2023-03-17",
+        terminationFileNo: "23-0107-ER",
+        terminationSourceUrl:
+          "https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union",
         body: "NATIONAL CREDIT UNION ADMINISTRATION\nDocket No. 21-0105-ER\nLIVE LIFE FEDERAL CREDIT UNION\nStipulation and Consent to Cease and Desist Order",
       },
     ],
@@ -5960,7 +5967,7 @@ export function llmsTxt(): string {
     `- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
-    `- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ncua-orders — $0.05 — NCUA institution consent C&D text plus the two official C&D terminations (official per-order HTML). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -6052,7 +6059,7 @@ export function llmsTxt(): string {
     "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date/status in_force|terminated (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
@@ -7185,7 +7192,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [NCUA_ORDERS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getNcuaOrders",
-          summary: "NCUA institution consent C&D text",
+          summary: "NCUA institution consent C&D text and two C&D terminations",
           description: SKU_COPY["ncua-orders"].description,
           priceUsdc: ncuaOrdersPrice,
           amountAtomic: ncuaOrdersAtomic,
